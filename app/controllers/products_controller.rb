@@ -101,12 +101,18 @@ class ProductsController < ApplicationController
     case params[:filter]
     when 'menu'
       [
-        Product.joins(:category).where(categories: { category_type: 'daily' }).order('products.active DESC'),
+        Product
+          .joins(:category)
+          .where(categories: { category_type: 'daily' })
+          .order('products.active DESC, products.title ASC'),
         { carta: 'clarito', menu: 'oscuro' }
       ]
     else
       [
-        Product.joins(:category).where.not(categories: { category_type: 'daily' }).order('products.active DESC'),
+        Product
+          .joins(:category)
+          .where.not(categories: { category_type: 'daily' })
+          .order('products.active DESC, products.title ASC'),
         { carta: 'oscuro', menu: 'clarito' }
       ]
     end
