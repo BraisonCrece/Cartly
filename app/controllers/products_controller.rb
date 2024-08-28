@@ -1,15 +1,18 @@
+# frozen_string_literal: true
+
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: %i[index menu show]
   before_action :set_product, only: %i[show edit update destroy]
   before_action :set_categories, only: %i[index new edit]
 
+  WINE_COLORS = %w[Blanco Tinto].freeze
+
   def index
-    available_colors = %w[Blanco Tinto].freeze
     @categorized_products = Product.categorized_products
     @special_menus = SpecialMenu.active
     @categories = Category.menu
     @denominations = WineOriginDenomination.all.includes(:wines)
-    @categorized_wines = Wine.categorized_wines(@denominations, available_colors)
+    @categorized_wines = Wine.categorized_wines(@denominations, WINE_COLORS)
   end
 
   def menu
@@ -52,6 +55,7 @@ class ProductsController < ApplicationController
   def update
     @product = Product.find(params[:id])
     if @product.update(product_params)
+
       if title_or_description_changed?
         Thread.new do
           Translators::ProcessTranslationsService.new(@product, :update).call
@@ -87,11 +91,20 @@ class ProductsController < ApplicationController
   def toggle_active
     product = Product.find(params[:product_id])
     product.update(active: !product.active)
-    render turbo_stream: turbo_stream.replace("product_active_#{product.id}", partial: 'products/active',
-                                                                              locals: { product: })
+
+    render turbo_stream: turbo_replace_product(product)
   end
 
   private
+
+  def turbo_replace_product(product)
+    turbo_stream
+      .replace(
+        "product_active_#{product.id}",
+        partial: 'products/active',
+        locals: { product: }
+      )
+  end
 
   def title_or_description_changed?
     @product.previous_changes.include?('title') || @product.previous_changes.include?('description')
@@ -100,21 +113,9 @@ class ProductsController < ApplicationController
   def set_products_and_color_based_on_params
     case params[:filter]
     when 'menu'
-      [
-        Product
-          .joins(:category)
-          .where(categories: { category_type: 'daily' })
-          .order('products.active DESC, products.title ASC'),
-        { carta: 'clarito', menu: 'oscuro' }
-      ]
+      [Product.daily_menu, { carta: 'oscuro', menu: 'clarito' }]
     else
-      [
-        Product
-          .joins(:category)
-          .where.not(categories: { category_type: 'daily' })
-          .order('products.active DESC, products.title ASC'),
-        { carta: 'oscuro', menu: 'clarito' }
-      ]
+      [Product.not_daily_menu, { carta: 'clarito', menu: 'oscuro' }]
     end
   end
 
@@ -128,7 +129,8 @@ class ProductsController < ApplicationController
 
   def product_params
     params.require(:product).permit(
-      :title, :description, :prize, :category_id, :special_menu_id, :picture, :per_gram, :per_kilo, :per_unit, allergen_ids: []
+      :title, :description, :prize, :category_id, :special_menu_id,
+      :picture, :per_gram, :per_kilo, :per_unit, allergen_ids: []
     )
   end
 end

@@ -24,6 +24,18 @@ class Product < ApplicationRecord
       .group_by(&:category_id)
   }
 
+  scope :daily_menu, lambda {
+    joins(:category)
+      .where(categories: { category_type: 'daily' })
+      .order('products.active DESC, products.title ASC')
+  }
+
+  scope :not_daily_menu, lambda {
+    joins(:category)
+      .where.not(categories: { category_type: 'daily' })
+      .order('products.active DESC, products.title ASC')
+  }
+
   def lock_it!
     update(lock: true)
   end
@@ -32,7 +44,7 @@ class Product < ApplicationRecord
     update(lock: false)
   end
 
-  # Image procesing before attach, allowed formats [:jpg, :png]
+  # Image procesing before attach, allowed formats [:jpg, :png, :webp]
   def process_image(file)
     ImageProcessingService.new(file:, record: self, attachment_name: :picture).call
   end
