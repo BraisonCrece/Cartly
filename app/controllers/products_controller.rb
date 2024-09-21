@@ -78,7 +78,8 @@ class ProductsController < ApplicationController
       Translators::ProcessTranslationsService.new(@product, :destroy).call
     end
 
-    redirect_to control_panel_path, status: 303, notice: 'Producto eliminado!'
+    redirect_to control_panel_path(filter: @product.category.category_type), status: :found,
+                                                                             notice: 'Producto eliminado!'
   end
 
   # TODO: Move this to the SettingsController

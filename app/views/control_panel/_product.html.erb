@@ -1,4 +1,4 @@
-<div class='flex justify-between w-[90%] h-24 mx-auto border-t align-middle relative product-item' data-product-title='<%= product.title.downcase %>' data-product-search-target="item">
+<div class='flex justify-between w-[90%] h-24 mx-auto border-t align-middle relative product-item'>
     <p class='max-w-[75%] self-center flex flex-col gap-2 text-lg font-medium'>
         <%= truncate(product.title, length: 30, separator: " ", omission: "...") %>
     </p>
@@ -14,6 +14,6 @@
     </p>
     <div class='absolute flex gap-2'>
         <%= button_to "Editar", edit_product_path(product), data: { turbo: false }, class: "text-xs font-thin text-blue-800 p-0 dark:text-blue-200", method: :get %>
-        <%= button_to "Eliminar", product_path(product), data: { turbo_confirm: "Seguro que queres eliminar o producto?" }, class: "text-xs font-thin text-red-800 p-0 dark:text-red-200", method: :delete %>
+        <%= button_to "Eliminar", product_path(product), data: { turbo: false }, onclick: "return confirm('Seguro que queres eliminar el producto?');", class: "text-xs font-thin text-red-800 p-0 dark:text-red-200", method: :delete %>
     </div>
 </div>
