@@ -13,6 +13,11 @@
 *= require_tree .
 *= require_self
 */
+
+html, body {
+    overscroll-behavior: none;
+}
+
 @font-face {
   font-family: "PlayFair";
   src: url("../fonts/PlayfairDisplay-Regular.ttf") format("ttf"),
@@ -42,6 +47,10 @@
 body,
 html,
 main {
+  scrollbar-gutter: stable !important;
+}
+
+.scroll-stable {
   scrollbar-gutter: stable;
 }
 
@@ -167,19 +176,21 @@ main {
 }
 
 .not-selected {
-    background-color: #0069fd56;
+
 }
 
 .selected {
-  background-color: #0069fde6;
-}
-
-.selected:hover {
-  background-color: #0069fd;
+  border: none;
+  background-color: transparent;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+  text-decoration-style: wavy;
+  text-decoration-color: #00a89ee6;
 }
 
 .not-selected:hover {
-  background-color: #0069fd;
+    transform: scale(1.05);
 }
 
 .other-locales {

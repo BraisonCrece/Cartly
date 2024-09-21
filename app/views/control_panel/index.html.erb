@@ -1,17 +1,41 @@
-<div class="w-full max-w-2xl" data-controller="product-search sticky-shadow">
+<div class="w-full max-w-2xl" data-controller="sticky-shadow">
     <div class="sticky top-[-1px] bg-white dark:bg-gray-800 pt-4 pb-1 z-10 cubic-transition" data-sticky-shadow-target="sticky">
-        <h1 class="font-thin text-4xl text-center mb-8 text-pretty"> Productos </h1>
-        <div class="flex justify-center items-center align-middle gap-2 mb-6 px-3">
-            <%= render "shared/add_button", path: new_product_path %>
-            <input type="search" id="productSearch" placeholder="Buscar producto" data-product-search-target="search" data-action="input->product-search#search" class="bg-white focus:ring-blue-500 focus:border-blue-500 border border-gray-300 dark:text-gray-800 rounded-[3px] py-2 px-4 block w-full" />
-            <%= link_to 'Menú', control_panel_path(filter: 'daily'), class: "p-2 #{@color[:menu]} text-white rounded-[3px]" %>
-            <%= link_to 'Carta', control_panel_path(filter: 'menu'), class: "p-2 #{@color[:carta]} text-white rounded-[3px]" %>
+        <h1 class="mb-8 text-4xl font-thin text-center text-pretty"> Productos </h1>
+        <div class="flex flex-col items-center justify-center gap-2 px-3 mb-6 align-middle md:flex-row">
+            <div class="flex w-full gap-2">
+                <%= render "shared/add_button", path: new_product_path %>
+                <%= link_to 'Menú',
+                    control_panel_path(filter: 'daily'),
+                    class: "p-1 #{@color[:menu]} dark:text-white text-gray-800 rounded-[3px]"
+                %>
+                <%= link_to 'Carta',
+                    control_panel_path(filter: 'menu'),
+                    class: "p-1 #{@color[:carta]} dark:text-white text-gray-800 rounded-[3px]"
+                %>
+            </div>
+            <%= form_with url: control_panel_path, method: :get, html: { class: 'w-full flex gap-2'} do |form| %>
+                <%= form.hidden_field :filter, value: params[:filter] %>
+                <%= form.text_field :query,
+                    placeholder: 'Buscar producto',
+                    data: { product_search_target: 'search', action: 'input->product-search#search' },
+                    class: "bg-white focus:ring-blue-600 focus:border-blue-600 border border-gray-300 dark:text-gray-800 rounded-[3px] py-2 px-4 block w-full"
+                %>
+                <%= button_tag(type: 'submit', class: "p-2 bg-blue-600 text-white rounded-full shrink-0 shadow-md w-10 h-10") do %>
+                    <%= image_tag 'icons/search.svg', class: 'w-5 h-5 text-white shrink-0 mx-auto' %>
+                <% end %>
+            <% end %>
         </div>
     </div>
-  <div id="productList" class="p-3">
-    <%= turbo_frame_tag "products-#{@pagy.page}" do %>
-        <%= render partial: 'product', collection: @products %>
-        <%= turbo_frame_tag "products-#{@pagy.next}", src: pagy_url_for(@pagy, @pagy.next), loading: :lazy if @pagy.next %>
-    <% end %>
-  </div>
+
+    <div id="productList" class="p-3">
+        <%= turbo_frame_tag "products-#{@pagy.page}" do %>
+            <%= render partial: 'product', collection: @products %>
+
+            <%= turbo_frame_tag "products-#{@pagy.next}",
+                src: pagy_url_for(@pagy, @pagy.next),
+                loading: :lazy,
+                class: "w-full" if @pagy.next
+            %>
+        <% end %>
+    </div>
 </div>
