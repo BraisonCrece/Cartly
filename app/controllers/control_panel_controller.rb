@@ -1,16 +1,20 @@
 class ControlPanelController < ApplicationController
   before_action :authenticate_user!
+  include Pagy::Backend
+
   def index
     filter = params[:filter]
-    @products, @color = filter_products(filter)
+    @pagy, @products, @color = pagy_products(filter)
   end
 
-  def filter_products(filter)
+  def pagy_products(filter)
     case filter
     when 'daily'
-      [Product.daily_menu, { carta: 'not-selected', menu: 'selected' }]
+      pagy, products = pagy_countless(Product.daily_menu, limit: 10)
+      [pagy, products, { carta: 'not-selected', menu: 'selected' }]
     else
-      [Product.not_daily_menu, { carta: 'selected', menu: 'not-selected' }]
+      pagy, products = pagy_countless(Product.not_daily_menu, limit: 10)
+      [pagy, products, { carta: 'selected', menu: 'not-selected' }]
     end
   end
 end

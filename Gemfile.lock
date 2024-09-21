@@ -203,11 +203,12 @@ GEM
       racc (~> 1.4)
     orm_adapter (0.5.0)
     ostruct (0.6.0)
-    pg (1.5.6)
+    pagy (9.0.9)
+    pg (1.5.8)
     psych (5.1.2)
       stringio
     public_suffix (6.0.0)
-    puma (5.6.8)
+    puma (6.4.3)
       nio4r (~> 2.0)
     racc (1.8.0)
     rack (2.2.9)
@@ -371,8 +372,9 @@ DEPENDENCIES
   jbuilder
   mutex_m
   ostruct
-  pg (~> 1.4)
-  puma (~> 5.0)
+  pagy
+  pg (~> 1.5.8)
+  puma (~> 6.4.3)
   rack-cors
   rails
   rails-i18n
