@@ -11,27 +11,29 @@
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= favicon_link_tag "Navega_sinfondo.png" %>
-    <%= turbo_refreshes_with method: :morph, scroll: :preserve  %>
-    <%= content_for :head %>
 
     <link rel="manifest" href="/manifest.json">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <%= turbo_refreshes_with method: :morph, scroll: :preserve  %>
+    <%= yield :head %>
   </head>
+
   <body class="transition-colors duration-500 flex flex-col w-auto h-full justify-center mt-0 main-content bg-white dark:bg-gray-800 dark:text-white">
     <%= render "shared/theme_switch" %>
     <div class="flex justify-center">
       <%= render "shared/flash" %>
     </div>
     <%= render "shared/menu" %>
-    <main class="w-full mb-4 flex justify-center">
+
+    <main class="w-full my-4 flex justify-center">
       <%= yield %>
       <%= render "shared/locale_switch" %>
       <%= render "shared/card_menu_switch" %>
     </main>
+
     <%= render "shared/info" %>
   </body>
 </html>

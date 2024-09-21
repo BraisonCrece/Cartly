@@ -166,19 +166,19 @@ main {
   }
 }
 
-.clarito {
-  background-color: #0069fd56;
+.not-selected {
+    background-color: #0069fd56;
 }
 
-.oscuro {
+.selected {
   background-color: #0069fde6;
 }
 
-.clarito:hover {
+.selected:hover {
   background-color: #0069fd;
 }
 
-.oscuro:hover {
+.not-selected:hover {
   background-color: #0069fd;
 }
 

@@ -13,32 +13,30 @@ class ImageProcessingService
   def call
     image = Vips::Image.new_from_file(file.path, access: :sequential)
 
-    if image.bands == 4
-      image = image.flatten(background: [255, 255, 255])
-    end
+    image = image.flatten(background: [255, 255, 255]) if image.bands == 4
 
     if wine
       adjusted_y = size_y - 100
 
       processed_image = ImageProcessing::Vips
-        .source(image)
-        .resize_to_fit(size_x, size_y)
-        .resize_and_pad(size_x, adjusted_y, extend: :white)
-        .convert('webp')
-        .saver(Q: 75, strip: true)
-        .call
-      else
-        processed_image = ImageProcessing::Vips
-          .source(image)
-          .resize_to_fit(size_x, size_y)
-          .convert('webp')
-          .saver(Q: 75, strip: true)
-          .call
+                        .source(image)
+                        .resize_to_fit(size_x, size_y)
+                        .resize_and_pad(size_x, adjusted_y, extend: :white)
+                        .convert('webp')
+                        .saver(Q: 75, strip: true)
+                        .call
+    else
+      processed_image = ImageProcessing::Vips
+                        .source(image)
+                        .resize_to_fit(size_x, size_y)
+                        .convert('webp')
+                        .saver(Q: 75, strip: true)
+                        .call
     end
 
     record.public_send(attachment_name).attach(
       io: File.open(processed_image.path),
-      filename: "p_#{file.original_filename}",
+      filename: "p_#{file.original_filename}"
     )
   end
 end

@@ -1,11 +1,11 @@
 development:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redis:6379/1
 
 test:
   adapter: test
 
 production:
   adapter: redis
-  url: <%= ENV.fetch("REDIS_URL") { "redis://localhost:6379/1" } %>
-  channel_prefix: carta_qr_production
+  url: <%= ENV.fetch("REDIS_URL") { "redis://redis:6379/1" } %>
+  channel_prefix: cartly_production

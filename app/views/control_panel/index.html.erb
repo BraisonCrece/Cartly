@@ -10,8 +10,7 @@
     </div>
   <div id="productList" class="p-3">
     <% @products.each do |product| %>
-        <%= turbo_stream_from product %>
-        <%= render "control_panel_product", product: product %>
+        <%= render "product", product: product %>
     <% end %>
   </div>
 </div>

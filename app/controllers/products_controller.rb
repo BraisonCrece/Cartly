@@ -81,7 +81,8 @@ class ProductsController < ApplicationController
   end
 
   def control_panel
-    @products, @color = set_products_and_color_based_on_params
+    filter = params[:filter]
+    @products, @color = filter_products(filter)
   end
 
   def pages_control
@@ -91,31 +92,21 @@ class ProductsController < ApplicationController
   def toggle_active
     product = Product.find(params[:product_id])
     product.update(active: !product.active)
-
-    render turbo_stream: turbo_replace_product(product)
+    redirect_to control_panel_path
   end
 
   private
-
-  def turbo_replace_product(product)
-    turbo_stream
-      .replace(
-        "product_active_#{product.id}",
-        partial: 'products/active',
-        locals: { product: }
-      )
-  end
 
   def title_or_description_changed?
     @product.previous_changes.include?('title') || @product.previous_changes.include?('description')
   end
 
-  def set_products_and_color_based_on_params
-    case params[:filter]
-    when 'menu'
-      [Product.daily_menu, { carta: 'oscuro', menu: 'clarito' }]
+  def filter_products(filter)
+    case filter
+    when 'daily'
+      [Product.daily_menu, { carta: 'not-selected', menu: 'selected' }]
     else
-      [Product.not_daily_menu, { carta: 'clarito', menu: 'oscuro' }]
+      [Product.not_daily_menu, { carta: 'selected', menu: 'not-selected' }]
     end
   end
 
