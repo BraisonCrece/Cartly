@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+# Controller for managing product-related actions
 class ProductsController < ApplicationController
   before_action :authenticate_user!, except: %i[index menu show]
   before_action :set_product, only: %i[show edit update destroy]
@@ -80,34 +81,15 @@ class ProductsController < ApplicationController
     redirect_to control_panel_path, status: 303, notice: 'Producto eliminado!'
   end
 
-  def control_panel
-    filter = params[:filter]
-    @products, @color = filter_products(filter)
-  end
-
+  # TODO: Move this to the SettingsController
   def pages_control
     @settings = Setting.first
-  end
-
-  def toggle_active
-    product = Product.find(params[:product_id])
-    product.update(active: !product.active)
-    redirect_to control_panel_path
   end
 
   private
 
   def title_or_description_changed?
     @product.previous_changes.include?('title') || @product.previous_changes.include?('description')
-  end
-
-  def filter_products(filter)
-    case filter
-    when 'daily'
-      [Product.daily_menu, { carta: 'not-selected', menu: 'selected' }]
-    else
-      [Product.not_daily_menu, { carta: 'selected', menu: 'not-selected' }]
-    end
   end
 
   def set_product

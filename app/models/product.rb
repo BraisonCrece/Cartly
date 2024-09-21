@@ -13,8 +13,8 @@ class Product < ApplicationRecord
       .joins(:category)
       .where(categories: { category_type: 'menu' })
       .order(title: :asc)
-      .group_by(&:category_id)
       .load_async
+      .group_by(&:category_id)
   }
 
   scope :menu_categorized_products, lambda {
@@ -22,23 +22,29 @@ class Product < ApplicationRecord
       .joins(:category)
       .where(categories: { category_type: 'daily' })
       .order(title: :asc)
+      .load_async
       .group_by(&:category_id)
-      .load_async
   }
 
-  scope :daily_menu, lambda {
-    joins(:category)
-      .where(categories: { category_type: 'daily' })
-      .order('products.active DESC, products.title ASC')
-      .load_async
-  }
+  def self.daily_menu(query: nil)
+    scope = joins(:category)
+            .where(categories: { category_type: 'daily' })
+            .order('products.active DESC, products.title ASC')
 
-  scope :not_daily_menu, lambda {
-    joins(:category)
-      .where.not(categories: { category_type: 'daily' })
-      .order('products.active DESC, products.title ASC')
-      .load_async
-  }
+    scope = scope.where('products.title ILIKE ?', "%#{query}%") if query.present?
+
+    scope.load_async
+  end
+
+  def self.not_daily_menu(query: nil)
+    scope = joins(:category)
+            .where.not(categories: { category_type: 'daily' })
+            .order('products.active DESC, products.title ASC')
+
+    scope = scope.where('products.title ILIKE ?', "%#{query}%") if query.present?
+
+    scope.load_async
+  end
 
   def lock_it!
     update(lock: true)

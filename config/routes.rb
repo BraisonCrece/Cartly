@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   get '/control_panel', to: 'control_panel#index'
 
   get '/wines_control_panel', to: 'wines#control_panel', as: :wines_control_panel
-  post 'toggle_active/:product_id', to: 'products#toggle_active', as: :toggle_active
+  post 'toggle_active/:product_id', to: 'control_panel#toggle_active', as: :toggle_active
   post 'wine_toggle_active/:wine_id', to: 'wines#toggle_active', as: :wine_toggle_active
   post 'toggle_special_menu/:special_menu_id', to: 'special_menus#toggle_active', as: :toggle_special_menu
   post 'translate', to: 'translate#translate'
