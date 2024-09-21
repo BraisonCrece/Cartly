@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Helper para traducir los textos
 module TranslateHelper
   def translate(i18n, active_record = nil)
     return active_record if I18n.locale == :gl
