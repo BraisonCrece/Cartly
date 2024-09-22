@@ -3,6 +3,96 @@
 require 'faker'
 require 'colorize'
 
+def create_products(names, descriptions, images_map, category_name)
+  names.each_with_index do |name, index|
+    path = Rails.root.join('app', 'assets', 'images', 'seeds', "#{images_map[name]}.webp")
+    product_image_file = open_image_file(path)
+    product = Product.create!(
+      title: name,
+      description: descriptions[index],
+      active: true,
+      prize: rand(5.0..25.0).round(2),
+      category: Category.find_by(name: category_name)
+    )
+    add_random_allergens_to_product(product)
+    product.process_image(product_image_file)
+    save_product(product)
+  end
+end
+
+starter_product_image_map = {
+  'Hummus con crudités' => 'hummus',
+  'Bruschettas de tomate e alfábega' => 'tomate',
+  'Roliños de primaveira' => 'rollito',
+  'Guacamole con chips de plátano' => 'guacamole',
+  'Paté de cogomelos e noces' => 'pate'
+}
+
+main_products_image_map = {
+  'Curry de garavanzos e espinacas' => 'curry',
+  'Lasaña de verduras' => 'lasaña',
+  'Tacos de tempeh e aguacate' => 'tacos',
+  'Bowl de quinoa con tofu e vexetais asados' => 'tofu',
+  'Hamburguesa de lentellas con batata' => 'hamburguesa'
+}
+
+desserts_image_map = {
+  'Mousse de chocolate con aguacate' => 'mouse',
+  'Tarta de mazá e canela' => 'manzana',
+  'Xeado de plátano e manteiga de cacahuete' => 'helado',
+  'Brownies de batata doce e cacao' => 'brownie',
+  'Cheesecake de anacardos e limón' => 'cheesecake'
+}
+
+starter_products_names = [
+  'Hummus con crudités', 'Bruschettas de tomate e alfábega', 'Roliños de primaveira',
+  'Guacamole con chips de plátano', 'Paté de cogomelos e noces'
+]
+
+main_product_names = [
+  'Curry de garavanzos e espinacas', 'Lasaña de verduras', 'Tacos de tempeh e aguacate',
+  'Bowl de quinoa con tofu e vexetais asados', 'Hamburguesa de lentellas con batata'
+]
+
+desset_name = [
+  'Mousse de chocolate con aguacate', 'Tarta de mazá e canela', 'Xeado de plátano e manteiga de cacahuete',
+  'Brownies de batata doce e cacao', 'Cheesecake de anacardos e limón'
+]
+
+starter_products_description = [
+  'Crema de garavanzos con limón, tahini e allo, acompañada de paíños de cenoria, pepino e apio frescos.',
+  'Rodelas de pan torrado con tomate fresco, allo, aceite de oliva e follas de alfábega, ideal para abrir o apetito.',
+  'Envolturas de arroz recheas de fideos, cenoria, pepino e coandro, servidos con salsa de cacahuete.',
+  'Aguacate triturado con cebola, coandro, tomate e un toque de limón, acompañado de chips crocantes de plátano.',
+  'Crema suave de cogomelos e noces, enriquecida con herbas frescas, servida con pan torrado ou crackers.'
+]
+
+main_product_descriptions = [
+  'Cremoso curry de garavanzos cocidos a lume lento con espinacas frescas, servido sobre unha cama de arroz basmati e
+  acompañado de naan vegano.',
+  'Capas de pasta de trigo intercaladas con cabaciña, berenxena, espinacas e salsa de tomate, gratinadas cunha
+  cremosa bechamel de anacardos.',
+  'Tortillas de millo recheas con tempeh mariñado, anacos de aguacate, cebola morada, coandro fresco e unha salsa
+  caseira de xalapeños.',
+  'Quinoa esponxosa acompañada de tofu crocante e unha mestura de vexetais asados, aderezada cunha vinagreta de tahini
+  e limón.',
+  'Hamburguesa caseira de lentellas e batata en pan integral, con leituga, tomate, cebola caramelizada e
+  maionesa vegana.'
+]
+
+desserts_descriptions = [
+  'Suave e cremosa mousse de chocolate feita con aguacate, cacao en po e un toque de xarope de agave, servida con
+  froitos vermellos frescos.',
+  'Masa integral rechea de rodelas de mazá caramelizadas con canela e azucre de coco, forneada ata quedar crocante e
+  dourada.',
+  'Xeado vexetariano elaborado a base de plátano conxelado e manteiga de cacahuete, cremoso e sen necesidade de lácteos
+  nin azucres engadidos.',
+  'Brownies húmidos feitos con puré de batata doce, cacao en po e fariña de améndoa, sen azucre refinado e naturalmente
+  doces.',
+  'Base de froitos secos e dátiles, cuberta cunha crema suave de anacardos e limón, todo sen produtos lácteos e cun
+  sabor refrescante.'
+]
+
 # Helper methods
 def print_header(message)
   puts "\n#{'=' * 50}".yellow
@@ -60,39 +150,6 @@ def save_allergen(allergen)
     print_info("Failed to create allergen: #{allergen.name}")
     print_info("Errors: #{allergen.errors.full_messages.join(', ')}")
   end
-end
-
-# Product methods
-def create_products_for_category(category, image_file, number_of_products: 10)
-  number_of_products.times do
-    product = create_product_for_category(category)
-    add_random_allergens_to_product(product)
-    product.process_image(image_file)
-    save_product(product)
-  end
-end
-
-def generate_product_name(category)
-  case category.name
-  when '🥗 Entrantes 🥗', 'Primeiros'
-    Faker::Food.dish
-  when '🍽️ Platos 🍽️', 'Segundos'
-    "#{Faker::Food.ingredient} with #{Faker::Food.vegetables}"
-  when 'Postres', '🍰 Postres 🍰'
-    Faker::Dessert.variety
-  end
-end
-
-def create_product_for_category(category)
-  product_name = generate_product_name(category)
-
-  Product.new(
-    title: product_name,
-    description: Faker::Food.description,
-    active: true,
-    prize: rand(5.0..25.0).round(2),
-    category:
-  )
 end
 
 def add_random_allergens_to_product(product)
@@ -199,15 +256,10 @@ end
 
 # Products
 print_header('Creating Products')
-all_categories = Category.all
 
-placeholder_path = Rails.root.join('app', 'assets', 'images', 'placeholder.webp')
-product_image_file = open_image_file(placeholder_path)
-
-all_categories.each do |category|
-  print_info("Creating products for category: #{category.name}")
-  create_products_for_category(category, product_image_file, number_of_products: 10)
-end
+create_products(starter_products_names, starter_products_description, starter_product_image_map, '🥗 Entrantes 🥗')
+create_products(main_product_names, main_product_descriptions, main_products_image_map, '🍽️ Platos 🍽️')
+create_products(desset_name, desserts_descriptions, desserts_image_map, '🍰 Postres 🍰')
 
 # Wine Origin Denominations
 print_header('Creating Wine Origin Denominations')
