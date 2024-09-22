@@ -10,7 +10,7 @@
     <div class="" data-navbar-target="trigger"></div>
     <%= render "categorized_products" %>
     <%= render "special_menus/active_special_menus", special_menus: @special_menus if SpecialMenu.active.any? %>
-    <%= render "categorized_wines" %>
+    <%= render "wines/categorized_wines" %>
     <%= turbo_frame_tag :modal %>
   </div>
   <div class="flex items-center justify-center max-w-2xl gap-2 mt-10 italic font-thin prose text-emerald-900 dark:text-emerald-200">

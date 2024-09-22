@@ -13,7 +13,7 @@
             <%= turbo_stream_from wine %>
 
             <%= link_to build_link(wine), data: { turbo_frame: "modal" } do %>
-                <%= render "wine", wine: wine %>
+                <%= render "wines/wine", wine: wine %>
             <% end %>
         <% end %>
     </div>
