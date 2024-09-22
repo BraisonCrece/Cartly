@@ -1,14 +1,14 @@
-<div class='flex justify-between py-6 px-4 print:my-6 border-t border-gray-100 dark:border-gray-100/25 animate__animated animate__fadeIn animate__fast'>
-  <div class="title price flex flex-col max-w-[75%]">
-    <p class='text-2xl playfare font-light balance'> <%= wine.name %></p>
+<div class='flex justify-between gap-2 px-4 py-6 border-gray-100 bordebranr-t text-brand-gray print:my-6 dark:border-gray-100/25 animate__animated animate__fadeIn animate__slower'>
+  <div class="title price flex flex-col max-w-[72.5%]">
+    <p class='text-2xl font-light playfare balance'> <%= wine.name %></p>
     <% if wine.price_per_glass %>
       <div class="flex gap-2">
-        <span class='font-thin text-xs self-end'> <%= translate("copa", "Dispoñible por copa") %>: </span>
-        <p class='font-light lato self-end' id='per_glass'><%= number_to_currency(wine.price_per_glass, { unit: "€", separator: ",", format: "%n %u" }) %></p>
+        <span class='self-end text-xs font-thin'> <%= translate("copa", "Dispoñible por copa") %>: </span>
+        <p class='self-end font-light lato' id='per_glass'><%= number_to_currency(wine.price_per_glass, { unit: "€", separator: ",", format: "%n %u" }) %></p>
       </div>
     <% end %>
   </div>
-  <div class="text-2xl self-center font-extralight">
-    <%= number_with_precision(wine.price, precision: 2, separator: ",") %><small class='text-black text-lg font-extralight dark:text-white'>€</small>
+  <div class="self-center text-2xl font-extralight">
+    <%= number_with_precision(wine.price, precision: 2, separator: ",") %><small class='text-lg text-black font-extralight dark:text-white'>€</small>
   </div>
 </div>

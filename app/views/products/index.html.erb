@@ -1,8 +1,13 @@
- <div class="w-full h-full max-w-2xl print:max-w-[80%]" data-controller="scroll sticky-shadow">
-    <div class="sticky top-[-1px] z-10 border-t border-gray-100 dark:border-gray-100/25 bg-white dark:bg-gray-800 flex justify-evenly content-center items-center gap-2 py-4 transition-colors duration-500" data-sticky-shadow-target="sticky">
+ <div class="relative w-full h-full max-w-2xl print:max-w-[80%]" data-controller="scroll sticky-shadow navbar">
+    <div
+        class="absolute w-full max-w-2xl top-[-1px] -translate-y-[500px]  transition-all z-10 border-t border-gray-100 dark:border-gray-100/25 bg-white dark:bg-gray-800 flex justify-evenly content-center items-center gap-2 py-4 duration-200"
+        data-sticky-shadow-target="sticky"
+        data-navbar-target="navbar"
+    >
         <%= render "category_links" %>
     </div>
   <div class="p-3 space-y-4">
+    <div class="" data-navbar-target="trigger"></div>
     <%= render "categorized_products" %>
     <%= render "special_menus/active_special_menus", special_menus: @special_menus if SpecialMenu.active.any? %>
     <%= render "categorized_wines" %>
