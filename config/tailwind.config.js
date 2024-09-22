@@ -6,7 +6,8 @@ module.exports = {
     "./public/*.html",
     "./app/helpers/**/*.rb",
     "./app/javascript/**/*.js",
-    "./app/views/**/*.{erb,haml,html}"
+    "./app/views/**/*.html.erb",
+    "./app/views/**/*.erb"
   ],
   theme: {
     extend: {
@@ -20,6 +21,14 @@ module.exports = {
       },
       animation: {
         "pulse-subtle": "pulse-subtle 6.5s infinite"
+      },
+      colors: {
+        "brand-red": "#ff5757",
+        "brand-red-dark": "#bf4143",
+        "brand-red-light": "#ff7073",
+        "brand-gray": "#374151",
+        "brand-gray-light": "#49566b",
+        "brand-gray-dark": "#262d38"
       }
     }
   },

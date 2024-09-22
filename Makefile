@@ -56,9 +56,12 @@ print.img:
 	@echo "\033[31m  \___|\033[32m\__,_|\033[33m|_|  \033[34m \__|\033[35m|_| \033[36m\_, |"
 	@echo "\033[31m       \033[32m      \033[33m     \033[34m     \033[35m    \033[36m|__/ "
 	@echo "\033[0m"
-	@echo "🎉 Welcome to Cartaly! 🚀"
-	@echo "🔧 You can now run 'make server' to start the application."
-	@echo "🌟 Happy coding! 🌟"
+	@echo "🎉 Welcome to Cartly! 🚀"
+	@echo "🔧 You can run 'make server' to start the application."
+	@echo "\n"
+	@echo "🔧 To use the admin panel, go to http://localhost:3000/control_panel"
+	@echo "🔧 The test user is 'test@test.com' with password 'Abc123..'"
+	@echo "🌟 Enjoy! 🌟"
 	@echo "\n"
 
 # Database commands

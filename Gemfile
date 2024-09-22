@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 
 ruby '3.3.5'
 
-gem 'animate-rails'
 gem 'base64'
 gem 'bootsnap', require: false
 gem 'colorize'
@@ -27,7 +26,6 @@ gem 'rails-i18n'
 gem 'redis'
 gem 'ruby-vips'
 gem 'sprockets-rails'
-# gem 'sqlite3'
 gem 'stimulus-rails'
 gem 'tailwindcss-rails'
 gem 'turbo-rails'

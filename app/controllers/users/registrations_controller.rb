@@ -4,15 +4,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
-  def new
-    flash[:alert] = "El registro de nuevos usuarios está deshabilitado."
-    redirect_to new_user_session_path
-  end
+  # def new
+  #   flash[:alert] = "El registro de nuevos usuarios está deshabilitado."
+  #   redirect_to new_user_session_path
+  # end
 
-  def create
-    flash[:alert] = "El registro de nuevos usuarios está deshabilitado."
-    redirect_to new_user_session_path
-  end
+  # def create
+  #   flash[:alert] = "El registro de nuevos usuarios está deshabilitado."
+  #   redirect_to new_user_session_path
+  # end
 
   # GET /resource/sign_up
   # def new

@@ -11,29 +11,34 @@ class ImageProcessingService
   end
 
   def call
+    image = load_image
+    processed_image = process_image(image)
+    attach_processed_image(processed_image)
+  end
+
+  private
+
+  def load_image
     image = Vips::Image.new_from_file(file.path, access: :sequential)
+    image.bands == 4 ? image.flatten(background: [255, 255, 255]) : image
+  end
 
-    image = image.flatten(background: [255, 255, 255]) if image.bands == 4
+  def process_image(image)
+    processor = ImageProcessing::Vips.source(image)
+    processor = apply_wine_processing(processor) if wine
+    processor
+      .resize_to_fit(size_x, size_y)
+      .convert('webp')
+      .saver(Q: 75, strip: true)
+      .call
+  end
 
-    if wine
-      adjusted_y = size_y - 100
+  def apply_wine_processing(processor)
+    adjusted_y = size_y - 100
+    processor.resize_and_pad(size_x, adjusted_y, extend: :white)
+  end
 
-      processed_image = ImageProcessing::Vips
-                        .source(image)
-                        .resize_to_fit(size_x, size_y)
-                        .resize_and_pad(size_x, adjusted_y, extend: :white)
-                        .convert('webp')
-                        .saver(Q: 75, strip: true)
-                        .call
-    else
-      processed_image = ImageProcessing::Vips
-                        .source(image)
-                        .resize_to_fit(size_x, size_y)
-                        .convert('webp')
-                        .saver(Q: 75, strip: true)
-                        .call
-    end
-
+  def attach_processed_image(processed_image)
     record.public_send(attachment_name).attach(
       io: File.open(processed_image.path),
       filename: "p_#{file.original_filename}"

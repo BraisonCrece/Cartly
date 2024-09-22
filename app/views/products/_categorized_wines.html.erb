@@ -1,19 +1,21 @@
 <% if Wine.where(active: true).exists? %>
-  <h2 class="text-3xl font-semibold text-teal-700 pb-4 px-4 text-center border-b border-gray-100 dark:border-gray-100/25" id='viños'> <%= translate("category.Viños.name", "🍷 Viños") %></h2>
+  <h2 class="px-4 pb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-red dark:border-gray-100/25" id='viños'> <%= translate("category.Viños.name", "🍷 Viños 🍷") %></h2>
 <% end %>
 
 <% @categorized_wines.each do |color, wines_by_denomination| %>
   <% next if wines_by_denomination.empty? %>
-  <h2 class="text-[1.7rem] font-semibold text-teal-600 mb-2 px-4 text-center"><%= translate("#{color}s", color) %></h2>
+  <h2 class="px-4 pb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-red-light dark:border-gray-100/25" id="category-<%= color %>"><%= translate("#{color}s", color) %></h2>
   <% wines_by_denomination.each do |denomination_id, wines| %>
     <% denomination = @denominations.find { |d| d.id == denomination_id } %>
-    <h2 class="text-2xl font-medium text-teal-500 pb-4 px-4" id="category-<%= denomination.id %>"><%= denomination.name %></h2>
-    <% wines.each do |wine| %>
-      <%= turbo_stream_from wine %>
+    <div class="pb-8">
+        <h2 class="px-4 pb-4 text-2xl font-medium text-brand-red-light dark:text-brand-red-light" id="category-<%= denomination.id %>"><%= denomination.name %></h2>
+        <% wines.each do |wine| %>
+            <%= turbo_stream_from wine %>
 
-      <%= link_to build_link(wine), data: { turbo_frame: "modal" } do %>
-        <%= render "wine", wine: wine %>
-      <% end %>
-    <% end %>
+            <%= link_to build_link(wine), data: { turbo_frame: "modal" } do %>
+                <%= render "wine", wine: wine %>
+            <% end %>
+        <% end %>
+    </div>
   <% end %>
 <% end %>

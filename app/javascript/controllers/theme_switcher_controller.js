@@ -13,10 +13,8 @@ export default class extends Controller {
   }
 
   toggle() {
-    // Alterna la clase "dark" en el elemento root
     document.documentElement.classList.toggle("dark")
 
-    // Guarda el estado del tema en localStorage
     if (document.documentElement.classList.contains("dark")) {
       localStorage.setItem("theme", "dark")
       this.showLightButton()
