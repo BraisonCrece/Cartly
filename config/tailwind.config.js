@@ -24,6 +24,8 @@ module.exports = {
       },
       colors: {
         "brand-red": "#ff5757",
+        "brand-comp": "#00a8a8",
+        "brand-comp-dark": "#007474",
         "brand-red-dark": "#bf4143",
         "brand-red-light": "#ff7073",
         "brand-gray": "#374151",

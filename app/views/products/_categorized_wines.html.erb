@@ -1,14 +1,14 @@
 <% if Wine.where(active: true).exists? %>
-  <h2 class="px-4 pb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-red dark:border-gray-100/25" id='viños'> <%= translate("category.Viños.name", "🍷 Viños 🍷") %></h2>
+  <h2 class="px-4 pb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp dark:border-gray-100/25" id='viños'> <%= translate("category.Viños.name", "🍷 Viños 🍷") %></h2>
 <% end %>
 
 <% @categorized_wines.each do |color, wines_by_denomination| %>
   <% next if wines_by_denomination.empty? %>
-  <h2 class="px-4 pb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-red-light dark:border-gray-100/25" id="category-<%= color %>"><%= translate("#{color}s", color) %></h2>
+  <h2 class="px-4 pb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:border-gray-100/25" id="category-<%= color %>"><%= translate("#{color}s", color) %></h2>
   <% wines_by_denomination.each do |denomination_id, wines| %>
     <% denomination = @denominations.find { |d| d.id == denomination_id } %>
     <div class="pb-8">
-        <h2 class="px-4 pb-4 text-2xl font-medium text-brand-red-light dark:text-brand-red-light" id="category-<%= denomination.id %>"><%= denomination.name %></h2>
+        <h2 class="px-4 pb-4 text-2xl font-medium text-brand-comp-dark" id="category-<%= denomination.id %>"><%= denomination.name %></h2>
         <% wines.each do |wine| %>
             <%= turbo_stream_from wine %>
 
