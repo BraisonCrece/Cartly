@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "dish_active_#{dish.id}" do %>
+  <%= link_to '🔴', toggle_active_path(dish_id: dish.id), class: "no-underline select-none text-xl", data: { turbo_method: :post } if !dish.active%>
+  <%= link_to '🟢', toggle_active_path(dish_id: dish.id), class: "no-underline select-none text-xl", data: { turbo_method: :post } if dish.active%>
+<% end %>

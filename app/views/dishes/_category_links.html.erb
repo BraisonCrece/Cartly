@@ -1,0 +1,17 @@
+<% caterogy_link_classes = "text-lg font-light italic align-middle text-center font-medium subpixel-antialiased text-brand-comp-dark" %>
+
+<% @categories.each do |category| %>
+  <% next if category.dishes.blank? %>
+  <%= link_to translate("category.#{category.id}.name", category.name).gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
+              "#category-#{category.id}",
+              class: caterogy_link_classes,
+              data: { turbo_frame: "_top", controller: "scroll", action: "click->scroll#scrollToCategory" } %>
+<% end %>
+<% if Wine.where(active: true).exists? %>
+    <%= link_to translate("category.Viños.name", "Viños")
+        .gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
+        "#viños",
+        class: caterogy_link_classes,
+        data: { turbo_frame: "_top", controller: "scroll", action: "click->scroll#scrollToCategory" }
+    %>
+<% end %>

@@ -8,14 +8,14 @@ module Translators
     include Dry::Monads[:result, :try]
     include Dry::Monads::Do.for(:call)
 
-    attr_reader :yaml, :products, :wines
+    attr_reader :yaml, :dishes, :wines
 
     LANGUAGES = %w[Español Inglés Francés Alemán Italiano Ruso].freeze
 
     def call
       yield get_yaml_file
       yield get_items
-      yield process_products_translations
+      yield process_dishes_translations
       yield process_wines_translations
       yield reload_i18n_backend
     end
@@ -33,16 +33,16 @@ module Translators
     end
 
     def get_items
-      @products = Product.all
+      @dishes = Dish.all
       @wines = Wine.all
       Success('Items loaded')
     end
 
-    def process_products_translations
-      products.each do |product|
-        NewItemTranslatorService.new(product).call
+    def process_dishes_translations
+      dishes.each do |dish|
+        NewItemTranslatorService.new(dish).call
       end
-      Success('Products translations processed')
+      Success('Dishes translations processed')
     end
 
     def process_wines_translations

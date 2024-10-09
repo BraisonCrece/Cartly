@@ -1,9 +1,9 @@
 <div class="w-full max-w-2xl" data-controller="sticky-shadow">
     <div class="sticky top-[-1px] bg-white dark:bg-gray-800 pt-4 pb-1 z-10 cubic-transition" data-sticky-shadow-target="sticky">
-        <h1 class="mb-8 text-4xl font-thin text-center text-pretty"> Productos </h1>
+        <h1 class="mb-8 text-4xl font-thin text-center text-pretty"> Platos </h1>
         <div class="flex flex-col items-center justify-center gap-2 px-3 mb-6 align-middle md:flex-row">
             <div class="flex w-full gap-2">
-                <%= render "shared/add_button", path: new_product_path %>
+                <%= render "shared/add_button", path: new_dish_path %>
                 <%= link_to 'Menú',
                     control_panel_path(filter: 'daily'),
                     class: "p-1 #{@color[:menu]} dark:text-white text-gray-800 rounded-[3px]"
@@ -16,8 +16,8 @@
             <%= form_with url: control_panel_path, method: :get, html: { class: 'w-full flex gap-2'} do |form| %>
                 <%= form.hidden_field :filter, value: params[:filter] %>
                 <%= form.text_field :query,
-                    placeholder: 'Buscar producto',
-                    data: { product_search_target: 'search', action: 'input->product-search#search' },
+                    placeholder: 'Buscar plato',
+                    data: { dish_search_target: 'search', action: 'input->dish-search#search' },
                     class: "bg-white focus:ring-blue-600 focus:border-blue-600 border border-gray-300 dark:text-gray-800 rounded-[3px] py-2 px-4 block w-full"
                 %>
                 <%= button_tag(type: 'submit', class: "p-2 bg-brand-red-light text-white rounded-full shrink-0 shadow-md w-10 h-10") do %>
@@ -27,11 +27,11 @@
         </div>
     </div>
 
-    <div id="productList" class="p-3">
-        <%= turbo_frame_tag "products-#{@pagy.page}" do %>
-            <%= render partial: 'product', collection: @products %>
+    <div id="dishList" class="p-3">
+        <%= turbo_frame_tag "dishes-#{@pagy.page}" do %>
+            <%= render partial: 'dish', collection: @dishes %>
 
-            <%= turbo_frame_tag "products-#{@pagy.next}",
+            <%= turbo_frame_tag "dishes-#{@pagy.next}",
                 src: pagy_url_for(@pagy, @pagy.next),
                 loading: :lazy,
                 class: "w-full" if @pagy.next

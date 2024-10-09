@@ -1,0 +1,19 @@
+<div class='flex justify-between w-[90%] h-24 mx-auto border-t align-middle relative dish-item' data-dish-title='<%= dish.title.downcase %>' data-dish-search-target="item">
+    <p class='max-w-[75%] self-center flex flex-col gap-2 text-lg font-medium'>
+        <%= truncate(dish.title, length: 30, separator: " ", omission: "...") %>
+    </p>
+    <p class='self-center'>
+        <% if dish.lock? %>
+            🔒
+        <% else %>
+            <%= turbo_frame_tag "dish_active_#{dish.id}" do %>
+                <%= link_to "🔴", toggle_active_path(dish_id: dish.id), class: "no-underline select-none text-xl", data: { turbo_method: :post } if !dish.active %>
+                <%= link_to "🟢", toggle_active_path(dish_id: dish.id), class: "no-underline select-none text-xl", data: { turbo_method: :post } if dish.active %>
+            <% end %>
+        <% end %>
+    </p>
+    <div class='absolute flex gap-2'>
+        <%= button_to "Editar", edit_dish_path(dish), data: { turbo: false }, class: "text-xs font-thin text-blue-800 p-0 dark:text-blue-200", method: :get %>
+        <%= button_to "Eliminar", dish_path(dish), data: { turbo_confirm: "Seguro que queres eliminar o plato?" }, class: "text-xs font-thin text-red-800 p-0 dark:text-red-200", method: :delete %>
+    </div>
+</div>

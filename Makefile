@@ -89,7 +89,7 @@ db.session:
 .PHONY: pgadmin chrome redis
 
 pgadmin:
-	$(DC) up -d pgadmin
+	$(DC) up -d db pgadmin
 
 chrome:
 	$(DC) up -d chrome

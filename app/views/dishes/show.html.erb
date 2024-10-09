@@ -1,0 +1,62 @@
+<%= turbo_frame_tag :modal do %>
+    <div
+        data-controller='modal'
+        id='dish-modal'
+        class="fixed inset-0 z-20 flex items-center h-screen modal-container animate__fadeIn animate__animated"
+        data-action="click->modal#close">
+        <!-- CARD -->
+        <div
+            class="w-[95%] flex flex-col max-w-2xl sm:flex-row sm:items-center sm:h-[280px] mx-auto bg-white rounded-lg overflow-hidden shadow-xl dark:bg-gray-800 dark:shadow dark:shadow-slate-200/20">
+            <!-- PICTURE -->
+            <div
+                class="w-full h-48 grow-0 sm:h-full sm:w-72 skeleton skeleton-dark"
+                data-modal-target="skeleton">
+                <%= image_tag @dish.picture.attached? ? @dish.picture : "placeholder.webp",
+                    class: "rounded-t-lg sm:rounded-none object-cover object-center w-full h-full wait",
+                    data: { modal_target: "image" } %>
+            </div>
+            <!-- CARD BODY -->
+            <div class="card__body h-full px-6 py-2 sm:max-w-[70%] flex flex-col justify-around">
+                <div
+                    class="mb-2 text-2xl font-medium playfare skeleton skeleton-dark"
+                    data-modal-target="skeleton">
+                    <%= translate("dish.#{@dish.id}.title", @dish.title) %>
+                </div>
+                <p
+                    class="w-full mb-2 text-gray-600 break-words lato skeleton skeleton-dark dark:text-slate-300"
+                    data-modal-target="skeleton">
+                    <%= translate("dish.#{@dish.id}.description", @dish.description) %>
+                </p>
+                <div class="flex items-center justify-between align-middle">
+                    <% unless @dish&.category&.category_type == "daily" %>
+                        <div
+                            class="self-center block text-xl font-semibold skeleton skeleton-dark"
+                            data-modal-target="skeleton" >
+                            <%= number_with_precision(@dish.prize, precision: 2, separator: ",") %>
+                            <small class='text-sm italic text-black duration-500 font-extralight place-self-end dark:text-white'>
+                                <%=render_measure(@dish) %>
+                            </small>
+                        </div>
+                    <% end %>
+                    <div
+                        class="flex items-center gap-1 alergenos skeleton skeleton-dark"
+                        data-modal-target="skeleton" >
+                        <% @dish.allergens.each do |allergen| %>
+                            <span
+                                class="inline-block py-1 tooltip"
+                                data-controller="tooltip"
+                                data-action="click->tooltip#toggle">
+                                <%= image_tag allergen.icon.variant(:thumb), data: { modal_target: "image" }, class: "w-8 h-8 opacity-70" %>
+                                <span
+                                    class="shadow-xl tooltip-text"
+                                    data-tooltip-target="text">
+                                    <%= allergen.name %>
+                                </span>
+                            </span>
+                        <% end %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

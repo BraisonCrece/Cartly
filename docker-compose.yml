@@ -22,6 +22,7 @@ services:
       DATABASE_URL: postgres://postgres:password@db:5432/cartly_development
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
+      OPENAI_KEY: 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
     networks:
       - cartly_network
 
@@ -98,7 +99,7 @@ services:
     ports:
       - "8888:80"
     environment:
-      PGADMIN_DEFAULT_EMAIL: carta@navegacion.com
+      PGADMIN_DEFAULT_EMAIL: cartly@cartly.com
       PGADMIN_DEFAULT_PASSWORD: password
     volumes:
       - pgadmin:/var/lib/pgadmin

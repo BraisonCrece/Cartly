@@ -5,30 +5,30 @@ class ControlPanelController < ApplicationController
   def index
     filter = params[:filter]
     query = params[:query]
-    @pagy, @products, @color = pagy_products(filter, query)
+    @pagy, @dishes, @color = pagy_dishes(filter, query)
   end
 
   def toggle_active
-    product = Product.find(params[:product_id])
-    product.update(active: !product.active)
+    dish = Dish.find(params[:dish_id])
+    dish.update(active: !dish.active)
 
     render turbo_stream: turbo_stream.replace(
-      "product_active_#{product.id}",
-      partial: 'products/active',
-      locals: { product: }
+      "dish_active_#{dish.id}",
+      partial: 'dishes/active',
+      locals: { dish: }
     )
   end
 
   private
 
-  def pagy_products(filter, query)
+  def pagy_dishes(filter, query)
     case filter
     when 'daily'
-      pagy, products = pagy_countless(Product.daily_menu(query:), limit: 10)
-      [pagy, products, { carta: 'not-selected', menu: 'selected' }]
+      pagy, dishes = pagy_countless(Dish.daily_menu(query:), limit: 10)
+      [pagy, dishes, { carta: 'not-selected', menu: 'selected' }]
     else
-      pagy, products = pagy_countless(Product.not_daily_menu(query:), limit: 10)
-      [pagy, products, { carta: 'selected', menu: 'not-selected' }]
+      pagy, dishes = pagy_countless(Dish.not_daily_menu(query:), limit: 10)
+      [pagy, dishes, { carta: 'selected', menu: 'not-selected' }]
     end
   end
 end

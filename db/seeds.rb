@@ -3,24 +3,24 @@
 require 'faker'
 require 'colorize'
 
-def create_products(names, descriptions, images_map, category_name)
+def create_dishes(names, descriptions, images_map, category_name)
   names.each_with_index do |name, index|
     path = Rails.root.join('app', 'assets', 'images', 'seeds', "#{images_map[name]}.webp")
-    product_image_file = open_image_file(path)
-    product = Product.create!(
+    dish_image_file = open_image_file(path)
+    dish = Dish.create!(
       title: name,
       description: descriptions[index],
       active: true,
       prize: rand(5.0..25.0).round(2),
       category: Category.find_by(name: category_name)
     )
-    add_random_allergens_to_product(product)
-    product.process_image(product_image_file)
-    save_product(product)
+    add_random_allergens_to_dish(dish)
+    dish.process_image(dish_image_file)
+    save_dish(dish)
   end
 end
 
-starter_product_image_map = {
+starter_dish_image_map = {
   'Hummus con crudités' => 'hummus',
   'Bruschettas de tomate e alfábega' => 'tomate',
   'Roliños de primaveira' => 'rollito',
@@ -28,7 +28,7 @@ starter_product_image_map = {
   'Paté de cogomelos e noces' => 'pate'
 }
 
-main_products_image_map = {
+main_dishes_image_map = {
   'Curry de garavanzos e espinacas' => 'curry',
   'Lasaña de verduras' => 'lasaña',
   'Tacos de tempeh e aguacate' => 'tacos',
@@ -44,22 +44,22 @@ desserts_image_map = {
   'Cheesecake de anacardos e limón' => 'cheesecake'
 }
 
-starter_products_names = [
+starter_dishes_names = [
   'Hummus con crudités', 'Bruschettas de tomate e alfábega', 'Roliños de primaveira',
   'Guacamole con chips de plátano', 'Paté de cogomelos e noces'
 ]
 
-main_product_names = [
+main_dish_names = [
   'Curry de garavanzos e espinacas', 'Lasaña de verduras', 'Tacos de tempeh e aguacate',
   'Bowl de quinoa con tofu e vexetais asados', 'Hamburguesa de lentellas con batata'
 ]
 
-desset_name = [
+dessert_names = [
   'Mousse de chocolate con aguacate', 'Tarta de mazá e canela', 'Xeado de plátano e manteiga de cacahuete',
   'Brownies de batata doce e cacao', 'Cheesecake de anacardos e limón'
 ]
 
-starter_products_description = [
+starter_dishes_description = [
   'Crema de garavanzos con limón, tahini e allo, acompañada de paíños de cenoria, pepino e apio frescos.',
   'Rodelas de pan torrado con tomate fresco, allo, aceite de oliva e follas de alfábega, ideal para abrir o apetito.',
   'Envolturas de arroz recheas de fideos, cenoria, pepino e coandro, servidos con salsa de cacahuete.',
@@ -67,7 +67,7 @@ starter_products_description = [
   'Crema suave de cogomelos e noces, enriquecida con herbas frescas, servida con pan torrado ou crackers.'
 ]
 
-main_product_descriptions = [
+main_dish_descriptions = [
   'Cremoso curry de garavanzos cocidos a lume lento con espinacas frescas, servido sobre unha cama de arroz basmati e
   acompañado de naan vegano.',
   'Capas de pasta de trigo intercaladas con cabaciña, berenxena, espinacas e salsa de tomate, gratinadas cunha
@@ -152,18 +152,18 @@ def save_allergen(allergen)
   end
 end
 
-def add_random_allergens_to_product(product)
+def add_random_allergens_to_dish(dish)
   allergens = Allergen.all.sample(rand(0..6))
-  product.allergens << allergens
-  print_info("  Added #{allergens.count} allergens to #{product.title}")
+  dish.allergens << allergens
+  print_info("  Added #{allergens.count} allergens to #{dish.title}")
 end
 
-def save_product(product)
-  if product.save
-    print_info("  Created product: #{product.title}")
+def save_dish(dish)
+  if dish.save
+    print_info("  Created dish: #{dish.title}")
   else
-    print_info("  Failed to create product: #{product.title}")
-    print_info("  Errors: #{product.errors.full_messages.join(', ')}")
+    print_info("  Failed to create dish: #{dish.title}")
+    print_info("  Errors: #{dish.errors.full_messages.join(', ')}")
   end
 end
 
@@ -245,21 +245,21 @@ menu_categories = ['🥗 Entrantes 🥗', '🍽️ Platos 🍽️', '🍰 Postre
 daily_categories = %w[Primeiros Segundos Postres]
 
 menu_categories.each do |name|
-  Category.create!(name:, category_type: 'menu')
+  Category.create!(name: name, category_type: 'menu')
   print_info("Created menu category: #{name}")
 end
 
 daily_categories.each do |name|
-  Category.create!(name:, category_type: 'daily')
+  Category.create!(name: name, category_type: 'daily')
   print_info("Created daily category: #{name}")
 end
 
-# Products
-print_header('Creating Products')
+# Dishes
+print_header('Creating Dishes')
 
-create_products(starter_products_names, starter_products_description, starter_product_image_map, '🥗 Entrantes 🥗')
-create_products(main_product_names, main_product_descriptions, main_products_image_map, '🍽️ Platos 🍽️')
-create_products(desset_name, desserts_descriptions, desserts_image_map, '🍰 Postres 🍰')
+create_dishes(starter_dishes_names, starter_dishes_description, starter_dish_image_map, '🥗 Entrantes 🥗')
+create_dishes(main_dish_names, main_dish_descriptions, main_dishes_image_map, '🍽️ Platos 🍽️')
+create_dishes(dessert_names, desserts_descriptions, desserts_image_map, '🍰 Postres 🍰')
 
 # Wine Origin Denominations
 print_header('Creating Wine Origin Denominations')

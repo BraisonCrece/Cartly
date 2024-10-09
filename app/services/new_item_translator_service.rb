@@ -25,23 +25,19 @@ class NewItemTranslatorService
   private
 
   def process_item_translations
-    result = LANGUAGES.each do |language|
-      service = Try[NameError] do
-        "#{item.class.name}TranslatorService".constantize.new(item, language, model:, temperature:)
-      end.to_result
+    result = LANGUAGES.map do |language|
+      service = instance_translator_service(item, language)
+                .value_or { |error| Failure(error) }
 
-      raise "Service #{item.class.name}TranslatorService not found" if service.failure?
-
-      result = service.success.call
-      if result.success?
-        Rails.logger.info("#{item.class.name} #{item.id} translated to #{language}")
-        Success("#{item.class.name} #{item.id} translated")
-      else
-        Rails.logger.error("#{item.class.name} #{item.id} failed to translate to #{language}, #{result.failure}")
-        Failure("#{item.class.name} #{item.id} failed to translate")
-      end
+      service.call
+             .or { |error| Failure(error) }
     end
-    result.all? ? Success('All translations successful') : Failure("Failed translations: #{result.filter(&:failure?).map(&:failure).join(', ')}")
+    debugger
+    unless result.all?(&:success?)
+      return Failure("Failed translations: #{result.filter(&:failure?).map(&:failure).join(', ')}")
+    end
+
+    Success('All translations successful')
   end
 
   def unlock_item
@@ -53,5 +49,15 @@ class NewItemTranslatorService
   def reload_i18n
     I18n.reload!
     Success('Item translated and reloaded I18n')
+  end
+
+  def instance_translator_service(item, language)
+    service = Try[NameError] do
+      "#{item.class.name}TranslatorService".constantize.new(item, language, model:, temperature:)
+    end.to_result
+
+    return Failure("Service #{item.class.name}TranslatorService not found") if service.failure?
+
+    service
   end
 end

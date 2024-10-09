@@ -10,12 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_07_24_193851) do
+ActiveRecord::Schema[7.2].define(version: 2024_07_20_163601) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,7 +37,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_193851) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
@@ -45,13 +48,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_193851) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "allergens_products", force: :cascade do |t|
-    t.integer "allergen_id", null: false
-    t.integer "product_id", null: false
+  create_table "allergens_dishes", force: :cascade do |t|
+    t.bigint "allergen_id", null: false
+    t.bigint "dish_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["allergen_id"], name: "index_allergens_products_on_allergen_id"
-    t.index ["product_id"], name: "index_allergens_products_on_product_id"
+    t.index ["allergen_id"], name: "index_allergens_dishes_on_allergen_id"
+    t.index ["dish_id"], name: "index_allergens_dishes_on_dish_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -61,7 +64,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_193851) do
     t.string "category_type"
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "dishes", force: :cascade do |t|
     t.string "title"
     t.string "description"
     t.datetime "created_at", null: false
@@ -70,11 +73,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_193851) do
     t.float "prize"
     t.integer "category_id"
     t.boolean "lock", default: false
-    t.integer "special_menu_id"
+    t.bigint "special_menu_id"
     t.boolean "per_gram", default: false
     t.boolean "per_kilo", default: false
     t.boolean "per_unit", default: false
-    t.index ["special_menu_id"], name: "index_products_on_special_menu_id"
+    t.index ["special_menu_id"], name: "index_dishes_on_special_menu_id"
   end
 
   create_table "settings", force: :cascade do |t|
@@ -86,7 +89,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_193851) do
     t.decimal "menu_price", default: "12.5"
     t.string "phone_number", default: "986 07 16 61"
     t.string "mobile", default: "635 44 00 68"
-    t.boolean "translator", default: false
     t.boolean "locale_toggler", default: false
   end
 
@@ -128,7 +130,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_193851) do
     t.string "wine_type"
     t.text "description"
     t.decimal "price"
-    t.integer "wine_origin_denomination_id", null: false
+    t.bigint "wine_origin_denomination_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "price_per_glass"
@@ -139,8 +141,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_24_193851) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "allergens_products", "allergens"
-  add_foreign_key "allergens_products", "products"
-  add_foreign_key "products", "special_menus"
+  add_foreign_key "allergens_dishes", "allergens"
+  add_foreign_key "allergens_dishes", "dishes"
+  add_foreign_key "dishes", "special_menus"
   add_foreign_key "wines", "wine_origin_denominations"
 end
