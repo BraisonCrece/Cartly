@@ -43,9 +43,9 @@ This application allows restaurants to create and manage their menu of food and 
 ## Installation and configuration
 
 1. Clone the GitHub repository: `git clone https://github.com/BraisonCrece/Restaurant_QR_menu_dashboard`
-2. Install dependencies: `bundle install`
-3. Configure the database: `rails db:create && rails db:migrate`
-4. Start the web server: `bin/dev`
+2. Go to the main directory
+3. Run `make install`
+4. That's all 
 
 ## Contributions
 
