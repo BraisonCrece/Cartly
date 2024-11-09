@@ -1,4 +1,4 @@
-<% if current_user %>
+<% if current_restaurant %>
     <div data-controller="menu">
         <button class="fixed z-30 p-2 bg-white rounded-full shadow right-4 top-4 shadow-gray-400 print:hidden active:shadow-gray-700 hover:bg-gray-100" data-action="click->menu#toggle">
             <%= image_tag "menu.svg", width: 40, heigth: 40, class: "select-none" %>

@@ -15,13 +15,13 @@ RSpec.describe "Products", type: :system do
 
   describe "creating a new product" do
     let!(:category) { create(:category) }
-    let!(:user) { create(:user) }
+    let!(:restaurant) { create(:restaurant) }
 
     before do
-      login_as(user)
+      login_as(restaurant)
     end
 
-    context "when user is logged in" do
+    context "when restaurant is logged in" do
       it "successfully creates a new product" do
         visit new_product_path
         fill_in "Nome", with: "Product 1"
@@ -31,14 +31,14 @@ RSpec.describe "Products", type: :system do
       end
     end
 
-    context "when user is not logged in" do
+    context "when restaurant is not logged in" do
       before do
         logout
       end
 
       it "redirects to the login page" do
         visit new_product_path
-        expect(current_path).to eq new_user_session_path
+        expect(current_path).to eq new_restaurant_session_path
         expect(page).to have_text("You need to sign in or sign up before continuing.")
       end
     end

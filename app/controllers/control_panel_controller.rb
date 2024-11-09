@@ -1,5 +1,5 @@
 class ControlPanelController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_restaurant!
   include Pagy::Backend
 
   def index

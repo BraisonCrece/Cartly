@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
-  get 'users/sign_in', to: redirect('/') # trick in order to match the client QR code with the root path ;)
+  get 'restaurants/sign_in', to: redirect('/') # trick in order to match the client QR code with the root path ;)
   root 'dynamic_router#call'
 
-  devise_for :users, path: 'admin', path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' }, controllers: {
-    sessions: 'users/sessions',
-    registrations: 'users/registrations'
+  devise_for :restaurants, path: 'admin', path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' }, controllers: {
+    sessions: 'restaurants/sessions',
+    registrations: 'restaurants/registrations'
   }
 
   resources :allergens

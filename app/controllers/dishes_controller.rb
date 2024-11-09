@@ -2,7 +2,7 @@
 
 # Controller for managing dish-related actions
 class DishesController < ApplicationController
-  before_action :authenticate_user!, except: %i[index menu show]
+  before_action :authenticate_restaurant!, except: %i[index menu show]
   before_action :set_dish, only: %i[show edit update destroy]
   before_action :set_categories, only: %i[index new edit]
 

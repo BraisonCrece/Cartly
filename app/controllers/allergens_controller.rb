@@ -1,5 +1,5 @@
 class AllergensController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_restaurant!
   def index
     @allergens = Allergen.all
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_07_20_163601) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_09_145436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,6 +80,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_20_163601) do
     t.index ["special_menu_id"], name: "index_dishes_on_special_menu_id"
   end
 
+  create_table "restaurants", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "address"
+    t.string "phone"
+    t.text "description"
+    t.index ["email"], name: "index_restaurants_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
+  end
+
   create_table "settings", force: :cascade do |t|
     t.boolean "use_menu_path", default: false
     t.datetime "created_at", null: false
@@ -99,18 +115,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_07_20_163601) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: false
-  end
-
-  create_table "users", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "encrypted_password", default: "", null: false
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["email"], name: "index_users_on_email", unique: true
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   create_table "wine_origin_denominations", force: :cascade do |t|

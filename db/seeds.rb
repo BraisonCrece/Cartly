@@ -220,17 +220,20 @@ end
 
 # Seed execution
 print_header('Seeding Database')
-# Create test user
-print_header('Creating Test User')
-user = User.create!(
+# Create test restaurant
+print_header('Creating Test Restaurant')
+restaurant = Restaurant.create!(
   email: 'test@test.com',
-  password: 'Abc123..'
+  password: 'Abc123..',
+  name: 'Test Restaurant',
+  address: '123 Test St, Test City, Test Country',
+  phone: '+34 666 66 66 66'
 )
-if user.persisted?
-  print_info("Created test user: #{user.email}")
+if restaurant.persisted?
+  print_info("Created test restaurant: #{restaurant.email}")
 else
-  print_info('Failed to create test user')
-  print_info("Errors: #{user.errors.full_messages.join(', ')}")
+  print_info('Failed to create test restaurant')
+  print_info("Errors: #{restaurant.errors.full_messages.join(', ')}")
 end
 
 # Allergens
