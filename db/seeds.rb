@@ -261,6 +261,10 @@ create_dishes(starter_dishes_names, starter_dishes_description, starter_dish_ima
 create_dishes(main_dish_names, main_dish_descriptions, main_dishes_image_map, '🍽️ Platos 🍽️')
 create_dishes(dessert_names, desserts_descriptions, desserts_image_map, '🍰 Postres 🍰')
 
+create_dishes(starter_dishes_names, starter_dishes_description, starter_dish_image_map, 'Primeiros')
+create_dishes(main_dish_names, main_dish_descriptions, main_dishes_image_map, 'Segundos')
+create_dishes(dessert_names, desserts_descriptions, desserts_image_map, 'Postres')
+
 # Wine Origin Denominations
 print_header('Creating Wine Origin Denominations')
 white_denominations = ['Rías Baixas', 'Rueda', 'Albariño', 'Ribeiro', 'Valdeorras']
