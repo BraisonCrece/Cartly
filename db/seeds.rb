@@ -3,7 +3,7 @@
 require 'faker'
 require 'colorize'
 
-def create_dishes(names, descriptions, images_map, category_name)
+def create_dishes(names, descriptions, images_map, category_name, restaurant)
   names.each_with_index do |name, index|
     path = Rails.root.join('app', 'assets', 'images', 'seeds', "#{images_map[name]}.webp")
     dish_image_file = open_image_file(path)
@@ -12,7 +12,8 @@ def create_dishes(names, descriptions, images_map, category_name)
       description: descriptions[index],
       active: true,
       prize: rand(5.0..25.0).round(2),
-      category: Category.find_by(name: category_name)
+      category: Category.find_by(name: category_name, restaurant:),
+      restaurant:
     )
     add_random_allergens_to_dish(dish)
     dish.process_image(dish_image_file)
@@ -168,17 +169,18 @@ def save_dish(dish)
 end
 
 # Wine methods
-def create_wines_for_denomination(denomination, wine_types)
+def create_wines_for_denomination(denomination, wine_types, restaurant)
   print_info("Creating wines for denomination: #{denomination}")
   5.times do
-    wine = create_wine_for_denomination(denomination, wine_types)
+    wine = create_wine_for_denomination(denomination, wine_types, restaurant)
     attach_wine_image(wine)
     save_wine(wine)
   end
 end
 
-def create_wine_for_denomination(denomination, wine_types)
+def create_wine_for_denomination(denomination, wine_types, restaurant)
   Wine.new(
+    restaurant:,
     name: generate_wine_name,
     wine_type: wine_types.sample,
     description: generate_wine_description(denomination),
@@ -248,25 +250,25 @@ menu_categories = ['🥗 Entrantes 🥗', '🍽️ Platos 🍽️', '🍰 Postre
 daily_categories = %w[Primeiros Segundos Postres]
 
 menu_categories.each do |name|
-  Category.create!(name: name, category_type: 'menu')
+  Category.create!(name: name, category_type: 'menu', restaurant:)
   print_info("Created menu category: #{name}")
 end
 
 daily_categories.each do |name|
-  Category.create!(name: name, category_type: 'daily')
+  Category.create!(name: name, category_type: 'daily', restaurant:)
   print_info("Created daily category: #{name}")
 end
 
 # Dishes
 print_header('Creating Dishes')
 
-create_dishes(starter_dishes_names, starter_dishes_description, starter_dish_image_map, '🥗 Entrantes 🥗')
-create_dishes(main_dish_names, main_dish_descriptions, main_dishes_image_map, '🍽️ Platos 🍽️')
-create_dishes(dessert_names, desserts_descriptions, desserts_image_map, '🍰 Postres 🍰')
+create_dishes(starter_dishes_names, starter_dishes_description, starter_dish_image_map, '🥗 Entrantes 🥗', restaurant)
+create_dishes(main_dish_names, main_dish_descriptions, main_dishes_image_map, '🍽️ Platos 🍽️', restaurant)
+create_dishes(dessert_names, desserts_descriptions, desserts_image_map, '🍰 Postres 🍰', restaurant)
 
-create_dishes(starter_dishes_names, starter_dishes_description, starter_dish_image_map, 'Primeiros')
-create_dishes(main_dish_names, main_dish_descriptions, main_dishes_image_map, 'Segundos')
-create_dishes(dessert_names, desserts_descriptions, desserts_image_map, 'Postres')
+create_dishes(starter_dishes_names, starter_dishes_description, starter_dish_image_map, 'Primeiros', restaurant)
+create_dishes(main_dish_names, main_dish_descriptions, main_dishes_image_map, 'Segundos', restaurant)
+create_dishes(dessert_names, desserts_descriptions, desserts_image_map, 'Postres', restaurant)
 
 # Wine Origin Denominations
 print_header('Creating Wine Origin Denominations')
@@ -274,7 +276,7 @@ white_denominations = ['Rías Baixas', 'Rueda', 'Albariño', 'Ribeiro', 'Valdeor
 red_denominations = ['Rioja', 'Ribera del Duero', 'Priorat', 'Bierzo', 'Toro']
 
 (white_denominations + red_denominations).each do |name|
-  WineOriginDenomination.create!(name:)
+  WineOriginDenomination.create!(name:, restaurant:)
   print_info("Created denomination: #{name}")
 end
 
@@ -284,11 +286,11 @@ white_types = ['Blanco']
 red_types = ['Tinto']
 
 white_denominations.each do |denomination|
-  create_wines_for_denomination(denomination, white_types)
+  create_wines_for_denomination(denomination, white_types, restaurant)
 end
 
 red_denominations.each do |denomination|
-  create_wines_for_denomination(denomination, red_types)
+  create_wines_for_denomination(denomination, red_types, restaurant)
 end
 
 print_header('Seeding Completed 🚀')

@@ -2,7 +2,7 @@ class WinesController < ApplicationController
   before_action :set_wine, only: %i[show edit update destroy]
 
   def index
-    @wines = Wine.all
+    @wines = Wine.where(restaurant_id: current_restaurant.id)
   end
 
   def show; end
@@ -14,9 +14,11 @@ class WinesController < ApplicationController
   def edit; end
 
   def create
-    @wine = Wine.new(wine_params)
-    @wine.active = false
-    @wine.lock_it!
+    @wine = Wine.new(wine_params).tap do |wine|
+      wine.restaurant_id = current_restaurant.id
+      wine.active = false
+      wine.lock_it!
+    end
 
     Thread.new do
       Translators::ProcessTranslationsService.new(@wine, :create).call
@@ -55,7 +57,7 @@ class WinesController < ApplicationController
   end
 
   def control_panel
-    @wines = Wine.all
+    @wines = Wine.where(restaurant_id: current_restaurant.id)
   end
 
   def toggle_active

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_09_145436) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_09_151709) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,6 +46,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_145436) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_allergens_on_restaurant_id"
   end
 
   create_table "allergens_dishes", force: :cascade do |t|
@@ -62,6 +64,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_145436) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category_type"
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_categories_on_restaurant_id"
   end
 
   create_table "dishes", force: :cascade do |t|
@@ -77,6 +81,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_145436) do
     t.boolean "per_gram", default: false
     t.boolean "per_kilo", default: false
     t.boolean "per_unit", default: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_dishes_on_restaurant_id"
     t.index ["special_menu_id"], name: "index_dishes_on_special_menu_id"
   end
 
@@ -106,6 +112,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_145436) do
     t.string "phone_number", default: "986 07 16 61"
     t.string "mobile", default: "635 44 00 68"
     t.boolean "locale_toggler", default: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_settings_on_restaurant_id"
   end
 
   create_table "special_menus", force: :cascade do |t|
@@ -115,12 +123,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_145436) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "active", default: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_special_menus_on_restaurant_id"
   end
 
   create_table "wine_origin_denominations", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_wine_origin_denominations_on_restaurant_id"
   end
 
   create_table "wine_types", force: :cascade do |t|
@@ -140,13 +152,22 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_145436) do
     t.decimal "price_per_glass"
     t.boolean "active", default: true
     t.boolean "lock", default: false
+    t.bigint "restaurant_id"
+    t.index ["restaurant_id"], name: "index_wines_on_restaurant_id"
     t.index ["wine_origin_denomination_id"], name: "index_wines_on_wine_origin_denomination_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "allergens", "restaurants"
   add_foreign_key "allergens_dishes", "allergens"
   add_foreign_key "allergens_dishes", "dishes"
+  add_foreign_key "categories", "restaurants"
+  add_foreign_key "dishes", "restaurants"
   add_foreign_key "dishes", "special_menus"
+  add_foreign_key "settings", "restaurants"
+  add_foreign_key "special_menus", "restaurants"
+  add_foreign_key "wine_origin_denominations", "restaurants"
+  add_foreign_key "wines", "restaurants"
   add_foreign_key "wines", "wine_origin_denominations"
 end

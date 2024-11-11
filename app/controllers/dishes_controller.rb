@@ -9,11 +9,12 @@ class DishesController < ApplicationController
   WINE_COLORS = %w[Blanco Tinto].freeze
 
   def index
-    @categorized_dishes = Dish.categorized_dishes
-    @special_menus = SpecialMenu.active
-    @categories = Category.menu
+    @restaurant = Restaurant.find(params[:restaurant_id])
+    @categorized_dishes = Dish.categorized_dishes(@restaurant.id)
+    @special_menus = SpecialMenu.active(@restaurant.id)
+    @categories = Category.menu(@restaurant.id)
     @denominations = WineOriginDenomination.all.includes(:wines)
-    @categorized_wines = Wine.categorized_wines(@denominations, WINE_COLORS)
+    @categorized_wines = Wine.categorized_wines(@restaurant.id, @denominations, WINE_COLORS)
   end
 
   def menu
@@ -27,6 +28,7 @@ class DishesController < ApplicationController
 
   def create
     @dish = Dish.new(dish_params)
+    @dish.restaurant_id = current_restaurant.id
     @dish.active = false
     @dish.lock_it!
 
@@ -44,17 +46,13 @@ class DishesController < ApplicationController
     end
   end
 
-  def show
-    @dish = Dish.find(params[:id])
-  end
+  def show; end
 
   def edit
-    @dish = Dish.find(params[:id])
     @categories = Category.all
   end
 
   def update
-    @dish = Dish.find(params[:id])
     if @dish.update(dish_params)
 
       if title_or_description_changed?
@@ -71,7 +69,6 @@ class DishesController < ApplicationController
   end
 
   def destroy
-    @dish = Dish.find(params[:id])
     @dish.destroy
 
     Thread.new do
@@ -93,7 +90,7 @@ class DishesController < ApplicationController
   end
 
   def set_dish
-    @dish = Dish.find(params[:id])
+    @dish = Dish.find_by!(id: params[:id], restaurant_id: current_restaurant.id)
   end
 
   def set_categories

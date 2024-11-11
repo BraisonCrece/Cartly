@@ -1,4 +1,6 @@
 class Setting < ApplicationRecord
+  # belongs_to :restaurant
+
   def self.use_menu_path?
     init_settings unless first
     first.use_menu_path

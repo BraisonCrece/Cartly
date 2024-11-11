@@ -3,6 +3,10 @@ class SpecialMenu < ApplicationRecord
 
   has_many :dishes
 
-  scope :active, -> { where(active: true) }
-  scope :active_dishes, -> { dishes.where(active: true) }
+  scope :active, lambda { |restaurant_id|
+    where(active: true, restaurant_id:)
+  }
+  scope :active_dishes, lambda { |restaurant_id|
+    dishes.where(active: true, restaurant_id:)
+  }
 end

@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  get 'restaurants/sign_in', to: redirect('/') # trick in order to match the client QR code with the root path ;)
+  # public routes
   root 'dynamic_router#call'
 
   devise_for :restaurants, path: 'admin', path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' }, controllers: {
@@ -25,8 +27,8 @@ Rails.application.routes.draw do
   post 'toggle_special_menu/:special_menu_id', to: 'special_menus#toggle_active', as: :toggle_special_menu
   post 'translate', to: 'translate#translate'
   post 'describe_dish', to: 'description#describe_dish'
-  get '/menu', to: 'dishes#menu', as: :menu
-  get '/carta', to: 'dishes#index', as: :carta
-  get '/pages_control', to: 'dishes#pages_control', as: :pages_control
-  post '/reload_i18n', to: 'translate#reload_i18n'
+  get ':restaurant_id/menu', to: 'dishes#menu', as: :menu
+  get ':restaurant_id/carta', to: 'dishes#index', as: :carta
+  get ':restaurant_id/pages_control', to: 'dishes#pages_control', as: :pages_control
+  post ':restaurant_id/reload_i18n', to: 'translate#reload_i18n'
 end
