@@ -31,4 +31,7 @@ Rails.application.routes.draw do
   get ':restaurant_id/carta', to: 'dishes#index', as: :carta
   get ':restaurant_id/pages_control', to: 'dishes#pages_control', as: :pages_control
   post ':restaurant_id/reload_i18n', to: 'translate#reload_i18n'
+  namespace :private do
+    post 'generate_qr_code', to: 'qr_code#generate', as: :generate_qr_code
+  end
 end

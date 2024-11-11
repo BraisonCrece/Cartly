@@ -34,11 +34,18 @@ class Restaurants::SessionsController < Devise::SessionsController
   end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    restaurant_id = current_restaurant&.id
+    super do
+      @stored_restaurant_id = restaurant_id
+    end
+  end
 
-  # protected
+  protected
+
+  def after_sign_out_path_for(_scope)
+    root_path(restaurant_id: @stored_restaurant_id)
+  end
 
   # def set_restaurant
   #   @restaurant = Restaurant.find(params[:restaurant_id])

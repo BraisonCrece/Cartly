@@ -3,7 +3,7 @@
 # Controller for managing dish-related actions
 class DishesController < ApplicationController
   before_action :authenticate_restaurant!, except: %i[index menu show]
-  before_action :set_dish, only: %i[show edit update destroy]
+  before_action :set_dish, only: %i[edit update destroy]
   before_action :set_categories, only: %i[index new edit]
 
   WINE_COLORS = %w[Blanco Tinto].freeze
@@ -18,8 +18,8 @@ class DishesController < ApplicationController
   end
 
   def menu
-    @categorized_dishes = Dish.menu_categorized_dishes
-    @menu_categories = Category.daily
+    @categorized_dishes = Dish.menu_categorized_dishes(params[:restaurant_id])
+    @menu_categories = Category.daily(params[:restaurant_id])
   end
 
   def new
@@ -46,7 +46,9 @@ class DishesController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @dish = Dish.find(params[:id])
+  end
 
   def edit
     @categories = Category.all
@@ -90,7 +92,8 @@ class DishesController < ApplicationController
   end
 
   def set_dish
-    @dish = Dish.find_by!(id: params[:id], restaurant_id: current_restaurant.id)
+    restaurant_id = params[:restaurant_id] || current_restaurant&.id
+    @dish = Dish.find_by!(id: params[:id], restaurant_id:)
   end
 
   def set_categories
