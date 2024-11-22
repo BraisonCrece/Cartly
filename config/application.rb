@@ -8,7 +8,8 @@ Bundler.require(*Rails.groups)
 
 module CartaQr
   class Application < Rails::Application
-    # Initialize configuration defaults for originally generated Rails version.
+    # Module documentation comment for CartaQr::Application
+    # Main application configuration class that sets up defaults and locale settings
     config.load_defaults 7.0
 
     config.rails_i18n.enabled_modules = [:locale]
@@ -17,10 +18,11 @@ module CartaQr
     config.i18n.default_locale = :gl
 
     # ../data/locales
-    config.i18n.load_path += Dir[Rails.root.join('..', 'data', 'locales', '*.{rb,yml}')]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locale', '*.{rb,yml}')]
 
     # add services
     # config.autoload_paths += %W(#{config.root}/app/services)
+    config.assets.paths << Rails.root.join('app', 'assets', 'fonts')
 
     # Configuration for the application, engines, and railties goes here.
     #

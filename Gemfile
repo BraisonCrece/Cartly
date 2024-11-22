@@ -30,15 +30,16 @@ gem 'sprockets-rails'
 gem 'stimulus-rails'
 gem 'tailwindcss-rails'
 gem 'turbo-rails'
-gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 group :development, :test do
   gem 'capybara'
   gem 'capybara-screenshot'
-  gem 'debug', platforms: %i[mri mingw x64_mingw]
+  gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails', '~> 6.2'
   gem 'faker', '~> 3.1'
   gem 'rspec-rails', '~> 6.0.0'
+  gem 'rubocop', require: false
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers', '= 5.3.0'

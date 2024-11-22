@@ -8,6 +8,15 @@ class Wine < ApplicationRecord
   validates :price_per_glass, numericality: { greater_than: 0 }, allow_nil: true
   validate :active_when_not_locked
 
+  def self.search(restaurant_id:, query: nil)
+    scope = where(restaurant_id:)
+            .order('wines.active DESC, wines.name ASC')
+
+    scope = scope.where('wines.name ILIKE ?', "%#{query}%") if query.present?
+
+    scope.load_async
+  end
+
   def self.categorized_wines(restaurant_id, denominations, available_colors)
     wines_by_color_and_denomination = {}
     available_colors.each do |color|

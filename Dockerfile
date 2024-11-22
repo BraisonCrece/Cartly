@@ -39,7 +39,6 @@ RUN git clone https://github.com/jemalloc/jemalloc.git && \
     make && \
     make install
 
-RUN mkdir data
 WORKDIR /rails
 
 ENV BUNDLE_PATH="/usr/local/bundle"

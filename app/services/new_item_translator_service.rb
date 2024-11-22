@@ -7,7 +7,7 @@ class NewItemTranslatorService
   include Dry::Monads[:result, :try]
   include Dry::Monads::Do.for(:call)
 
-  LANGUAGES = %w[Español Inglés Francés Alemán Italiano Ruso].freeze
+  LANGUAGES = ['Español', 'Inglés', 'Francés', 'Alemán', 'Italiano', 'Ruso'].freeze
   attr_reader :item, :model, :temperature
 
   def initialize(item, model: 'gpt-4o-mini', temperature: 0.3)
@@ -32,10 +32,8 @@ class NewItemTranslatorService
       service.call
              .or { |error| Failure(error) }
     end
-    debugger
-    unless result.all?(&:success?)
-      return Failure("Failed translations: #{result.filter(&:failure?).map(&:failure).join(', ')}")
-    end
+
+    return Failure("Failed translations: #{result.filter(&:failure?).map(&:failure).join(', ')}") unless result.all?(&:success?)
 
     Success('All translations successful')
   end

@@ -2,14 +2,16 @@
 
 # Controller for managing dish-related actions
 class DishesController < ApplicationController
-  before_action :authenticate_restaurant!, except: %i[index menu show]
-  before_action :set_dish, only: %i[edit update destroy]
-  before_action :set_categories, only: %i[index new edit]
+  before_action :authenticate_restaurant!, except: [:index, :menu, :show]
+  before_action :set_dish, only: [:edit, :update, :destroy]
+  before_action :set_categories, only: [:index, :new, :edit]
 
-  WINE_COLORS = %w[Blanco Tinto].freeze
+  WINE_COLORS = ['Blanco', 'Tinto'].freeze
 
   def index
-    @restaurant = Restaurant.find(params[:restaurant_id])
+    @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+    return redirect_to root_path unless @restaurant
+
     @categorized_dishes = Dish.categorized_dishes(@restaurant.id)
     @special_menus = SpecialMenu.active(@restaurant.id)
     @categories = Category.menu(@restaurant.id)

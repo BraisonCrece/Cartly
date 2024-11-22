@@ -1,25 +1,31 @@
 # frozen_string_literal: true
 
+# Controller for managing the control panel
+# It includes the pagy gem for pagination
+# It handles the dishes and wines
 class ControlPanelController < ApplicationController
   before_action :authenticate_restaurant!
   include Pagy::Backend
 
-  def index
+  def dishes
     filter = params[:filter]
     query = params[:query]
     restaurant_id = current_restaurant.id
     @pagy, @dishes, @color = pagy_dishes(filter, query, restaurant_id)
   end
 
-  def toggle_active
-    dish = Dish.find_by(id: params[:dish_id], restaurant_id: current_restaurant.id)
-    dish.update(active: !dish.active)
+  def wines
+    query = params[:query]
+    restaurant_id = current_restaurant.id
+    @pagy, @wines = pagy_wines(query, restaurant_id)
+  end
 
-    render turbo_stream: turbo_stream.replace(
-      "dish_active_#{dish.id}",
-      partial: 'dishes/active',
-      locals: { dish: }
-    )
+  def toggle_active
+    if params[:dish_id]
+      toggle_dish_active
+    elsif params[:wine_id]
+      toggle_wine_active
+    end
   end
 
   private
@@ -33,5 +39,32 @@ class ControlPanelController < ApplicationController
       pagy, dishes = pagy_countless(Dish.not_daily_menu(restaurant_id:, query:), limit: 10)
       [pagy, dishes, { carta: 'selected', menu: 'not-selected' }]
     end
+  end
+
+  def pagy_wines(query, restaurant_id)
+    pagy, wines = pagy_countless(Wine.search(restaurant_id:, query: query), limit: 10)
+    [pagy, wines]
+  end
+
+  def toggle_dish_active
+    dish = Dish.find_by(id: params[:dish_id], restaurant_id: current_restaurant.id, limit: 10)
+    dish.toggle!(:active)
+
+    render turbo_stream: turbo_stream.replace(
+      "dish_active_#{dish.id}",
+      partial: 'dishes/active',
+      locals: { dish: }
+    )
+  end
+
+  def toggle_wine_active
+    wine = Wine.find_by(id: params[:wine_id], restaurant_id: current_restaurant.id)
+    wine.toggle!(:active)
+
+    render turbo_stream: turbo_stream.replace(
+      "wine_active_#{wine.id}",
+      partial: 'wines/active',
+      locals: { wine: }
+    )
   end
 end

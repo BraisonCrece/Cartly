@@ -9,10 +9,10 @@ class TranslateDatabaseService
 
   attr_reader :yaml, :dishes, :wines
 
-  LANGUAGES = %w[Español Inglés Francés Alemán Italiano Ruso].freeze
+  LANGUAGES = ['Español', 'Inglés', 'Francés', 'Alemán', 'Italiano', 'Ruso'].freeze
 
   def call
-    yield get_yaml_file
+    # yield get_yaml_file
     yield get_items
     yield process_dishes_translations
     yield process_wines_translations

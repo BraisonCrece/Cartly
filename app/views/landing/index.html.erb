@@ -4,7 +4,7 @@
       <div class="max-w-2xl mx-auto transition-colors duration-500">
         <div class="flex flex-col items-center">
           <h1 class="text-6xl font-extrabold tracking-tight text-gray-900 dark:text-white">
-            <span class="block text-brand-red-light">Sistema de Menú Digital</span>
+            <span class="block text-brand-red-light">Tu nuevo y atractivo menú digital</span>
           </h1>
 
           <div class="flex items-center gap-8 mt-10">
@@ -38,13 +38,11 @@
         ¿Por qué elegir Cartly?
       </h2>
 
-      <div class="grid grid-cols-1 gap-8 mt-10 md:grid-cols-2 lg:grid-cols-3">
+      <div class="grid grid-cols-1 gap-8 mt-10 md:grid-cols-2 lg:grid-cols-4">
         <!-- Feature 1 -->
         <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-700">
           <div class="inline-block p-3 text-white bg-brand-red-light rounded-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-            </svg>
+              <%= image_tag "gestion.svg", class: "w-8 h-8" %>
           </div>
           <h3 class="mt-4 text-xl font-bold text-gray-800 dark:text-white">Gestión Sencilla</h3>
           <p class="mt-2 text-gray-600 dark:text-gray-300">Actualiza tus platos, precios y categorías en tiempo real con nuestro panel intuitivo.</p>
@@ -53,9 +51,7 @@
         <!-- Feature 2 -->
         <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-700">
           <div class="inline-block p-3 text-white bg-brand-red-light rounded-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-            </svg>
+              <%= image_tag "mobile.svg", class: "w-8 h-8" %>
           </div>
           <h3 class="mt-4 text-xl font-bold text-gray-800 dark:text-white">Adaptable a Móviles</h3>
           <p class="mt-2 text-gray-600 dark:text-gray-300">Tu menú digital se ve perfecto en cualquier dispositivo, proporcionando una experiencia visual óptima.</p>
@@ -64,12 +60,19 @@
         <!-- Feature 3 -->
         <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-700">
           <div class="inline-block p-3 text-white bg-brand-red-light rounded-lg">
-            <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />
-            </svg>
+            <%= image_tag "actualizaciones.svg", class: "w-8 h-8" %>
           </div>
           <h3 class="mt-4 text-xl font-bold text-gray-800 dark:text-white">Actualizaciones Instantáneas</h3>
-          <p class="mt-2 text-gray-600 dark:text-gray-300">Los cambios en tu menú se reflejan inmediatamente, sin necesidad de imprimir nuevos menús.</p>
+          <p class="mt-2 text-gray-600 dark:text-gray-300">Los cambios en tu menú se reflejan inmediatamente, sin necesidad de refrescar la página.</p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="p-6 bg-gray-100 rounded-lg dark:bg-gray-700">
+          <div class="inline-block p-3 text-white bg-brand-red-light rounded-lg">
+              <%= image_tag "multilin.svg", class: "w-8 h-8" %>
+          </div>
+          <h3 class="mt-4 text-xl font-bold text-gray-800 dark:text-white">Traducciones Automáticas</h3>
+          <p class="mt-2 text-gray-600 dark:text-gray-300">Cada vez que agregues o actualizas un plato, el sistema traduce automáticamente a múltiples idiomas.</p>
         </div>
       </div>
     </div>
@@ -82,7 +85,7 @@
           Cartly en acción
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 gap-y-28 items-center">
         <!-- Video Demo Card -->
         <div class="flex relative rounded-2xl overflow-hidden shadow-xl bg-gray-100 dark:bg-gray-700 order-1 md:order-1">
           <%= video_tag "landing_light_1.mov",
@@ -117,27 +120,19 @@
           </p>
           <ul class="space-y-3">
             <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-              <svg class="w-5 h-5 text-brand-red-light" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
               <span>Diseño moderno y responsive</span>
             </li>
             <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-              <svg class="w-5 h-5 text-brand-red-light" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
               <span>Modo claro y oscuro integrado</span>
             </li>
             <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-              <svg class="w-5 h-5 text-brand-red-light" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
               <span>Panel de administración sencillo</span>
             </li>
             <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-              <svg class="w-5 h-5 text-brand-red-light" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
               <span>Interfaz intuitiva para tus clientes</span>
             </li>
           </ul>
@@ -165,30 +160,130 @@
           </p>
           <ul class="space-y-3">
             <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-              <svg class="w-5 h-5 text-brand-red-light" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
               <span>Cambios instantáneos sin recargar</span>
             </li>
             <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-              <svg class="w-5 h-5 text-brand-red-light" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
               <span>Activa o desactiva platos al momento</span>
             </li>
             <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-              <svg class="w-5 h-5 text-brand-red-light" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
               <span>Experiencia fluida para tus clientes</span>
             </li>
             <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
-              <svg class="w-5 h-5 text-brand-red-light" fill="currentColor" viewBox="0 0 20 20">
-                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-              </svg>
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
               <span>Actualización de precios inmediata</span>
             </li>
           </ul>
+        </div>
+
+        <!-- Video Demo Card -->
+        <div class="flex relative rounded-2xl overflow-hidden shadow-xl bg-gray-100 dark:bg-gray-700 order-5 md:order-5">
+          <%= video_tag "auto-description.mov",
+              class: "w-full h-auto object-cover",
+              autoplay: true,
+              loop: true,
+              muted: true,
+              playsinline: true %>
+
+          <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+        </div>
+
+        <!-- Description -->
+        <div class="space-y-6 order-6 md:order-6">
+          <h3 class="text-2xl font-bold text-gray-800 dark:text-white">
+            Descripciones Auto-Generadas
+          </h3>
+          <p class="text-lg text-gray-600 dark:text-gray-300">
+            Ahorra tiempo con descripciones de platos generadas automáticamente. Nuestro sistema utiliza inteligencia artificial para crear descripciones atractivas basadas en los nombres de tus platos.
+          </p>
+          <ul class="space-y-3">
+            <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
+              <span>Generación instantánea de descripciones</span>
+            </li>
+            <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
+              <span>Descripciones profesionales y atractivas</span>
+            </li>
+            <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
+              <%= image_tag "bullet.svg", class: "w-5 h-5" %>
+              <span>Edición manual disponible</span>
+            </li>
+            <li class="flex items-center space-x-3 text-gray-600 dark:text-gray-300">
+              <%= image_tag "bullet.svg", class: "w-5 h-5"  %>
+              <span>Múltiples sugerencias por plato</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Testimonials Section -->
+  <div class="py-16 bg-white dark:bg-gray-800">
+    <div class="container px-6 mx-auto">
+      <h2 class="text-4xl font-bold text-center text-gray-800 dark:text-white mb-12">
+        Lo que dicen nuestros clientes
+      </h2>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Testimonio 1 -->
+        <div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <%= image_tag "rincon.png", class: "w-12 h-12 rounded-full" %>
+            <div class="ml-4">
+              <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Restaurante El Rincón</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300">Madrid</p>
+            </div>
+          </div>
+          <div class="flex mb-3">
+            <% 5.times do %>
+                <%= image_tag "star.svg", class: "w-5 h-5" %>
+            <% end %>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300">
+            "Desde que implementamos Cartly, la gestión de nuestro menú es mucho más eficiente. Nuestros clientes aprecian poder ver el menú en su idioma preferido."
+          </p>
+        </div>
+
+        <!-- Testimonio 2 -->
+        <div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <%= image_tag "marytierra.png", class: "w-12 h-12 rounded-full" %>
+            <div class="ml-4">
+              <h4 class="text-lg font-semibold text-gray-800 dark:text-white">Mar y Tierra</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300">Barcelona</p>
+            </div>
+          </div>
+          <div class="flex mb-3">
+            <% 5.times do %>
+                <%= image_tag "star.svg", class: "w-5 h-5" %>
+            <% end %>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300">
+            "La facilidad para actualizar precios y platos en tiempo real es increíble. Ha mejorado significativamente nuestra operativa diaria."
+          </p>
+        </div>
+
+        <!-- Testimonio 3 -->
+        <div class="p-6 bg-gray-50 dark:bg-gray-700 rounded-lg shadow-md">
+          <div class="flex items-center mb-4">
+            <%= image_tag "tabernaverde.png", class: "w-12 h-12 rounded-full" %>
+            <div class="ml-4">
+              <h4 class="text-lg font-semibold text-gray-800 dark:text-white">La Taberna Verde</h4>
+              <p class="text-sm text-gray-600 dark:text-gray-300">Valencia</p>
+            </div>
+          </div>
+          <div class="flex mb-3">
+            <% 5.times do %>
+                <%= image_tag "star.svg", class: "w-5 h-5" %>
+            <% end %>
+          </div>
+          <p class="text-gray-600 dark:text-gray-300">
+            "El soporte multiidioma y la actualización instantánea de los platos han revolucionado la forma en que presentamos nuestro menú."
+          </p>
         </div>
       </div>
     </div>

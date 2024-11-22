@@ -40,7 +40,7 @@ module Translators
       language_key = get_language_key(language)
       return Failure('Language not found') if language_key.nil?
 
-      file_path = Rails.root.join('..', 'data', 'locales', "#{language_key}.yml")
+      file_path = Rails.root.join('config', 'locale', "#{language_key}.yml")
       Success(file_path)
     end
 
@@ -66,13 +66,22 @@ module Translators
     end
 
     def save_translation(file_path, file_content, description_translation)
-      file_content[get_language_key(language)]['wine'][wine.id] = {
-        'description' => description_translation
+      language_key = get_language_key(language)
+
+      # Inicializar la estructura si no existe
+      file_content[language_key] ||= {}
+      file_content[language_key]['wine'] ||= {}
+
+      file_content[language_key]['wine'][wine.id] = {
+        'description' => description_translation,
       }
 
-      Try[Errno::ENOENT, Errno::EACCES] do
-        File.open(file_path, 'w') { |file| file.write(YAML.dump(file_content)) }
+      result = Try[Errno::ENOENT, Errno::EACCES] do
+        File.write(file_path, YAML.dump(file_content))
       end.to_result
+
+      Rails.logger.error("Failed to save translation: #{result.failure}") if result.failure?
+      result
     end
 
     def get_language_key(language)

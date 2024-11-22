@@ -45,7 +45,7 @@ class DishTranslatorService
     language_key = get_language_key(language)
     return Failure('Language not found') if language_key.nil?
 
-    file_path = Rails.root.join('..', 'data', 'locales', "#{language_key}.yml")
+    file_path = Rails.root.join('config', 'locale', "#{language_key}.yml")
     Success(file_path)
   end
 
@@ -70,13 +70,18 @@ class DishTranslatorService
   end
 
   def save_translation(file_path, file_content, title_translation, description_translation)
-    file_content[get_language_key(language)]['dish'][dish.id] = {
+    language_key = get_language_key(language)
+
+    file_content[language_key] ||= {}
+    file_content[language_key]['dish'] ||= {}
+
+    file_content[language_key]['dish'][dish.id] = {
       'title' => title_translation,
-      'description' => description_translation
+      'description' => description_translation,
     }
 
     result = Try[Errno::ENOENT, Errno::EACCES] do
-      File.open(file_path, 'w') { |file| file.write(YAML.dump(file_content)) }
+      File.write(file_path, YAML.dump(file_content))
     end.to_result
 
     Rails.logger.error("Failed to save translation: #{result.failure}") if result.failure?
@@ -104,22 +109,22 @@ class DishTranslatorService
     case language
     when 'Inglés'
       ['Eggplant gratin with cheese',
-       'Oven-baked eggplant, covered with melted cheese with aromatic herbs that add freshness and depth to this Mediterranean classic.']
+       'Oven-baked eggplant, covered with melted cheese with aromatic herbs that add freshness and depth to this Mediterranean classic.',]
     when 'Español'
       ['Berenjena gratinada con queso',
-       'Berenjena al horno, recubierta de queso fundido con hierbas aromáticas que añaden frescura y profundidad a este clásico mediterráneo.']
+       'Berenjena al horno, recubierta de queso fundido con hierbas aromáticas que añaden frescura y profundidad a este clásico mediterráneo.',]
     when 'Alemán'
       ['Überbackene Auberginen mit Käse',
-       'Gebackene Auberginen, überzogen mit geschmolzenem Käse und aromatischen Kräutern, die diesem mediterranen Klassiker Frische und Tiefe verleihen.']
+       'Gebackene Auberginen, überzogen mit geschmolzenem Käse und aromatischen Kräutern, die diesem mediterranen Klassiker Frische und Tiefe verleihen.',]
     when 'Italiano'
       ['Melanzane gratinate con formaggio',
-       'Melanzane al forno, ricoperte di formaggio fuso con erbe aromatiche che aggiungono freschezza e profondità a questo classico mediterraneo.']
+       'Melanzane al forno, ricoperte di formaggio fuso con erbe aromatiche che aggiungono freschezza e profondità a questo classico mediterraneo.',]
     when 'Francés'
       ['Aubergines gratinées au fromage',
-       "Aubergine cuite, recouverte de fromage fondu et d'herbes aromatiques qui ajoutent de la fraîcheur et de la profondeur à ce classique méditerranéen."]
+       "Aubergine cuite, recouverte de fromage fondu et d'herbes aromatiques qui ajoutent de la fraîcheur et de la profondeur à ce classique méditerranéen.",]
     when 'Ruso'
       ['Баклажаны в гратене с сыром',
-       'Запеченный баклажан, покрытый расплавленным сыром с ароматными травами, которые придают свежесть и глубину этой средиземноморской классике.']
+       'Запеченный баклажан, покрытый расплавленным сыром с ароматными травами, которые придают свежесть и глубину этой средиземноморской классике.',]
     end
   end
 end

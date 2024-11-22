@@ -1,0 +1,314 @@
+---
+fr:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: 'La validation a échoué : %{errors}'
+        restrict_dependent_destroy:
+          has_one: Vous ne pouvez pas supprimer l'enregistrement car un(e) %{record}
+            dépendant(e) existe
+          has_many: Vous ne pouvez pas supprimer l'enregistrement parce que les %{record}
+            dépendants existent
+  date:
+    abbr_day_names:
+    - dim
+    - lun
+    - mar
+    - mer
+    - jeu
+    - ven
+    - sam
+    abbr_month_names:
+    -
+    - jan.
+    - fév.
+    - mars
+    - avr.
+    - mai
+    - juin
+    - juil.
+    - août
+    - sept.
+    - oct.
+    - nov.
+    - déc.
+    day_names:
+    - dimanche
+    - lundi
+    - mardi
+    - mercredi
+    - jeudi
+    - vendredi
+    - samedi
+    formats:
+      default: "%d/%m/%Y"
+      long: "%-d %B %Y"
+      short: "%-d %b"
+    month_names:
+    -
+    - janvier
+    - février
+    - mars
+    - avril
+    - mai
+    - juin
+    - juillet
+    - août
+    - septembre
+    - octobre
+    - novembre
+    - décembre
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: environ une heure
+        other: environ %{count} heures
+      about_x_months:
+        one: environ un mois
+        other: environ %{count} mois
+      about_x_years:
+        one: environ un an
+        other: environ %{count} ans
+      almost_x_years:
+        one: presque un an
+        other: presque %{count} ans
+      half_a_minute: une demi‑minute
+      less_than_x_seconds:
+        zero: moins d'une seconde
+        one: moins d'une seconde
+        other: moins de %{count} secondes
+      less_than_x_minutes:
+        zero: moins d'une minute
+        one: moins d'une minute
+        other: moins de %{count} minutes
+      over_x_years:
+        one: plus d'un an
+        other: plus de %{count} ans
+      x_seconds:
+        one: "%{count} seconde"
+        other: "%{count} secondes"
+      x_minutes:
+        one: "%{count} minute"
+        other: "%{count} minutes"
+      x_days:
+        one: "%{count} jour"
+        other: "%{count} jours"
+      x_months:
+        one: "%{count} mois"
+        other: "%{count} mois"
+      x_years:
+        one: "%{count} an"
+        other: "%{count} ans"
+    prompts:
+      second: Seconde
+      minute: Minute
+      hour: Heure
+      day: Jour
+      month: Mois
+      year: Année
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: doit être accepté(e)
+      blank: doit être rempli(e)
+      confirmation: ne concorde pas avec %{attribute}
+      empty: doit être rempli(e)
+      equal_to: doit être égal à %{count}
+      even: doit être pair
+      exclusion: n'est pas disponible
+      greater_than: doit être supérieur à %{count}
+      greater_than_or_equal_to: doit être supérieur ou égal à %{count}
+      in: doit être dans l'intervalle %{count}
+      inclusion: n'est pas inclus(e) dans la liste
+      invalid: n'est pas valide
+      less_than: doit être inférieur à %{count}
+      less_than_or_equal_to: doit être inférieur ou égal à %{count}
+      model_invalid: 'Validation échouée : %{errors}'
+      not_a_number: n'est pas un nombre
+      not_an_integer: doit être un nombre entier
+      odd: doit être impair
+      other_than: doit être différent de %{count}
+      present: doit être vide
+      required: doit exister
+      taken: est déjà utilisé(e)
+      too_long:
+        one: est trop long (pas plus d'un caractère)
+        other: est trop long (pas plus de %{count} caractères)
+      too_short:
+        one: est trop court (au moins un caractère)
+        other: est trop court (au moins %{count} caractères)
+      wrong_length:
+        one: ne fait pas la bonne longueur (doit comporter un seul caractère)
+        other: ne fait pas la bonne longueur (doit comporter %{count} caractères)
+    template:
+      body: 'Veuillez vérifier les champs suivants : '
+      header:
+        one: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreur'
+        other: 'Impossible d''enregistrer ce(tte) %{model} : %{count} erreurs'
+  helpers:
+    select:
+      prompt: Veuillez sélectionner
+    submit:
+      create: Créer un(e) %{model}
+      submit: Enregistrer ce(tte) %{model}
+      update: Modifier ce(tte) %{model}
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "€"
+    format:
+      delimiter: " "
+      precision: 3
+      round_mode: default
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: milliard
+          million: million
+          quadrillion: million de milliards
+          thousand: millier
+          trillion: billion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: octet
+            other: octets
+          eb: Eo
+          gb: Go
+          kb: ko
+          mb: Mo
+          pb: Po
+          tb: To
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " et "
+      two_words_connector: " et "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%d %B %Y %Hh %Mmin %Ss"
+      long: "%A %d %B %Y %Hh%M"
+      short: "%d %b %Hh%M"
+    pm: pm
+  dish:
+    1:
+      title: Hummus avec crudités
+      description: Crème de pois chiches au citron, tahini et ail, accompagnée de
+        bâtonnets de carottes, concombre et céleri frais
+    10:
+      title: Hamburger de lentilles avec patate douce
+      description: Hamburger maison de lentilles et de patate douce dans un pain complet,
+        avec de la laitue, des tomates, des oignons caramélisés et de la mayonnaise
+        vegan
+    4:
+      title: Guacamole avec chips de banane
+      description: Avocat écrasé avec oignon, coriandre, tomate et une touche de citron,
+        accompagné de chips croustillantes de banane
+    16:
+      title: Hummus avec crudités
+      description: Crème de pois chiches au citron, tahini et ail, accompagnée de
+        bâtonnets de carotte, concombre et céleri frais
+    9:
+      title: Bol de quinoa avec tofu et légumes rôtis
+      description: Quinoa moelleuse accompagnée de tofu croustillant et d'un mélange
+        de légumes rôtis, assaisonnée d'une vinaigrette au tahini et au citron
+    3:
+      title: Rouleaux de printemps
+      description: Wraps de riz farcis de vermicelles, carottes, concombre et coriandre,
+        servis avec une sauce aux cacahuètes
+    11:
+      title: Mousse au chocolat à l'avocat
+      description: Mousse au chocolat douce et crémeuse faite avec de l'avocat, de
+        la poudre de cacao et une touche de sirop d'agave, servie avec des fruits
+        rouges frais
+    2:
+      title: Bruschettas de tomate et basilic
+      description: Tranches de pain grillé avec tomate fraîche, ail, huile d'olive
+        et feuilles de basilic, idéales pour ouvrir l'appétit
+    23:
+      title: Tacos de tempeh et avocat
+      description: Tortillas de maïs farcies de tempeh mariné, morceaux d'avocat,
+        oignon rouge, coriandre frais et une sauce maison de jalapeños
+    5:
+      title: Pâté de champignons et noix
+      description: Crème douce de champignons et de noix, enrichie d'herbes fraîches,
+        servie avec du pain grillé ou des crackers
+    6:
+      title: Curry de pois chiches et épinards
+      description: Curry crémeux de pois chiches cuits lentement avec des épinards
+        frais, servi sur un lit de riz basmati et accompagné de naan végan
+    12:
+      title: Tarte aux pommes et à la cannelle
+      description: Pâte intégrale farcie de rondelles de pomme caramélisées à la cannelle
+        et au sucre de coco, cuite au four jusqu'à ce qu'elle soit croustillante et
+        dorée
+    7:
+      title: Lasagne de légumes
+      description: Couches de pâte de blé entrecoupées de courgette, d'aubergine,
+        d'épinards et de sauce tomate, gratinées avec une crémeuse béchamel de noix
+        de cajou
+    8:
+      title: Tacos de tempeh et avocat
+      description: Tortillas de maïs farcies de tempeh mariné, morceaux d'avocat,
+        oignon rouge, coriandre frais et une sauce maison de jalapeños
+    17:
+      title: Bruschettas de tomate et basilic
+      description: Tranches de pain grillé avec tomate fraîche, ail, huile d'olive
+        et feuilles de basilic, idéales pour ouvrir l'appétit
+    13:
+      title: Glace à la banane et au beurre de cacahuète
+      description: Glace végétalienne à base de banane congelée et de beurre de cacahuète,
+        crémeuse et sans produits laitiers ni sucres ajoutés
+    32:
+      title: Tartine avec de la confiture de myrtilles
+      description: Toast croustillant de pain artisanal, tartiné d'une intense confiture
+        de myrtilles, qui apporte une touche d'acidité et de douceur. Ce plat est
+        accompagné d'une touche de beurre et de fruits frais, parfait pour commencer
+        la journée ou savourer comme un petit plaisir à l'heure du goûter. Une expérience
+        délicieusement appréciée
+  category:
+    1:
+      name: Entrées
+    2:
+      name: Plats
+    3:
+      name: Desserts
+    4:
+      name: Premier Plats
+    5:
+      name: Deuxième Plats
+    6:
+      name: Desserts
+    Viños:
+      name: Vins
+  Blancos: Vins Blancs
+  Tintos: Vins Rouges

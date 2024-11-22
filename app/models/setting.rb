@@ -1,50 +1,49 @@
 class Setting < ApplicationRecord
-  # belongs_to :restaurant
+  belongs_to :restaurant
 
-  def self.use_menu_path?
-    init_settings unless first
-    first.use_menu_path
+  def self.for_restaurant_id(restaurant_id)
+    find_by(restaurant_id: restaurant_id) || create_for_restaurant_id(restaurant_id)
   end
 
-  def self.show_toggler?
-    init_settings unless first
-    first.show_toggler
+  def self.use_menu_path?(restaurant_id)
+    for_restaurant_id(restaurant_id).use_menu_path
   end
 
-  def self.show_locale_toggler?
-    init_settings unless first
-    first.locale_toggler
+  def self.show_toggler?(restaurant_id)
+    Rails.logger.info("show_toggler? #{for_restaurant_id(restaurant_id).show_toggler}")
+    for_restaurant_id(restaurant_id).show_toggler
   end
 
-  def self.root_page
-    init_settings unless first
-    first.root_page
+  def self.show_locale_toggler?(restaurant_id)
+    for_restaurant_id(restaurant_id).locale_toggler
   end
 
-  def self.menu_price
-    init_settings unless first
-    first.menu_price
+  def self.root_page(restaurant_id)
+    for_restaurant_id(restaurant_id).root_page
   end
 
-  def self.phone_number
-    init_settings unless first
-    first.phone_number
+  def self.menu_price(restaurant_id)
+    for_restaurant_id(restaurant_id).menu_price
   end
 
-  def self.mobile
-    init_settings unless first
-    first.mobile
+  def self.phone_number(restaurant_id)
+    for_restaurant_id(restaurant_id).phone_number
   end
 
-  def self.init_settings
+  def self.mobile(restaurant_id)
+    for_restaurant_id(restaurant_id).mobile
+  end
+
+  def self.create_for_restaurant_id(restaurant_id)
     create(
-      root_page: nil,
+      restaurant_id: restaurant_id,
+      root_page: 'menu',
       show_toggler: true,
-      locale_toggler: false,
+      locale_toggler: true,
       use_menu_path: false,
       menu_price: 12.5,
-      phone_number: '986 07 16 61',
-      mobile: '635 44 00 68'
+      phone_number: nil,
+      mobile: nil
     )
   end
 end

@@ -22,7 +22,6 @@ services:
       DATABASE_URL: postgres://postgres:password@db:5432/cartly_development
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password
-      OPENAI_KEY: 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
     networks:
       - cartly_network
 

@@ -8,7 +8,7 @@ module Translators
     include Dry::Monads[:result, :try]
     include Dry::Monads::Do.for(:call)
 
-    YAML_FILES = %w[es en fr de it ru].freeze
+    YAML_FILES = ['es', 'en', 'fr', 'de', 'it', 'ru'].freeze
     attr_reader :item
 
     def initialize(item)
@@ -26,10 +26,10 @@ module Translators
       item_class = item.class.name.downcase
       result = YAML_FILES.each_with_object([]) do |language_key, result_accumulator|
         result_accumulator << Try do
-          file_path = Rails.root.join('..', 'data', 'locales', "#{language_key}.yml")
+          file_path = Rails.root.join('config', 'locale', "#{language_key}.yml")
           yaml_file = YAML.load_file(file_path)
           yaml_file[language_key][item_class].delete(item.id)
-          File.open(file_path, 'w') { |file| file.write(YAML.dump(yaml_file)) }
+          File.write(file_path, YAML.dump(yaml_file))
         end.to_result
       end
 
