@@ -1,13 +1,15 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # public routes
-  root 'dynamic_router#call'
+  root 'landing#index'
 
-  devise_for :restaurants, path: 'admin', path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' }, controllers: {
-    sessions: 'restaurants/sessions',
-    registrations: 'restaurants/registrations'
-  }
+  devise_for :restaurants,
+             path: 'admin',
+             path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' },
+             controllers: {
+               sessions: 'restaurants/sessions',
+               registrations: 'restaurants/registrations',
+             }
 
   resources :allergens
   resources :dishes
@@ -17,7 +19,7 @@ Rails.application.routes.draw do
   resources :wine_types
   resources :wine_origin_denominations, as: :denominations, path: 'denominations'
 
-  resources :settings, only: %i[edit update]
+  resources :settings, only: [:edit, :update]
 
   get '/control_panel', to: 'control_panel#index'
 

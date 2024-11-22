@@ -3,5 +3,5 @@
 <%= link_to "Especiais", special_menus_path, class: "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-blue-600 " if current_restaurant %>
 <%= link_to "Denominacións de Orixe", denominations_path, class: "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-blue-600 " if current_restaurant %>
 <%= link_to "Fechar sesión", destroy_restaurant_session_path, data: { turbo_method: :delete }, class: "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:mr-6 sm:hover:text-red-600 " if current_restaurant %>
-<%= link_to "Ver carta", root_path(restaurant_id: current_restaurant.id), class: "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:mr-6 sm:hover:text-red-600 " if current_restaurant %>
+<%= link_to "Ver carta", carta_path(restaurant_id: current_restaurant.id), class: "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:mr-6 sm:hover:text-red-600 " if current_restaurant %>
 <%= button_to "Descargar QR", private_generate_qr_code_path, data: { turbo: false }, method: :post, class: "mx-auto text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:mr-6 sm:hover:text-red-600 " if current_restaurant %>
