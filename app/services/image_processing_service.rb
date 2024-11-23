@@ -1,3 +1,11 @@
+# frozen_string_literal: true
+
+# rubocop:disable Metrics/ParameterLists
+
+# This class is responsible for processing
+# and attaching an image to a record. It redu
+# nces the size of the image while maintaining
+# default dimensions of the record and quality.
 class ImageProcessingService
   attr_reader :file, :record, :attachment_name, :size_x, :size_y, :wine
 
@@ -45,3 +53,4 @@ class ImageProcessingService
     )
   end
 end
+# rubocop:enable Metrics/ParameterLists

@@ -7,8 +7,8 @@ class Restaurants::SessionsController < Devise::SessionsController
   around_action :switch_locale
   after_action :set_session_locale
 
-  def switch_locale(&action)
-    I18n.with_locale(:en, &action)
+  def switch_locale(&)
+    I18n.with_locale(:en, &)
   end
 
   def set_session_locale
@@ -28,7 +28,7 @@ class Restaurants::SessionsController < Devise::SessionsController
 
     # En lugar de usar el redirect por defecto de Devise
     respond_to do |format|
-      format.html { redirect_to control_panel_path }
+      format.html { redirect_to dishes_control_panel_path }
       format.json { render :show, status: :ok, location: resource }
     end
   end

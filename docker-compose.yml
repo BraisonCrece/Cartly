@@ -19,6 +19,7 @@ services:
     ports:
       - "3000:3000"
     environment: &app_environment
+      RAILS_ENV: development
       DATABASE_URL: postgres://postgres:password@db:5432/cartly_development
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: password

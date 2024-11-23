@@ -46,3 +46,5 @@ config/credentials_prod.yml.enc
 .DS_Store
 */.DS_Store
 */**/.DS_Store
+
+digital.md

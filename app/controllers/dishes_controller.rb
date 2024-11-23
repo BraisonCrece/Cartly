@@ -31,18 +31,12 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
     @dish.restaurant_id = current_restaurant.id
-    @dish.active = false
-    @dish.lock_it!
-
-    Thread.new do
-      Translators::ProcessTranslationsService.new(@dish, :create).call
-    end
-
+    request_translations(@dish, :create) if ENV['OPENAI_KEY'].present?
     @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
 
     if @dish.save
       flash[:notice] = 'Plato engadido! Será automáticamente activado cando as traduccións rematen.'
-      redirect_to control_panel_path
+      redirect_to dishes_control_panel_path
     else
       render :new, status: :unprocessable_entity
     end
@@ -58,15 +52,10 @@ class DishesController < ApplicationController
 
   def update
     if @dish.update(dish_params)
-
-      if title_or_description_changed?
-        Thread.new do
-          Translators::ProcessTranslationsService.new(@dish, :update).call
-        end
-      end
+      request_translations(@dish, :update) if ENV['OPENAI_KEY'].present? && title_or_description_changed?
 
       @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
-      redirect_to control_panel_path, notice: 'Plato editado con éxito'
+      redirect_to dishes_control_panel_path, notice: 'Plato editado con éxito'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -74,20 +63,23 @@ class DishesController < ApplicationController
 
   def destroy
     @dish.destroy
+    request_translations(@dish, :destroy) if ENV['OPENAI_KEY'].present?
 
-    Thread.new do
-      Translators::ProcessTranslationsService.new(@dish, :destroy).call
-    end
-
-    redirect_to control_panel_path, status: 303, notice: 'Plato eliminado!'
-  end
-
-  # TODO: Move this to the SettingsController
-  def pages_control
-    @settings = Setting.first
+    redirect_to dishes_control_panel_path, status: 303, notice: 'Plato eliminado!'
   end
 
   private
+
+  def request_translations(dish, action)
+    if action == :create
+      dish.active = false
+      dish.lock_it!
+    end
+
+    Thread.new do
+      Translators::ProcessTranslationsService.new(dish, action).call
+    end
+  end
 
   def title_or_description_changed?
     @dish.previous_changes.include?('title') || @dish.previous_changes.include?('description')
