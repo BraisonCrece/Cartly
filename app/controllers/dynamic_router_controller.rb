@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# This controller is responsible for routing to the correct page based on the root_page setting
 class DynamicRouterController < ApplicationController
   def call
     if Setting.root_page(params[:restaurant_id]) == 'menu'
