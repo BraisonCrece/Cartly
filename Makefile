@@ -2,7 +2,6 @@
 DC := docker compose
 DC_RUN := $(DC) run --rm
 DC_RUN_APP := $(DC_RUN) app
-DC_RUN_TEST := $(DC_RUN) test
 DC_EXEC := $(DC) exec
 
 # Common actions
@@ -21,11 +20,10 @@ logs:
 	$(DC) logs -f
 
 # Application commands
-.PHONY: bundle console server bash test test.session install print.img
+.PHONY: bundle console server bash install print.img
 
 bundle:
 	$(DC_RUN_APP) bundle install
-	$(DC_RUN_TEST) bundle install
 
 console:
 	$(DC_RUN_APP) bundle exec rails console
@@ -35,12 +33,6 @@ server:
 
 bash:
 	$(DC_RUN_APP) bash
-
-test:
-	$(DC_RUN_TEST) bundle exec rspec
-
-test.session:
-	$(DC_RUN) test bash
 
 install:
 	$(DC) build
@@ -87,15 +79,6 @@ db.session:
 
 # Commands for other services
 .PHONY: pgadmin chrome redis
-
-pgadmin:
-	$(DC) up -d db pgadmin
-
-chrome:
-	$(DC) up -d chrome
-
-redis:
-	$(DC) up -d redis
 
 # Command to clean volumes
 .PHONY: clean

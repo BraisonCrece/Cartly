@@ -47,7 +47,7 @@ class ControlPanelController < ApplicationController
   end
 
   def toggle_dish_active
-    dish = Dish.find_by(id: params[:dish_id], restaurant_id: current_restaurant.id, limit: 10)
+    dish = Dish.find_by(id: params[:dish_id], restaurant_id: current_restaurant.id)
     dish.toggle!(:active)
 
     render turbo_stream: turbo_stream.replace(
