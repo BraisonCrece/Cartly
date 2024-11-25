@@ -1,0 +1,13 @@
+<% if params[:restaurant_id] || current_restaurant %>
+    <div class="w-1/3 md:w-1/4 lg:w-1/6 mx-auto">
+        <%= link_to carta_path(restaurant_id: params[:restaurant_id] || current_restaurant.id), class: "w-full flex mt-4 justify-center text-gray-700 dark:text-white" do %>
+            <%= render "shared/logo" %>
+        <% end %>
+    </div>
+<% else %>
+    <div class="w-full flex mt-4 justify-center text-gray-700 dark:text-white">
+        <div class="w-1/3 md:w-1/4 lg:w-1/6">
+            <%= render "shared/logo" %>
+        </div>
+    </div>
+<% end %>

@@ -25,6 +25,7 @@ services:
       POSTGRES_PASSWORD: password
     networks:
       - cartly_network
+    command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
 
   test:
     image: cartly-app

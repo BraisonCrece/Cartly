@@ -1,6 +1,4 @@
-*,
 html,
-main,
 body {
     scrollbar-gutter: stable both-edges !important;
     overscroll-behavior: none;
