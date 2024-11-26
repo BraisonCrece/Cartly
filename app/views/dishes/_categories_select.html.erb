@@ -1,12 +1,12 @@
 <select name="dish[category_id]" id="dish_category_id" data-dish-type-target="categorySelect" data-dish-form-target="categorySelect" class="dark:text-gray-800 form-select mt-1 block rounded-[3px] border-gray-300 shadow focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full animate__animated">
     <option >Selecciona unha categoría</option>
-    <% Category.menu(current_restaurant.id).each do |cat| %>
+    <% Category.menu.each do |cat| %>
         <option value="<%= cat.id %>" <%= "selected" if dish.category_id == cat.id %>><%= cat.name %></option>
     <% end %>
-    <% unless Category.daily(current_restaurant.id).empty? %>
+    <% unless Category.daily.empty? %>
         <option disabled>──────────</option>
     <% end %>
-    <% Category.daily(current_restaurant.id).each do |cat| %>
+    <% Category.daily.each do |cat| %>
         <option value="<%= cat.id %>" <%= "selected" if dish.category_id == cat.id %>><%= cat.name %></option>
     <% end %>
 </select>

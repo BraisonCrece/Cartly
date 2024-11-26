@@ -14,14 +14,14 @@ class DishesController < ApplicationController
 
     @categorized_dishes = Dish.categorized_dishes(@restaurant.id)
     @special_menus = SpecialMenu.active(@restaurant.id)
-    @categories = Category.menu(@restaurant.id)
+    @categories = Category.menu
     @denominations = WineOriginDenomination.all.includes(:wines)
     @categorized_wines = Wine.categorized_wines(@restaurant.id, @denominations, WINE_COLORS)
   end
 
   def menu
     @categorized_dishes = Dish.menu_categorized_dishes(params[:restaurant_id])
-    @menu_categories = Category.daily(params[:restaurant_id])
+    @menu_categories = Category.daily
   end
 
   def new

@@ -12,7 +12,7 @@ class Dish < ApplicationRecord
   scope :categorized_dishes, lambda { |restaurant_id|
     where(active: true, restaurant_id:)
       .joins(:category)
-      .where(categories: { category_type: 'menu', restaurant_id: })
+      .where(categories: { category_type: 'menu' })
       .order(title: :asc)
       .load_async
       .group_by(&:category_id)
@@ -21,7 +21,7 @@ class Dish < ApplicationRecord
   scope :menu_categorized_dishes, lambda { |restaurant_id|
     where(active: true, restaurant_id:)
       .joins(:category)
-      .where(categories: { category_type: 'daily', restaurant_id: })
+      .where(categories: { category_type: 'daily' })
       .order(title: :asc)
       .load_async
       .group_by(&:category_id)

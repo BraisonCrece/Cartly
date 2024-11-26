@@ -149,7 +149,7 @@ def create_dishes(names, descriptions, images_map, category_name, restaurant)
       description: descriptions[index],
       active: true,
       prize: rand(5.0..25.0).round(2),
-      category: Category.find_by(name: category_name, restaurant:),
+      category: Category.find_by(name: category_name),
       restaurant:
     )
     add_random_allergens_to_dish(dish)
@@ -270,12 +270,12 @@ menu_categories = ['🥗 Entrantes 🥗', '🍽️ Platos 🍽️', '🍰 Postre
 daily_categories = ['Primeiros', 'Segundos', 'Postres']
 
 menu_categories.each do |name|
-  Category.create!(name: name, category_type: 'menu', restaurant:)
+  Category.create!(name: name, category_type: 'menu')
   print_info("Created menu category: #{name}")
 end
 
 daily_categories.each do |name|
-  Category.create!(name: name, category_type: 'daily', restaurant:)
+  Category.create!(name: name, category_type: 'daily')
   print_info("Created daily category: #{name}")
 end
 

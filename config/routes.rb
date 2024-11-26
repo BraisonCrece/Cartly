@@ -18,7 +18,6 @@ Rails.application.routes.draw do
   resources :allergens
   resources :dishes
   resources :special_menus
-  resources :categories
   resources :wines
   resources :wine_types
   resources :wine_origin_denominations, as: :denominations, path: 'denominations'
