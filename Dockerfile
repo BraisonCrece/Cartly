@@ -6,6 +6,9 @@
 ARG RUBY_VERSION=3.3.5
 FROM registry.docker.com/library/ruby:$RUBY_VERSION AS base
 
+# Enable ruby-yjit
+ENV RUBY_YJIT_ENABLE=1
+
 RUN apt-get update -qq && \
     apt-get install --no-install-recommends -y \
     build-essential \
@@ -38,9 +41,6 @@ RUN git clone https://github.com/jemalloc/jemalloc.git && \
     ./configure && \
     make && \
     make install
-
-# RUN mkdir /data
-# COPY ./config/locale /data/locale
 
 WORKDIR /rails
 
