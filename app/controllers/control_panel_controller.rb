@@ -52,7 +52,7 @@ class ControlPanelController < ApplicationController
 
     render turbo_stream: turbo_stream.replace(
       "dish_active_#{dish.id}",
-      partial: 'dishes/active',
+      partial: 'dish_active',
       locals: { dish: }
     )
   end
@@ -63,7 +63,7 @@ class ControlPanelController < ApplicationController
 
     render turbo_stream: turbo_stream.replace(
       "wine_active_#{wine.id}",
-      partial: 'wines/active',
+      partial: 'wine_active',
       locals: { wine: }
     )
   end

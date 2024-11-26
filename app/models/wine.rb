@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Wine < ApplicationRecord
-  broadcasts_refreshes
+  broadcasts_refreshes_to ->(stream) { stream.class.broadcast_target_default }
 
   belongs_to :wine_origin_denomination
   belongs_to :restaurant

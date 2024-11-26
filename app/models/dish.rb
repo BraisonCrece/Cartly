@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Dish < ApplicationRecord
-  broadcasts_refreshes
+  broadcasts_refreshes_to ->(stream) { stream.class.broadcast_target_default }
 
   belongs_to :category, optional: true
   has_and_belongs_to_many :allergens, dependent: :destroy

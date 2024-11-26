@@ -1,3 +1,5 @@
+<%= turbo_stream_from "wines" %>
+
 <% if Wine.where(active: true).exists? %>
   <h2 class="px-4 pb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp dark:border-gray-100/25" id='viños'> <%= translate("category.Viños.name", "🍷 Viños 🍷") %></h2>
 <% end %>
@@ -10,8 +12,6 @@
     <div class="pb-8">
         <h2 class="px-4 pb-4 text-2xl font-medium text-brand-comp-dark" id="category-<%= denomination.id %>"><%= denomination.name %></h2>
         <% wines.each do |wine| %>
-            <%= turbo_stream_from wine %>
-
             <%= link_to build_link(wine), data: { turbo_frame: "modal" } do %>
                 <%= render "wines/wine", wine: wine %>
             <% end %>
