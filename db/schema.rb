@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_09_151709) do
+ActiveRecord::Schema[8.0].define(version: 2024_11_09_151709) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -46,8 +46,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_151709) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "restaurant_id"
-    t.index ["restaurant_id"], name: "index_allergens_on_restaurant_id"
   end
 
   create_table "allergens_dishes", force: :cascade do |t|
@@ -64,8 +62,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_151709) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "category_type"
-    t.bigint "restaurant_id"
-    t.index ["restaurant_id"], name: "index_categories_on_restaurant_id"
   end
 
   create_table "dishes", force: :cascade do |t|
@@ -159,10 +155,8 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_151709) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "allergens", "restaurants"
   add_foreign_key "allergens_dishes", "allergens"
   add_foreign_key "allergens_dishes", "dishes"
-  add_foreign_key "categories", "restaurants"
   add_foreign_key "dishes", "restaurants"
   add_foreign_key "dishes", "special_menus"
   add_foreign_key "settings", "restaurants"

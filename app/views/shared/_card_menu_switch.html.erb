@@ -1,11 +1,11 @@
 <% if Setting.show_toggler?(params[:restaurant_id]) && (request.path.include?("/carta") || request.path.include?("/menu")) %>
     <%= puts request.path %>
     <% if request.path.include?("/carta") %>
-    <%= link_to menu_path(restaurant_id: params[:restaurant_id]), class: "print:hidden fixed bottom-5 right-5 cursor-pointer drop-shadow-lg bg-brand-red-light/[90%] text-white h-[75px] w-[75px] flex justify-center items-center aspect-square rounded-full transition-colors duration-500 animate-pulse-subtle" do %>
+    <%= link_to menu_path(restaurant_id: params[:restaurant_id]), class: "print:hidden fixed bottom-5 right-5 cursor-pointer drop-shadow-lg bg-brand-red text-white h-[75px] w-[75px] flex justify-center items-center aspect-square rounded-full transition-colors duration-500 animate-pulse-subtle" do %>
       <span class="text-lg font-semibold">MENÚ</span>
     <% end %>
   <% else %>
-    <%= link_to carta_path(restaurant_id: params[:restaurant_id]), class: "print:hidden fixed bottom-5 right-5 cursor-pointer drop-shadow-lg bg-brand-red-light/[90%] text-white h-[75px] w-[75px] flex justify-center items-center aspect-square rounded-full transition-colors duration-500 animate-pulse-subtle" do %>
+    <%= link_to carta_path(restaurant_id: params[:restaurant_id]), class: "print:hidden fixed bottom-5 right-5 cursor-pointer drop-shadow-lg bg-brand-red text-white h-[75px] w-[75px] flex justify-center items-center aspect-square rounded-full transition-colors duration-500 animate-pulse-subtle" do %>
       <span class="text-lg font-semibold">CARTA</span>
     <% end %>
   <% end %>

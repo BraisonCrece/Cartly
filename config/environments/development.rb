@@ -5,7 +5,7 @@ Rails.application.configure do
   # Store files locally.
   config.active_storage.service = :development
 
-  config.action_controller.default_url_options = { host: 'localhost:3000' }
+  config.action_controller.default_url_options = { host: '159.69.45.22:3000' }
 
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development

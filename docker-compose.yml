@@ -1,68 +1,69 @@
 services:
-  app:
-    image: cartly-app
-    tty: true
-    stdin_open: true
-    build:
-      context: .
-      dockerfile: Dockerfile
-    depends_on:
-      db:
-        condition: service_healthy
-      redis:
-        condition: service_started
-    volumes: &app_volumes
-      - .:/rails
-      - bundle_data:/usr/local/bundle
-      - data:/data
-      - bash_history:/root
-    ports:
-      - "3000:3000"
-    environment: &app_environment
-      RAILS_ENV: development
-      DATABASE_URL: postgres://postgres:password@db:5432/cartly_development
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-    networks:
-      - cartly_network
-    command: bash -c "rm -f tmp/pids/server.pid && bin/dev"
+    app:
+        image: cartly-app
+        tty: true
+        stdin_open: true
+        build:
+            context: .
+            dockerfile: Dockerfile
+        depends_on:
+            db:
+                condition: service_healthy
+            redis:
+                condition: service_started
+        volumes: &app_volumes
+            - .:/rails
+            - bundle_data:/usr/local/bundle
+            - data:/data
+            - bash_history:/root
+        ports:
+            - "3000:3000"
+        environment: &app_environment
+            RAILS_ENV: development
+            DATABASE_URL: postgres://postgres:password@db:5432/cartly_development
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+            OPENAI_KEY: ${OPENAI_KEY}
+        networks:
+            - cartly_network
+        command: bash -c "rm -f tmp/pids/server.pid && bin/rails s -b 0.0.0.0"
 
-  db:
-    image: postgres:latest
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    environment:
-      POSTGRES_DB: cartly_development
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-    networks:
-      - cartly_network
-    ports:
-      - "5432:5432"
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+    db:
+        image: postgres:latest
+        volumes:
+            - /mnt/HC_Volume_101678926/postgres:/var/lib/postgresql/data
+        environment:
+            POSTGRES_DB: cartly_development
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: password
+        networks:
+            - cartly_network
+        ports:
+            - "5432"
+        healthcheck:
+            test: ["CMD-SHELL", "pg_isready -U postgres"]
+            interval: 10s
+            timeout: 5s
+            retries: 3
 
-  redis:
-    image: redis:latest
-    ports:
-      - "6379:6379"
-    networks:
-      - cartly_network
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+    redis:
+        image: redis:latest
+        ports:
+            - "6379"
+        networks:
+            - cartly_network
+        healthcheck:
+            test: ["CMD", "redis-cli", "ping"]
+            interval: 10s
+            timeout: 5s
+            retries: 3
 
 networks:
-  cartly_network:
-    driver: bridge
+    cartly_network:
+        driver: bridge
 
 volumes:
-  postgres_data:
-  bundle_data:
-  data:
-  bash_history:
+    postgres_data:
+    bundle_data:
+    data:
+    bash_history:

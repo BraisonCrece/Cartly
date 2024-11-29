@@ -295,6 +295,20 @@ fr:
         accompagné d'une touche de beurre et de fruits frais, parfait pour commencer
         la journée ou savourer comme un petit plaisir à l'heure du goûter. Une expérience
         délicieusement appréciée
+    35:
+      title: Salade de pois chiches avec heura
+      description: Fraîche et nutritive, cette salade de pois chiches combine la texture
+        douce des pois chiches cuits avec les fibres de l'ichor, assaisonnée d'une
+        touche d'agrumes et d'épices. Garnie d'oignon rouge et d'huile d'olive vierge,
+        elle offre un équilibre de saveurs qui satisfait le palais et nourrit le corps.
+        Idéale pour respirer la santé
+    36:
+      title: Pâtisseries de la Toussaint
+      description: Les Pâtes de Samain sont un délice traditionnel, confectionnées
+        avec une pâte de farines sélectionnées, d'épices et une touche de citrouille.
+        Décorées de formes qui évoquent l'automne et le mystère de Samain, elles offrent
+        une saveur douce et réconfortante, parfaites pour célébrer la saison avec
+        chaque bouchée qui rappelle nos racines
   category:
     1:
       name: Entrées
