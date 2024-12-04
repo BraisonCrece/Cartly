@@ -1,25 +1,25 @@
 <% if request.path == "/menu" %>
-    <div class="w-[96%] max-w-2xl m-auto flex flex-col gap-2 justify-center items-center text-xl font-play font-thin mb-6">
-        <p class="text-2xl underline underline-offset-4 decoration-emerald-500/30"> <%= translate("info.title", "O menú do día inclúe") %>: </p>
-        <p>🍽 <%=  translate("info.starter", "1er plato")%></p>
-        <p>🍽 <%=  translate("info.main", "2º plato")%></p>
-        <p>🥖 <%=  translate("info.water_bread", "Pan e Auga local") %> 🥤</p>
-        <p>🍮 <%=  translate("info.dessert_or_coffee", "postre ou café") %> ☕</p>
-        <div class="italic font-sans font-light text-5xl text-emerald-500"><%= Setting.menu_price(params[:restaurant_id]) %> €</div>
+    <div class="w-[96%] max-w-2xl m-auto flex flex-col gap-2 justify-center items-center text-xl font-play font-thin mb-6" role="region" aria-label="Menu do día">
+        <h2 class="text-2xl underline underline-offset-4 decoration-emerald-500/30"> <%= translate("info.title", "O menú do día inclúe") %>: </h2>
+        <p aria-label="Primeiro plato">🍽 <%=  translate("info.starter", "1er plato")%></p>
+        <p aria-label="Segundo plato">🍽 <%=  translate("info.main", "2º plato")%></p>
+        <p aria-label="Pan e auga local">🥖 <%=  translate("info.water_bread", "Pan e Auga local") %> 🥤</p>
+        <p aria-label="Postre ou café">🍮 <%=  translate("info.dessert_or_coffee", "postre ou café") %> ☕</p>
+        <div class="italic font-sans font-light text-5xl text-emerald-500" aria-label="Prezo do menú"><%= Setting.menu_price(params[:restaurant_id]) %> €</div>
     </div>
 <% end %>
 <% if (request.path == "/carta" || request.path == "/menu") %>
-    <div class="w-[96%] max-w-2xl m-auto border border-gray-400/10 rounded py-4 px-3 my-8 shadow-md flex flex-col gap-4 font-play text-lg text-slate-700 dark:text-slate-300">
-        <a href="https://maps.app.goo.gl/CrYmgCEuEAy8XA6R8" target="_blank" class="flex gap-3 items-center font-light">
-            <%= image_tag 'map.svg', class: "w-10" %>
+    <div class="w-[96%] max-w-2xl m-auto border border-gray-400/10 rounded py-4 px-3 my-8 shadow-md flex flex-col gap-4 font-play text-lg text-slate-700 dark:text-slate-300" role="complementary" aria-label="Información de contacto">
+        <a href="https://maps.app.goo.gl/CrYmgCEuEAy8XA6R8" target="_blank" rel="noopener" class="flex gap-3 items-center font-light" aria-label="Enderezo: Travesía da Igrexa, 6, 36680 A Estrada, Pontevedra">
+            <%= image_tag 'map.svg', class: "w-10", alt: "Icona de mapa" %>
             Travesía da Igrexa, 6, 36680 A Estrada, Pontevedra
         </a>
-        <a href="tel:<%= Setting.phone_number(params[:restaurant_id]) %>" class="flex gap-3 items-center font-light">
-            <%= image_tag 'phone.svg', class: "w-10" %>
+        <a href="tel:<%= Setting.phone_number(params[:restaurant_id]) %>" class="flex gap-3 items-center font-light" aria-label="Teléfono fixo">
+            <%= image_tag 'phone.svg', class: "w-10", alt: "Icona de teléfono" %>
             <%= Setting.phone_number(params[:restaurant_id]) %>
         </a>
-        <a href="tel:<%= Setting.mobile(params[:restaurant_id]) %>" class="flex gap-3 items-center font-light">
-            <%= image_tag 'smartphone.svg', class: "w-10" %>
+        <a href="tel:<%= Setting.mobile(params[:restaurant_id]) %>" class="flex gap-3 items-center font-light" aria-label="Teléfono móbil">
+            <%= image_tag 'smartphone.svg', class: "w-10", alt: "Icona de móbil" %>
             <%= Setting.mobile(params[:restaurant_id]) %>
         </a>
     </div>

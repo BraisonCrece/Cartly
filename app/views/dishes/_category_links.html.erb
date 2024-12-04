@@ -5,6 +5,7 @@
   <%= link_to translate("category.#{category.id}.name", category.name).gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
               "#category-#{category.id}",
               class: caterogy_link_classes,
+              aria_label: "Ir á categoría #{category.name}",
               data: { turbo_frame: "_top", controller: "scroll", action: "click->scroll#scrollToCategory" } %>
 <% end %>
 <% if Wine.where(active: true).exists? %>
@@ -12,6 +13,7 @@
         .gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
         "#viños",
         class: caterogy_link_classes,
+        aria_label: "Ir á sección de viños",
         data: { turbo_frame: "_top", controller: "scroll", action: "click->scroll#scrollToCategory" }
     %>
 <% end %>

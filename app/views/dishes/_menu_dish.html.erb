@@ -1,5 +1,5 @@
-<div class='flex justify-between px-4 py-6 border-t border-gray-100 center print:my-6 dark:border-gray-100/25 animate__animated animate__fadeIn animate__slower active:scale-[0.98] active:opacity-80 transition-all cursor-pointer'>
-  <div class="flex flex-col w-full title price">
-    <p class='w-full text-2xl font-light playfare'> <%= translate("dish.#{dish.id}.title", dish.title) %></p>
+<div class='flex justify-between px-4 py-6 border-t border-gray-100 center print:my-6 dark:border-gray-100/25 animate__animated animate__fadeIn animate__slower active:scale-[0.98] active:opacity-80 transition-all cursor-pointer' role="article" aria-label="Información do prato">
+  <div class="flex flex-col w-full title price" aria-label="Nome e prezo">
+    <p class='w-full text-2xl font-light playfare' aria-label="Nome do prato"> <%= translate("dish.#{dish.id}.title", dish.title) %></p>
   </div>
 </div>

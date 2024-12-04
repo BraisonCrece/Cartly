@@ -1,16 +1,30 @@
 <% if Setting.show_locale_toggler?(params[:restaurant_id]) && (request.path.include?("/carta") || request.path.include?("/menu"))%>
-    <div class="flex flex-col fixed bottom-5 left-5">
-        <div class="other-locales  h-auto w-12 p-1 rounded shadow bg-emerald-50/75 hidden">
+    <div class="flex flex-col fixed bottom-5 left-5" role="region" aria-label="Selector de idioma">
+        <div class="other-locales h-auto w-12 p-1 rounded shadow bg-emerald-50/75 hidden" role="list">
             <% I18n.available_locales.each do |locale| %>
                 <% next if I18n.locale == locale %>
-                <%= link_to "#{request.path}?locale=#{locale}", data: { locale: locale } do %>
-                    <%= image_tag locale_flag(locale), class: "pb-2" %>
+                <%= link_to "#{request.path}?locale=#{locale}",
+                    data: { locale: locale },
+                    aria: {
+                      label: "Cambiar idioma a #{locale}",
+                      current: "false"
+                    },
+                    role: "listitem" do %>
+                    <%= image_tag locale_flag(locale), class: "pb-2", alt: "Bandeira de #{locale}" %>
                 <% end %>
             <% end %>
         </div>
-        <%= button_to "#", data: { controller: "locale-switch", action: "click->locale-switch#toggle" }, class: "h-auto w-12 p-1 rounded shadow bg-emerald-50/75", method: :get do %>
-            <span>
-                <%= image_tag locale_flag %>
+        <%= button_to "#",
+            data: { controller: "locale-switch", action: "click->locale-switch#toggle" },
+            class: "h-auto w-12 p-1 rounded shadow bg-emerald-50/75",
+            method: :get,
+            aria: {
+              expanded: "false",
+              haspopup: "true",
+              label: "Abrir selector de idioma"
+            } do %>
+            <span aria-hidden="true">
+                <%= image_tag locale_flag, alt: 'Bandeira de Galicia' %>
             </span>
         <% end %>
     </div>

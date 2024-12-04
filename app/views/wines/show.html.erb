@@ -2,6 +2,9 @@
     <div
         data-controller='modal'
         id='dish-modal'
+        role="dialog"
+        aria-labelledby="modal-title"
+        aria-modal="true"
         class="fixed inset-0 z-20 flex items-center justify-center align-middle modal-container animate__fadeIn animate__animated animate__faster"
         data-action="click->modal#close">
         <!-- CARD -->
@@ -12,16 +15,18 @@
                 class="flex justify-center w-full h-48 bg-white sm:h-full skeleton skeleton-dark"
                 data-modal-target="skeleton">
                 <%= image_tag @wine.image.attached? ? @wine.image : "wine-placeholder.webp",
+                    alt: "Botella de #{@wine.name}",
                     class: "rounded-t-lg sm:rounded-none object-cover object-center h-full w-auto",
                     data: { modal_target: "image" } %>
             </div>
             <!-- CARD BODY -->
             <div class="card__body h-full px-6 py-2 sm:max-w-[70%] flex flex-col justify-around">
-                <div
+                <h2
+                    id="modal-title"
                     class="mb-2 text-2xl font-bold playfare balance skeleton skeleton-dark"
                     data-modal-target="skeleton">
                         <%= @wine.name %>
-                </div>
+                </h2>
                 <p
                     class="w-full mb-4 text-gray-700 break-words lato text-start balance skeleton skeleton-dark dark:text-slate-300"
                     data-modal-target="skeleton">
@@ -30,7 +35,8 @@
                 <div class="flex items-center justify-between align-middle">
                     <div
                         class="self-center block text-xl font-semibold skeleton skeleton-dark"
-                        data-modal-target="skeleton">
+                        data-modal-target="skeleton"
+                        aria-label="Prezo por botella">
                             <%= number_to_currency(@wine.price, { unit: "€", separator: ",", format: "%n %u" }) %>
                     </div>
                     <% if @wine.price_per_glass %>
@@ -44,7 +50,8 @@
                             <p
                                 class="mb-4 font-light text-gray-700 lato skeleton skeleton-dark"
                                 data-modal-target="skeleton"
-                                id='per_glass'>
+                                id='per_glass'
+                                aria-label="Prezo por copa">
                                     <%= number_to_currency(@wine.price_per_glass, { unit: "€", separator: ",", format: "%n %u" }) %>
                             </p>
                         </div>
