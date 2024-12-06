@@ -238,12 +238,12 @@ es:
         de zanahoria, pepino y apio frescos
     9:
       title: Bol de quinoa con tofu y verduras asadas
-      description: Quinoa esponjosa acompañada de tofu crujiente y una mezcla de verduras
-        asadas, aderezada con una vinagreta de tahini y limón
+      description: Quinoa esponjosa acompañada de tofu crujiente y una mezcla de vegetales
+        asados, aderezada con una vinagreta de tahini y limón
     3:
       title: Rollitos de primavera
       description: Envolturas de arroz rellenas de fideos, zanahoria, pepino y cilantro,
-        servidas con salsa de cacahuate
+        servidas con salsa de cacahuete
     11:
       title: Mousse de chocolate con aguacate
       description: Suave y cremosa mousse de chocolate hecha con aguacate, cacao en
@@ -262,7 +262,7 @@ es:
         servida con pan tostado o crackers
     6:
       title: Curry de garbanzos y espinacas
-      description: Cremoso curry de garbanzos cocidos a fuego lento con espinacas
+      description: Crema de curry de garbanzos cocidos a fuego lento con espinacas
         frescas, servido sobre una cama de arroz basmati y acompañado de naan vegano
     12:
       title: Tarta de manzana y canela
@@ -291,6 +291,62 @@ es:
         de un toque de mantequilla y frutas frescas, perfecta para comenzar el día
         o disfrutar como un capricho en la merienda. Una experiencia primorosamente
         saboreada
+    14:
+      title: Brownies de batata dulce y cacao
+      description: Brownies húmedos hechos con puré de batata dulce, cacao en polvo
+        y harina de almendra, sin azúcar refinado y naturalmente dulces
+    15:
+      title: Cheesecake de anacardos y limón
+      description: Base de frutos secos y dátiles, cubierta con una crema suave de
+        anacardos y limón, todo sin productos lácteos y con un sabor refrescante
+    21:
+      title: Curry de garbanzos y espinacas
+      description: Cremoso curry de garbanzos cocidos a fuego lento con espinacas
+        frescas, servido sobre una cama de arroz basmati y acompañado de naan vegano
+    18:
+      title: Rollitos de primavera
+      description: Envolturas de arroz rellenas de fideos, zanahoria, pepino y cilantro,
+        servidas con salsa de cacahuete
+    25:
+      title: Hamburguesa de lentejas con batata
+      description: Hamburguesa casera de lentejas y batata en pan integral, con lechuga,
+        tomate, cebolla caramelizada y mayonesa vegana
+    19:
+      title: Guacamole con chips de plátano
+      description: Aguacate triturado con cebolla, cilantro, tomate y un toque de
+        limón, acompañado de chips crujientes de plátano
+    20:
+      title: Paté de champiñones y nueces
+      description: Crema suave de champiñones y nueces, enriquecida con hierbas frescas,
+        servida con pan tostado o crackers
+    22:
+      title: Lasaña de verduras
+      description: Capas de pasta de trigo intercaladas con calabacín, berenjena,
+        espinacas y salsa de tomate, gratinadas con una cremosa bechamel de anacardos
+    27:
+      title: Tarta de manzana y canela
+      description: Masa integral rellena de rodajas de manzana caramelizadas con canela
+        y azúcar de coco, horneada hasta quedar crujiente y dorada
+    24:
+      title: Bol de quinoa con tofu y vegetales asados
+      description: Quinoa esponjosa acompañada de tofu crujiente y una mezcla de verduras
+        asadas, aderezada con una vinagreta de tahini y limón
+    26:
+      title: Mousse de chocolate con aguacate
+      description: Suave y cremosa mousse de chocolate hecha con aguacate, cacao en
+        polvo y un toque de jarabe de agave, servida con frutos rojos frescos
+    28:
+      title: Helado de plátano y mantequilla de cacahuete
+      description: Helado vegetariano elaborado a base de plátano congelado y mantequilla
+        de cacahuete, cremoso y sin necesidad de lácteos ni azúcares añadidos
+    29:
+      title: Brownies de batata dulce y cacao
+      description: Brownies húmedos hechos con puré de batata, cacao en polvo y harina
+        de almendra, sin azúcar refinado y naturalmente dulces
+    30:
+      title: Cheesecake de anacardos y limón
+      description: Base de frutos secos y dátiles, cubierta con una crema suave de
+        anacardos y limón, todo sin productos lácteos y con un sabor refrescante
   category:
     1:
       name: Entrantes
@@ -308,3 +364,116 @@ es:
       name: Vinos
   Blancos: Blancos
   Tintos: Tintos
+  wine:
+    7:
+      description: Vino blanco de la D.O. Valdeorras, elaborado con Godello. Tiene
+        un aroma complejo a frutas blancas, cítricos y notas minerales. En el paladar
+        es fresco, estructurado y con una acidez equilibrada. Ideal para acompañar
+        platos vegetales, arroces y quesos veganos
+    1:
+      description: Vino blanco de la D.O. Rías Baixas, elaborado con Albariño. Fresco
+        y vibrante, con aromas a frutas cítricas y un toque mineral. Perfecto para
+        mariscos y pescados
+    11:
+      description: Elaborado principalmente con Garnacha, complementada con otras
+        variedades autóctonas. Presenta un color rojo rubí brillante y aromas a frutas
+        rojas maduras, con notas florales y especiadas. En el paladar es fresco, de
+        cuerpo medio, con una acidez equilibrada y taninos suaves, que le confieren
+        un final largo y sedoso
+    2:
+      description: Vino blanco de la D.O. Rías Baixas, hecho con Albariño. De gran
+        frescura y complejidad, con aromas a frutas blancas y notas herbáceas. En
+        el paladar es suave, equilibrado y con buena acidez. Ideal para acompañar
+        platos de mariscos y pescados
+    8:
+      description: Vino blanco de la D.O. Rías Baixas, elaborado con Albariño y otras
+        variedades autóctonas. Presenta aromas frescos y afrutados, con notas de cítricos
+        y hierba. En el paladar es ligero, fresco y con acidez equilibrada. Perfecto
+        para acompañar platos vegetales, pasta, risottos y tapas veganas
+    3:
+      description: Vino blanco de la D.O. Rías Baixas, elaborado con Albariño. De
+        aromas intensos a frutas de carne y cítricos, con un toque mineral. En boca
+        es fresco, untuoso y con una acidez bien equilibrada. Perfecto para mariscos,
+        pescados y arroces
+    4:
+      description: Vino blanco de la D.O. Rías Baixas, elaborado con Albariño. Presenta
+        aromas a frutas tropicales, cítricos y un toque floral. En el paladar es amplio,
+        fresco y de buena acidez, con un final elegante. Ideal para acompañar mariscos,
+        pescado fresco y platos de arroz
+    14:
+      description: Elaborado con mencía y otras variedades autóctonas. Tiene un color
+        rojo intenso y aromas a frutas negras, especias y ligeras notas de madera.
+        En el paladar es de cuerpo medio, con una acidez fresca y taninos suaves,
+        que le dan un final largo y equilibrado
+    5:
+      description: Vino blanco de la D.O. Ribeiro, elaborado con variedades autóctonas.
+        Destaca por sus aromas frescos a frutas blancas y notas florales. En el paladar
+        es suave, ligero y con una acidez bien integrada. Perfecto para acompañar
+        platos vegetales, ensaladas y quesos veganos
+    6:
+      description: Vino blanco de la D.O. Ribeiro, hecho con treixadura y otras variedades
+        locales. Ofrece aromas frescos y florales, con notas de frutas blancas y un
+        toque de hierba fresca. En el paladar es equilibrado, suave y con una acidez
+        agradable. Perfecto para platos vegetales, arroces y ensaladas frescas
+    9:
+      description: Elaborado principalmente con Tempranillo, complementado con Graciano
+        y Mazuelo. Presenta un color rojo rubí intenso y aromas complejos que combinan
+        frutas negras maduras, especias y notas de vainilla derivadas de la crianza
+        en barrica. En el paladar es equilibrado, con una acidez refrescante, taninos
+        suaves y un final persistente
+    12:
+      description: Vino tinto de la D.O. Ribeiro, hecho con mencía y otras variedades
+        autóctonas. De color rojo intenso, con aromas a frutas negras y especias.
+        En el paladar es fresco, de cuerpo medio y taninos suaves, con un final afrutado
+        y equilibrado
+    10:
+      description: Elaborado principalmente con mencía. Tiene un color rojo intenso
+        y una nariz compleja, con aromas a frutas negras, especias y leves toques
+        herbáceos. En el paladar es de cuerpo medio, con una acidez equilibrada y
+        taninos suaves, que le proporcionan un final ligeramente afrutado y persistente
+    15:
+      description: Vino tinto de la D.O. Ribeira Sacra, elaborado con uvas de mencía
+        cultivadas en viñedos de más de 30 años de antigüedad. Presenta un color rojo
+        intenso con matices violáceos y aromas a frutas rojas maduras, con notas especiadas
+        y minerales
+    13:
+      description: Vino tinto de la D.O. Ribeiro, elaborado con mencía. Presenta aromas
+        a frutas rojas maduras, con toques especiados y herbáceos. En el paladar es
+        suave, de cuerpo medio, con una acidez equilibrada y taninos bien integrados
+  allergen:
+    1:
+      name: gluten
+    2:
+      name: Huevo
+    3:
+      name: Leche
+    4:
+      name: Pescado
+    5:
+      name: Marisco
+    6:
+      name: soja
+    7:
+      name: cacahuete
+    8:
+      name: Apio
+    9:
+      name: Mostaza
+    10:
+      name: sésamo
+    11:
+      name: Sulfitos
+    12:
+      name: Altramuces
+    13:
+      name: almendra
+    14:
+      name: Azúcar
+    15:
+      name: Maíz
+    16:
+      name: miel
+    17:
+      name: Picante
+    18:
+      name: Setas

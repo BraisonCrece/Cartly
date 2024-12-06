@@ -44,14 +44,6 @@ RUN git clone https://github.com/jemalloc/jemalloc.git && \
 
 WORKDIR /rails
 
-COPY config/locale /rails/config/locale
-
-ARG RAILS_ENV=production
-ENV RAILS_ENV=${RAILS_ENV}
-
-ENV BUNDLE_WITHOUT="development:test" \
-    BUNDLE_DEPLOYMENT="1"
-
 ENV BUNDLE_PATH="/usr/local/bundle"
 ENV LD_PRELOAD=/usr/local/lib/libjemalloc.so.2
 
@@ -67,11 +59,5 @@ RUN touch /root/.bash_history /root/.irb_history && \
     chmod +x /root/.bash_history /root/.irb_history && \
     echo 'export HISTFILE=/root/.bash_history' >> /root/.bashrc
 
-# Precompile assets
-RUN SECRET_KEY_BASE=DUMMY ./bin/rails assets:precompile
-RUN chmod +x ./start.sh
-
 EXPOSE 3000
-
-# ENTRYPOINT ["/entrypoint.sh"]
-CMD ["./start.sh"]
+CMD ["rails", "server", "-b", "0.0.0.0"]

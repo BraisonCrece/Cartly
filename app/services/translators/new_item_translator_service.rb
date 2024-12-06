@@ -8,7 +8,7 @@ module Translators
     include Dry::Monads[:result, :try]
     include Dry::Monads::Do.for(:call)
 
-    LANGUAGES = %w[Español Inglés Francés Alemán Italiano Ruso].freeze
+    LANGUAGES = ['Español', 'Inglés', 'Francés', 'Alemán', 'Italiano', 'Ruso'].freeze
     attr_reader :item, :model, :temperature
 
     def initialize(item, model: 'gpt-4o-mini', temperature: 0.3)
@@ -47,7 +47,7 @@ module Translators
 
     def unlock_item
       Try[ActiveRecord::RecordInvalid] do
-        item.update(lock: false, active: true)
+        item.update(lock: false, active: true) unless item.instance_of?(::Allergen)
       end.to_result
     end
 

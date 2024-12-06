@@ -26,6 +26,7 @@ module Translators
       file_content = yield get_file_content(file_path)
       description_translation = yield ask_for_translation
       save_translation(file_path, file_content, description_translation)
+      Rails.logger.info("Wine #{wine.id} translated to #{language}")
     end
 
     private

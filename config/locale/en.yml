@@ -229,8 +229,8 @@ en:
         lettuce, tomato, caramelized onion, and vegan mayonnaise
     4:
       title: Guacamole with plantain chips
-      description: Mashed avocado with onion, cilantro, tomato, and a touch of lemon,
-        served with crunchy banana chips
+      description: Mashed avocado with onion, cilantro, tomato, and a hint of lemon,
+        served with crispy plantain chips
     16:
       title: Hummus with crudités
       description: Chickpea cream with lemon, tahini, and garlic, served with fresh
@@ -248,9 +248,9 @@ en:
       description: Smooth and creamy chocolate mousse made with avocado, cocoa powder,
         and a touch of agave syrup, served with fresh red berries
     2:
-      title: Tomato and basil bruschettas
+      title: Tomato and basil bruschetta
       description: Slices of toasted bread with fresh tomato, garlic, olive oil, and
-        basil leaves, perfect for stimulating the appetite
+        basil leaves, ideal for stimulating the appetite
     23:
       title: Tempeh and avocado tacos
       description: Corn tortillas filled with marinated tempeh, pieces of avocado,
@@ -276,9 +276,9 @@ en:
       description: Corn tortillas filled with marinated tempeh, pieces of avocado,
         red onion, fresh cilantro, and a homemade jalapeño sauce
     17:
-      title: Tomato and basil bruschettas
+      title: Tomato and basil bruschetta
       description: Slices of toasted bread with fresh tomato, garlic, olive oil, and
-        basil leaves, perfect for stimulating the appetite
+        basil leaves, perfect for whetting the appetite
     13:
       title: Banana and peanut butter ice cream
       description: Vegetarian ice cream made from frozen banana and peanut butter,
@@ -289,6 +289,62 @@ en:
         blueberry jam that adds a touch of acidity and sweetness. This dish is accompanied
         by a touch of butter and fresh fruits, perfect for starting the day or enjoying
         as a treat in the afternoon. A beautifully savored experience
+    14:
+      title: Sweet potato and cocoa brownies
+      description: Moist brownies made with sweet potato puree, cocoa powder, and
+        almond flour, without refined sugar and naturally sweet
+    15:
+      title: Cashew and lemon cheesecake
+      description: Base of dried fruits and dates, topped with a smooth cashew and
+        lemon cream, all dairy-free and with a refreshing taste
+    21:
+      title: Chickpea and spinach curry
+      description: Creamy chickpea curry slow-cooked with fresh spinach, served on
+        a bed of basmati rice and accompanied by vegan naan
+    18:
+      title: Spring rolls
+      description: Rice wraps filled with noodles, carrot, cucumber, and cilantro,
+        served with peanut sauce
+    25:
+      title: Lentil burger with sweet potato
+      description: Homemade lentil and sweet potato burger on whole grain bread, with
+        lettuce, tomato, caramelized onion, and vegan mayonnaise
+    19:
+      title: Guacamole with plantain chips
+      description: Mashed avocado with onion, cilantro, tomato, and a touch of lemon,
+        served with crispy plantain chips
+    20:
+      title: Mushroom and walnut pâté
+      description: Smooth cream of mushrooms and walnuts, enriched with fresh herbs,
+        served with toasted bread or crackers
+    22:
+      title: Vegetable lasagna
+      description: Layers of wheat pasta interspersed with zucchini, eggplant, spinach,
+        and tomato sauce, baked with a creamy cashew béchamel
+    27:
+      title: Apple and cinnamon pie
+      description: Whole grain dough filled with caramelized apple slices with cinnamon
+        and coconut sugar, baked until crispy and golden
+    24:
+      title: Quinoa bowl with tofu and roasted vegetables
+      description: Fluffy quinoa accompanied by crispy tofu and a mix of roasted vegetables,
+        dressed with a tahini and lemon vinaigrette
+    26:
+      title: Chocolate mousse with avocado
+      description: Smooth and creamy chocolate mousse made with avocado, cocoa powder,
+        and a touch of agave syrup, served with fresh red berries
+    28:
+      title: Banana and peanut butter ice cream
+      description: Vegetarian ice cream made from frozen banana and peanut butter,
+        creamy and without the need for dairy or added sugars
+    29:
+      title: Sweet potato and cocoa brownies
+      description: Moist brownies made with sweet potato puree, cocoa powder, and
+        almond flour, without refined sugar and naturally sweet
+    30:
+      title: Cashew and lemon cheesecake
+      description: Base of dried fruits and dates, topped with a smooth cashew and
+        lemon cream, all dairy-free and with a refreshing taste
   category:
     1:
       name: Starters
@@ -306,3 +362,113 @@ en:
       name: Wines
   Blancos: White Wines
   Tintos: Red Wines
+  wine:
+    7:
+      description: White wine from the D.O. Valdeorras, made with Godello. It has
+        a complex aroma of white fruits, citrus, and mineral notes. On the palate,
+        it is fresh, structured, and has balanced acidity. Ideal for pairing with
+        vegetable dishes, rice, and vegan cheeses
+    1:
+      description: White wine from the D.O. Rías Baixas, made with Albariño. Fresh
+        and vibrant, with aromas of citrus fruits and a mineral touch. Perfect for
+        seafood and fish
+    11:
+      description: Made primarily with Garnacha, complemented by other native varieties.
+        It has a bright ruby red color and aromas of ripe red fruits, with floral
+        and spicy notes. On the palate, it is fresh, medium-bodied, with balanced
+        acidity and soft tannins, giving it a long and silky finish
+    2:
+      description: White wine from the D.O. Rías Baixas, made with Albariño. Of great
+        freshness and complexity, with aromas of white fruits and herbaceous notes.
+        On the palate, it is smooth, balanced, and with good acidity. Ideal for pairing
+        with seafood and fish dishes
+    8:
+      description: White wine from the D.O. Rías Baixas, made with Albariño and other
+        native varieties. It presents fresh and fruity aromas, with notes of citrus
+        and grass. On the palate, it is light, fresh, and has balanced acidity. Perfect
+        to accompany vegetable dishes, pasta, risottos, and vegan tapas
+    3:
+      description: White wine from the D.O. Rías Baixas, made with Albariño. It has
+        intense aromas of stone fruits and citrus, with a mineral touch. On the palate,
+        it is fresh, smooth, and has a well-balanced acidity. Perfect for seafood,
+        fish, and rice dishes
+    4:
+      description: White wine from the D.O. Rías Baixas, made with Albariño. It presents
+        aromas of tropical fruits, citrus, and a floral touch. On the palate, it is
+        broad, fresh, and has good acidity, with an elegant finish. Ideal for pairing
+        with seafood, fresh fish, and rice dishes
+    14:
+      description: Made with Mencía and other native varieties. It has an intense
+        red color and aromas of black fruits, spices, and subtle notes of wood. On
+        the palate, it is medium-bodied, with fresh acidity and soft tannins, giving
+        it a long and balanced finish
+    5:
+      description: White wine from the D.O. Ribeiro, made with native varieties. It
+        stands out for its fresh aromas of white fruits and floral notes. On the palate,
+        it is smooth, light, and has well-integrated acidity. Perfect for pairing
+        with vegetable dishes, salads, and vegan cheeses
+    6:
+      description: White wine from the D.O. Ribeiro, made with Treixadura and other
+        local varieties. It offers fresh and floral aromas, with notes of white fruits
+        and a hint of fresh herbs. On the palate, it is balanced, smooth, and has
+        a pleasant acidity. Perfect for vegetable dishes, rice, and fresh salads
+    9:
+      description: Made primarily with Tempranillo, complemented by Graciano and Mazuelo.
+        It has an intense ruby red color and complex aromas that combine ripe black
+        fruits, spices, and vanilla notes derived from barrel aging. On the palate,
+        it is balanced, with refreshing acidity, soft tannins, and a persistent finish
+    12:
+      description: Red wine from the D.O. Ribeiro, made with Mencía and other native
+        varieties. It has an intense red color, with aromas of black fruits and spices.
+        On the palate, it is fresh, medium-bodied, and has soft tannins, with a fruity
+        and balanced finish
+    10:
+      description: Made primarily with Mencía. It has an intense red color and a complex
+        nose, with aromas of black fruits, spices, and subtle herbal notes. On the
+        palate, it is medium-bodied, with balanced acidity and soft tannins, which
+        give it a slightly fruity and persistent finish
+    15:
+      description: Red wine from the D.O. Ribeira Sacra, made with Mencía grapes grown
+        in vineyards over 30 years old. It has an intense red color with violet hues
+        and aromas of ripe red fruits, with spicy and mineral notes
+    13:
+      description: Red wine from the D.O. Ribeiro, made with Mencía. It has aromas
+        of ripe red fruits, with spicy and herbal hints. On the palate, it is smooth,
+        medium-bodied, with balanced acidity and well-integrated tannins
+  allergen:
+    1:
+      name: Gluten
+    2:
+      name: Egg
+    3:
+      name: Milk
+    4:
+      name: Fish
+    5:
+      name: Shellfish
+    6:
+      name: Soy
+    7:
+      name: Peanut
+    8:
+      name: Celery
+    9:
+      name: Mustard
+    10:
+      name: Sesame
+    11:
+      name: Sulfites
+    12:
+      name: Lupin
+    13:
+      name: Almond
+    14:
+      name: Sugar
+    15:
+      name: Corn
+    16:
+      name: Honey
+    17:
+      name: Spicy
+    18:
+      name: Mushrooms

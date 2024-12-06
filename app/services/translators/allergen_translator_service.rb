@@ -27,6 +27,7 @@ module Translators
       name_translation = yield ask_for_translation(name_system_message, example_name, example_name_response,
                                                    allergen.name)
       save_translation(file_path, file_content, name_translation)
+      Rails.logger.info("Allergen #{allergen.id} translated to #{language}")
     end
 
     private

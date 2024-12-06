@@ -8,33 +8,24 @@ module Translators
     include Dry::Monads[:result, :try]
     include Dry::Monads::Do.for(:call)
 
-    attr_reader :yaml, :dishes, :wines
+    attr_reader :yaml, :dishes, :wines, :allergens
 
     LANGUAGES = ['Español', 'Inglés', 'Francés', 'Alemán', 'Italiano', 'Ruso'].freeze
 
     def call
-      # yield get_yaml_file
-      yield get_items
+      yield fetch_items
       yield process_dishes_translations
       yield process_wines_translations
+      yield process_allergens_translations
       yield reload_i18n_backend
     end
 
     private
 
-    def get_yaml_file
-      file_path = Rails.root.join('..', 'data', 'locales', 'es.yml')
-      if File.exist?(file_path)
-        @yaml = YAML.load_file(file_path)
-        Success('YAML file loaded')
-      else
-        Failure('File not found')
-      end
-    end
-
-    def get_items
+    def fetch_items
       @dishes = Dish.all
       @wines = Wine.all
+      @allergens = Allergen.all
       Success('Items loaded')
     end
 
@@ -50,6 +41,13 @@ module Translators
         NewItemTranslatorService.new(wine).call
       end
       Success('Wines translations processed')
+    end
+
+    def process_allergens_translations
+      allergens.each do |allergen|
+        NewItemTranslatorService.new(allergen).call
+      end
+      Success('Allergens translations processed')
     end
 
     def reload_i18n_backend

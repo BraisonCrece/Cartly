@@ -230,11 +230,11 @@ de:
         frischen Karotten-, Gurken- und Selleriesticks
     10:
       title: Linsenburger mit Süßkartoffel
-      description: Hausgemachter Burger aus Linsen und Süßkartoffel im Vollkornbrötchen,
-        mit Salat, Tomate, karamellisierter Zwiebel und veganer Mayonnaise
+      description: Hausgemachter Burger aus Linsen und Süßkartoffel im Vollkornbrot,
+        mit Salat, Tomate, karamellisierten Zwiebeln und veganer Mayonnaise
     4:
       title: Guacamole mit Bananenchips
-      description: Zermatschte Avocado mit Zwiebel, Koriander, Tomate und einem Hauch
+      description: Zerdrückte Avocado mit Zwiebel, Koriander, Tomate und einem Hauch
         von Zitrone, serviert mit knusprigen Bananenchips
     16:
       title: Hummus mit Rohkost
@@ -242,7 +242,7 @@ de:
         frischen Karotten-, Gurken- und Selleriesticks
     9:
       title: Quinoa-Bowl mit Tofu und geröstetem Gemüse
-      description: Fluffige Quinoa, begleitet von knusprigem Tofu und einer Mischung
+      description: Fluffige Quinoa begleitet von knusprigem Tofu und einer Mischung
         aus geröstetem Gemüse, gewürzt mit einer Tahini-Zitronen-Vinaigrette
     3:
       title: Frühlingsrollen
@@ -258,7 +258,7 @@ de:
         und Basilikumblättern, ideal um den Appetit anzuregen
     23:
       title: Tempeh- und Avocado-Tacos
-      description: Mais-Tortillas gefüllt mit mariniertem Tempeh, Avocado-Stücken,
+      description: Mais-Tortillas gefüllt mit mariniertem Tempeh, Stückchen Avocado,
         roter Zwiebel, frischem Koriander und einer hausgemachten Jalapeño-Sauce
     5:
       title: Pilz- und Walnuss-Pâté
@@ -271,8 +271,9 @@ de:
         Naan
     12:
       title: Apfel-Zimt-Torte
-      description: Vollkornteig gefüllt mit in Zimt und Kokoszucker karamellisierten
-        Apfelscheiben, im Ofen gebacken, bis sie knusprig und goldbraun sind
+      description: Vollkornteig gefüllt mit karamellisierten Apfelscheiben, gewürzt
+        mit Zimt und Kokoszucker, im Ofen gebacken bis sie knusprig und goldbraun
+        sind
     7:
       title: Gemüselasagne
       description: Schichten aus Weizenteig, die mit Zucchini, Auberginen, Spinat
@@ -297,6 +298,145 @@ de:
         wird mit einem Hauch von Butter und frischen Früchten serviert, perfekt um
         den Tag zu beginnen oder als Genuss am Nachmittag. Ein liebevoll genossenes
         Erlebnis
+    14:
+      title: Süßkartoffel- und Kakao-Brownies
+      description: Feuchte Brownies aus Süßkartoffelpüree, Kakaopulver und Mandelmehl,
+        ohne raffinierten Zucker und natürlich süß
+    15:
+      title: Cashew- und Zitronen-Cheesecake
+      description: Basis aus Trockenfrüchten und Datteln, bedeckt mit einer sanften
+        Cashew- und Zitronencreme, ganz ohne Milchprodukte und mit einem erfrischenden
+        Geschmack
+    21:
+      title: Kichererbsen-Spinat-Curry
+      description: Cremiges Curry aus langsam gekochten Kichererbsen mit frischem
+        Spinat, serviert auf einem Bett aus Basmati-Reis und begleitet von veganem
+        Naan
+    18:
+      title: Frühlingsrollen
+      description: Reiswickel gefüllt mit Nudeln, Karotten, Gurken und Koriander,
+        serviert mit Erdnusssauce
+    25:
+      title: Linsenburger mit Süßkartoffel
+      description: Hausgemachter Burger aus Linsen und Süßkartoffel im Vollkornbrot,
+        mit Salat, Tomate, karamellisierten Zwiebeln und veganer Mayonnaise
+    19:
+      title: Guacamole mit Bananenchips
+      description: Zermatschte Avocado mit Zwiebel, Koriander, Tomate und einem Hauch
+        von Zitrone, serviert mit knusprigen Bananenchips
+    20:
+      title: Pilz- und Walnuss-Pâté
+      description: Sahnige Pilz- und Walnusscreme, angereichert mit frischen Kräutern,
+        serviert mit geröstetem Brot oder Crackern
+    22:
+      title: Gemüselasagne
+      description: Schichten aus Weizenteig, abwechselnd mit Zucchini, Auberginen,
+        Spinat und Tomatensauce, überbacken mit einer cremigen Cashew-Bechamelsauce
+    27:
+      title: Apfel-Zimt-Torte
+      description: Vollkornteig gefüllt mit karamellisierten Apfelscheiben, gewürzt
+        mit Zimt und Kokoszucker, im Ofen gebacken, bis sie knusprig und goldbraun
+        sind
+    24:
+      title: Quinoa-Bowl mit Tofu und geröstetem Gemüse
+      description: Fluffige Quinoa begleitet von knusprigem Tofu und einer Mischung
+        aus geröstetem Gemüse, gewürzt mit einer Tahini-Zitronen-Vinaigrette
+    26:
+      title: Schokoladenmousse mit Avocado
+      description: Sanfte und cremige Schokoladenmousse aus Avocado, Kakaopulver und
+        einem Hauch von Agavensirup, serviert mit frischen roten Früchten
+    28:
+      title: Bananeneis mit Erdnussbutter
+      description: Vegetarisches Eis aus gefrorener Banane und Erdnussbutter, cremig
+        und ohne Milchprodukte oder zugesetzten Zucker
+    29:
+      title: Süßkartoffel- und Kakaobrownies
+      description: Feuchte Brownies aus Süßkartoffelpüree, Kakaopulver und Mandelmehl,
+        ohne raffinierten Zucker und natürlich süß
+    30:
+      title: Cashew- und Zitronen-Cheesecake
+      description: Basis aus Trockenfrüchten und Datteln, bedeckt mit einer sanften
+        Cashew- und Zitronencreme, ganz ohne Milchprodukte und mit einem erfrischenden
+        Geschmack
+  wine:
+    1:
+      description: Weißwein aus der D.O. Rías Baixas, hergestellt aus Albariño. Frisch
+        und lebhaft, mit Aromen von Zitrusfrüchten und einem mineralischen Hauch.
+        Perfekt zu Meeresfrüchten und Fisch
+    7:
+      description: Weißwein aus der D.O. Valdeorras, hergestellt aus Godello. Er hat
+        ein komplexes Aroma von weißen Früchten, Zitrusfrüchten und mineralischen
+        Noten. Am Gaumen ist er frisch, strukturiert und mit einer ausgewogenen Säure.
+        Ideal zur Begleitung von Gemüsegerichten, Reis und veganem Käse
+    11:
+      description: Hergestellt hauptsächlich aus Garnacha, ergänzt durch andere einheimische
+        Sorten. Er zeigt eine leuchtend rubinrote Farbe und Aromen von reifen roten
+        Früchten, mit blumigen und würzigen Noten. Am Gaumen ist er frisch, mit mittlerem
+        Körper, ausgewogener Säure und sanften Tanninen, die ihm einen langen und
+        samtigen Abgang verleihen
+    2:
+      description: Weißwein aus der D.O. Rías Baixas, hergestellt aus Albariño. Von
+        großer Frische und Komplexität, mit Aromen von weißen Früchten und kräuterigen
+        Noten. Am Gaumen ist er sanft, ausgewogen und mit guter Säure. Ideal zur Begleitung
+        von Meeresfrüchten und Fischgerichten
+    8:
+      description: Weißwein aus der D.O. Rías Baixas, hergestellt aus Albariño und
+        anderen einheimischen Sorten. Er zeigt frische und fruchtige Aromen mit Noten
+        von Zitrusfrüchten und Gras. Am Gaumen ist er leicht, frisch und mit ausgewogener
+        Säure. Perfekt, um Gemüsegerichte, Pasta, Risottos und vegane Tapas zu begleiten
+    3:
+      description: Weißwein aus der D.O. Rías Baixas, hergestellt aus Albariño. Mit
+        intensiven Aromen von Steinfrüchten und Zitrusfrüchten, mit einem mineralischen
+        Touch. Im Geschmack ist er frisch, samtig und mit einer gut ausgewogenen Säure.
+        Perfekt zu Meeresfrüchten, Fisch und Reisgerichten
+    4:
+      description: Weißwein aus der D.O. Rías Baixas, hergestellt aus Albariño. Er
+        zeigt Aromen von tropischen Früchten, Zitrusfrüchten und einem floralen Hauch.
+        Am Gaumen ist er voll, frisch und hat eine gute Säure, mit einem eleganten
+        Abgang. Ideal zur Begleitung von Meeresfrüchten, frischem Fisch und Reisgerichten
+    14:
+      description: Hergestellt aus Mencía und anderen einheimischen Sorten. Er hat
+        eine intensive rote Farbe und Aromen von schwarzen Früchten, Gewürzen und
+        leichten Holznoten. Am Gaumen ist er von mittlerem Körper, mit frischer Säure
+        und sanften Tanninen, die ihm einen langen und ausgewogenen Abgang verleihen
+    5:
+      description: Weißwein aus der D.O. Ribeiro, hergestellt aus einheimischen Sorten.
+        Er zeichnet sich durch seine frischen Aromen von weißen Früchten und blumigen
+        Noten aus. Am Gaumen ist er sanft, leicht und mit einer gut integrierten Säure.
+        Perfekt, um Gemüsegerichte, Salate und vegane Käsesorten zu begleiten
+    6:
+      description: Weißwein aus der D.O. Ribeiro, hergestellt aus Treixadura und anderen
+        einheimischen Sorten. Er bietet frische und blumige Aromen mit Noten von weißen
+        Früchten und einem Hauch von frischem Gras. Am Gaumen ist er ausgewogen, sanft
+        und mit einer angenehmen Säure. Perfekt zu Gemüsegerichten, Reis und frischen
+        Salaten
+    9:
+      description: Hauptsächlich aus Tempranillo hergestellt, ergänzt durch Graciano
+        und Mazuelo. Er zeigt eine intensive rubinrote Farbe und komplexe Aromen,
+        die reife schwarze Früchte, Gewürze und Vanillenoten, die aus der Reifung
+        im Fass stammen, kombinieren. Am Gaumen ist er ausgewogen, mit erfrischender
+        Säure, sanften Tanninen und einem anhaltenden Abgang
+    12:
+      description: Rotwein aus der D.O. Ribeiro, hergestellt aus Mencía und anderen
+        einheimischen Sorten. Mit intensiver roter Farbe, Aromen von schwarzen Früchten
+        und Gewürzen. Am Gaumen ist er frisch, von mittlerem Körper und sanften Tanninen,
+        mit einem fruchtigen und ausgewogenen Abgang
+    10:
+      description: Hauptsächlich aus Mencía hergestellt. Er hat eine intensive rote
+        Farbe und ein komplexes Bouquet mit Aromen von schwarzen Früchten, Gewürzen
+        und leichten pflanzlichen Noten. Am Gaumen ist er von mittlerem Körper, mit
+        ausgewogener Säure und sanften Tanninen, die ihm einen leicht fruchtigen und
+        anhaltenden Abgang verleihen
+    15:
+      description: Rotwein aus der D.O. Ribeira Sacra, hergestellt aus Mencía-Trauben,
+        die in Weinbergen mit über 30 Jahren Alterung angebaut werden. Er zeigt eine
+        intensive rote Farbe mit violetten Nuancen und Aromen von reifen roten Früchten,
+        mit würzigen und mineralischen Noten
+    13:
+      description: Rotwein aus der D.O. Ribeiro, hergestellt aus Mencía. Er zeigt
+        Aromen von reifen roten Früchten, mit würzigen und krautigen Nuancen. Am Gaumen
+        ist er weich, von mittlerem Körper, mit ausgewogener Säure und gut integrierten
+        Tanninen
   category:
     1:
       name: Vorspeisen
@@ -314,3 +454,40 @@ de:
       name: Weine
   Blancos: Weißweine
   Tintos: Rotweine
+  allergen:
+    1:
+      name: Gluten
+    2:
+      name: Ei
+    3:
+      name: Milch
+    4:
+      name: Fisch
+    5:
+      name: Meeresfrüchte
+    6:
+      name: Soja
+    7:
+      name: Erdnuss
+    8:
+      name: Sellerie
+    9:
+      name: Senf
+    10:
+      name: Sesam
+    11:
+      name: Schwefelverbindungen
+    12:
+      name: Lupinen
+    13:
+      name: Mandeln
+    14:
+      name: Zucker
+    15:
+      name: Mais
+    16:
+      name: Honig
+    17:
+      name: Scharf
+    18:
+      name: Pilze

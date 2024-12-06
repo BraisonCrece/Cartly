@@ -48,5 +48,7 @@ Rails.application.routes.draw do
   namespace :private do
     post 'generate_qr_code', to: 'qr_code#generate', as: :generate_qr_code
   end
+
+  post '/reload_i18n', to: 'translate#reload_i18n'
 end
 # rubocop:enable Metrics/BlockLength
