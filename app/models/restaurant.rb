@@ -15,4 +15,5 @@ class Restaurant < ApplicationRecord
   has_many :wines, dependent: :destroy
   has_many :wine_origin_denominations, dependent: :destroy
   has_one :setting, dependent: :destroy
+  has_one_attached :logo
 end

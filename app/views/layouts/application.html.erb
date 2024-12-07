@@ -28,9 +28,9 @@
     <main class="flex justify-center w-full mb-4">
       <%= yield %>
       <%= render "shared/locale_switch" %>
-      <%= render "shared/card_menu_switch" %>
+      <%= render "shared/card_menu_switch" if active_products?(params[:restaurant_id]) %>
     </main>
 
-    <%= render "shared/info" %>
+    <%= render "shared/footer" %>
   </body>
 </html>

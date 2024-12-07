@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_09_151709) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_07_111029) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension "pg_catalog.plpgsql"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -109,8 +109,6 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_09_151709) do
     t.boolean "show_toggler", default: true
     t.string "root_page", default: "index"
     t.decimal "menu_price", default: "12.5"
-    t.string "phone_number", default: "986 07 16 61"
-    t.string "mobile", default: "635 44 00 68"
     t.boolean "locale_toggler", default: false
     t.bigint "restaurant_id"
     t.index ["restaurant_id"], name: "index_settings_on_restaurant_id"

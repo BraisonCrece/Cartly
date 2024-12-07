@@ -33,12 +33,15 @@ Rails.application.routes.draw do
   get '/control_panel/dishes', to: 'control_panel#dishes', as: :dishes_control_panel
   get '/control_panel/wines', to: 'control_panel#wines', as: :wines_control_panel
   post 'toggle_active', to: 'control_panel#toggle_active', as: :toggle_active
-  # --- modify this
   post 'toggle_special_menu/:special_menu_id', to: 'special_menus#toggle_active', as: :toggle_special_menu
 
   # Settings
   get 'settings', to: 'settings#edit'
   resources :settings, only: :update
+
+  # Profile
+  get 'profile', to: 'restaurants/profile#edit'
+  patch 'profile', to: 'restaurants/profile#update'
 
   # Other actions routes
   post 'translate', to: 'translate#translate'

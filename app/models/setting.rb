@@ -26,14 +26,6 @@ class Setting < ApplicationRecord
     for_restaurant_id(restaurant_id).menu_price
   end
 
-  def self.phone_number(restaurant_id)
-    for_restaurant_id(restaurant_id).phone_number
-  end
-
-  def self.mobile(restaurant_id)
-    for_restaurant_id(restaurant_id).mobile
-  end
-
   def self.create_for_restaurant_id(restaurant_id)
     create(
       restaurant_id: restaurant_id,
@@ -41,9 +33,7 @@ class Setting < ApplicationRecord
       show_toggler: true,
       locale_toggler: true,
       use_menu_path: false,
-      menu_price: 12.5,
-      phone_number: nil,
-      mobile: nil
+      menu_price: 12.5
     )
   end
 end

@@ -10,6 +10,7 @@
 
     <hr class="w-[80%] my-6">
 
+    <%= link_to "Perfil", profile_path, class: blue_light_link_classes %>
     <%= link_to "Configuracións", settings_path, class: blue_light_link_classes %>
     <%= link_to "Ver carta", carta_path(restaurant_id: current_restaurant.id), class: blue_light_link_classes %>
     <%= button_to "Descargar QR", private_generate_qr_code_path, data: { turbo: false }, method: :post, class: blue_light_link_classes %>
