@@ -6,13 +6,15 @@ Rails.application.routes.draw do
   root 'landing#index'
 
   # Auth
-  devise_for :restaurants,
-             path: 'admin',
-             path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' },
-             controllers: {
-               sessions: 'restaurants/sessions',
-               registrations: 'restaurants/registrations',
-             }
+  unless defined?(::Rake::SprocketsTask)
+    devise_for :restaurants,
+              path: 'admin',
+              path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' },
+              controllers: {
+                sessions: 'restaurants/sessions',
+                registrations: 'restaurants/registrations',
+              }
+  end
 
   # Model CRUDs
   resources :allergens
