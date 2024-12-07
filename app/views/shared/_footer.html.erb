@@ -1,9 +1,5 @@
-<% if active_products?(params[:restaurant_id]) %>
+<% if products?(params[:restaurant_id]) %>
     <%= render "shared/info" %>
-    <footer role="contentinfo" class="flex items-center justify-center max-w-2xl gap-2 mt-10 italic font-thin prose text-emerald-900 dark:text-emerald-200">
-        <%= image_tag "info.svg", class: "w-6", alt: "Icona de información", aria_hidden:"true" %>
-        <%= translate("IVA", "Todos os prezos levan o IVE incluído") %>
-    </footer>
 <% else %>
     <% if params[:restaurant_id]  %>
         <div class="border rounded-md p-4 flex max-w-md w-[80%] mx-auto">
@@ -12,7 +8,7 @@
                 <p class="text-lg font-light italic prose-rose text-balance"> <%= translate("info.no_products", "Non hai produtos activos, volve máis tarde") %> </p>
             </div>
         </div>
-    <% elsif request.path.include?('control_panel') %>
+    <% elsif request.path.include?('control_panel') && !products?(current_restaurant.id, active: false) %>
         <div class="text-center">
             <p class="text-lg font-light italic">Comeza a engadir productos á carta!</p>
             <%= link_to "Engadir plato", new_dish_path, class: "text-blue-600 hover:text-blue-800" %>

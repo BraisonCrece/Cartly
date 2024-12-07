@@ -16,4 +16,14 @@ class Restaurant < ApplicationRecord
   has_many :wine_origin_denominations, dependent: :destroy
   has_one :setting, dependent: :destroy
   has_one_attached :logo
+
+  def full_address
+    "#{address}, #{city}, #{province}"
+  end
+
+  def google_maps_link
+    base_url = 'https://www.google.com/maps/search/?api=1'
+    query = "#{name}, #{full_address}"
+    "#{base_url}&query=#{CGI.escape(query)}"
+  end
 end

@@ -10,8 +10,18 @@
             <%= f.text_field :name, class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800", placeholder: "Restaurante Delicias" %>
         </div>
         <div class="mb-2">
+            <%= f.label :province, 'Provincia', class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>
+            <%= f.select :province, options_for_select(provinces, @restaurant.province),
+                        { prompt: "Selecciona provincia" },
+                         class: "border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800" %>
+        </div>
+        <div class="mb-2">
+            <%= f.label :city, 'Cidade', class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>
+            <%= f.text_field :city, class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800", placeholder: "Avenida do sabor, n7" %>
+        </div>
+        <div class="mb-2">
             <%= f.label :address, 'Dirección', class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>
-            <%= f.text_field :address, class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800", placeholder: "Avenida do sabor, n7" %>
+            <%= f.text_field :address, class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800", placeholder: "Avenida do sabor, 7, baixo" %>
         </div>
         <div class="mb-2">
             <%= f.label :phone, 'Teléfono', class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>

@@ -20,6 +20,7 @@ class DishesController < ApplicationController
   end
 
   def menu
+    @restaurant = Restaurant.find_by(id: params[:restaurant_id])
     @categorized_dishes = Dish.menu_categorized_dishes(params[:restaurant_id])
     @menu_categories = Category.daily
   end

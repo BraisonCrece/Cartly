@@ -13,3 +13,16 @@
 *= require_tree .
 *= require_self
 */
+
+@font-face {
+    font-family: "PlayFair";
+    src: url("../fonts/PlayfairDisplay-VariableFont_wght.ttf") format("ttf"),
+        url("../fonts/PlayfairDisplay-Italic-VariableFont_wght.ttf") format("ttf");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+.playfare {
+    font-family: "Playfair", serif;
+}

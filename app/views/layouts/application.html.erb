@@ -16,7 +16,7 @@
     <%= yield :head %>
   </head>
 
-  <body class="flex flex-col justify-center w-auto h-full mt-0 transition-colors duration-500 bg-white main-content dark:bg-gray-800 dark:text-white">
+  <body class="flex flex-col justify-center w-auto h-full mt-0 pb-20 transition-colors duration-500 bg-white main-content dark:bg-gray-800 dark:text-white">
     <div class="flex justify-center">
       <%= render "shared/flash" %>
     </div>
@@ -28,7 +28,7 @@
     <main class="flex justify-center w-full mb-4">
       <%= yield %>
       <%= render "shared/locale_switch" %>
-      <%= render "shared/card_menu_switch" if active_products?(params[:restaurant_id]) %>
+      <%= render "shared/card_menu_switch" if products?(params[:restaurant_id]) %>
     </main>
 
     <%= render "shared/footer" %>

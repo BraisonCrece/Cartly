@@ -1,7 +1,7 @@
 <% @menu_categories.each do |category| %>
   <% dishes = @categorized_dishes[category.id] %>
   <% next if dishes.blank? %>
-  <h2 class="px-4 pb-4 text-3xl font-semibold text-center text-teal-700" id="category-<%= category.id %>"><%= translate("category.#{category.id}.name",category.name) %></h2>
+  <h2 class="px-4 pb-4 text-3xl font-semibold text-center text-brand-comp-dark dark:text-brand-comp" id="category-<%= category.id %>"><%= translate("category.#{category.id}.name",category.name) %></h2>
   <% dishes.each do |dish| %>
     <%= turbo_stream_from dish %>
 

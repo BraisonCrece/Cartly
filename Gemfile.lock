@@ -111,6 +111,8 @@ GEM
     capybara-screenshot (1.0.26)
       capybara (>= 1.0, < 4)
       launchy
+    carmen (1.1.3)
+      activesupport (>= 3.0.0)
     childprocess (5.1.0)
       logger (~> 1.5)
     chunky_png (1.4.0)
@@ -420,6 +422,7 @@ DEPENDENCIES
   bootsnap
   capybara
   capybara-screenshot
+  carmen
   colorize
   debug
   devise

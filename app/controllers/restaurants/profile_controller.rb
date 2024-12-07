@@ -18,7 +18,7 @@ module Restaurants
     private
 
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :phone, :logo)
+      params.require(:restaurant).permit(:name, :address, :phone, :province, :city, :logo)
     end
   end
 end

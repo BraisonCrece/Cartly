@@ -6,6 +6,7 @@ ruby '3.3.5'
 
 gem 'base64'
 gem 'bootsnap', require: false
+gem 'carmen'
 gem 'colorize'
 gem 'devise'
 gem 'dotenv-rails'
