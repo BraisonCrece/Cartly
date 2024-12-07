@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 ruby '3.3.5'
 
+gem 'aws-sdk-s3', '~> 1.176', require: false
 gem 'base64'
 gem 'bootsnap', require: false
 gem 'carmen'
@@ -11,6 +12,7 @@ gem 'colorize'
 gem 'devise'
 gem 'dotenv-rails'
 gem 'dry-monads'
+gem 'faker', '~> 3.1'
 gem 'htmlbeautifier'
 gem 'httparty'
 gem 'image_processing'
@@ -38,7 +40,6 @@ group :development, :test do
   gem 'capybara-screenshot'
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails', '~> 6.2'
-  gem 'faker', '~> 3.1'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', require: false
   gem 'selenium-webdriver'
@@ -49,7 +50,3 @@ end
 group :development do
   gem 'web-console'
 end
-
-gem "dockerfile-rails", ">= 1.6", :group => :development
-
-gem "aws-sdk-s3", "~> 1.176", :require => false

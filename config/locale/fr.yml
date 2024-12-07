@@ -1,5 +1,11 @@
 ---
 fr:
+  info:
+    title: "Le menu du jour comprend"
+    starter: "Entrée"
+    main: "Plat principal"
+    water_bread: "Pain et Eau"
+    dessert_or_coffee: "Dessert ou Café"
   activerecord:
     errors:
       messages:
@@ -221,43 +227,42 @@ fr:
     pm: pm
   dish:
     1:
-      title: Hummus avec des crudités
+      title: Hummus avec crudités
       description: Crème de pois chiches au citron, tahini et ail, accompagnée de
         bâtonnets de carotte, concombre et céleri frais
     10:
-      title: Hamburger de lentilles avec patate douce
+      title: Burger de lentilles avec patate douce
       description: Hamburger maison de lentilles et de patate douce dans un pain complet,
-        avec de la laitue, de la tomate, des oignons caramélisés et de la mayonnaise
-        vegan
+        avec laitue, tomate, oignon caramélisé et mayonnaise vegan
     4:
       title: Guacamole avec des chips de banane
       description: Avocat écrasé avec oignon, coriandre, tomate et une touche de citron,
         accompagné de chips croustillantes de banane
     16:
-      title: Hummus avec des crudités
-      description: Crème de pois chiches au citron, tahini et ail, accompagnée de
-        bâtonnets de carotte, concombre et céleri frais
+      title: Crème de potiron au gingembre
+      description: Crème douce de potiron avec une touche de gingembre frais, d'huile
+        de coco et de graines de courge grillées
     9:
       title: Bol de quinoa avec tofu et légumes rôtis
       description: Quinoa moelleuse accompagnée de tofu croustillant et d'un mélange
         de légumes rôtis, assaisonnée d'une vinaigrette au tahini et au citron
     3:
       title: Rouleaux de printemps
-      description: Wraps de riz farcis de vermicelles, carottes, concombre et coriandre,
+      description: Wraps de riz farcis de nouilles, carottes, concombre et coriandre,
         servis avec une sauce aux cacahuètes
     11:
-      title: Mousse au chocolat avec avocat
+      title: Mousse au chocolat à l'avocat
       description: Mousse au chocolat douce et crémeuse faite avec de l'avocat, de
         la poudre de cacao et une touche de sirop d'agave, servie avec des fruits
         rouges frais
     2:
-      title: Bruschettas à la tomate et au basilic
+      title: Bruschettas de tomate et basilic
       description: Tranches de pain grillé avec tomate fraîche, ail, huile d'olive
         et feuilles de basilic, idéales pour ouvrir l'appétit
     23:
-      title: Tacos de tempeh et avocat
-      description: Tortillas de maïs farcies de tempeh mariné, morceaux d'avocat,
-        oignon rouge, coriandre frais et une sauce maison de jalapeños
+      title: Hamburger de betterave et avoine
+      description: Hamburger végétal accompagnée de patates douces rôties et d'alioli
+        végétalien
     5:
       title: Pâté de champignons et noix
       description: Crème douce de champignons et de noix, enrichie d'herbes fraîches,
@@ -268,21 +273,22 @@ fr:
         frais, servi sur un lit de riz basmati et accompagné de naan végan
     12:
       title: Tarte aux pommes et à la cannelle
-      description: Pâte intégrale farcie de rondelles de pomme caramélisées avec de
-        la cannelle et du sucre de coco, cuite au four jusqu'à ce qu'elle soit croustillante
-        et dorée
+      description: Pâte intégrale farcie de rondelles de pomme caramélisées à la cannelle
+        et au sucre de coco, cuite au four jusqu'à ce qu'elle soit croustillante et
+        dorée
     7:
       title: Lasagne de légumes
       description: Couches de pâte de blé entrecoupées de courgette, d'aubergine,
-        d'épinards et de sauce tomate, gratinées avec une crémeuse béchamel de cajou
+        d'épinards et de sauce tomate, gratinées avec une crémeuse béchamel de noix
+        de cajou
     8:
       title: Tacos de tempeh et avocat
       description: Tortillas de maïs farcies de tempeh mariné, morceaux d'avocat,
-        oignon rouge, coriandre fraîche et une sauce maison de jalapeños
+        oignon rouge, coriandre frais et une sauce maison de jalapeños
     17:
-      title: Bruschettas à la tomate et au basilic
-      description: Tranches de pain grillé avec tomate fraîche, ail, huile d'olive
-        et feuilles de basilic, idéales pour ouvrir l'appétit
+      title: Salade de quinoa et d'épinards
+      description: Mélange léger de quinoa, épinards frais, grenade, noix et avocat
+        avec une vinaigrette au citron
     13:
       title: Glace à la banane et au beurre de cacahuète
       description: Glace végétalienne à base de banane congelée et de beurre de cacahuète,
@@ -304,49 +310,45 @@ fr:
         de noix de cajou et de citron, le tout sans produits laitiers et avec une
         saveur rafraîchissante
     21:
-      title: Curry de pois chiches et épinards
-      description: Curry crémeux de pois chiches cuits lentement avec des épinards
-        frais, servi sur un lit de riz basmati et accompagné de naan végan
+      title: Boulettes de lentilles dans une sauce tomate
+      description: Boulettes végétales faites avec des lentilles, servies avec du
+        riz basmati et une touche de persil
     18:
-      title: Rouleaux de printemps
-      description: Wraps de riz farcis de nouilles, carotte, concombre et coriandre,
-        servis avec une sauce aux cacahuètes
+      title: Hummus tricolore
+      description: 'Trois variétés de houmous : traditionnel, betterave et curcuma,
+        servis avec des bâtonnets de carotte, de concombre et du pain pita'
     25:
-      title: Burger de lentilles avec patate douce
-      description: Hamburger maison de lentilles et de patate douce dans un pain complet,
-        avec de la laitue, des tomates, des oignons caramélisés et de la mayonnaise
-        vegan
+      title: Lasagne d'aubergines aux épinards et ricotta de tofu
+      description: Couches d'aubergine avec épinards et ricotta de tofu, recouvertes
+        de béchamel végétalienne dorée au four
     19:
-      title: Guacamole avec des chips de banane
-      description: Avocat écrasé avec oignon, coriandre, tomate et une touche de citron,
-        accompagné de chips croustillantes de banane
+      title: Soupe miso avec tofu et algues wakame
+      description: Soupe japonaise traditionnelle avec tofu, algues, champignons et
+        nouilles de riz
     20:
-      title: Pâté de champignons et noix
-      description: Crème douce de champignons et de noix, enrichie d'herbes fraîches,
-        servie avec du pain grillé ou des crackers
+      title: Légumes grillés avec romesco maison
+      description: Aubergine, courgette, poivrons et asperges avec une délicieuse
+        sauce romesco
     22:
-      title: Lasagne de légumes
-      description: Couches de pâte de blé entrecoupées de courgette, d'aubergine,
-        d'épinards et de sauce tomate, gratinées avec une crémeuse béchamel de noix
-        de cajou
+      title: Curry de pois chiches et coco
+      description: Plat crémeux au curry avec chou-fleur, épinards frais et lait de
+        coco, accompagné de riz blanc
     27:
-      title: Tarte aux pommes et à la cannelle
-      description: Pâte intégrale farcie de rondelles de pomme caramélisées à la cannelle
-        et au sucre de coco, cuite au four jusqu'à ce qu'elle soit croustillante et
-        dorée
+      title: Gâteau de fromage végétal aux fruits rouges
+      description: Base de dattes et d'amandes avec une crème de fromage végétal,
+        garnie de framboises et de fraises fraîches
     24:
-      title: Bol de quinoa avec tofu et légumes rôtis
-      description: Quinoa moelleuse accompagnée de tofu croustillant et d'un mélange
-        de légumes rôtis, assaisonnée d'une vinaigrette au tahini et au citron
+      title: Tacos de jacquier style "pulled pork"
+      description: Tacos garnis de jackfruit effiloché, pico de gallo, guacamole et
+        salsa chipotle
     26:
-      title: Mousse au chocolat avec avocat
-      description: Mousse au chocolat douce et crémeuse faite avec de l'avocat, de
-        la poudre de cacao et une touche de sirop d'agave, servie avec des fruits
-        rouges frais
+      title: Brownie végétalien au chocolat et aux noix
+      description: Brownie moelleux au chocolat avec des noix, accompagné de glace
+        végétale à la vanille
     28:
-      title: Glace à la banane et au beurre de cacahuète
-      description: Glace végétalienne à base de banane congelée et de beurre de cacahuète,
-        crémeuse et sans produits laitiers ni sucres ajoutés
+      title: Pudding de chia au lait de coco et à la mangue
+      description: Pudding de chia au lait de coco, garni de morceaux de mangue fraîche
+        et de noix de coco râpée
     29:
       title: Brownies de patate douce et cacao
       description: Brownies moelleux faits avec de la purée de patate douce, du cacao
@@ -374,22 +376,22 @@ fr:
   Tintos: Vins Rouges
   wine:
     7:
-      description: Vin blanc de l'A.O.C. Valdeorras, élaboré avec Godello. Il a un
-        arôme complexe de fruits blancs, d'agrumes et de notes minérales. En bouche,
+      description: Vin blanc de l'A.O.C. Valdeorras, élaboré avec du Godello. Il a
+        un arôme complexe de fruits blancs, d'agrumes et de notes minérales. En bouche,
         il est frais, structuré et avec une acidité équilibrée. Idéal pour accompagner
         des plats végétaux, des risottos et des fromages véganes
     1:
       description: Vin blanc de l'A.O.C. Rías Baixas, élaboré avec Albariño. Frais
-        et vibrant, avec des arômes de fruits citriques et une touche minérale. Parfait
+        et vibrant, avec des arômes de fruits d'agrumes et une touche minérale. Parfait
         pour les fruits de mer et les poissons
     11:
       description: Élaboré principalement avec de la Garnacha, complétée par d'autres
         variétés autochtones. Il présente une couleur rouge rubis brillante et des
         arômes de fruits rouges mûrs, avec des notes florales et épicées. En bouche,
         il est frais, de corps moyen, avec une acidité équilibrée et des tanins doux,
-        qui lui confèrent une finale longue et soyeuse
+        ce qui lui confère une finale longue et soyeuse
     2:
-      description: Vin blanc de l'A.O.P. Rías Baixas, élaboré avec de l'Albariño.
+      description: Vin blanc de l'A.O.C. Rías Baixas, élaboré avec de l'Albariño.
         D'une grande fraîcheur et complexité, avec des arômes de fruits blancs et
         des notes herbacées. En bouche, il est doux, équilibré et avec une bonne acidité.
         Idéal pour accompagner des plats de fruits de mer et de poissons
@@ -400,12 +402,12 @@ fr:
         équilibrée. Parfait pour accompagner des plats végétaux, des pâtes, des risottos
         et des tapas véganes
     3:
-      description: Vin blanc de l'A.O.C. Rías Baixas, élaboré avec Albariño. Des arômes
+      description: Vin blanc de l'A.O.P. Rías Baixas, élaboré avec Albariño. Des arômes
         intenses de fruits à chair et d'agrumes, avec une touche minérale. En bouche,
         il est frais, onctueux et avec une acidité bien équilibrée. Parfait pour les
         fruits de mer, les poissons et les risottos
     4:
-      description: Vin blanc de l'A.O.C. Rías Baixas, élaboré avec Albariño. Il présente
+      description: Vin blanc de l'A.O.P. Rías Baixas, élaboré avec Albariño. Il présente
         des arômes de fruits tropicaux, d'agrumes et une touche florale. En bouche,
         il est ample, frais et d'une bonne acidité, avec une finale élégante. Idéal
         pour accompagner les fruits de mer, le poisson frais et les plats de riz
@@ -429,7 +431,7 @@ fr:
       description: Élaboré principalement avec du Tempranillo, complété par du Graciano
         et du Mazuelo. Il présente une couleur rouge rubis intense et des arômes complexes
         qui combinent des fruits noirs mûrs, des épices et des notes de vanille dérivées
-        de l'élevage en fût. En bouche, il est équilibré, avec une acidité rafraîchissante,
+        du vieillissement en fût. En bouche, il est équilibré, avec une acidité rafraîchissante,
         des tanins doux et une finale persistante
     12:
       description: Vin rouge de l'A.O.C. Ribeiro, élaboré avec de la Mencía et d'autres
@@ -439,13 +441,13 @@ fr:
     10:
       description: Élaboré principalement avec du Mencía. Il a une couleur rouge intense
         et un nez complexe, avec des arômes de fruits noirs, d'épices et de légères
-        notes herbacées. En bouche, il est de corps moyen, avec une acidité équilibrée
+        touches herbacées. En bouche, il est de corps moyen, avec une acidité équilibrée
         et des tanins doux, qui lui confèrent une finale légèrement fruitée et persistante
     15:
       description: Vin rouge de l'A.O.C. Ribeira Sacra, élaboré avec des raisins de
-        Mencía cultivés dans des vignobles de plus de 30 ans d'âge. Il présente une
-        couleur rouge intense avec des reflets violacés et des arômes de fruits rouges
-        mûrs, avec des notes épicées et minérales
+        Mencía cultivés dans des vignobles de plus de 30 ans. Il présente une couleur
+        rouge intense avec des nuances violacées et des arômes de fruits rouges mûrs,
+        avec des notes épicées et minérales
     13:
       description: Vin rouge de l'A.O.C. Ribeiro, élaboré avec du Mencía. Il présente
         des arômes de fruits rouges mûrs, avec des touches épicées et herbacées. En
@@ -475,7 +477,7 @@ fr:
     11:
       name: Sulfites
     12:
-      name: Lupin
+      name: Lupins
     13:
       name: Amande
     14:

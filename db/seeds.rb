@@ -7,6 +7,7 @@ require 'colorize'
 # DATA
 ################################################################################
 
+## MENU
 # Dishes
 starter_dish_image_map = {
   'Hummus con crudités' => 'hummus',
@@ -80,6 +81,66 @@ desserts_descriptions = [
   'Base de froitos secos e dátiles, cuberta cunha crema suave de anacardos e limón, todo sen produtos lácteos e cun
   sabor refrescante.',
 ]
+
+## DAILY
+# Starters
+daily_starter_dishes_names = [
+  'Crema de cabaza con xenxibre', 'Ensalada de quinoa e espinacas', 'Hummus tricolor', 'Sopa miso con tofu e algas wakame', 'Verduras á prancha con romesco caseiro'
+]
+
+daily_starter_dishes_descriptions = [
+  'Crema suave de cabaza cun toque de xenxibre fresco, aceite de coco e sementes de cabaza tostadas.',
+  'Mistura lixeira de quinoa, espinacas frescas, granada, noces e aguacate cun aliño de limón.',
+  'Tres variedades de hummus: tradicional, remolacha e cúrcuma, servidos con bastóns de cenoria, cogombro e pan pita.',
+  'Sopa tradicional xaponesa con tofu, algas, cogomelos e fideos de arroz.',
+  'Berenxena, cabaciña, pementos e espárragos cunha deliciosa salsa romesco.'
+]
+
+daily_starter_dish_images_map = {
+  'Crema de cabaza con xenxibre' => 'calabaza',
+  'Ensalada de quinoa e espinacas' => 'quinoa_esp',
+  'Hummus tricolor' => 'hummus_tri',
+  'Sopa miso con tofu e algas wakame' => 'miso',
+  'Verduras á prancha con romesco caseiro' => 'verduras'
+}
+
+# Main dishes
+daily_main_dish_names = [
+  'Albóndigas de lentellas en salsa de tomate', 'Curry de garavanzos e coco', 'Hamburguesa de remolacha e avea', 'Tacos de jackfruit estilo "pulled pork"', 'Lasaña de berenxena con espinacas e tofu ricotta'
+]
+
+daily_main_dish_descriptions = [
+  'Albóndigas vexetais feitas con lentellas, servidas con arroz basmati e un toque de perexil.',
+  'Prato cremoso de curry con coliflor, espinacas frescas e leite de coco, acompañado de arroz branco.',
+  'Hamburguesa vexetal acompañada de boniatos ao forno e alioli vexano.',
+  'Tacos recheos de jackfruit desfiado, pico de galiño, guacamole e salsa chipotle.',
+  'Capas de berenxena con espinacas e ricotta de tofu, cubertas con bechamel vexano dourado ao forno.'
+]
+
+daily_main_dish_images_map = {
+  'Albóndigas de lentellas en salsa de tomate' => 'albondigas',
+  'Curry de garavanzos e coco' => 'curry_coco',
+  'Hamburguesa de remolacha e avea' => 'burguer_remo',
+  'Tacos de jackfruit estilo "pulled pork"' => 'tacos',
+  'Lasaña de berenxena con espinacas e tofu ricotta' => 'lasana_day'
+}
+
+# Desserts
+daily_dessert_names = [
+  'Brownie vexano de chocolate e noces', 'Torta de queixo vexana con froitos vermellos', 'Chía pudding con leite de coco e mango'
+]
+
+daily_dessert_descriptions = [
+  'Brownie húmido de chocolate con noces, acompañado de xeado vexano de vainilla.',
+  'Base de dátiles e améndoas con crema de queixo vexana, cuberta de framboesas e amorodos frescos.',
+  'Pudding de chía con leite de coco, cuberto de anacos de mango fresco e coco relado.'
+]
+
+daily_dessert_images_map = {
+  'Brownie vexano de chocolate e noces' => 'brownie_nueces',
+  'Torta de queixo vexana con froitos vermellos' => 'tarta_frutos',
+  'Chía pudding con leite de coco e mango' => 'chia_pudding'
+}
 
 # Wines
 white_denominations_wines_names_map = {
@@ -246,13 +307,27 @@ end
 print_header('Seeding Database')
 print_header('Creating Test Restaurant')
 
+restaurant_logo_image_path = Rails.root.join('app', 'assets', 'images', 'seeds', 'restaurant_logo.png')
+
 restaurant = Restaurant.create!(
   email: 'test@test.com',
   password: 'Abc123..',
-  name: 'Test Restaurant',
-  address: '123 Test St, Test City, Test Country',
-  phone: '+34 666 66 66 66'
+  name: 'Taberna Navegación',
+  address: 'Travesía da Igrexa, 6',
+  city: 'A Estrada',
+  province: 'Pontevedra',
+  phone: '654321098'
 )
+
+if File.exist?(restaurant_logo_image_path)
+  restaurant.logo.attach(
+    io: File.open(restaurant_logo_image_path),
+    filename: 'restaurant_logo.png',
+    content_type: 'image/png'
+  )
+else
+  print_info('Warning: Restaurant logo not found')
+end
 
 if restaurant.persisted?
   print_info("Created test restaurant: #{restaurant.email}")
@@ -285,9 +360,9 @@ create_dishes(starter_dishes_names, starter_dishes_description, starter_dish_ima
 create_dishes(main_dish_names, main_dish_descriptions, main_dishes_image_map, '🍽️ Platos 🍽️', restaurant)
 create_dishes(dessert_names, desserts_descriptions, desserts_image_map, '🍰 Postres 🍰', restaurant)
 
-create_dishes(starter_dishes_names, starter_dishes_description, starter_dish_image_map, 'Primeiros', restaurant)
-create_dishes(main_dish_names, main_dish_descriptions, main_dishes_image_map, 'Segundos', restaurant)
-create_dishes(dessert_names, desserts_descriptions, desserts_image_map, 'Postres', restaurant)
+create_dishes(daily_starter_dishes_names, daily_starter_dishes_descriptions, daily_starter_dish_images_map, 'Primeiros', restaurant)
+create_dishes(daily_main_dish_names, daily_main_dish_descriptions, daily_main_dish_images_map, 'Segundos', restaurant)
+create_dishes(daily_dessert_names, daily_dessert_descriptions, daily_dessert_images_map, 'Postres', restaurant)
 
 print_header('Creating Wines')
 

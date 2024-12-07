@@ -32,7 +32,7 @@ class Dish < ApplicationRecord
   def self.daily_menu(restaurant_id:, query: nil)
     scope = where(restaurant_id:)
             .joins(:category)
-            .where(categories: { category_type: 'daily', restaurant_id: })
+            .where(categories: { category_type: 'daily' }, restaurant_id:)
             .order('dishes.active DESC, dishes.title ASC')
 
     scope = scope.where('dishes.title ILIKE ?', "%#{query}%") if query.present?
@@ -40,10 +40,10 @@ class Dish < ApplicationRecord
     scope.load_async
   end
 
-  def self.not_daily_menu(restaurant_id:, query: nil)
+  def self.menu(restaurant_id:, query: nil)
     scope = where(restaurant_id:)
             .joins(:category)
-            .where.not(categories: { category_type: 'daily', restaurant_id: })
+            .where(categories: { category_type: 'menu' }, restaurant_id:)
             .order('dishes.active DESC, dishes.title ASC')
 
     scope = scope.where('dishes.title ILIKE ?', "%#{query}%") if query.present?

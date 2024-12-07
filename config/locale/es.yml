@@ -1,5 +1,11 @@
 ---
 es:
+  info:
+    title: "El menú del día incluye"
+    starter: "Primer plato"
+    main: "Segundo plato"
+    water_bread: "Pan y Agua"
+    dessert_or_coffee: "Postre o Café"
   activerecord:
     errors:
       messages:
@@ -233,13 +239,13 @@ es:
       description: Aguacate triturado con cebolla, cilantro, tomate y un toque de
         limón, acompañado de chips crujientes de plátano
     16:
-      title: Hummus con crudités
-      description: Crema de garbanzos con limón, tahini y ajo, acompañada de palitos
-        de zanahoria, pepino y apio frescos
+      title: Crema de calabaza con jengibre
+      description: Crema suave de calabaza con un toque de jengibre fresco, aceite
+        de coco y semillas de calabaza tostadas
     9:
       title: Bol de quinoa con tofu y verduras asadas
-      description: Quinoa esponjosa acompañada de tofu crujiente y una mezcla de vegetales
-        asados, aderezada con una vinagreta de tahini y limón
+      description: Quinoa esponjosa acompañada de tofu crujiente y una mezcla de verduras
+        asadas, aderezada con una vinagreta de tahini y limón
     3:
       title: Rollitos de primavera
       description: Envolturas de arroz rellenas de fideos, zanahoria, pepino y cilantro,
@@ -253,16 +259,15 @@ es:
       description: Rodajas de pan tostado con tomate fresco, ajo, aceite de oliva
         y hojas de albahaca, ideal para abrir el apetito
     23:
-      title: Tacos de tempeh y aguacate
-      description: Tortillas de maíz rellenas con tempeh marinado, trozos de aguacate,
-        cebolla morada, cilantro fresco y una salsa casera de jalapeños
+      title: Hamburguesa de remolacha y avena
+      description: Hamburguesa vegetal acompañada de boniatos al horno y alioli vegano
     5:
       title: Paté de champiñones y nueces
       description: Crema suave de champiñones y nueces, enriquecida con hierbas frescas,
         servida con pan tostado o crackers
     6:
       title: Curry de garbanzos y espinacas
-      description: Crema de curry de garbanzos cocidos a fuego lento con espinacas
+      description: Cremoso curry de garbanzos cocidos a fuego lento con espinacas
         frescas, servido sobre una cama de arroz basmati y acompañado de naan vegano
     12:
       title: Tarta de manzana y canela
@@ -277,9 +282,9 @@ es:
       description: Tortillas de maíz rellenas con tempeh marinado, trozos de aguacate,
         cebolla morada, cilantro fresco y una salsa casera de jalapeños
     17:
-      title: Bruschettas de tomate y albahaca
-      description: Rodajas de pan tostado con tomate fresco, ajo, aceite de oliva
-        y hojas de albahaca, ideal para abrir el apetito
+      title: Ensalada de quinoa y espinacas
+      description: Mezcla ligera de quinoa, espinacas frescas, granada, nueces y aguacate
+        con un aliño de limón
     13:
       title: Helado de plátano y mantequilla de cacahuete
       description: Helado vegetariano elaborado a base de plátano congelado y mantequilla
@@ -300,45 +305,45 @@ es:
       description: Base de frutos secos y dátiles, cubierta con una crema suave de
         anacardos y limón, todo sin productos lácteos y con un sabor refrescante
     21:
-      title: Curry de garbanzos y espinacas
-      description: Cremoso curry de garbanzos cocidos a fuego lento con espinacas
-        frescas, servido sobre una cama de arroz basmati y acompañado de naan vegano
+      title: Albóndigas de lentejas en salsa de tomate
+      description: Albóndigas vegetales hechas con lentejas, servidas con arroz basmati
+        y un toque de perejil
     18:
-      title: Rollitos de primavera
-      description: Envolturas de arroz rellenas de fideos, zanahoria, pepino y cilantro,
-        servidas con salsa de cacahuete
+      title: Hummus tricolor
+      description: 'Tres variedades de hummus: tradicional, remolacha y cúrcuma, servidos
+        con palitos de zanahoria, pepino y pan pita'
     25:
-      title: Hamburguesa de lentejas con batata
-      description: Hamburguesa casera de lentejas y batata en pan integral, con lechuga,
-        tomate, cebolla caramelizada y mayonesa vegana
+      title: Lasaña de berenjena con espinacas y tofu ricotta
+      description: Capas de berenjena con espinacas y ricotta de tofu, cubiertas con
+        bechamel vegana dorada al horno
     19:
-      title: Guacamole con chips de plátano
-      description: Aguacate triturado con cebolla, cilantro, tomate y un toque de
-        limón, acompañado de chips crujientes de plátano
+      title: Sopa miso con tofu y algas wakame
+      description: Sopa tradicional japonesa con tofu, algas, champiñones y fideos
+        de arroz
     20:
-      title: Paté de champiñones y nueces
-      description: Crema suave de champiñones y nueces, enriquecida con hierbas frescas,
-        servida con pan tostado o crackers
+      title: Verduras a la plancha con romesco casero
+      description: Berenjena, calabacín, pimientos y espárragos con una deliciosa
+        salsa romesco
     22:
-      title: Lasaña de verduras
-      description: Capas de pasta de trigo intercaladas con calabacín, berenjena,
-        espinacas y salsa de tomate, gratinadas con una cremosa bechamel de anacardos
+      title: Curry de garbanzos y coco
+      description: Plato cremoso de curry con coliflor, espinacas frescas y leche
+        de coco, acompañado de arroz blanco
     27:
-      title: Tarta de manzana y canela
-      description: Masa integral rellena de rodajas de manzana caramelizadas con canela
-        y azúcar de coco, horneada hasta quedar crujiente y dorada
+      title: Tarta de queso vegana con frutos rojos
+      description: Base de dátiles y almendras con crema de queso vegano, cubierta
+        de frambuesas y fresas frescas
     24:
-      title: Bol de quinoa con tofu y vegetales asados
-      description: Quinoa esponjosa acompañada de tofu crujiente y una mezcla de verduras
-        asadas, aderezada con una vinagreta de tahini y limón
+      title: Tacos de jackfruit estilo "pulled pork"
+      description: Tacos rellenos de jackfruit desmenuzado, pico de gallo, guacamole
+        y salsa chipotle
     26:
-      title: Mousse de chocolate con aguacate
-      description: Suave y cremosa mousse de chocolate hecha con aguacate, cacao en
-        polvo y un toque de jarabe de agave, servida con frutos rojos frescos
+      title: Brownie vegano de chocolate y nueces
+      description: Brownie húmedo de chocolate con nueces, acompañado de helado vegano
+        de vainilla
     28:
-      title: Helado de plátano y mantequilla de cacahuete
-      description: Helado vegetariano elaborado a base de plátano congelado y mantequilla
-        de cacahuete, cremoso y sin necesidad de lácteos ni azúcares añadidos
+      title: Pudding de chía con leche de coco y mango
+      description: Pudding de chía con leche de coco, cubierto de trozos de mango
+        fresco y coco rallado
     29:
       title: Brownies de batata dulce y cacao
       description: Brownies húmedos hechos con puré de batata, cacao en polvo y harina
@@ -381,9 +386,9 @@ es:
         cuerpo medio, con una acidez equilibrada y taninos suaves, que le confieren
         un final largo y sedoso
     2:
-      description: Vino blanco de la D.O. Rías Baixas, hecho con Albariño. De gran
-        frescura y complejidad, con aromas a frutas blancas y notas herbáceas. En
-        el paladar es suave, equilibrado y con buena acidez. Ideal para acompañar
+      description: Vino blanco de la D.O. Rías Baixas, elaborado con Albariño. De
+        gran frescura y complejidad, con aromas a frutas blancas y notas herbáceas.
+        En el paladar es suave, equilibrado y con buena acidez. Ideal para acompañar
         platos de mariscos y pescados
     8:
       description: Vino blanco de la D.O. Rías Baixas, elaborado con Albariño y otras
@@ -402,9 +407,9 @@ es:
         pescado fresco y platos de arroz
     14:
       description: Elaborado con mencía y otras variedades autóctonas. Tiene un color
-        rojo intenso y aromas a frutas negras, especias y ligeras notas de madera.
-        En el paladar es de cuerpo medio, con una acidez fresca y taninos suaves,
-        que le dan un final largo y equilibrado
+        rojo intenso y aromas a frutas negras, especias y leves notas de madera. En
+        el paladar es de cuerpo medio, con una acidez fresca y taninos suaves, que
+        le dan un final largo y equilibrado
     5:
       description: Vino blanco de la D.O. Ribeiro, elaborado con variedades autóctonas.
         Destaca por sus aromas frescos a frutas blancas y notas florales. En el paladar
@@ -428,7 +433,7 @@ es:
         y equilibrado
     10:
       description: Elaborado principalmente con mencía. Tiene un color rojo intenso
-        y una nariz compleja, con aromas a frutas negras, especias y leves toques
+        y una nariz compleja, con aromas a frutas negras, especias y ligeros toques
         herbáceos. En el paladar es de cuerpo medio, con una acidez equilibrada y
         taninos suaves, que le proporcionan un final ligeramente afrutado y persistente
     15:
@@ -458,7 +463,7 @@ es:
     8:
       name: Apio
     9:
-      name: Mostaza
+      name: mostaza
     10:
       name: sésamo
     11:

@@ -1,5 +1,11 @@
 ---
 it:
+  info:
+    title: "Il menu del giorno include"
+    starter: "Antipasto"
+    main: "Piatto principale"
+    water_bread: "Pane e acqua"
+    dessert_or_coffee: "Dolce o Caffè"
   activerecord:
     errors:
       messages:
@@ -229,29 +235,29 @@ it:
       description: Avocado schiacciato con cipolla, coriandolo, pomodoro e un tocco
         di limone, accompagnato da croccanti chips di banana
     16:
-      title: Hummus con crudités
-      description: Crema di ceci con limone, tahini e aglio, accompagnata da bastoncini
-        di carota, cetriolo e sedano freschi
+      title: Crema di zucca con zenzero
+      description: Crema morbida di zucca con un tocco di zenzero fresco, olio di
+        cocco e semi di zucca tostati
     9:
       title: Bowl di quinoa con tofu e verdure arrosto
       description: Quinoa soffice accompagnata da tofu croccante e un mix di verdure
-        arrostite, condita con una vinaigrette di tahini e limone
+        arrosto, condita con una vinaigrette di tahini e limone
     3:
       title: Involtini di primavera
       description: Involtini di riso ripieni di vermicelli, carota, cetriolo e coriandolo,
         serviti con salsa di arachidi
     11:
-      title: Mousse al cioccolato con avocado
+      title: Mousse di cioccolato con avocado
       description: Mousse di cioccolato morbida e cremosa fatta con avocado, cacao
         in polvere e un tocco di sciroppo d'agave, servita con frutti di bosco freschi
     2:
       title: Bruschette di pomodoro e basilico
       description: Fette di pane tostato con pomodoro fresco, aglio, olio d'oliva
-        e foglie di basilico, ideale per aprire l'appetito
+        e foglie di basilico, ideali per aprire l'appetito
     23:
-      title: Tacos di tempeh e avocado
-      description: Tortillas di mais farcite con tempeh marinato, pezzi di avocado,
-        cipolla rossa, coriandolo fresco e una salsa fatta in casa di jalapeños
+      title: Hamburger di barbabietola e avena
+      description: Hamburger vegetale accompagnata da patate dolci al forno e aioli
+        vegano
     5:
       title: Paté di funghi e noci
       description: Crema morbida di funghi e noci, arricchita con erbe fresche, servita
@@ -263,7 +269,7 @@ it:
     12:
       title: Torta di mele e cannella
       description: Pasta integrale farcita di fette di mela caramellate con cannella
-        e zucchero di cocco, cotta fino a diventare croccante e dorata
+        e zucchero di cocco, cotta in forno fino a diventare croccante e dorata
     7:
       title: Lasagna di verdure
       description: Strati di pasta di grano alternati con zucchine, melanzane, spinaci
@@ -271,14 +277,14 @@ it:
     8:
       title: Tacos di tempeh e avocado
       description: Tortillas di mais farcite con tempeh marinato, pezzi di avocado,
-        cipolla rossa, coriandolo fresco e una salsa fatta in casa di jalapeños
+        cipolla rossa, coriandolo fresco e una salsa casalinga di jalapeños
     17:
-      title: Bruschette con pomodoro e basilico
-      description: Fette di pane tostato con pomodoro fresco, aglio, olio d'oliva
-        e foglie di basilico, ideale per stuzzicare l'appetito
+      title: Insalata di quinoa e spinaci
+      description: Miscela leggera di quinoa, spinaci freschi, melograno, noci e avocado
+        con un condimento al limone
     13:
       title: Gelato di banana e burro di arachidi
-      description: Gelato vegetale realizzato con banana congelata e burro di arachidi,
+      description: Gelato vegetariano realizzato con banana congelata e burro di arachidi,
         cremoso e senza bisogno di latticini né zuccheri aggiunti
     32:
       title: Toast con marmellata di mirtilli
@@ -288,53 +294,53 @@ it:
         giornata o gustarlo come un capriccio durante la merenda. Un'esperienza sapientemente
         assaporata
     14:
-      title: Brownies di patate dolci e cacao
+      title: Brownies di patata dolce e cacao
       description: Brownies umidi fatti con purè di patata dolce, cacao in polvere
         e farina di mandorle, senza zucchero raffinato e naturalmente dolci
     15:
       title: Cheesecake di anacardi e limone
-      description: Base di frutta secca e datteri, coperta da una crema morbida di
+      description: Base di frutta secca e datteri, coperta con una crema morbida di
         anacardi e limone, tutto senza prodotti lattiero-caseari e con un sapore rinfrescante
     21:
-      title: Curry di ceci e spinaci
-      description: Cremoso curry di ceci cotti a fuoco lento con spinaci freschi,
-        servito su un letto di riso basmati e accompagnato da naan vegano
+      title: Polpette di lenticchie in salsa di pomodoro
+      description: Polpette vegetali fatte con lenticchie, servite con riso basmati
+        e un tocco di prezzemolo
     18:
-      title: Involtini di primavera
-      description: Involtini di riso ripieni di vermicelli, carota, cetriolo e coriandolo,
-        serviti con salsa di arachidi
+      title: Hummus tricolore
+      description: 'Tre varietà di hummus: tradizionale, barbabietola e curcuma, serviti
+        con bastoncini di carota, cetriolo e pane pita'
     25:
-      title: Hamburger di lenticchie con patate dolci
-      description: Hamburger fatta in casa di lenticchie e patate dolci in pane integrale,
-        con lattuga, pomodoro, cipolla caramellata e maionese vegana
+      title: Lasagna di melanzane con spinaci e tofu ricotta
+      description: Strati di melanzane con spinaci e ricotta di tofu, ricoperti di
+        besciamella vegana dorata al forno
     19:
-      title: Guacamole con chips di banana
-      description: Avocado schiacciato con cipolla, coriandolo, pomodoro e un tocco
-        di limone, accompagnato da croccanti chips di banana
+      title: Zuppa di miso con tofu e alga wakame
+      description: Zuppa tradizionale giapponese con tofu, alghe, funghi e noodles
+        di riso
     20:
-      title: Paté di funghi e noci
-      description: Crema morbida di funghi e noci, arricchita con erbe fresche, servita
-        con pane tostato o cracker
+      title: Verdure grigliate con romesco fatto in casa
+      description: Melanzane, zucchine, peperoni e asparagi con una deliziosa salsa
+        romesco
     22:
-      title: Lasagna di verdure
-      description: Strati di pasta di grano alternati con zucchine, melanzane, spinaci
-        e salsa di pomodoro, gratinati con una cremosa besciamella di anacardi
+      title: Curry di ceci e cocco
+      description: Piatto cremoso di curry con cavolfiore, spinaci freschi e latte
+        di cocco, accompagnato da riso bianco
     27:
-      title: Torta di mele e cannella
-      description: Pasta integrale farcita di fette di mela caramellate con cannella
-        e zucchero di cocco, cotta in forno fino a diventare croccante e dorata
+      title: Torta di formaggio vegetale con frutti rossi
+      description: Base di datteri e mandorle con crema di formaggio vegetale, coperta
+        di lamponi e fragole fresche
     24:
-      title: Bowl di quinoa con tofu e verdure arrosto
-      description: Quinoa soffice accompagnata da tofu croccante e un mix di verdure
-        arrostite, condita con una vinaigrette di tahini e limone
+      title: Tacos di jackfruit stile "pulled pork"
+      description: Tacos ripieni di jackfruit sfilacciato, pico de gallo, guacamole
+        e salsa chipotle
     26:
-      title: Mousse di cioccolato con avocado
-      description: Mousse di cioccolato morbida e cremosa fatta con avocado, cacao
-        in polvere e un tocco di sciroppo d'agave, servita con frutti rossi freschi
+      title: Brownie vegano al cioccolato e noci
+      description: Brownie umido al cioccolato con noci, accompagnato da gelato vegano
+        alla vaniglia
     28:
-      title: Gelato di banana e burro di arachidi
-      description: Gelato vegetariano realizzato con banana congelata e burro di arachidi,
-        cremoso e senza bisogno di latticini né zuccheri aggiunti
+      title: Pudding di chia con latte di cocco e mango
+      description: Pudding di chia con latte di cocco, coperto da pezzi di mango fresco
+        e cocco grattugiato
     29:
       title: Brownies di patata dolce e cacao
       description: Brownies umidi fatti con purè di patata dolce, cacao in polvere
@@ -363,12 +369,12 @@ it:
   wine:
     7:
       description: Vino bianco della D.O. Valdeorras, elaborato con Godello. Ha un
-        aroma complesso di frutti bianchi, agrumi e note minerali. Al palato è fresco,
+        aroma complesso di frutta bianca, agrumi e note minerali. Al palato è fresco,
         strutturato e con un'acidità equilibrata. Ideale per accompagnare piatti vegetali,
         risotti e formaggi vegani
     1:
       description: Vino bianco della D.O. Rías Baixas, elaborato con Albariño. Fresco
-        e vibrante, con aromi di frutti agrumati e un tocco minerale. Perfetto per
+        e vibrante, con aromi di frutta agrumata e un tocco minerale. Perfetto per
         frutti di mare e pesce
     11:
       description: Elaborato principalmente con Garnacha, completato con altre varietà
@@ -388,7 +394,7 @@ it:
         accompagnare piatti vegetali, pasta, risotti e tapas vegane
     3:
       description: Vino bianco della D.O. Rías Baixas, elaborato con Albariño. Con
-        aromi intensi di frutti a polpa e agrumi, con un tocco minerale. Al gusto
+        aromi intensi di frutta a polpa e agrumi, con un tocco minerale. Al gusto
         è fresco, untuoso e con un'acidità ben equilibrata. Perfetto per frutti di
         mare, pesce e riso
     4:
@@ -414,7 +420,7 @@ it:
     9:
       description: Elaborato principalmente con Tempranillo, completato con Graciano
         e Mazuelo. Presenta un colore rosso rubino intenso e aromi complessi che combinano
-        frutti neri maturi, spezie e note di vaniglia derivanti dall'invecchiamento
+        frutti di bosco maturi, spezie e note di vaniglia derivanti dall'invecchiamento
         in barrique. Al palato è equilibrato, con un'acidità rinfrescante, tannini
         morbidi e un finale persistente
     12:
@@ -424,7 +430,7 @@ it:
         ed equilibrato
     10:
       description: Elaborato principalmente con Mencía. Ha un colore rosso intenso
-        e un naso complesso, con aromi di frutti neri, spezie e leggeri accenni erbacei.
+        e un naso complesso, con aromi di frutti neri, spezie e leggeri sentori erbacei.
         Al palato è di corpo medio, con un'acidità equilibrata e tannini morbidi,
         che gli conferiscono un finale leggermente fruttato e persistente
     15:
@@ -433,7 +439,7 @@ it:
         violacei e aromi di frutti rossi maturi, con note speziate e minerali
     13:
       description: Vino rosso della D.O. Ribeiro, elaborato con Mencía. Presenta aromi
-        di frutti rossi maturi, con tocchi speziati ed erbacei. Al palato è morbido,
+        di frutti rossi maturi, con tocchi speziati e erbacei. Al palato è morbido,
         di corpo medio, con un'acidità equilibrata e tannini ben integrati
   allergen:
     1:

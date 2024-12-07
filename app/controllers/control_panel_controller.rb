@@ -36,7 +36,7 @@ class ControlPanelController < ApplicationController
       pagy, dishes = pagy_countless(Dish.daily_menu(restaurant_id:, query:), limit: 10)
       [pagy, dishes, { carta: 'not-selected', menu: 'selected' }]
     else
-      pagy, dishes = pagy_countless(Dish.not_daily_menu(restaurant_id:, query:), limit: 10)
+      pagy, dishes = pagy_countless(Dish.menu(restaurant_id:, query:), limit: 10)
       [pagy, dishes, { carta: 'selected', menu: 'not-selected' }]
     end
   end

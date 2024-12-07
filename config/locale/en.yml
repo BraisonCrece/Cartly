@@ -1,5 +1,11 @@
 ---
 en:
+  info:
+    title: "Menu of the Day includes"
+    starter: "Starter"
+    main: "Main Course"
+    water_bread: "Bread and Water"
+    dessert_or_coffee: "Dessert or Coffee"
   activerecord:
     errors:
       messages:
@@ -225,16 +231,16 @@ en:
         carrot, cucumber, and celery sticks
     10:
       title: Lentil burger with sweet potato
-      description: Homemade lentil and sweet potato burger in whole grain bread, with
+      description: Homemade lentil and sweet potato burger on whole grain bread, with
         lettuce, tomato, caramelized onion, and vegan mayonnaise
     4:
       title: Guacamole with plantain chips
-      description: Mashed avocado with onion, cilantro, tomato, and a hint of lemon,
-        served with crispy plantain chips
+      description: Mashed avocado with onion, cilantro, tomato, and a touch of lemon,
+        served with crunchy banana chips
     16:
-      title: Hummus with crudités
-      description: Chickpea cream with lemon, tahini, and garlic, served with fresh
-        carrot, cucumber, and celery sticks
+      title: Pumpkin cream with ginger
+      description: Smooth pumpkin cream with a hint of fresh ginger, coconut oil,
+        and toasted pumpkin seeds
     9:
       title: Quinoa bowl with tofu and roasted vegetables
       description: Fluffy quinoa accompanied by crispy tofu and a mix of roasted vegetables,
@@ -244,24 +250,24 @@ en:
       description: Rice wraps filled with noodles, carrot, cucumber, and cilantro,
         served with peanut sauce
     11:
-      title: Chocolate mousse with avocado
+      title: Chocolate avocado mousse
       description: Smooth and creamy chocolate mousse made with avocado, cocoa powder,
-        and a touch of agave syrup, served with fresh red berries
+        and a touch of agave syrup, served with fresh red fruits
     2:
-      title: Tomato and basil bruschetta
+      title: Tomato and basil bruschettas
       description: Slices of toasted bread with fresh tomato, garlic, olive oil, and
-        basil leaves, ideal for stimulating the appetite
+        basil leaves, perfect for opening the appetite
     23:
-      title: Tempeh and avocado tacos
-      description: Corn tortillas filled with marinated tempeh, pieces of avocado,
-        red onion, fresh cilantro, and a homemade jalapeño sauce
+      title: Beetroot and oat burger
+      description: Vegetable burger served with oven-baked sweet potatoes and vegan
+        aioli
     5:
       title: Mushroom and walnut pâté
       description: Smooth cream of mushrooms and walnuts, enriched with fresh herbs,
         served with toasted bread or crackers
     6:
       title: Chickpea and spinach curry
-      description: Creamy slow-cooked chickpea curry with fresh spinach, served on
+      description: Creamy slow-cooked chickpea curry with fresh spinach, served over
         a bed of basmati rice and accompanied by vegan naan
     12:
       title: Apple and cinnamon pie
@@ -270,15 +276,15 @@ en:
     7:
       title: Vegetable lasagna
       description: Layers of wheat pasta interspersed with zucchini, eggplant, spinach,
-        and tomato sauce, topped with a creamy cashew béchamel
+        and tomato sauce, baked with a creamy cashew béchamel
     8:
       title: Tempeh and avocado tacos
       description: Corn tortillas filled with marinated tempeh, pieces of avocado,
         red onion, fresh cilantro, and a homemade jalapeño sauce
     17:
-      title: Tomato and basil bruschetta
-      description: Slices of toasted bread with fresh tomato, garlic, olive oil, and
-        basil leaves, perfect for whetting the appetite
+      title: Quinoa and spinach salad
+      description: Light mix of quinoa, fresh spinach, pomegranate, walnuts, and avocado
+        with a lemon dressing
     13:
       title: Banana and peanut butter ice cream
       description: Vegetarian ice cream made from frozen banana and peanut butter,
@@ -298,45 +304,45 @@ en:
       description: Base of dried fruits and dates, topped with a smooth cashew and
         lemon cream, all dairy-free and with a refreshing taste
     21:
-      title: Chickpea and spinach curry
-      description: Creamy chickpea curry slow-cooked with fresh spinach, served on
-        a bed of basmati rice and accompanied by vegan naan
+      title: Lentil meatballs in tomato sauce
+      description: Vegetable meatballs made with lentils, served with basmati rice
+        and a touch of parsley
     18:
-      title: Spring rolls
-      description: Rice wraps filled with noodles, carrot, cucumber, and cilantro,
-        served with peanut sauce
+      title: Tricolor hummus
+      description: 'Three varieties of hummus: traditional, beetroot, and turmeric,
+        served with carrot sticks, cucumber, and pita bread'
     25:
-      title: Lentil burger with sweet potato
-      description: Homemade lentil and sweet potato burger on whole grain bread, with
-        lettuce, tomato, caramelized onion, and vegan mayonnaise
+      title: Eggplant lasagna with spinach and tofu ricotta
+      description: Layers of eggplant with spinach and tofu ricotta, topped with golden
+        vegan béchamel baked in the oven
     19:
-      title: Guacamole with plantain chips
-      description: Mashed avocado with onion, cilantro, tomato, and a touch of lemon,
-        served with crispy plantain chips
+      title: Miso soup with tofu and wakame seaweed
+      description: Traditional Japanese soup with tofu, seaweed, mushrooms, and rice
+        noodles
     20:
-      title: Mushroom and walnut pâté
-      description: Smooth cream of mushrooms and walnuts, enriched with fresh herbs,
-        served with toasted bread or crackers
+      title: Grilled vegetables with homemade romesco
+      description: Eggplant, zucchini, peppers, and asparagus with a delicious romesco
+        sauce
     22:
-      title: Vegetable lasagna
-      description: Layers of wheat pasta interspersed with zucchini, eggplant, spinach,
-        and tomato sauce, baked with a creamy cashew béchamel
+      title: Chickpea and coconut curry
+      description: Creamy curry dish with cauliflower, fresh spinach, and coconut
+        milk, served with white rice
     27:
-      title: Apple and cinnamon pie
-      description: Whole grain dough filled with caramelized apple slices with cinnamon
-        and coconut sugar, baked until crispy and golden
+      title: Vegetable cheese tart with red fruits
+      description: Base of dates and almonds with vegan cream cheese, topped with
+        raspberries and fresh strawberries
     24:
-      title: Quinoa bowl with tofu and roasted vegetables
-      description: Fluffy quinoa accompanied by crispy tofu and a mix of roasted vegetables,
-        dressed with a tahini and lemon vinaigrette
+      title: Jackfruit "pulled pork" tacos
+      description: Tacos filled with shredded jackfruit, pico de gallo, guacamole,
+        and chipotle sauce
     26:
-      title: Chocolate mousse with avocado
-      description: Smooth and creamy chocolate mousse made with avocado, cocoa powder,
-        and a touch of agave syrup, served with fresh red berries
+      title: Vegan chocolate walnut brownie
+      description: Moist chocolate brownie with walnuts, served with vegan vanilla
+        ice cream
     28:
-      title: Banana and peanut butter ice cream
-      description: Vegetarian ice cream made from frozen banana and peanut butter,
-        creamy and without the need for dairy or added sugars
+      title: Chia pudding with coconut milk and mango
+      description: Chia pudding with coconut milk, topped with pieces of fresh mango
+        and shredded coconut
     29:
       title: Sweet potato and cocoa brownies
       description: Moist brownies made with sweet potato puree, cocoa powder, and
@@ -380,32 +386,32 @@ en:
     2:
       description: White wine from the D.O. Rías Baixas, made with Albariño. Of great
         freshness and complexity, with aromas of white fruits and herbaceous notes.
-        On the palate, it is smooth, balanced, and with good acidity. Ideal for pairing
+        On the palate, it is smooth, balanced, and has good acidity. Ideal for pairing
         with seafood and fish dishes
     8:
       description: White wine from the D.O. Rías Baixas, made with Albariño and other
-        native varieties. It presents fresh and fruity aromas, with notes of citrus
-        and grass. On the palate, it is light, fresh, and has balanced acidity. Perfect
+        native varieties. It has fresh and fruity aromas, with notes of citrus and
+        grass. On the palate, it is light, fresh, and has balanced acidity. Perfect
         to accompany vegetable dishes, pasta, risottos, and vegan tapas
     3:
       description: White wine from the D.O. Rías Baixas, made with Albariño. It has
         intense aromas of stone fruits and citrus, with a mineral touch. On the palate,
-        it is fresh, smooth, and has a well-balanced acidity. Perfect for seafood,
+        it is fresh, unctuous, and has a well-balanced acidity. Perfect for seafood,
         fish, and rice dishes
     4:
       description: White wine from the D.O. Rías Baixas, made with Albariño. It presents
         aromas of tropical fruits, citrus, and a floral touch. On the palate, it is
-        broad, fresh, and has good acidity, with an elegant finish. Ideal for pairing
-        with seafood, fresh fish, and rice dishes
+        broad, fresh, and has good acidity, with an elegant finish. Ideal to accompany
+        seafood, fresh fish, and rice dishes
     14:
       description: Made with Mencía and other native varieties. It has an intense
         red color and aromas of black fruits, spices, and subtle notes of wood. On
-        the palate, it is medium-bodied, with fresh acidity and soft tannins, giving
-        it a long and balanced finish
+        the palate, it is medium-bodied, with fresh acidity and soft tannins, which
+        give it a long and balanced finish
     5:
       description: White wine from the D.O. Ribeiro, made with native varieties. It
         stands out for its fresh aromas of white fruits and floral notes. On the palate,
-        it is smooth, light, and has well-integrated acidity. Perfect for pairing
+        it is smooth, light, and has a well-integrated acidity. Perfect for pairing
         with vegetable dishes, salads, and vegan cheeses
     6:
       description: White wine from the D.O. Ribeiro, made with Treixadura and other
@@ -432,8 +438,8 @@ en:
         in vineyards over 30 years old. It has an intense red color with violet hues
         and aromas of ripe red fruits, with spicy and mineral notes
     13:
-      description: Red wine from the D.O. Ribeiro, made with Mencía. It has aromas
-        of ripe red fruits, with spicy and herbal hints. On the palate, it is smooth,
+      description: Red wine from the D.O. Ribeiro, made with Mencía. It presents aromas
+        of ripe red fruits, with spicy and herbal touches. On the palate, it is smooth,
         medium-bodied, with balanced acidity and well-integrated tannins
   allergen:
     1:

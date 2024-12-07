@@ -1,5 +1,11 @@
 ---
 de:
+  info:
+    title: "Das Tagesmenü beinhaltet"
+    starter: "Vorspeise"
+    main: "Hauptgericht"
+    water_bread: "Brot und Wasser"
+    dessert_or_coffee: "Dessert oder Kaffee"
   activerecord:
     errors:
       messages:
@@ -230,19 +236,19 @@ de:
         frischen Karotten-, Gurken- und Selleriesticks
     10:
       title: Linsenburger mit Süßkartoffel
-      description: Hausgemachter Burger aus Linsen und Süßkartoffel im Vollkornbrot,
-        mit Salat, Tomate, karamellisierten Zwiebeln und veganer Mayonnaise
+      description: Hausgemachter Linsen- und Süßkartoffelburger im Vollkornbrot, mit
+        Salat, Tomate, karamellisierten Zwiebeln und veganer Mayonnaise
     4:
       title: Guacamole mit Bananenchips
-      description: Zerdrückte Avocado mit Zwiebel, Koriander, Tomate und einem Hauch
+      description: Zermatschte Avocado mit Zwiebel, Koriander, Tomate und einem Hauch
         von Zitrone, serviert mit knusprigen Bananenchips
     16:
-      title: Hummus mit Rohkost
-      description: Kichererbsencreme mit Zitrone, Tahini und Knoblauch, serviert mit
-        frischen Karotten-, Gurken- und Selleriesticks
+      title: Kürbiscreme mit Ingwer
+      description: Samtige Kürbiscreme mit einem Hauch von frischem Ingwer, Kokosöl
+        und gerösteten Kürbiskernen
     9:
       title: Quinoa-Bowl mit Tofu und geröstetem Gemüse
-      description: Fluffige Quinoa begleitet von knusprigem Tofu und einer Mischung
+      description: Fluffige Quinoa, begleitet von knusprigem Tofu und einer Mischung
         aus geröstetem Gemüse, gewürzt mit einer Tahini-Zitronen-Vinaigrette
     3:
       title: Frühlingsrollen
@@ -257,36 +263,33 @@ de:
       description: Geröstete Brotscheiben mit frischen Tomaten, Knoblauch, Olivenöl
         und Basilikumblättern, ideal um den Appetit anzuregen
     23:
-      title: Tempeh- und Avocado-Tacos
-      description: Mais-Tortillas gefüllt mit mariniertem Tempeh, Stückchen Avocado,
-        roter Zwiebel, frischem Koriander und einer hausgemachten Jalapeño-Sauce
+      title: Rote-Bete-Haferburger
+      description: Vegetarische Burger, begleitet von Ofenkartoffeln und veganer Aioli
     5:
       title: Pilz- und Walnuss-Pâté
       description: Sahnige Pilz- und Walnusscreme, angereichert mit frischen Kräutern,
         serviert mit geröstetem Brot oder Crackern
     6:
-      title: Kichererbsen- und Spinatcurry
-      description: Cremiges Curry aus langsam gekochten Kichererbsen mit frischem
-        Spinat, serviert auf einem Bett aus Basmati-Reis und begleitet von veganem
-        Naan
+      title: Kichererbsen-Spinat-Curry
+      description: Cremige Curry aus langsam gekochten Kichererbsen mit frischem Spinat,
+        serviert auf einem Bett aus Basmati-Reis und begleitet von veganem Naan
     12:
       title: Apfel-Zimt-Torte
-      description: Vollkornteig gefüllt mit karamellisierten Apfelscheiben, gewürzt
-        mit Zimt und Kokoszucker, im Ofen gebacken bis sie knusprig und goldbraun
-        sind
+      description: Vollkornteig gefüllt mit in Zimt und Kokoszucker karamellisierten
+        Apfelscheiben, im Ofen gebacken, bis sie knusprig und goldbraun sind
     7:
       title: Gemüselasagne
-      description: Schichten aus Weizenteig, die mit Zucchini, Auberginen, Spinat
+      description: Schichten aus Weizenpasta, die mit Zucchini, Auberginen, Spinat
         und Tomatensauce geschichtet und mit einer cremigen Cashew-Bechamelsauce überbacken
         sind
     8:
       title: Tempeh- und Avocado-Tacos
-      description: Mais-Tortillas gefüllt mit mariniertem Tempeh, Stückchen Avocado,
+      description: Maistortillas gefüllt mit mariniertem Tempeh, Stückchen Avocado,
         roter Zwiebel, frischem Koriander und einer hausgemachten Jalapeño-Sauce
     17:
-      title: Tomaten-Basilikum-Bruschetta
-      description: Geröstete Brotscheiben mit frischen Tomaten, Knoblauch, Olivenöl
-        und Basilikumblättern, ideal um den Appetit anzuregen
+      title: Quinoa-Spinatsalat
+      description: Leichte Mischung aus Quinoa, frischem Spinat, Granatapfel, Walnüssen
+        und Avocado mit einem Zitronendressing
     13:
       title: Bananeneis mit Erdnussbutter
       description: Vegetarisches Eis aus gefrorener Banane und Erdnussbutter, cremig
@@ -299,56 +302,51 @@ de:
         den Tag zu beginnen oder als Genuss am Nachmittag. Ein liebevoll genossenes
         Erlebnis
     14:
-      title: Süßkartoffel- und Kakao-Brownies
+      title: Süßkartoffel- und Kakaobrownies
       description: Feuchte Brownies aus Süßkartoffelpüree, Kakaopulver und Mandelmehl,
         ohne raffinierten Zucker und natürlich süß
     15:
-      title: Cashew- und Zitronen-Cheesecake
+      title: Cashew-Zitronen-Käsekuchen
       description: Basis aus Trockenfrüchten und Datteln, bedeckt mit einer sanften
-        Cashew- und Zitronencreme, ganz ohne Milchprodukte und mit einem erfrischenden
-        Geschmack
+        Cashew- und Zitronencreme, ganz ohne Milchprodukte und mit erfrischendem Geschmack
     21:
-      title: Kichererbsen-Spinat-Curry
-      description: Cremiges Curry aus langsam gekochten Kichererbsen mit frischem
-        Spinat, serviert auf einem Bett aus Basmati-Reis und begleitet von veganem
-        Naan
+      title: Linsenbällchen in Tomatensauce
+      description: Gemüsefrikadellen aus Linsen, serviert mit Basmati-Reis und einem
+        Hauch von Petersilie
     18:
-      title: Frühlingsrollen
-      description: Reiswickel gefüllt mit Nudeln, Karotten, Gurken und Koriander,
-        serviert mit Erdnusssauce
+      title: Dreifarbiger Hummus
+      description: 'Drei Sorten Hummus: traditionell, Rote Beete und Kurkuma, serviert
+        mit Karottensticks, Gurken und Pita-Brot'
     25:
-      title: Linsenburger mit Süßkartoffel
-      description: Hausgemachter Burger aus Linsen und Süßkartoffel im Vollkornbrot,
-        mit Salat, Tomate, karamellisierten Zwiebeln und veganer Mayonnaise
+      title: Auberginen-Lasagne mit Spinat und Tofu-Ricotta
+      description: Schichten von Auberginen mit Spinat und Tofu-Ricotta, bedeckt mit
+        goldbrauner veganer Bechamelsauce aus dem Ofen
     19:
-      title: Guacamole mit Bananenchips
-      description: Zermatschte Avocado mit Zwiebel, Koriander, Tomate und einem Hauch
-        von Zitrone, serviert mit knusprigen Bananenchips
+      title: Miso-Suppe mit Tofu und Wakame-Algen
+      description: Traditionelle japanische Suppe mit Tofu, Algen, Pilzen und Reisnudeln
     20:
-      title: Pilz- und Walnuss-Pâté
-      description: Sahnige Pilz- und Walnusscreme, angereichert mit frischen Kräutern,
-        serviert mit geröstetem Brot oder Crackern
+      title: Gegrilltes Gemüse mit hausgemachter Romesco-Sauce
+      description: Aubergine, Zucchini, Paprika und Spargel mit einer köstlichen Romesco-Sauce
     22:
-      title: Gemüselasagne
-      description: Schichten aus Weizenteig, abwechselnd mit Zucchini, Auberginen,
-        Spinat und Tomatensauce, überbacken mit einer cremigen Cashew-Bechamelsauce
+      title: Kichererbsen-Curry mit Kokosnuss
+      description: Cremiges Currygericht mit Blumenkohl, frischem Spinat und Kokosmilch,
+        serviert mit weißem Reis
     27:
-      title: Apfel-Zimt-Torte
-      description: Vollkornteig gefüllt mit karamellisierten Apfelscheiben, gewürzt
-        mit Zimt und Kokoszucker, im Ofen gebacken, bis sie knusprig und goldbraun
-        sind
+      title: Vegane Käsetorte mit roten Früchten
+      description: Dattel- und Mandelboden mit veganem Frischkäse, bedeckt mit frischen
+        Himbeeren und Erdbeeren
     24:
-      title: Quinoa-Bowl mit Tofu und geröstetem Gemüse
-      description: Fluffige Quinoa begleitet von knusprigem Tofu und einer Mischung
-        aus geröstetem Gemüse, gewürzt mit einer Tahini-Zitronen-Vinaigrette
+      title: Jackfruit-Tacos im "Pulled Pork"-Stil
+      description: Tacos gefüllt mit zerrissenem Jackfruit, Pico de Gallo, Guacamole
+        und Chipotle-Sauce
     26:
-      title: Schokoladenmousse mit Avocado
-      description: Sanfte und cremige Schokoladenmousse aus Avocado, Kakaopulver und
-        einem Hauch von Agavensirup, serviert mit frischen roten Früchten
+      title: Vegane Schokoladen-Nuss-Brownies
+      description: Feuchter Schokoladenbrownie mit Walnüssen, serviert mit veganem
+        Vanilleeis
     28:
-      title: Bananeneis mit Erdnussbutter
-      description: Vegetarisches Eis aus gefrorener Banane und Erdnussbutter, cremig
-        und ohne Milchprodukte oder zugesetzten Zucker
+      title: Chia-Pudding mit Kokosmilch und Mango
+      description: Chia-Pudding mit Kokosmilch, bedeckt mit Stücken frischer Mango
+        und geraspeltem Kokosnuss
     29:
       title: Süßkartoffel- und Kakaobrownies
       description: Feuchte Brownies aus Süßkartoffelpüree, Kakaopulver und Mandelmehl,
@@ -361,19 +359,19 @@ de:
   wine:
     1:
       description: Weißwein aus der D.O. Rías Baixas, hergestellt aus Albariño. Frisch
-        und lebhaft, mit Aromen von Zitrusfrüchten und einem mineralischen Hauch.
+        und lebendig, mit Aromen von Zitrusfrüchten und einem mineralischen Hauch.
         Perfekt zu Meeresfrüchten und Fisch
     7:
       description: Weißwein aus der D.O. Valdeorras, hergestellt aus Godello. Er hat
         ein komplexes Aroma von weißen Früchten, Zitrusfrüchten und mineralischen
         Noten. Am Gaumen ist er frisch, strukturiert und mit einer ausgewogenen Säure.
-        Ideal zur Begleitung von Gemüsegerichten, Reis und veganem Käse
+        Ideal zur Begleitung von Gemüsegerichten, Reis und veganen Käsesorten
     11:
       description: Hergestellt hauptsächlich aus Garnacha, ergänzt durch andere einheimische
         Sorten. Er zeigt eine leuchtend rubinrote Farbe und Aromen von reifen roten
-        Früchten, mit blumigen und würzigen Noten. Am Gaumen ist er frisch, mit mittlerem
-        Körper, ausgewogener Säure und sanften Tanninen, die ihm einen langen und
-        samtigen Abgang verleihen
+        Früchten, mit blumigen und würzigen Noten. Am Gaumen ist er frisch, von mittlerem
+        Körper, mit ausgewogener Säure und sanften Tanninen, die ihm einen langen
+        und seidigen Abgang verleihen
     2:
       description: Weißwein aus der D.O. Rías Baixas, hergestellt aus Albariño. Von
         großer Frische und Komplexität, mit Aromen von weißen Früchten und kräuterigen
@@ -382,18 +380,19 @@ de:
     8:
       description: Weißwein aus der D.O. Rías Baixas, hergestellt aus Albariño und
         anderen einheimischen Sorten. Er zeigt frische und fruchtige Aromen mit Noten
-        von Zitrusfrüchten und Gras. Am Gaumen ist er leicht, frisch und mit ausgewogener
-        Säure. Perfekt, um Gemüsegerichte, Pasta, Risottos und vegane Tapas zu begleiten
+        von Zitrusfrüchten und Kräutern. Am Gaumen ist er leicht, frisch und mit ausgewogener
+        Säure. Perfekt zur Begleitung von Gemüsegerichten, Pasta, Risottos und veganen
+        Tapas
     3:
       description: Weißwein aus der D.O. Rías Baixas, hergestellt aus Albariño. Mit
         intensiven Aromen von Steinfrüchten und Zitrusfrüchten, mit einem mineralischen
-        Touch. Im Geschmack ist er frisch, samtig und mit einer gut ausgewogenen Säure.
+        Hauch. Im Geschmack ist er frisch, samtig und mit einer gut ausgewogenen Säure.
         Perfekt zu Meeresfrüchten, Fisch und Reisgerichten
     4:
       description: Weißwein aus der D.O. Rías Baixas, hergestellt aus Albariño. Er
         zeigt Aromen von tropischen Früchten, Zitrusfrüchten und einem floralen Hauch.
-        Am Gaumen ist er voll, frisch und hat eine gute Säure, mit einem eleganten
-        Abgang. Ideal zur Begleitung von Meeresfrüchten, frischem Fisch und Reisgerichten
+        Am Gaumen ist er voll, frisch und mit guter Säure, mit einem eleganten Abgang.
+        Ideal, um Meeresfrüchte, frischen Fisch und Reisgerichte zu begleiten
     14:
       description: Hergestellt aus Mencía und anderen einheimischen Sorten. Er hat
         eine intensive rote Farbe und Aromen von schwarzen Früchten, Gewürzen und
@@ -419,7 +418,7 @@ de:
     12:
       description: Rotwein aus der D.O. Ribeiro, hergestellt aus Mencía und anderen
         einheimischen Sorten. Mit intensiver roter Farbe, Aromen von schwarzen Früchten
-        und Gewürzen. Am Gaumen ist er frisch, von mittlerem Körper und sanften Tanninen,
+        und Gewürzen. Am Gaumen ist er frisch, mittlerer Körper und sanfte Tannine,
         mit einem fruchtigen und ausgewogenen Abgang
     10:
       description: Hauptsächlich aus Mencía hergestellt. Er hat eine intensive rote
@@ -429,13 +428,13 @@ de:
         anhaltenden Abgang verleihen
     15:
       description: Rotwein aus der D.O. Ribeira Sacra, hergestellt aus Mencía-Trauben,
-        die in Weinbergen mit über 30 Jahren Alterung angebaut werden. Er zeigt eine
-        intensive rote Farbe mit violetten Nuancen und Aromen von reifen roten Früchten,
-        mit würzigen und mineralischen Noten
+        die in über 30 Jahre alten Weinbergen angebaut werden. Er zeigt eine intensive
+        rote Farbe mit violetten Nuancen und Aromen von reifen roten Früchten, mit
+        würzigen und mineralischen Noten
     13:
       description: Rotwein aus der D.O. Ribeiro, hergestellt aus Mencía. Er zeigt
         Aromen von reifen roten Früchten, mit würzigen und krautigen Nuancen. Am Gaumen
-        ist er weich, von mittlerem Körper, mit ausgewogener Säure und gut integrierten
+        ist er sanft, von mittlerem Körper, mit ausgewogener Säure und gut integrierten
         Tanninen
   category:
     1:
@@ -476,7 +475,7 @@ de:
     10:
       name: Sesam
     11:
-      name: Schwefelverbindungen
+      name: Sulfite
     12:
       name: Lupinen
     13:
