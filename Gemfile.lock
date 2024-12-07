@@ -132,6 +132,8 @@ GEM
       responders
       warden (~> 1.2.3)
     diff-lcs (1.5.1)
+    dockerfile-rails (1.6.24)
+      rails (>= 3.0.0)
     dotenv (3.1.4)
     dotenv-rails (3.1.4)
       dotenv (= 3.1.4)
@@ -424,6 +426,7 @@ DEPENDENCIES
   colorize
   debug
   devise
+  dockerfile-rails (>= 1.6)
   dotenv-rails
   dry-monads
   factory_bot_rails (~> 6.2)
