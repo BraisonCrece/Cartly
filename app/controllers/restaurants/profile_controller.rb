@@ -9,7 +9,7 @@ module Restaurants
     def update
       @restaurant = current_restaurant
       if @restaurant.update(restaurant_params)
-        redirect_to profile_path, notice: 'Perfil actualizado con éxito'
+        redirect_to dishes_control_panel_path, notice: 'Perfil actualizado con éxito'
       else
         render :edit, alert: 'Houbo un erro ao actualizar o perfil'
       end

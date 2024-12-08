@@ -2,28 +2,27 @@ class WineOriginDenominationsController < ApplicationController
   before_action :set_denomination, only: [:show, :edit, :update, :destroy]
 
   def index
-    @denominations = WineOriginDenomination.all
+    @denominations = WineOriginDenomination.where(restaurant_id: current_restaurant.id)
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @denomination = WineOriginDenomination.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @denomination = WineOriginDenomination.new(wine_origin_denomination_params)
+    @denomination.restaurant_id = current_restaurant.id
 
     if @denomination.save
       flash[:notice] = 'Denominación de origen creada con éxito.'
       render :new
       flash.clear
     else
-      flash[:alert] = "Houbo un erro"
+      flash[:alert] = 'Houbo un erro'
       render :new, status: :unprocessable_entity
       flash.clear
     end
@@ -43,11 +42,12 @@ class WineOriginDenominationsController < ApplicationController
   end
 
   private
-    def set_denomination
-      @denomination = WineOriginDenomination.find(params[:id])
-    end
 
-    def wine_origin_denomination_params
-      params.require(:wine_origin_denomination).permit(:name)
-    end
+  def set_denomination
+    @denomination = WineOriginDenomination.find(params[:id])
+  end
+
+  def wine_origin_denomination_params
+    params.require(:wine_origin_denomination).permit(:name)
+  end
 end

@@ -22,7 +22,7 @@
           <span data-file-input-target="fileName" class="text-gray-400">Seleccione un arquivo</span>
           <button type="button" class="text-teal-400">Examinar</button>
         </div>
-        <%= f.file_field :picture, class: "absolute inset-0 opacity-0 cursor-pointer w-full h-full", data: { action: "change->file-input#updateFile", file_input_target: "fileInput" } %>
+        <%= f.file_field :picture, class: "absolute inset-0 opacity-0 cursor-pointer w-full h-full", accept: "image/*", data: { action: "change->file-input#updateFile", file_input_target: "fileInput" } %>
       </div>
     </div>
     <div class="mb-8">

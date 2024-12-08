@@ -1,6 +1,6 @@
 class SpecialMenusController < ApplicationController
   def index
-    @special_menus = SpecialMenu.all
+    @special_menus = SpecialMenu.where(restaurant_id: current_restaurant.id)
   end
 
   def new

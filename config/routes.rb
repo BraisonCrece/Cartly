@@ -6,14 +6,14 @@ Rails.application.routes.draw do
   root 'landing#index'
 
   # Auth
-  unless defined?(::Rake::SprocketsTask)
+  unless defined?(Rake::SprocketsTask)
     devise_for :restaurants,
-              path: 'admin',
-              path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' },
-              controllers: {
-                sessions: 'restaurants/sessions',
-                registrations: 'restaurants/registrations',
-              }
+               path: 'admin',
+               path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' },
+               controllers: {
+                 sessions: 'restaurants/sessions',
+                 registrations: 'restaurants/registrations',
+               }
   end
 
   # Model CRUDs
@@ -31,11 +31,15 @@ Rails.application.routes.draw do
   post ':restaurant_id/reload_i18n', to: 'translate#reload_i18n'
 
   # Control Panel
-  # TODO: Move special menu actions here
   get '/control_panel/dishes', to: 'control_panel#dishes', as: :dishes_control_panel
   get '/control_panel/wines', to: 'control_panel#wines', as: :wines_control_panel
   post 'toggle_active', to: 'control_panel#toggle_active', as: :toggle_active
   post 'toggle_special_menu/:special_menu_id', to: 'special_menus#toggle_active', as: :toggle_special_menu
+
+  # Special menu dishes
+  resources :special_menu do
+    resources :dishes, controller: 'special_menus/dishes', only: [:new, :create, :edit, :update, :destroy]
+  end
 
   # Settings
   get 'settings', to: 'settings#edit'

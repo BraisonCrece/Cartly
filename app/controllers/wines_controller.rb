@@ -1,5 +1,5 @@
 class WinesController < ApplicationController
-  before_action :set_wine, only: %i[show edit update destroy]
+  before_action :set_wine, only: [:show, :edit, :update, :destroy]
 
   def index
     @wines = Wine.where(restaurant_id: current_restaurant.id)
@@ -9,9 +9,12 @@ class WinesController < ApplicationController
 
   def new
     @wine = Wine.new
+    @denominations = WineOriginDenomination.where(restaurant_id: current_restaurant.id)
   end
 
-  def edit; end
+  def edit
+    @denominations = WineOriginDenomination.where(restaurant_id: current_restaurant.id)
+  end
 
   def create
     @wine = Wine.new(wine_params).tap do |wine|
