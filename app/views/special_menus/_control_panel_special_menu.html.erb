@@ -16,9 +16,14 @@
 
 </div>
 <div class="w-full mx-auto border rounded special_menu_dishes border-grey">
-    <h3 class="m-2 text-lg font-light text-center rounded text-slate-600 dark:text-slate-200 bg-emerald-100/25 dark:bg-emerald-200/25">Platos</h3>
+    <div class="flex items-center ml-1">
+        <h3 class="m-2 grow w-full font-light text-center rounded text-slate-600 dark:text-slate-200 bg-emerald-100/25 dark:bg-emerald-200/20 p-2 text-2xl">Platos</h3>
+        <div class="h-10 w-10 my-2 mr-2 bg-brand-red rounded-full shrink-0">
+            <%= render "shared/add_button", path: new_special_menu_dish_path(special_menu) %>
+        </div>
+    </div>
     <% special_menu.dishes.each do |dish| %>
-        <%= render 'special_menu_dish', dish: dish %>
+        <%= render 'special_menu_dish', dish: dish, special_menu: special_menu %>
     <% end %>
 </div>
 </div>
