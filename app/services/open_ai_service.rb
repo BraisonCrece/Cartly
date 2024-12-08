@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# rubocop:disable Metrics
 class OpenAiService
   include HTTParty
   base_uri 'https://api.openai.com/v1'
@@ -5,22 +8,28 @@ class OpenAiService
   def initialize
     @api_key = ENV.fetch('OPENAI_KEY') # Replace with your OpenAI API key
     @headers = {
-      'Authorization': "Bearer #{@api_key}",
-      'Content-Type': 'application/json'
+      Authorization: "Bearer #{@api_key}",
+      'Content-Type': 'application/json',
     }
   end
 
-  def request(system_message:, prompt:, example_prompt:, example_response:, model: 'gpt-4o-mini',
-              temperature: 0.7)
+  def request(
+    system_message:,
+    prompt:,
+    example_prompt:,
+    example_response:,
+    model: 'gpt-4o-mini',
+    temperature: 0.7
+  )
     body = {
-      "model": model,
-      "messages": [
-        { "role": 'system', "content": system_message },
-        { "role": 'user', "content": example_prompt },
-        { "role": 'assistant', "content": example_response },
-        { "role": 'user', "content": prompt }
+      model: model,
+      messages: [
+        { role: 'system', content: system_message },
+        { role: 'user', content: example_prompt },
+        { role: 'assistant', content: example_response },
+        { role: 'user', content: prompt },
       ],
-      "temperature": temperature
+      temperature: temperature,
     }
 
     response = self.class.post('/chat/completions', headers: @headers, body: body.to_json)
@@ -43,3 +52,4 @@ class OpenAiService
     end
   end
 end
+# rubocop:enable Metrics
