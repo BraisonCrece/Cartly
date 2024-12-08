@@ -14,7 +14,7 @@
 
      <main id="contido-principal" class="p-3 space-y-4">
          <%= render "categorized_dishes" %>
-         <%= render "special_menus/active_special_menus", special_menus: @special_menus if SpecialMenu.active(restaurant_id: @restaurant.id).any? %>
+         <%= render "special_menus/active_special_menus", special_menus: @special_menus if SpecialMenu.active(params[:restaurant_id]).any? %>
          <%= render "wines/categorized_wines" %>
          <%= turbo_frame_tag :modal %>
      </main>

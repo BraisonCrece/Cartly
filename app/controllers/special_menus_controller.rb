@@ -9,6 +9,7 @@ class SpecialMenusController < ApplicationController
 
   def create
     @special_menu = SpecialMenu.new(special_menu_params)
+    @special_menu.restaurant_id = current_restaurant.id
     if @special_menu.save
       redirect_to special_menus_path, notice: 'Menú especial creado con éxito.'
     else
@@ -40,8 +41,8 @@ class SpecialMenusController < ApplicationController
     @special_menu.toggle(:active)
     @special_menu.save
     render turbo_stream: turbo_stream.replace("special_menu_active_#{@special_menu.id}",
-      partial: 'special_menus/active',
-      locals: { special_menu: @special_menu })
+                                              partial: 'special_menus/active',
+                                              locals: { special_menu: @special_menu })
   end
 
   private
