@@ -1,4 +1,5 @@
 class WineOriginDenominationsController < ApplicationController
+  before_action :authenticate_restaurant!
   before_action :set_denomination, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -44,7 +45,10 @@ class WineOriginDenominationsController < ApplicationController
   private
 
   def set_denomination
-    @denomination = WineOriginDenomination.find(params[:id])
+    @denomination = WineOriginDenomination.find_by(id: params[:id], restaurant_id: current_restaurant.id)
+    if @denomination.nil?
+      redirect_to denominations_path, alert: 'Non atopamos a denominación de orixe solicitada.'
+    end
   end
 
   def wine_origin_denomination_params

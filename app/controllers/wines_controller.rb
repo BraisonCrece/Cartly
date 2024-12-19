@@ -1,11 +1,14 @@
 class WinesController < ApplicationController
-  before_action :set_wine, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_restaurant!, except: [:index, :show]
+  before_action :set_wine, only: [:edit, :update, :destroy]
 
   def index
     @wines = Wine.where(restaurant_id: current_restaurant.id)
   end
 
-  def show; end
+  def show
+    @wine = Wine.find(params[:id])
+  end
 
   def new
     @wine = Wine.new
@@ -76,7 +79,11 @@ class WinesController < ApplicationController
   end
 
   def set_wine
-    @wine = Wine.find(params[:id])
+     restaurant_id = params[:restaurant_id] || current_restaurant&.id
+    @wine = Wine.find_by(id: params[:id], restaurant_id:)
+    if @wine.nil?
+      redirect_to wines_control_panel_path, alert: 'Viño non atopado'
+    end
   end
 
   def wine_params

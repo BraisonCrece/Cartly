@@ -1,6 +1,8 @@
 require 'httparty'
 
 class DescriptionController < ApplicationController
+  before_action :authenticate_restaurant!
+
   def describe_dish
     plato = params[:plato]
     description_type = params[:description_type] || 'plato'

@@ -2,9 +2,12 @@
 
 module SpecialMenus
   class DishesController < ApplicationController
+    before_action :authenticate_restaurant!
+    before_action :set_dish, only: [:edit, :update, :destroy]
+
     def new
       @dish = Dish.new
-      @special_menu = SpecialMenu.find(params[:special_menu_id])
+      @special_menu = SpecialMenu.find_by(id: params[:special_menu_id], restaurant_id: current_restaurant.id)
     end
 
     def create
@@ -27,13 +30,10 @@ module SpecialMenus
     end
 
     def edit
-      @dish = Dish.find(params[:id])
-      @special_menu = SpecialMenu.find(params[:special_menu_id])
+      @special_menu = SpecialMenu.find_by(id: @dish.special_menu_id, restaurant_id: current_restaurant.id)
     end
 
     def update
-      @dish = Dish.find(params[:id])
-
       if @dish.update(dish_params)
         if title_or_description_changed?
           Thread.new do
@@ -50,7 +50,6 @@ module SpecialMenus
     end
 
     def destroy
-      @dish = Dish.find(params[:id])
       @dish.destroy
 
       Thread.new do
@@ -61,6 +60,13 @@ module SpecialMenus
     end
 
     private
+
+    def set_dish
+      @dish = Dish.find_by(id: params[:id], restaurant_id: current_restaurant.id)
+      if @dish.nil?
+        redirect_to special_menus_path, alert: 'Plato non atopado.'
+      end
+    end
 
     def dish_params
       params.require(:dish).permit(

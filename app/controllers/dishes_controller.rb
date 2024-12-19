@@ -44,7 +44,7 @@ class DishesController < ApplicationController
   end
 
   def show
-    @dish = Dish.find(params[:id])
+    @dish = Dish.find_by(id: params[:id])
   end
 
   def edit
@@ -88,7 +88,11 @@ class DishesController < ApplicationController
 
   def set_dish
     restaurant_id = params[:restaurant_id] || current_restaurant&.id
-    @dish = Dish.find_by!(id: params[:id], restaurant_id:)
+    @dish = Dish.find_by(id: params[:id], restaurant_id:)
+
+    if @dish.nil?
+      redirect_to dishes_control_panel_path, alert: 'Plato non atopado'
+    end
   end
 
   def set_categories

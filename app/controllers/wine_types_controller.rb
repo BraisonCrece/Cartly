@@ -1,4 +1,5 @@
 class WineTypesController < ApplicationController
+  before_action :authenticate_restaurant!, except: %i[ index show ]
   before_action :set_wine_type, only: %i[ show edit update destroy ]
 
   # GET /wine_types or /wine_types.json

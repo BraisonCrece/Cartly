@@ -1,5 +1,7 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_restaurant!
   before_action :set_category, only: [:edit, :update, :destroy]
+
   def index
     @categories = Category.all
   end
