@@ -41,6 +41,12 @@ class AllergensController < ApplicationController
     end
   end
 
+  def destroy
+    @allergen = Allergen.find_by(id: params[:id], restaurant_id: current_restaurant.id)
+    @allergen.destroy
+    redirect_to allergens_path, status: 303, notice: 'Alérgeno eliminado!'
+  end
+
   private
   def allergen_params
     params.require(:allergen).permit(:name, :icon)

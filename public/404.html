@@ -1,67 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
 <head>
-  <title>The page you were looking for doesn't exist (404)</title>
+  <title>A páxina que buscabas non existe (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <style>
-  .rails-default-error-page {
-    background-color: #EFEFEF;
-    color: #2E2F30;
-    text-align: center;
-    font-family: arial, sans-serif;
-    margin: 0;
-  }
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 
-  .rails-default-error-page div.dialog {
-    width: 95%;
-    max-width: 33em;
-    margin: 4em auto 0;
-  }
-
-  .rails-default-error-page div.dialog > div {
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #BBB;
-    border-top: #B00100 solid 4px;
-    border-top-left-radius: 9px;
-    border-top-right-radius: 9px;
-    background-color: white;
-    padding: 7px 12% 0;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-
-  .rails-default-error-page h1 {
-    font-size: 100%;
-    color: #730E15;
-    line-height: 1.5em;
-  }
-
-  .rails-default-error-page div.dialog > p {
-    margin: 0 0 1em;
-    padding: 1em;
-    background-color: #F7F7F7;
-    border: 1px solid #CCC;
-    border-right-color: #999;
-    border-left-color: #999;
-    border-bottom-color: #999;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 4px;
-    border-top-color: #DADADA;
-    color: #666;
-    box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
-  }
-  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'brand-red': '#ff5757',
+            'brand-red-light': '#ff7b7b',
+            'brand-comp': '#57ff8f',
+            'brand-comp-dark': '#2e855a',
+            'brand-gray': '#4a4a4a',
+          },
+          fontFamily: {
+            'playfare': ['"Playfair Display"', 'serif'],
+          },
+        }
+      }
+    }
+  </script>
 </head>
 
-<body class="rails-default-error-page">
-  <!-- This file lives in public/404.html -->
-  <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+<body class="h-full">
+  <main class="min-h-screen bg-gradient-to-b from-white to-gray-100 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center px-6 py-24 sm:py-32 lg:px-8">
+    <div class="text-center">
+      <!-- Logo -->
+      <div class="flex justify-center mb-8">
+        <div class="w-24 h-24 text-brand-red">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Mensaje de error -->
+      <p class="text-base font-semibold text-brand-red">404</p>
+      <h1 class="mt-4 text-3xl font-bold tracking-tight text-gray-900 dark:text-white sm:text-5xl font-playfare">Páxina non atopada</h1>
+      <p class="mt-6 text-base leading-7 text-gray-600 dark:text-gray-300">Sentímolo, pero non puidemos atopar a páxina que estabas buscando.</p>
+
+      <!-- Botón de regreso -->
+      <div class="mt-10 flex items-center justify-center gap-x-6">
+        <a href="/" class="rounded-md bg-brand-red px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-brand-red-light focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-red transition-all duration-300">
+          Volver ao inicio
+        </a>
+      </div>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
-  </div>
+  </main>
 </body>
 </html>
