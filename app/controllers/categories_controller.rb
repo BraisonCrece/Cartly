@@ -5,8 +5,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
-    # TODO: Show onl restaurant categories
-    @categories = Category.all
+    @categories = Category.where(restaurant_id: current_restaurant.id)
   end
 
   def new
@@ -20,13 +19,11 @@ class CategoriesController < ApplicationController
     @category.position = position
 
     if @category.save
-      flash[:notice] = 'Categoría agregada con éxito'
-      render :new, status: :ok
+      redirect_to categories_path, notice: 'Categoría agregada con éxito'
     else
       flash[:alert] = 'Datos inválidos'
       render :new, status: :unprocessable_entity
     end
-    flash.clear
   end
 
   def edit; end
@@ -49,9 +46,9 @@ class CategoriesController < ApplicationController
 
   def reorder
     # TODO: Show onl restaurant categories
-    category = Category.find(params[:id])
+    category = Category.find_by(id: params[:id], restaurant_id: current_restaurant.id)
     order = params[:order]
-    categories = Category.where(category_type: category.category_type)
+    categories = Category.where(category_type: category.category_type, restaurant_id: current_restaurant.id)
 
     order.map do |id|
       categories.find(id).update(position: order.index(id) + 1)
@@ -65,6 +62,6 @@ class CategoriesController < ApplicationController
   end
 
   def set_category
-    @category = Category.find(params[:id])
+    @category = Category.find_by(id: params[:id], restaurant_id: current_restaurant.id)
   end
 end

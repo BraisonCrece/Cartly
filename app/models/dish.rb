@@ -15,7 +15,7 @@ class Dish < ApplicationRecord
     where(active: true, restaurant_id:)
       .joins(:category)
       .where(categories: { category_type: 'menu' })
-      .order(title: :asc)
+      .order('categories.position ASC', 'dishes.title ASC')
       .load_async
       .group_by(&:category_id)
   }
@@ -24,7 +24,7 @@ class Dish < ApplicationRecord
     where(active: true, restaurant_id:)
       .joins(:category)
       .where(categories: { category_type: 'daily' })
-      .order(title: :asc)
+      .order('categories.position ASC', 'dishes.title ASC')
       .load_async
       .group_by(&:category_id)
   }

@@ -1,4 +1,4 @@
-<%= form_with model: @category, data: { turbo: false }, class: "w-full shadow-md rounded-[3px] px-6 pt-4 pb-8 mb-4 dark:shadow-white/25" do |f| %>
+<%= form_with model: @category, data: { turbo: false }, class: "w-full shadow-md rounded-[3px] px-6 pt-4 pb-8 mb-2 dark:shadow-white/25" do |f| %>
   <%= render "form_errors", category: @category %>
   <div class="form-group mb-8">
     <%= f.label :name, "Nome",class: "block text-gray-700 font-bold mb-2 dark:text-gray-200" %>
