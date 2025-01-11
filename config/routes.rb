@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   # Model CRUDs
   resources :allergens
+  resources :categories
   resources :dishes
   resources :special_menus
   resources :wines
@@ -59,5 +60,6 @@ Rails.application.routes.draw do
   end
 
   post '/reload_i18n', to: 'translate#reload_i18n'
+  post 'sort', to: 'categories#reorder'
 end
 # rubocop:enable Metrics/BlockLength

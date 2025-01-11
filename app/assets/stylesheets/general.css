@@ -12,7 +12,6 @@ body {
     font-family: "Lato", sans-serif;
 }
 
-
 .cubic-transition {
     transition-property: background-color, transform;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
@@ -120,7 +119,6 @@ body {
 }
 
 @keyframes pulse-subtle {
-
     0%,
     23.07% {
         transform: scale(1);
@@ -154,7 +152,9 @@ body {
 }
 
 .other-locales {
-    transition: transform 0.5s ease, opacity 0.5s ease;
+    transition:
+        transform 0.5s ease,
+        opacity 0.5s ease;
     transform-origin: bottom;
     opacity: 0;
     transform: scaleY(0);
@@ -222,6 +222,7 @@ select:disabled {
     z-index: 10;
     width: 100%;
     max-width: 42rem;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.25),
+    box-shadow:
+        0 4px 6px -1px rgba(0, 0, 0, 0.25),
         0 2px 4px -1px rgba(0, 0, 0, 0.343);
 }

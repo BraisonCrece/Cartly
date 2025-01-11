@@ -44,6 +44,7 @@ group :development, :test do
   gem 'factory_bot_rails', '~> 6.2'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', require: false
+  gem 'ruby-lsp'
   gem 'selenium-webdriver'
   gem 'shoulda-matchers', '~> 5.0'
   gem 'webdrivers', '= 5.3.0'

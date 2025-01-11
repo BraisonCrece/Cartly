@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class Restaurants::SessionsController < Devise::SessionsController
+  rate_limit to: 4, within: 1.minute, only: :create
   # before_action :configure_sign_in_params, only: [:create]
   # before_action :set_restaurant, only: %i[new create]
 
