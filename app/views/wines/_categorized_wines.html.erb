@@ -2,7 +2,7 @@
 
 <main role="main" aria-label="Lista de viños">
   <% if Wine.where(restaurant_id: params[:restaurant_id], active: true).exists? %>
-    <h1 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25" id='viños'> <%= translate("category.Viños.name", "🍷 Viños 🍷") %></h1>
+    <h1 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25 categoryHeader" id='viños' data-scroll-target="categoryHeader"> <%= translate("category.Viños.name", "🍷 Viños 🍷") %></h1>
   <% end %>
 
   <% @categorized_wines.each do |color, wines_by_denomination| %>
