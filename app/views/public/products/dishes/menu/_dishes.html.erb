@@ -1,0 +1,15 @@
+<%= turbo_stream_from "dishes" %>
+
+<% @categories.each do |category| %>
+  <% dishes = @categorized_dishes[category.name] %>
+  <% next if dishes.blank? %>
+  <div>
+    <h2 class="px-4 pb-4 text-3xl font-semibold text-center text-brand-comp-dark dark:text-brand-comp categoryHeader" data-scroll-target="categoryHeader" id="category-<%= category.id %>"><%= translate("category.#{category.id}.name",category.name) %></h2>
+    <% dishes.each do |dish| %>
+        <%= link_to build_link(dish), data: { turbo_frame: "modal" } do %>
+            <%= render "public/products/dishes/menu/dish", dish: dish %>
+        <% end %>
+    <% end %>
+    <div class='py-3'></div>
+  </div>
+<% end %>

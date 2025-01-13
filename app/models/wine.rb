@@ -10,6 +10,18 @@ class Wine < ApplicationRecord
   validates :price_per_glass, numericality: { greater_than: 0 }, allow_nil: true
   validate :active_when_not_locked
 
+  scope :grouped_by_type_and_denomination, lambda { |restaurant_id|
+    includes(:wine_origin_denomination)
+      .where(active: true, restaurant_id:)
+      .select('wines.*, wine_origin_denominations.name as denomination_name')
+      .joins(:wine_origin_denomination)
+      .order(:wine_type, 'wine_origin_denominations.name', :name)
+      .group_by(&:wine_type)
+      .transform_values do |wines|
+        wines.group_by(&:denomination_name)
+      end
+  }
+
   def self.search(restaurant_id:, query: nil)
     scope = where(restaurant_id:)
             .order('wines.active DESC, wines.name ASC')

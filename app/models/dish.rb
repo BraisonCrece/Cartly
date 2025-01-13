@@ -17,7 +17,7 @@ class Dish < ApplicationRecord
       .where(categories: { category_type: 'menu' })
       .order('categories.position ASC', 'dishes.title ASC')
       .load_async
-      .group_by(&:category_id)
+      .group_by { |dish| dish.category.name }
   }
 
   scope :menu_categorized_dishes, lambda { |restaurant_id|
@@ -26,7 +26,7 @@ class Dish < ApplicationRecord
       .where(categories: { category_type: 'daily' })
       .order('categories.position ASC', 'dishes.title ASC')
       .load_async
-      .group_by(&:category_id)
+      .group_by { |dish| dish.category.name }
   }
 
   def self.daily_menu(restaurant_id:, query: nil)

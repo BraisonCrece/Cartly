@@ -1,0 +1,21 @@
+ <div class="relative w-full h-full max-w-2xl print:max-w-[80%]" data-controller="scroll navbar">
+     <a href="#main-content" class="sr-only focus:not-sr-only">
+       Saltar al contenido principal
+     </a>
+
+     <div data-navbar-target="trigger"></div>
+     <nav aria-label="Menú de categorías"
+         class="absolute w-full overflow-x-scroll scrollbar-hide max-w-2xl top-[-1px] -translate-y-[500px]  transition-all z-10 border-t border-gray-100 dark:border-gray-100/25 bg-white dark:bg-gray-800 flex justify-evenly content-center items-center gap-8 py-4 px-6 duration-200 shadow-md"
+         data-navbar-target="navbar"
+         data-scroll-target="navbar">
+         <%= render "public/products/dishes/menu/category_links" %>
+     </nav>
+
+     <main id="main-content" class="p-3 space-y-4">
+         <%= render "public/products/dishes/menu/dishes" %>
+         <!-- CONTINUE HERE ⬇︎ -->
+         <%= render "public/products/drinks/drinks" %>
+         <%= render "public/products/wines/wines" %>
+         <%= turbo_frame_tag :modal %>
+     </main>
+ </div>

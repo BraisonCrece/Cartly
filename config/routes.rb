@@ -26,8 +26,10 @@ Rails.application.routes.draw do
   resources :wine_origin_denominations, as: :denominations, path: 'denominations'
 
   # User-facing routes
-  get ':restaurant_id/menu', to: 'dishes#menu', as: :menu
-  get ':restaurant_id/carta', to: 'dishes#index', as: :carta
+  get ':restaurant_id/menu', to: 'public/products#daily', as: :menu
+  # get ':restaurant_id/menu', to: 'dishes#menu', as: :menu
+  get ':restaurant_id/carta', to: 'public/products#menu', as: :carta
+  # get ':restaurant_id/carta', to: 'dishes#index', as: :carta
   get ':restaurant_id/qr', to: 'dynamic_router#call', as: :qr
   post ':restaurant_id/reload_i18n', to: 'translate#reload_i18n'
 
