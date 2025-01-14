@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_01_11_205108) do
+ActiveRecord::Schema[8.0].define(version: 2025_01_14_200844) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -85,6 +85,17 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_11_205108) do
     t.bigint "restaurant_id"
     t.index ["restaurant_id"], name: "index_dishes_on_restaurant_id"
     t.index ["special_menu_id"], name: "index_dishes_on_special_menu_id"
+  end
+
+  create_table "drinks", force: :cascade do |t|
+    t.string "name"
+    t.string "description"
+    t.string "price"
+    t.boolean "active", default: true
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["restaurant_id"], name: "index_drinks_on_restaurant_id"
   end
 
   create_table "restaurants", force: :cascade do |t|
@@ -166,6 +177,7 @@ ActiveRecord::Schema[8.0].define(version: 2025_01_11_205108) do
   add_foreign_key "categories", "restaurants"
   add_foreign_key "dishes", "restaurants"
   add_foreign_key "dishes", "special_menus"
+  add_foreign_key "drinks", "restaurants"
   add_foreign_key "settings", "restaurants"
   add_foreign_key "special_menus", "restaurants"
   add_foreign_key "wine_origin_denominations", "restaurants"

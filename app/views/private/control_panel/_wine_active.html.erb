@@ -1,0 +1,4 @@
+<%= turbo_frame_tag "wine_active_#{wine.id}" do %>
+  <%= link_to '🔴', private_toggle_active_path(id: wine.id, type: 'wine'), class: "no-underline select-none text-xl", data: { turbo_method: :post } if !wine.active%>
+  <%= link_to '🟢', private_toggle_active_path(id: wine.id, type: 'wine'), class: "no-underline select-none text-xl", data: { turbo_method: :post } if wine.active%>
+<% end %>

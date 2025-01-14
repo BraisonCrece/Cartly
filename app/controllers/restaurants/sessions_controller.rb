@@ -29,7 +29,7 @@ class Restaurants::SessionsController < Devise::SessionsController
 
     # En lugar de usar el redirect por defecto de Devise
     respond_to do |format|
-      format.html { redirect_to dishes_control_panel_path }
+      format.html { redirect_to private_dishes_control_panel_path }
       format.json { render :show, status: :ok, location: resource }
     end
   end

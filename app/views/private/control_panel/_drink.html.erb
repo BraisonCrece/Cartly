@@ -1,0 +1,19 @@
+<div class='flex justify-between w-[90%] h-20 mx-auto border-t align-middle relative dish-item' data-dish-title='<%= drink.name.downcase %>' data-dish-search-target="item">
+    <p class='max-w-[75%] self-center flex flex-col gap-2 text-lg font-medium'>
+        <%= truncate(drink.name, length: 30, separator: " ", omission: "...") %>
+    </p>
+    <p class='self-center'>
+        <% if drink.lock? %>
+            🔒
+        <% else %>
+        <%= turbo_frame_tag "drink_active_#{drink.id}" do %>
+            <%= link_to "🔴", private_toggle_active_path(id: drink.id, type: 'drink'), class: "no-underline select-none text-xl", data: { turbo_method: :post } if !drink.active %>
+            <%= link_to "🟢", private_toggle_active_path(id: drink.id, type: 'drink'), class: "no-underline select-none text-xl", data: { turbo_method: :post } if drink.active %>
+        <% end %>
+        <% end %>
+    </p>
+    <div class='absolute flex gap-2'>
+        <%= button_to "Editar", edit_private_drink_path(drink), data: { turbo: false }, class: "text-xs font-thin text-blue-800 p-0 dark:text-blue-200", method: :get %>
+        <%= button_to "Eliminar", private_drink_path(drink), data: { turbo_confirm: "Seguro que queres eliminar a bebida?" }, class: "text-xs font-thin text-red-800 p-0 dark:text-red-200", method: :delete %>
+    </div>
+</div>

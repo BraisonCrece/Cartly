@@ -1,0 +1,30 @@
+<div class="w-full max-w-2xl" data-controller="drink-search">
+    <div class="sticky top-[-1px] bg-white dark:bg-gray-800 pb-1 z-10 cubic-transition" data-controller="sticky-shadow" data-sticky-shadow-target="sticky">
+        <h1 class="mb-8 text-4xl font-thin text-center text-pretty"> Viños </h1>
+        <div class="flex items-center justify-center gap-2 px-3 mb-6 align-middle">
+          <%= render "shared/add_button", path: new_private_drink_path %>
+          <%= form_with url: private_drinks_control_panel_path, method: :get, html: { class: 'flex gap-2 flex-1'} do |form| %>
+              <%= form.hidden_field :filter, value: params[:filter] %>
+              <%= form.text_field :query,
+                  placeholder: 'Buscar viño',
+                  data: { drink_search_target: 'search', action: 'input->drink-search#search' },
+                  class: "bg-white focus:ring-blue-600 focus:border-blue-600 border border-gray-300 dark:text-gray-800 rounded-[3px] py-2 px-4 block w-full"
+              %>
+              <%= button_tag(type: 'submit', class: "p-2 bg-brand-red-light text-white rounded-full shrink-0 shadow-md w-10 h-10") do %>
+                  <%= image_tag 'icons/search.svg', class: 'w-5 h-5 text-white shrink-0 mx-auto', alt: 'Buscar' %>
+              <% end %>
+          <% end %>
+        </div>
+    </div>
+    <div id="drinkList" class="p-3">
+        <%= turbo_frame_tag "drinks-#{@pagy.page}" do %>
+            <%= render partial: 'drink', collection: @drinks %>
+
+            <%= turbo_frame_tag "drinks-#{@pagy.next}",
+                src: pagy_url_for(@pagy, @pagy.next),
+                loading: :lazy,
+                class: "w-full" if @pagy.next
+            %>
+        <% end %>
+    </div>
+</div>

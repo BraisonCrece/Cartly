@@ -34,10 +34,10 @@ Rails.application.routes.draw do
   post ':restaurant_id/reload_i18n', to: 'translate#reload_i18n'
 
   # Control Panel
-  get '/control_panel/dishes', to: 'control_panel#dishes', as: :dishes_control_panel
-  get '/control_panel/wines', to: 'control_panel#wines', as: :wines_control_panel
-  post 'toggle_active', to: 'control_panel#toggle_active', as: :toggle_active
-  post 'toggle_special_menu/:special_menu_id', to: 'special_menus#toggle_active', as: :toggle_special_menu
+  # get '/control_panel/dishes', to: 'control_panel#dishes', as: :dishes_control_panel
+  # get '/control_panel/wines', to: 'control_panel#wines', as: :wines_control_panel
+  # post 'toggle_active', to: 'control_panel#toggle_active', as: :toggle_active
+  # post 'toggle_special_menu/:special_menu_id', to: 'special_menus#toggle_active', as: :toggle_special_menu
 
   # Special menu dishes
   resources :special_menu do
@@ -63,5 +63,16 @@ Rails.application.routes.draw do
 
   post '/reload_i18n', to: 'translate#reload_i18n'
   post 'sort', to: 'categories#reorder'
+
+
+  ### REFACTORING
+  # PRIVATE
+  namespace :private, path: 'admin' do
+    resources :drinks
+
+    get '/panel/comida', to: 'control_panel#food', as: :food_control_panel
+    get '/panel/bebida', to: 'control_panel#drinks', as: :drinks_control_panel
+    post 'toggle_active', to: 'control_panel#toggle_active', as: :toggle_active
+  end
 end
 # rubocop:enable Metrics/BlockLength
