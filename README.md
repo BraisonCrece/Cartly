@@ -11,7 +11,10 @@ https://github.com/user-attachments/assets/d72ea4b1-970d-4ce5-b340-17e25bd211e7
 <img width="432" alt="image" src="https://github.com/user-attachments/assets/6ea2c41e-dfbe-41a9-9bc2-d54bb7ce2b3a">
 <img width="432" alt="image" src="https://github.com/user-attachments/assets/c64a29b0-d8d8-4315-b8be-ed26d88f79ea">
 
-https://cartanavegacion.fly.dev/
+## Give it a try!
+- https://cartly.fly.dev/
+- email: test@test.com
+- password: Abc123..
 
 This application allows restaurants to create and manage their menu of food and drinks in QR format. Customers can scan the QR code with their mobile phones to quickly and easily access the restaurant's menu.
 
@@ -32,7 +35,7 @@ This application allows restaurants to create and manage their menu of food and 
     - Desserts
     - Special menus
 
-## Technologies beind used
+## Technologies used
 
 - Ruby on Rails 7
 - Tailwind CSS
