@@ -326,3 +326,41 @@ eus:
 
     new:
       title: "Jatorri-deitura gehitu"
+  wine_types:
+    common:
+      edit: "Editatu"
+      show: "Ikusi"
+      back: "Itzuli"
+      destroy: "Ezabatu"
+      new: "Ardo mota berria"
+      notice: "Oharra"
+
+    form:
+      labels:
+        name: "Izena"
+      errors:
+        header:
+          one: "%{count} erroreak ardo mota hau gordetzea eragotzi du:"
+          other: "%{count} erroreek ardo mota hau gordetzea eragotzi dute:"
+
+    wine_type:
+      show: "Ardo mota hau ikusi"
+      edit: "Ardo mota hau editatu"
+
+    edit:
+      title: "Ardo mota editatzen"
+      show: "Ardo mota hau ikusi"
+      back: "Ardo motetara itzuli"
+
+    index:
+      title: "Ardo motak"
+      new: "Ardo mota berria"
+
+    new:
+      title: "Ardo mota berria"
+      back: "Ardo motetara itzuli"
+
+    show:
+      edit: "Ardo mota hau editatu"
+      destroy: "Ardo mota hau ezabatu"
+      back: "Ardo motetara itzuli"

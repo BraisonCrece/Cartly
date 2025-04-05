@@ -326,3 +326,41 @@ es:
 
     new:
       title: "Añadir denominación de origen"
+  wine_types:
+    common:
+      edit: "Editar"
+      show: "Ver"
+      back: "Volver"
+      destroy: "Eliminar"
+      new: "Nuevo tipo de vino"
+      notice: "Aviso"
+
+    form:
+      labels:
+        name: "Nombre"
+      errors:
+        header:
+          one: "%{count} error impidió guardar este tipo de vino:"
+          other: "%{count} errores impidieron guardar este tipo de vino:"
+
+    wine_type:
+      show: "Ver este tipo de vino"
+      edit: "Editar este tipo de vino"
+
+    edit:
+      title: "Editando tipo de vino"
+      show: "Ver este tipo de vino"
+      back: "Volver a tipos de vino"
+
+    index:
+      title: "Tipos de vino"
+      new: "Nuevo tipo de vino"
+
+    new:
+      title: "Nuevo tipo de vino"
+      back: "Volver a tipos de vino"
+
+    show:
+      edit: "Editar este tipo de vino"
+      destroy: "Eliminar este tipo de vino"
+      back: "Volver a tipos de vino"

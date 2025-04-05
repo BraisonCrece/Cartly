@@ -286,3 +286,41 @@ en:
 
     new:
       title: "Add denomination of origin"
+  wine_types:
+    common:
+      edit: "Edit"
+      show: "Show"
+      back: "Back"
+      destroy: "Destroy"
+      new: "New wine type"
+      notice: "Notice"
+
+    form:
+      labels:
+        name: "Name"
+      errors:
+        header:
+          one: "%{count} error prohibited this wine type from being saved:"
+          other: "%{count} errors prohibited this wine type from being saved:"
+
+    wine_type:
+      show: "Show this wine type"
+      edit: "Edit this wine type"
+
+    edit:
+      title: "Editing wine type"
+      show: "Show this wine type"
+      back: "Back to wine types"
+
+    index:
+      title: "Wine types"
+      new: "New wine type"
+
+    new:
+      title: "New wine type"
+      back: "Back to wine types"
+
+    show:
+      edit: "Edit this wine type"
+      destroy: "Destroy this wine type"
+      back: "Back to wine types"

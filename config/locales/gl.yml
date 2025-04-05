@@ -326,3 +326,41 @@ gl:
 
     new:
       title: "Engadir denominación de orixe"
+  wine_types:
+    common:
+      edit: "Editar"
+      show: "Ver"
+      back: "Volver"
+      destroy: "Eliminar"
+      new: "Novo tipo de viño"
+      notice: "Aviso"
+
+    form:
+      labels:
+        name: "Nome"
+      errors:
+        header:
+          one: "%{count} erro impediu gardar este tipo de viño:"
+          other: "%{count} erros impediron gardar este tipo de viño:"
+
+    wine_type:
+      show: "Ver este tipo de viño"
+      edit: "Editar este tipo de viño"
+
+    edit:
+      title: "Editando tipo de viño"
+      show: "Ver este tipo de viño"
+      back: "Volver a tipos de viño"
+
+    index:
+      title: "Tipos de viño"
+      new: "Novo tipo de viño"
+
+    new:
+      title: "Novo tipo de viño"
+      back: "Volver a tipos de viño"
+
+    show:
+      edit: "Editar este tipo de viño"
+      destroy: "Eliminar este tipo de viño"
+      back: "Volver a tipos de viño"

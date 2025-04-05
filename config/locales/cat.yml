@@ -326,3 +326,41 @@ cat:
 
     new:
       title: "Afegir denominació d'origen"
+  wine_types:
+    common:
+      edit: "Editar"
+      show: "Veure"
+      back: "Tornar"
+      destroy: "Eliminar"
+      new: "Nou tipus de vi"
+      notice: "Avís"
+
+    form:
+      labels:
+        name: "Nom"
+      errors:
+        header:
+          one: "%{count} error ha impedit desar aquest tipus de vi:"
+          other: "%{count} errors han impedit desar aquest tipus de vi:"
+
+    wine_type:
+      show: "Veure aquest tipus de vi"
+      edit: "Editar aquest tipus de vi"
+
+    edit:
+      title: "Editant tipus de vi"
+      show: "Veure aquest tipus de vi"
+      back: "Tornar a tipus de vi"
+
+    index:
+      title: "Tipus de vi"
+      new: "Nou tipus de vi"
+
+    new:
+      title: "Nou tipus de vi"
+      back: "Tornar a tipus de vi"
+
+    show:
+      edit: "Editar aquest tipus de vi"
+      destroy: "Eliminar aquest tipus de vi"
+      back: "Tornar a tipus de vi"
