@@ -237,3 +237,63 @@ es:
       light: "Claro"
       moon_icon: "Icono de luna"
       sun_icon: "Icono de sol"
+  special_menus:
+    common:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "¿Seguro que quieres eliminar el plato?"
+      back: "Atrás"
+      save: "Guardar"
+
+    active_special_menus:
+      title: "Especiales"
+      price_currency: "€"
+
+    control_panel_special_menu:
+      dishes_section: "Platos"
+
+    form:
+      labels:
+        name: "Nombre"
+        description: "Descripción"
+        price: "Precio"
+      errors:
+        header:
+          one: "%{count} error impidió guardar este menú especial:"
+          other: "%{count} errores impidieron guardar este menú especial:"
+
+    dishes:
+      form:
+        title: "Añadir plato al menú especial %{name}"
+        labels:
+          photo: "📸 Foto"
+          name: "Nombre"
+          description: "Descripción"
+          price: "Precio"
+          allergens: "Alérgenos"
+        placeholders:
+          select_file: "Seleccione un archivo"
+          browse: "Examinar"
+          name: "Plato delicioso"
+          description: '"Un plato delicioso que combina el sabor del mar con la frescura de la tierra"'
+        buttons:
+          generate_description: "Generar descripción"
+          generating: "Consultando al oráculo..."
+          save: "Guardar"
+        price_units:
+          kg: "/kg"
+          gr: "/gr"
+          unit: "/u"
+      new:
+        title: "Añadir plato"
+      edit:
+        title: "Editar plato"
+
+    edit:
+      title: "Editar menú especial"
+
+    index:
+      title: "Menús especiales"
+
+    new:
+      title: "Añadir Menú especial"

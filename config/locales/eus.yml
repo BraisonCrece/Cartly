@@ -237,3 +237,63 @@ eus:
       light: "Argia"
       moon_icon: "Ilargi ikonoa"
       sun_icon: "Eguzki ikonoa"
+  special_menus:
+    common:
+      edit: "Editatu"
+      delete: "Ezabatu"
+      delete_confirm: "Ziur zaude plater hau ezabatu nahi duzula?"
+      back: "Atzera"
+      save: "Gorde"
+
+    active_special_menus:
+      title: "Bereziak"
+      price_currency: "€"
+
+    control_panel_special_menu:
+      dishes_section: "Platerak"
+
+    form:
+      labels:
+        name: "Izena"
+        description: "Deskribapena"
+        price: "Prezioa"
+      errors:
+        header:
+          one: "%{count} erroreak menu berezi hau gordetzea eragotzi du:"
+          other: "%{count} erroreek menu berezi hau gordetzea eragotzi dute:"
+
+    dishes:
+      form:
+        title: "Platera gehitu %{name} menu berezira"
+        labels:
+          photo: "📸 Argazkia"
+          name: "Izena"
+          description: "Deskribapena"
+          price: "Prezioa"
+          allergens: "Alergenoak"
+        placeholders:
+          select_file: "Hautatu fitxategia"
+          browse: "Arakatu"
+          name: "Plater goxoa"
+          description: '"Itsasoaren zaporea eta lurraren freskotasuna konbinatzen dituen plater goxoa"'
+        buttons:
+          generate_description: "Deskribapena sortu"
+          generating: "Orakuluari kontsultatzen..."
+          save: "Gorde"
+        price_units:
+          kg: "/kg"
+          gr: "/gr"
+          unit: "/u"
+      new:
+        title: "Platera gehitu"
+      edit:
+        title: "Platera editatu"
+
+    edit:
+      title: "Menu berezia editatu"
+
+    index:
+      title: "Menu bereziak"
+
+    new:
+      title: "Menu berezia gehitu"

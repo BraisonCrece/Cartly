@@ -237,3 +237,63 @@ cat:
       light: "Clar"
       moon_icon: "Icona de lluna"
       sun_icon: "Icona de sol"
+  special_menus:
+    common:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "Estàs segur que vols eliminar aquest plat?"
+      back: "Enrere"
+      save: "Desar"
+
+    active_special_menus:
+      title: "Especials"
+      price_currency: "€"
+
+    control_panel_special_menu:
+      dishes_section: "Plats"
+
+    form:
+      labels:
+        name: "Nom"
+        description: "Descripció"
+        price: "Preu"
+      errors:
+        header:
+          one: "%{count} error ha impedit desar aquest menú especial:"
+          other: "%{count} errors han impedit desar aquest menú especial:"
+
+    dishes:
+      form:
+        title: "Afegir plat al menú especial %{name}"
+        labels:
+          photo: "📸 Foto"
+          name: "Nom"
+          description: "Descripció"
+          price: "Preu"
+          allergens: "Al·lèrgens"
+        placeholders:
+          select_file: "Seleccioni un arxiu"
+          browse: "Examinar"
+          name: "Plat deliciós"
+          description: '"Un plat deliciós que combina el sabor del mar amb la frescor de la terra"'
+        buttons:
+          generate_description: "Generar descripció"
+          generating: "Consultant l'oracle..."
+          save: "Desar"
+        price_units:
+          kg: "/kg"
+          gr: "/gr"
+          unit: "/u"
+      new:
+        title: "Afegir plat"
+      edit:
+        title: "Editar plat"
+
+    edit:
+      title: "Editar menú especial"
+
+    index:
+      title: "Menús especials"
+
+    new:
+      title: "Afegir Menú especial"
