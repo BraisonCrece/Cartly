@@ -14,11 +14,11 @@ module CartaQr
 
     config.rails_i18n.enabled_modules = [:locale]
     # Spanish, German, English, Italian, French, Russian
-    config.i18n.available_locales = [:gl, :es, :de, :en, :it, :fr, :ru]
+    config.i18n.available_locales = [:es, :en, :cat, :gl, :eus]
     config.i18n.default_locale = :gl
 
     # ../data/locales
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locale', '*.{rb,yml}')]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}')]
 
     # add services
     # config.autoload_paths += %W(#{config.root}/app/services)

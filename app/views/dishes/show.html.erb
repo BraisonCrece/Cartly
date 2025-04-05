@@ -17,7 +17,7 @@
                 <%= image_tag @dish.picture.attached? ? @dish.picture : "placeholder.webp",
                     class: "rounded-t-lg sm:rounded-none object-cover object-center w-full h-full wait",
                     data: { modal_target: "image" },
-                    alt: "Foto de #{@dish.title || 'prato'}" %>
+                    alt: t('.dish_photo', title: @dish.title || t('.default_photo')) %>
             </div>
             <!-- CARD BODY -->
             <div class="card__body h-full px-6 py-2 sm:max-w-[70%] flex flex-col justify-around">
@@ -37,17 +37,17 @@
                         <div
                             class="self-center block text-xl font-semibold skeleton skeleton-dark"
                             data-modal-target="skeleton"
-                            aria-label="Prezo do prato" >
+                            aria-label="<%= t('.dish_price') %>" >
                             <%= number_with_precision(@dish.prize, precision: 2, separator: ",") %>
                             <small class='text-sm italic text-black duration-500 font-extralight place-self-end dark:text-white'>
-                                <%=render_measure(@dish) %>
+                                <%= render_measure(@dish) %>
                             </small>
                         </div>
                     <% end %>
                     <div
                         class="flex items-center gap-1 alergenos skeleton skeleton-dark"
                         data-modal-target="skeleton"
-                        aria-label="Lista de alérxenos" >
+                        aria-label="<%= t('.allergens_list') %>" >
                         <% @dish.allergens.each do |allergen| %>
                             <span
                                 class="inline-block py-1 tooltip"
@@ -58,7 +58,7 @@
                                 <%= image_tag allergen.icon.variant(:thumb),
                                     data: { modal_target: "image" },
                                     class: "w-8 h-8 opacity-70",
-                                    alt: "Icona de #{allergen.name}" %>
+                                    alt: t('.allergen_icon', name: allergen.name) %>
                                 <span
                                     class="shadow-xl tooltip-text"
                                     data-tooltip-target="text"

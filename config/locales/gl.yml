@@ -1,0 +1,75 @@
+gl:
+  dishes:
+    index:
+      skip_to_main: "Saltar ao contido principal"
+      categories_menu: "Menú de categorías"
+    categories_select:
+      select_category: "Selecciona unha categoría"
+      separator: "──────────"
+    category_links:
+      go_to_category: "Ir á categoría %{name}"
+      wines_section: "Viños"
+      go_to_wines: "Ir á sección de viños"
+    dish:
+      dish_info: "Información do prato"
+      dish_name: "Nome do prato"
+      dish_price: "Prezo do prato"
+      measure: "Medida"
+      per_person: "por persoa"
+      per_kg: "por kg"
+      per_half_kg: "por medio kg"
+      per_unit: "por unidade"
+    form:
+      title: "Título do formulario"
+      errors:
+        header:
+          one: "%{count} erro impediu gardar este prato"
+          other: "%{count} erros impediron gardar este prato"
+      labels:
+        picture: "📸 Foto"
+        name: "Nome"
+        description: "Descrición"
+        price: "Prezo"
+        special_menu: "Menú especial"
+        category: "Categoría"
+        allergens: "Alérxenos"
+      placeholders:
+        file: "Seleccione un arquivo"
+        name: "Prato delicioso"
+        description: '"Un prato delicioso que combina o sabor do mar coa frescura da terra"'
+      buttons:
+        browse: "Examinar"
+        generate_description: "Xerar descrición"
+        loading: "Consultando ao oráculo..."
+        save: "Gardar"
+      special_menu:
+        question: "🍱 Menú especial?"
+        select_prompt: "Selecciona un menú especial"
+      price_options:
+        per_kg: "/kg"
+        per_gr: "/gr"
+        per_unit: "/u"
+      accessibility:
+        form_role: "formulario"
+        dish_photo: "Foto do prato"
+        price_options: "Opcións de prezo"
+        price_type: "Tipo de prezo"
+        price_input: "Prezo do prato"
+        per_kg_label: "Prezo por quilo"
+        per_gr_label: "Prezo por gramo"
+        per_unit_label: "Prezo por unidade"
+        allergens_list: "Lista de alérxenos"
+        allergen_contains: "Marcar se o prato contén %{allergen}"
+    menu_dish:
+      dish_info: "Información do prato"
+      name_and_price: "Nome e prezo"
+      dish_name: "Nome do prato"
+    new:
+      title: "Engadir prato"
+      back: "Atrás"
+    show:
+      dish_photo: "Foto de %{title}"
+      default_photo: "prato"
+      dish_price: "Prezo do prato"
+      allergens_list: "Lista de alérxenos"
+      allergen_icon: "Icona de %{name}"

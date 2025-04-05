@@ -1,0 +1,34 @@
+en:
+  dishes:
+    index:
+      skip_to_main: "Skip to main content"
+      categories_menu: "Categories menu"
+    categories_select:
+      select_category: "Select a category"
+      separator: "──────────"
+    category_links:
+      go_to_category: "Go to category %{name}"
+      wines_section: "Wines"
+      go_to_wines: "Go to wines section"
+    dish:
+      dish_info: "Dish information"
+      dish_name: "Dish name"
+      dish_price: "Dish price"
+      measure: "Measure"
+      per_person: "per person"
+      per_kg: "per kg"
+      per_half_kg: "per half kg"
+      per_unit: "per unit"
+    menu_dish:
+      dish_info: "Dish information"
+      name_and_price: "Name and price"
+      dish_name: "Dish name"
+    new:
+      title: "Add dish"
+      back: "Back"
+    show:
+      dish_photo: "Photo of %{title}"
+      default_photo: "dish"
+      dish_price: "Dish price"
+      allergens_list: "Allergens list"
+      allergen_icon: "Icon of %{name}"

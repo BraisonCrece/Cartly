@@ -1,0 +1,75 @@
+cat:
+  dishes:
+    index:
+      skip_to_main: "Saltar al contingut principal"
+      categories_menu: "Menú de categories"
+    categories_select:
+      select_category: "Selecciona una categoria"
+      separator: "──────────"
+    category_links:
+      go_to_category: "Anar a la categoria %{name}"
+      wines_section: "Vins"
+      go_to_wines: "Anar a la secció de vins"
+    dish:
+      dish_info: "Informació del plat"
+      dish_name: "Nom del plat"
+      dish_price: "Preu del plat"
+      measure: "Mesura"
+      per_person: "per persona"
+      per_kg: "per kg"
+      per_half_kg: "per mig kg"
+      per_unit: "per unitat"
+    form:
+      title: "Títol del formulari"
+      errors:
+        header:
+          one: "%{count} error ha impedit guardar aquest plat"
+          other: "%{count} errors han impedit guardar aquest plat"
+      labels:
+        picture: "📸 Foto"
+        name: "Nom"
+        description: "Descripció"
+        price: "Preu"
+        special_menu: "Menú especial"
+        category: "Categoria"
+        allergens: "Al·lèrgens"
+      placeholders:
+        file: "Seleccioni un arxiu"
+        name: "Plat deliciós"
+        description: '"Un plat deliciós que combina el sabor del mar amb la frescor de la terra"'
+      buttons:
+        browse: "Examinar"
+        generate_description: "Generar descripció"
+        loading: "Consultant l'oracle..."
+        save: "Guardar"
+      special_menu:
+        question: "🍱 Menú especial?"
+        select_prompt: "Selecciona un menú especial"
+      price_options:
+        per_kg: "/kg"
+        per_gr: "/gr"
+        per_unit: "/u"
+      accessibility:
+        form_role: "formulari"
+        dish_photo: "Foto del plat"
+        price_options: "Opcions de preu"
+        price_type: "Tipus de preu"
+        price_input: "Preu del plat"
+        per_kg_label: "Preu per quilo"
+        per_gr_label: "Preu per gram"
+        per_unit_label: "Preu per unitat"
+        allergens_list: "Llista d'al·lèrgens"
+        allergen_contains: "Marcar si el plat conté %{allergen}"
+    menu_dish:
+      dish_info: "Informació del plat"
+      name_and_price: "Nom i preu"
+      dish_name: "Nom del plat"
+    new:
+      title: "Afegir plat"
+      back: "Enrere"
+    show:
+      dish_photo: "Foto de %{title}"
+      default_photo: "plat"
+      dish_price: "Preu del plat"
+      allergens_list: "Llista d'al·lèrgens"
+      allergen_icon: "Icona de %{name}"

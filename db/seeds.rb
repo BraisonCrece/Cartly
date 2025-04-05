@@ -345,12 +345,12 @@ menu_categories = ['🥗 Entrantes 🥗', '🍽️ Platos 🍽️', '🍰 Postre
 daily_categories = ['Primeiros', 'Segundos', 'Postres']
 
 menu_categories.each do |name|
-  Category.create!(name: name, category_type: 'menu')
+  Category.create!(name: name, category_type: 'menu', restaurant: restaurant)
   print_info("Created menu category: #{name}")
 end
 
 daily_categories.each do |name|
-  Category.create!(name: name, category_type: 'daily')
+  Category.create!(name: name, category_type: 'daily', restaurant: restaurant)
   print_info("Created daily category: #{name}")
 end
 

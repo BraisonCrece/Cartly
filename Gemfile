@@ -42,6 +42,7 @@ group :development, :test do
   gem 'capybara-screenshot'
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'factory_bot_rails', '~> 6.2'
+  gem 'rails_live_reload'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', require: false
   gem 'ruby-lsp'
@@ -51,7 +52,6 @@ group :development, :test do
 end
 
 group :development do
+  gem 'dockerfile-rails', '>= 1.6'
   gem 'web-console'
 end
-
-gem "dockerfile-rails", ">= 1.6", :group => :development

@@ -1,0 +1,75 @@
+eus:
+  dishes:
+    index:
+      skip_to_main: "Eduki nagusira joan"
+      categories_menu: "Kategorien menua"
+    categories_select:
+      select_category: "Kategoria bat hautatu"
+      separator: "──────────"
+    category_links:
+      go_to_category: "Joan %{name} kategoriara"
+      wines_section: "Ardoak"
+      go_to_wines: "Joan ardoen atalera"
+    dish:
+      dish_info: "Plateren informazioa"
+      dish_name: "Plateren izena"
+      dish_price: "Plateren prezioa"
+      measure: "Neurria"
+      per_person: "pertsonako"
+      per_kg: "kiloko"
+      per_half_kg: "kilo erdiko"
+      per_unit: "unitateko"
+    form:
+      title: "Formularioaren izenburua"
+      errors:
+        header:
+          one: "%{count} erroreak plater hau gordetzea eragotzi du"
+          other: "%{count} erroreek plater hau gordetzea eragotzi dute"
+      labels:
+        picture: "📸 Argazkia"
+        name: "Izena"
+        description: "Deskribapena"
+        price: "Prezioa"
+        special_menu: "Menu berezia"
+        category: "Kategoria"
+        allergens: "Alergenoak"
+      placeholders:
+        file: "Hautatu fitxategia"
+        name: "Plater goxoa"
+        description: '"Itsasoaren zaporea eta lurraren freskotasuna konbinatzen dituen plater goxoa"'
+      buttons:
+        browse: "Arakatu"
+        generate_description: "Deskribapena sortu"
+        loading: "Orakuluari kontsultatzen..."
+        save: "Gorde"
+      special_menu:
+        question: "🍱 Menu berezia?"
+        select_prompt: "Hautatu menu berezia"
+      price_options:
+        per_kg: "/kg"
+        per_gr: "/gr"
+        per_unit: "/u"
+      accessibility:
+        form_role: "formularioa"
+        dish_photo: "Plateraren argazkia"
+        price_options: "Prezio aukerak"
+        price_type: "Prezio mota"
+        price_input: "Plateraren prezioa"
+        per_kg_label: "Kiloko prezioa"
+        per_gr_label: "Gramoko prezioa"
+        per_unit_label: "Unitateko prezioa"
+        allergens_list: "Alergenoen zerrenda"
+        allergen_contains: "Markatu platerak %{allergen} badu"
+    menu_dish:
+      dish_info: "Plateren informazioa"
+      name_and_price: "Izena eta prezioa"
+      dish_name: "Plateren izena"
+    new:
+      title: "Platera gehitu"
+      back: "Atzera"
+    show:
+      dish_photo: "Argazkia %{title}"
+      default_photo: "platera"
+      dish_price: "Plateraren prezioa"
+      allergens_list: "Alergenoen zerrenda"
+      allergen_icon: "%{name} ikonoa"

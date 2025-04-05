@@ -1,0 +1,75 @@
+es:
+  dishes:
+    index:
+      skip_to_main: "Saltar al contenido principal"
+      categories_menu: "Menú de categorías"
+    categories_select:
+      select_category: "Selecciona una categoría"
+      separator: "──────────"
+    category_links:
+      go_to_category: "Ir a la categoría %{name}"
+      wines_section: "Vinos"
+      go_to_wines: "Ir a la sección de vinos"
+    dish:
+      dish_info: "Información del plato"
+      dish_name: "Nombre del plato"
+      dish_price: "Precio del plato"
+      measure: "Medida"
+      per_person: "por persona"
+      per_kg: "por kg"
+      per_half_kg: "por medio kg"
+      per_unit: "por unidad"
+    form:
+      title: "Título del formulario" # Este se debe pasar como variable
+      errors:
+        header:
+          one: "%{count} error impidió guardar este plato"
+          other: "%{count} errores impidieron guardar este plato"
+      labels:
+        picture: "📸 Foto"
+        name: "Nombre"
+        description: "Descripción"
+        price: "Precio"
+        special_menu: "Menú especial"
+        category: "Categoría"
+        allergens: "Alérgenos"
+      placeholders:
+        file: "Seleccione un archivo"
+        name: "Plato delicioso"
+        description: '"Un plato delicioso que combina el sabor del mar con la frescura de la tierra"'
+      buttons:
+        browse: "Examinar"
+        generate_description: "Generar descripción"
+        loading: "Consultando al oráculo..."
+        save: "Guardar"
+      special_menu:
+        question: "🍱 ¿Menú especial?"
+        select_prompt: "Selecciona un menú especial"
+      price_options:
+        per_kg: "/kg"
+        per_gr: "/gr"
+        per_unit: "/u"
+      accessibility:
+        form_role: "formulario"
+        dish_photo: "Foto del plato"
+        price_options: "Opciones de precio"
+        price_type: "Tipo de precio"
+        price_input: "Precio del plato"
+        per_kg_label: "Precio por kilo"
+        per_gr_label: "Precio por gramo"
+        per_unit_label: "Precio por unidad"
+        allergens_list: "Lista de alérgenos"
+        allergen_contains: "Marcar si el plato contiene %{allergen}"
+    menu_dish:
+      dish_info: "Información del plato"
+      name_and_price: "Nombre y precio"
+      dish_name: "Nombre del plato"
+    new:
+      title: "Añadir plato"
+      back: "Atrás"
+    show:
+      dish_photo: "Foto de %{title}"
+      default_photo: "plato"
+      dish_price: "Precio del plato"
+      allergens_list: "Lista de alérgenos"
+      allergen_icon: "Icono de %{name}"
