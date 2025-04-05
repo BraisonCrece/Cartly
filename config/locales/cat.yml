@@ -125,3 +125,22 @@ cat:
     new:
       title: "Afegir Categoria"
       back: "Tornar"
+  control_panel:
+    dish:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "Estàs segur que vols eliminar el plat?"
+    wine:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "Estàs segur que vols eliminar el vi?"
+    dishes:
+      title: "Plats"
+      menu: "Menú"
+      carta: "Carta"
+      search_placeholder: "Buscar plat"
+      search_button: "Cercar"
+    wines:
+      title: "Vins"
+      search_placeholder: "Buscar vi"
+      search_button: "Cercar"

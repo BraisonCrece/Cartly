@@ -125,3 +125,22 @@ es:
     new:
       title: "Añadir Categoría"
       back: "Volver"
+  control_panel:
+    dish:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "¿Seguro que quieres eliminar el plato?"
+    wine:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "¿Seguro que quieres eliminar el vino?"
+    dishes:
+      title: "Platos"
+      menu: "Menú"
+      carta: "Carta"
+      search_placeholder: "Buscar plato"
+      search_button: "Buscar"
+    wines:
+      title: "Vinos"
+      search_placeholder: "Buscar vino"
+      search_button: "Buscar"

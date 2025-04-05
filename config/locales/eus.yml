@@ -125,3 +125,22 @@ eus:
     new:
       title: "Kategoria Gehitu"
       back: "Itzuli"
+  control_panel:
+    dish:
+      edit: "Editatu"
+      delete: "Ezabatu"
+      delete_confirm: "Ziur zaude platera ezabatu nahi duzula?"
+    wine:
+      edit: "Editatu"
+      delete: "Ezabatu"
+      delete_confirm: "Ziur zaude ardoa ezabatu nahi duzula?"
+    dishes:
+      title: "Platerak"
+      menu: "Menua"
+      carta: "Karta"
+      search_placeholder: "Platera bilatu"
+      search_button: "Bilatu"
+    wines:
+      title: "Ardoak"
+      search_placeholder: "Ardoa bilatu"
+      search_button: "Bilatu"

@@ -125,3 +125,22 @@ gl:
     new:
       title: "Engadir Categoría"
       back: "Volver"
+  control_panel:
+    dish:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "Seguro que queres eliminar o prato?"
+    wine:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "Seguro que queres eliminar o viño?"
+    dishes:
+      title: "Pratos"
+      menu: "Menú"
+      carta: "Carta"
+      search_placeholder: "Buscar prato"
+      search_button: "Buscar"
+    wines:
+      title: "Viños"
+      search_placeholder: "Buscar viño"
+      search_button: "Buscar"
