@@ -1,28 +1,47 @@
 <% if request.path.include?("/menu") %>
-    <div class="w-[96%] max-w-2xl mb-8 mx-auto flex flex-col gap-2 justify-center items-center text-xl font-thin" role="region" aria-label="Menu do día">
-        <h2 class="text-2xl font-normal underline underline-offset-4 decoration-emerald-500/30"> <%= translate("info.title", "O menú do día inclúe") %>: </h2>
-        <p aria-label="Primeiro plato">🍽 <%=  translate("info.starter", "1er plato")%></p>
-        <p aria-label="Segundo plato">🍽 <%=  translate("info.main", "2º plato")%></p>
-        <p aria-label="Pan e auga">🥖 <%=  translate("info.water_bread", "Pan e Auga") %> 🥤</p>
-        <p aria-label="Postre ou café">🍮 <%=  translate("info.dessert_or_coffee", "Postre ou Café") %> ☕</p>
-        <div class="italic font-sans font-light text-5xl text-emerald-500" aria-label="Prezo do menú">
-            <%= Setting.menu_price(params[:restaurant_id]) %> €
-        </div>
+  <div class="w-[96%] max-w-2xl mb-8 mx-auto flex flex-col gap-2 justify-center items-center text-xl font-thin"
+       role="region"
+       aria-label="<%= t('.menu_includes') %>">
+    <h2 class="text-2xl font-normal underline underline-offset-4 decoration-emerald-500/30">
+      <%= translate("info.title", t('.menu_includes')) %>:
+    </h2>
+    <p aria-label="<%= t('.first_course') %>">🍽 <%= translate("info.starter", t('.first_course')) %></p>
+    <p aria-label="<%= t('.second_course') %>">🍽 <%= translate("info.main", t('.second_course')) %></p>
+    <p aria-label="<%= t('.bread_and_water') %>">🥖 <%= translate("info.water_bread", t('.bread_and_water')) %> 🥤</p>
+    <p aria-label="<%= t('.dessert_or_coffee') %>">🍮 <%= translate("info.dessert_or_coffee", t('.dessert_or_coffee')) %> ☕</p>
+    <div class="italic font-sans font-light text-5xl text-emerald-500"
+         aria-label="<%= t('.menu_price') %>">
+      <%= Setting.menu_price(params[:restaurant_id]) %> €
     </div>
+  </div>
 <% end %>
+
 <% if (request.path.include?("/carta") || request.path.include?("/menu")) %>
-    <div class="w-[96%] max-w-2xl mx-auto border border-gray-400/10 rounded py-4 px-3 my-8 shadow-md flex flex-col gap-4 font-roboto text-lg text-slate-700 dark:text-slate-300" role="complementary" aria-label="Información de contacto">
-        <section class="flex-col pt-4 items-center max-w-xs mx-auto">
-            <%= image_tag @restaurant.logo, class: "w-full h-auto rounded-lg mb-1", alt: "Logo de #{@restaurant}" if @restaurant.logo.attached? %>
-        </section>
-        <h2 class="text-2xl text-balance text-center py-6 rounded shadow font-play"> <%= @restaurant.name %> </h2>
-        <%= link_to @restaurant.google_maps_link, target: "_blank", rel: "noopener", class: "flex gap-3 items-center font-light" do %>
-            <%= image_tag 'map.svg', class: "w-10", alt: "Icona de mapa" %>
-            <%= @restaurant.full_address %>
-        <% end %>
-        <%= link_to "tel:#{@restaurant.phone}", class: "flex gap-3 items-center font-light", aria_label: "Teléfono"  do %>
-            <%= image_tag 'phone.svg', class: "w-10", alt: "Icona de teléfono" %>
-            <%= @restaurant.phone %>
-        <% end %>
-    </div>
+  <div class="w-[96%] max-w-2xl mx-auto border border-gray-400/10 rounded py-4 px-3 my-8 shadow-md flex flex-col gap-4 font-roboto text-lg text-slate-700 dark:text-slate-300"
+       role="complementary"
+       aria-label="<%= t('.contact_info') %>">
+    <section class="flex-col pt-4 items-center max-w-xs mx-auto">
+      <% if @restaurant.logo.attached? %>
+        <%= image_tag @restaurant.logo,
+            class: "w-full h-auto rounded-lg mb-1",
+            alt: t('.restaurant_logo', name: @restaurant.name) %>
+      <% end %>
+    </section>
+    <h2 class="text-2xl text-balance text-center py-6 rounded shadow font-play">
+      <%= @restaurant.name %>
+    </h2>
+    <%= link_to @restaurant.google_maps_link,
+        target: "_blank",
+        rel: "noopener",
+        class: "flex gap-3 items-center font-light" do %>
+      <%= image_tag 'map.svg', class: "w-10", alt: t('.map_icon') %>
+      <%= @restaurant.full_address %>
+    <% end %>
+    <%= link_to "tel:#{@restaurant.phone}",
+        class: "flex gap-3 items-center font-light",
+        aria_label: @restaurant.phone do %>
+      <%= image_tag 'phone.svg', class: "w-10", alt: t('.phone_icon') %>
+      <%= @restaurant.phone %>
+    <% end %>
+  </div>
 <% end %>

@@ -1,17 +1,19 @@
 <% if products?(params[:restaurant_id]) %>
-    <%= render "shared/info" %>
+  <%= render "shared/info" %>
 <% else %>
-    <% if params[:restaurant_id]  %>
-        <div class="border rounded-md p-4 flex max-w-md w-[80%] mx-auto">
-            <div class="flex items-center justify-center gap-4">
-                <%= image_tag "info.svg", class: "w-6", alt: "Icona de información", aria_hidden:"true" %>
-                <p class="text-lg font-light italic prose-rose text-balance"> <%= translate("info.no_products", "Non hai produtos activos, volve máis tarde") %> </p>
-            </div>
-        </div>
-    <% elsif request.path.include?('control_panel') && !products?(current_restaurant.id, active: false) %>
-        <div class="text-center">
-            <p class="text-lg font-light italic">Comeza a engadir productos á carta!</p>
-            <%= link_to "Engadir plato", new_dish_path, class: "text-blue-600 hover:text-blue-800" %>
-        </div>
-    <% end %>
+  <% if params[:restaurant_id] %>
+    <div class="border rounded-md p-4 flex max-w-md w-[80%] mx-auto">
+      <div class="flex items-center justify-center gap-4">
+        <%= image_tag "info.svg", class: "w-6", alt: t('.info_icon'), aria_hidden: "true" %>
+        <p class="text-lg font-light italic prose-rose text-balance">
+          <%= translate("info.no_products", t('.no_products')) %>
+        </p>
+      </div>
+    </div>
+  <% elsif request.path.include?('control_panel') && !products?(current_restaurant.id, active: false) %>
+    <div class="text-center">
+      <p class="text-lg font-light italic"><%= t('.add_products') %></p>
+      <%= link_to t('.add_dish'), new_dish_path, class: "text-blue-600 hover:text-blue-800" %>
+    </div>
+  <% end %>
 <% end %>

@@ -161,3 +161,79 @@ es:
           phone: "654 321 098"
         select_province: "Selecciona provincia"
         save: "Guardar cambios"
+  settings:
+    edit:
+      title: "Configuración"
+      errors:
+        header:
+          one: "%{count} error impidió guardar esta configuración:"
+          other: "%{count} errores impidieron guardar esta configuración:"
+      labels:
+        root_page: "Página por defecto"
+        show_toggler: "Mostrar botón de selección de menú"
+        locale_toggler: "Mostrar botón de selección de idioma"
+        menu_price: "Precio del menú del día"
+      options:
+        menu: "Menú"
+        carta: "Carta"
+        show: "Mostrar"
+        hide: "Ocultar"
+      buttons:
+        save: "Guardar"
+        back: "Atrás"
+  shared:
+    add_button:
+      add: "Añadir"
+      add_icon: "Icono de añadir"
+
+    card_menu_switch:
+      menu: "MENÚ"
+      carta: "CARTA"
+
+    close_button:
+      close: "Cerrar"
+
+    flash:
+      success: "¡Éxito!"
+      error: "¡Error!"
+      close_button: "Botón de cerrar"
+      close_notification: "Cerrar notificación"
+
+    info:
+      no_products: "No hay productos activos, vuelve más tarde"
+      add_products: "¡Empieza a añadir productos al menú!"
+      add_dish: "Añadir plato"
+      menu_includes: "El menú del día incluye"
+      first_course: "1er plato"
+      second_course: "2º plato"
+      bread_and_water: "Pan y Agua"
+      dessert_or_coffee: "Postre o Café"
+      contact_info: "Información de contacto"
+      map_icon: "Icono de mapa"
+      phone_icon: "Icono de teléfono"
+      restaurant_logo: "Logo de %{name}"
+
+    items:
+      dishes: "Platos"
+      wines: "Vinos"
+      denominations: "Denominaciones de Origen"
+      categories: "Categorías"
+      allergens: "Alérgenos"
+      profile: "Perfil"
+      settings: "Configuración"
+      view_menu: "Ver carta"
+      download_qr: "Descargar QR"
+      reload_i18n: "Recargar i18n"
+      logout: "Cerrar sesión"
+
+    menu:
+      open_menu: "Botón de apertura del menú de opciones"
+      close_menu: "Cerrar menú de opciones"
+
+    theme_switch:
+      to_dark: "Cambiar a tema oscuro"
+      to_light: "Cambiar a tema claro"
+      dark: "Oscuro"
+      light: "Claro"
+      moon_icon: "Icono de luna"
+      sun_icon: "Icono de sol"

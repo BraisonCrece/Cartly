@@ -161,3 +161,79 @@ cat:
           phone: "654 321 098"
         select_province: "Selecciona província"
         save: "Desar canvis"
+  settings:
+    edit:
+      title: "Configuració"
+      errors:
+        header:
+          one: "%{count} error va impedir desar aquesta configuració:"
+          other: "%{count} errors van impedir desar aquesta configuració:"
+      labels:
+        root_page: "Pàgina per defecte"
+        show_toggler: "Mostrar botó de selecció de menú"
+        locale_toggler: "Mostrar botó de selecció d'idioma"
+        menu_price: "Preu del menú del dia"
+      options:
+        menu: "Menú"
+        carta: "Carta"
+        show: "Mostrar"
+        hide: "Ocultar"
+      buttons:
+        save: "Desar"
+        back: "Tornar"
+  shared:
+    add_button:
+      add: "Afegir"
+      add_icon: "Icona d'afegir"
+
+    card_menu_switch:
+      menu: "MENÚ"
+      carta: "CARTA"
+
+    close_button:
+      close: "Tancar"
+
+    flash:
+      success: "Èxit!"
+      error: "Error!"
+      close_button: "Botó de tancar"
+      close_notification: "Tancar notificació"
+
+    info:
+      no_products: "No hi ha productes actius, torna més tard"
+      add_products: "Comença a afegir productes a la carta!"
+      add_dish: "Afegir plat"
+      menu_includes: "El menú del dia inclou"
+      first_course: "1r plat"
+      second_course: "2n plat"
+      bread_and_water: "Pa i Aigua"
+      dessert_or_coffee: "Postres o Cafè"
+      contact_info: "Informació de contacte"
+      map_icon: "Icona de mapa"
+      phone_icon: "Icona de telèfon"
+      restaurant_logo: "Logo de %{name}"
+
+    items:
+      dishes: "Plats"
+      wines: "Vins"
+      denominations: "Denominacions d'Origen"
+      categories: "Categories"
+      allergens: "Al·lèrgens"
+      profile: "Perfil"
+      settings: "Configuració"
+      view_menu: "Veure carta"
+      download_qr: "Descarregar QR"
+      reload_i18n: "Recarregar i18n"
+      logout: "Tancar sessió"
+
+    menu:
+      open_menu: "Botó d'obertura del menú d'opcions"
+      close_menu: "Tancar menú d'opcions"
+
+    theme_switch:
+      to_dark: "Canviar a tema fosc"
+      to_light: "Canviar a tema clar"
+      dark: "Fosc"
+      light: "Clar"
+      moon_icon: "Icona de lluna"
+      sun_icon: "Icona de sol"

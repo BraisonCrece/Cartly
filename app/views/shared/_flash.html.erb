@@ -1,18 +1,37 @@
 <% if flash[:notice] %>
-  <div data-controller="notifications" data-notifications-target="x" data-action="click->notifications#close" class="bg-green-100 border border-green-400 text-green-700 p-6 rounded fixed top-2 z-[70] w-[95%] max-w-xl animate__animated animate__fadeInRight animate__faster" role="alert" tabindex="0">
-    <strong class="font-bold" aria-label="Éxito">Exito!</strong>
+  <div data-controller="notifications"
+       data-notifications-target="x"
+       data-action="click->notifications#close"
+       class="bg-green-100 border border-green-400 text-green-700 p-6 rounded fixed top-2 z-[70] w-[95%] max-w-xl animate__animated animate__fadeInRight animate__faster"
+       role="alert"
+       tabindex="0">
+    <strong class="font-bold" aria-label="<%= t('.success') %>"><%= t('.success') %></strong>
     <span class="block sm:inline" aria-live="polite"><%= notice %></span>
     <span class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer">
-        <%= image_tag "close.svg", class: "fill-current h-8 w-8 text-green-500", alt: 'Botón de pechar', role: "button", title: "Pechar notificación" %>
+      <%= image_tag "close.svg",
+          class: "fill-current h-8 w-8 text-green-500",
+          alt: t('.close_button'),
+          role: "button",
+          title: t('.close_notification') %>
     </span>
   </div>
 <% end %>
+
 <% if flash[:alert] %>
-  <div data-controller="notifications" data-notifications-target="x" data-action="click->notifications#close" class="bg-red-100 border border-red-400 text-red-700 p-6 rounded fixed top-2 z-[70] w-[95%] max-w-xl animate__animated animate__fadeInRight animate__faster" role="alert" tabindex="0">
-    <strong class="font-bold" aria-label="Erro">Erro!</strong>
+  <div data-controller="notifications"
+       data-notifications-target="x"
+       data-action="click->notifications#close"
+       class="bg-red-100 border border-red-400 text-red-700 p-6 rounded fixed top-2 z-[70] w-[95%] max-w-xl animate__animated animate__fadeInRight animate__faster"
+       role="alert"
+       tabindex="0">
+    <strong class="font-bold" aria-label="<%= t('.error') %>"><%= t('.error') %></strong>
     <span class="block sm:inline" aria-live="polite"><%= alert %></span>
     <span class="absolute top-0 bottom-0 right-0 px-4 py-3 cursor-pointer">
-        <%= image_tag "close.svg", class: "fill-current h-8 w-8 text-green-500", alt: 'Botón de pechar', role: "button", title: "Pechar notificación" %>
+      <%= image_tag "close.svg",
+          class: "fill-current h-8 w-8 text-green-500",
+          alt: t('.close_button'),
+          role: "button",
+          title: t('.close_notification') %>
     </span>
   </div>
 <% end %>

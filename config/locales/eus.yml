@@ -161,3 +161,79 @@ eus:
           phone: "654 321 098"
         select_province: "Hautatu probintzia"
         save: "Aldaketak gorde"
+  settings:
+    edit:
+      title: "Ezarpenak"
+      errors:
+        header:
+          one: "%{count} erroreak ezarpen hauek gordetzea eragotzi du:"
+          other: "%{count} erroreek ezarpen hauek gordetzea eragotzi dute:"
+      labels:
+        root_page: "Lehenetsitako orria"
+        show_toggler: "Menu hautapen botoia erakutsi"
+        locale_toggler: "Hizkuntza hautapen botoia erakutsi"
+        menu_price: "Eguneko menuaren prezioa"
+      options:
+        menu: "Menua"
+        carta: "Karta"
+        show: "Erakutsi"
+        hide: "Ezkutatu"
+      buttons:
+        save: "Gorde"
+        back: "Atzera"
+  shared:
+    add_button:
+      add: "Gehitu"
+      add_icon: "Gehitzeko ikonoa"
+
+    card_menu_switch:
+      menu: "MENUA"
+      carta: "KARTA"
+
+    close_button:
+      close: "Itxi"
+
+    flash:
+      success: "Arrakasta!"
+      error: "Errorea!"
+      close_button: "Ixteko botoia"
+      close_notification: "Jakinarazpena itxi"
+
+    info:
+      no_products: "Ez dago produktu aktiborik, itzuli beranduago"
+      add_products: "Hasi produktuak gehitzen kartara!"
+      add_dish: "Platera gehitu"
+      menu_includes: "Eguneko menuak barne hartzen du"
+      first_course: "1. platera"
+      second_course: "2. platera"
+      bread_and_water: "Ogia eta Ura"
+      dessert_or_coffee: "Postrea edo Kafea"
+      contact_info: "Kontaktu informazioa"
+      map_icon: "Mapa ikonoa"
+      phone_icon: "Telefono ikonoa"
+      restaurant_logo: "%{name}ren logoa"
+
+    items:
+      dishes: "Platerak"
+      wines: "Ardoak"
+      denominations: "Jatorri Deiturak"
+      categories: "Kategoriak"
+      allergens: "Alergenoak"
+      profile: "Profila"
+      settings: "Ezarpenak"
+      view_menu: "Karta ikusi"
+      download_qr: "QR deskargatu"
+      reload_i18n: "i18n birkargatu"
+      logout: "Saioa itxi"
+
+    menu:
+      open_menu: "Aukeren menua irekitzeko botoia"
+      close_menu: "Aukeren menua itxi"
+
+    theme_switch:
+      to_dark: "Gai ilunera aldatu"
+      to_light: "Gai argira aldatu"
+      dark: "Iluna"
+      light: "Argia"
+      moon_icon: "Ilargi ikonoa"
+      sun_icon: "Eguzki ikonoa"

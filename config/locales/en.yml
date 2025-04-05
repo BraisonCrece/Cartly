@@ -121,3 +121,79 @@ en:
           phone: "654 321 098"
         select_province: "Select province"
         save: "Save changes"
+  settings:
+    edit:
+      title: "Settings"
+      errors:
+        header:
+          one: "%{count} error prevented saving these settings:"
+          other: "%{count} errors prevented saving these settings:"
+      labels:
+        root_page: "Default page"
+        show_toggler: "Show menu selection button"
+        locale_toggler: "Show language selection button"
+        menu_price: "Daily menu price"
+      options:
+        menu: "Menu"
+        carta: "Menu Card"
+        show: "Show"
+        hide: "Hide"
+      buttons:
+        save: "Save"
+        back: "Back"
+  shared:
+    add_button:
+      add: "Add"
+      add_icon: "Add icon"
+
+    card_menu_switch:
+      menu: "MENU"
+      carta: "MENU CARD"
+
+    close_button:
+      close: "Close"
+
+    flash:
+      success: "Success!"
+      error: "Error!"
+      close_button: "Close button"
+      close_notification: "Close notification"
+
+    info:
+      no_products: "No active products, come back later"
+      add_products: "Start adding products to the menu!"
+      add_dish: "Add dish"
+      menu_includes: "Daily menu includes"
+      first_course: "1st course"
+      second_course: "2nd course"
+      bread_and_water: "Bread and Water"
+      dessert_or_coffee: "Dessert or Coffee"
+      contact_info: "Contact information"
+      map_icon: "Map icon"
+      phone_icon: "Phone icon"
+      restaurant_logo: "%{name}'s logo"
+
+    items:
+      dishes: "Dishes"
+      wines: "Wines"
+      denominations: "Denominations of Origin"
+      categories: "Categories"
+      allergens: "Allergens"
+      profile: "Profile"
+      settings: "Settings"
+      view_menu: "View menu"
+      download_qr: "Download QR"
+      reload_i18n: "Reload i18n"
+      logout: "Log out"
+
+    menu:
+      open_menu: "Options menu opening button"
+      close_menu: "Close options menu"
+
+    theme_switch:
+      to_dark: "Switch to dark theme"
+      to_light: "Switch to light theme"
+      dark: "Dark"
+      light: "Light"
+      moon_icon: "Moon icon"
+      sun_icon: "Sun icon"
