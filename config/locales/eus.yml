@@ -144,3 +144,20 @@ eus:
       title: "Ardoak"
       search_placeholder: "Ardoa bilatu"
       search_button: "Bilatu"
+  restaurants:
+    profile:
+      edit:
+        title: "Profila"
+        labels:
+          name: "Izena"
+          province: "Probintzia"
+          city: "Hiria"
+          address: "Helbidea"
+          phone: "Telefonoa"
+        placeholders:
+          name: "Delicias Jatetxea"
+          city: "Zapore etorbidea, 7"
+          address: "Zapore etorbidea, 7, behea"
+          phone: "654 321 098"
+        select_province: "Hautatu probintzia"
+        save: "Aldaketak gorde"

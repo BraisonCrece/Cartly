@@ -144,3 +144,20 @@ cat:
       title: "Vins"
       search_placeholder: "Buscar vi"
       search_button: "Cercar"
+  restaurants:
+    profile:
+      edit:
+        title: "Perfil"
+        labels:
+          name: "Nom"
+          province: "Província"
+          city: "Ciutat"
+          address: "Adreça"
+          phone: "Telèfon"
+        placeholders:
+          name: "Restaurant Delícies"
+          city: "Avinguda del sabor, n7"
+          address: "Avinguda del sabor, 7, baixos"
+          phone: "654 321 098"
+        select_province: "Selecciona província"
+        save: "Desar canvis"

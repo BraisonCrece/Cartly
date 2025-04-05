@@ -144,3 +144,20 @@ gl:
       title: "Viños"
       search_placeholder: "Buscar viño"
       search_button: "Buscar"
+  restaurants:
+    profile:
+      edit:
+        title: "Perfil"
+        labels:
+          name: "Nome"
+          province: "Provincia"
+          city: "Cidade"
+          address: "Dirección"
+          phone: "Teléfono"
+        placeholders:
+          name: "Restaurante Delicias"
+          city: "Avenida do sabor, n7"
+          address: "Avenida do sabor, 7, baixo"
+          phone: "654 321 098"
+        select_province: "Selecciona provincia"
+        save: "Gardar cambios"

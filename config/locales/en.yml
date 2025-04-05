@@ -104,3 +104,20 @@ en:
       title: "Wines"
       search_placeholder: "Search wine"
       search_button: "Search"
+  restaurants:
+    profile:
+      edit:
+        title: "Profile"
+        labels:
+          name: "Name"
+          province: "Province"
+          city: "City"
+          address: "Address"
+          phone: "Phone"
+        placeholders:
+          name: "Delicias Restaurant"
+          city: "Flavor Avenue, n7"
+          address: "Flavor Avenue, 7, ground floor"
+          phone: "654 321 098"
+        select_province: "Select province"
+        save: "Save changes"
