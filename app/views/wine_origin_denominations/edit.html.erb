@@ -1,4 +1,9 @@
 <div class='w-[90%] max-w-xl'>
-  <%= render  "form", wine: @denomination, url: denomination_path, message: "Editar denominación de orixe" %>
-  <%= link_to "Atrás", denominations_path, class: 'underline underline-blue-800 text-blue-600' %>
+  <%= render "form",
+      wine: @denomination,
+      url: denomination_path,
+      message: t('.title') %>
+  <%= link_to t('wine_origin_denominations.common.back'),
+      denominations_path,
+      class: 'underline underline-blue-800 text-blue-600' %>
 </div>

@@ -297,3 +297,32 @@ eus:
 
     new:
       title: "Menu berezia gehitu"
+  wine_origin_denominations:
+    common:
+      edit: "Editatu"
+      delete: "Ezabatu"
+      delete_confirm: "Ziur zaude jatorri-deitura ezabatu nahi duzula?"
+      back: "Atzera"
+      save: "Gorde"
+
+    denomination:
+      edit: "Editatu"
+      delete: "Ezabatu"
+      delete_confirm: "Ziur zaude jatorri-deitura ezabatu nahi duzula?"
+
+    form:
+      labels:
+        name: "Izena"
+      errors:
+        header:
+          one: "%{count} erroreak jatorri-deitura hau gordetzea eragotzi du:"
+          other: "%{count} erroreek jatorri-deitura hau gordetzea eragotzi dute:"
+
+    edit:
+      title: "Jatorri-deitura editatu"
+
+    index:
+      title: "Jatorri-deiturak"
+
+    new:
+      title: "Jatorri-deitura gehitu"

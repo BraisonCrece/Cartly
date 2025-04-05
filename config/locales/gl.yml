@@ -297,3 +297,32 @@ gl:
 
     new:
       title: "Engadir Menú especial"
+  wine_origin_denominations:
+    common:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "Seguro que queres eliminar a denominación?"
+      back: "Atrás"
+      save: "Gardar"
+
+    denomination:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "Seguro que queres eliminar a denominación?"
+
+    form:
+      labels:
+        name: "Nome"
+      errors:
+        header:
+          one: "%{count} erro impediu gardar esta denominación:"
+          other: "%{count} erros impediron gardar esta denominación:"
+
+    edit:
+      title: "Editar denominación de orixe"
+
+    index:
+      title: "Denominacións de Orixe"
+
+    new:
+      title: "Engadir denominación de orixe"

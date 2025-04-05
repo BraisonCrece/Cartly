@@ -297,3 +297,32 @@ es:
 
     new:
       title: "Añadir Menú especial"
+  wine_origin_denominations:
+    common:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "¿Seguro que quieres eliminar la denominación?"
+      back: "Atrás"
+      save: "Guardar"
+
+    denomination:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "¿Seguro que quieres eliminar la denominación?"
+
+    form:
+      labels:
+        name: "Nombre"
+      errors:
+        header:
+          one: "%{count} error impidió guardar esta denominación:"
+          other: "%{count} errores impidieron guardar esta denominación:"
+
+    edit:
+      title: "Editar denominación de origen"
+
+    index:
+      title: "Denominaciones de Origen"
+
+    new:
+      title: "Añadir denominación de origen"

@@ -297,3 +297,32 @@ cat:
 
     new:
       title: "Afegir Menú especial"
+  wine_origin_denominations:
+    common:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "Estàs segur que vols eliminar la denominació?"
+      back: "Enrere"
+      save: "Desar"
+
+    denomination:
+      edit: "Editar"
+      delete: "Eliminar"
+      delete_confirm: "Estàs segur que vols eliminar la denominació?"
+
+    form:
+      labels:
+        name: "Nom"
+      errors:
+        header:
+          one: "%{count} error ha impedit desar aquesta denominació:"
+          other: "%{count} errors han impedit desar aquesta denominació:"
+
+    edit:
+      title: "Editar denominació d'origen"
+
+    index:
+      title: "Denominacions d'Origen"
+
+    new:
+      title: "Afegir denominació d'origen"
