@@ -1,5 +1,17 @@
 en:
   dishes:
+    create:
+      success_with_translations: "Dish added! It will be automatically activated when translations are complete."
+    update:
+      success: "Dish successfully edited"
+    destroy:
+      success: "Dish deleted!"
+    set_dish:
+      not_found: "Dish not found"
+    wines:
+      colors:
+        white: "White"
+        red: "Red"
     index:
       skip_to_main: "Skip to main content"
       categories_menu: "Categories menu"
@@ -33,6 +45,14 @@ en:
       allergens_list: "Allergens list"
       allergen_icon: "Icon of %{name}"
   allergens:
+    create:
+      success: "Allergen successfully added"
+      invalid: "Invalid data"
+    update:
+      success: "Allergen successfully updated"
+    destroy:
+      success: "Allergen deleted!"
+    not_found: "Allergen not found"
     allergen:
       edit: "Edit"
       delete: "Delete"
@@ -59,6 +79,14 @@ en:
       title: "Add allergen"
       back: "Back"
   categories:
+    create:
+      success: "Category successfully added"
+      invalid: "Invalid data"
+    update:
+      success: "Category successfully updated"
+      invalid: "Invalid data"
+    destroy:
+      success: "Category successfully deleted"
     category:
       edit_category: "Edit category"
       delete_confirm: "Are you sure?"
@@ -105,7 +133,11 @@ en:
       search_placeholder: "Search wine"
       search_button: "Search"
   restaurants:
+    sessions:
+      signed_in: "Signed in successfully"
     profile:
+      success: "Profile successfully updated"
+      error: "There was an error updating the profile"
       edit:
         title: "Profile"
         labels:
@@ -122,6 +154,8 @@ en:
         select_province: "Select province"
         save: "Save changes"
   settings:
+    update:
+      success: "Settings successfully updated"
     edit:
       title: "Settings"
       errors:
@@ -198,6 +232,16 @@ en:
       moon_icon: "Moon icon"
       sun_icon: "Sun icon"
   special_menus:
+    create:
+      success: "Special menu successfully created"
+      error: "Error creating special menu"
+    update:
+      success: "Special menu successfully updated"
+      error: "Error updating special menu"
+    destroy:
+      success: "Special menu successfully deleted"
+    set_special_menu:
+      not_found: "Special menu not found"
     common:
       edit: "Edit"
       delete: "Delete"
@@ -223,6 +267,15 @@ en:
           other: "%{count} errors prevented this special menu from being saved:"
 
     dishes:
+      create:
+        success: "Dish successfully added to special menu"
+        error: "Error adding dish to special menu"
+      update:
+        success: "Dish successfully updated"
+        error: "Error updating dish"
+      destroy:
+        success: "Dish successfully deleted"
+      not_found: "Dish not found"
       form:
         title: "Add dish to special menu %{name}"
         labels:
@@ -258,6 +311,15 @@ en:
     new:
       title: "Add Special Menu"
   wine_origin_denominations:
+    create:
+      success: "Wine origin denomination successfully created"
+      error: "There was an error"
+    update:
+      success: "Wine origin denomination successfully updated"
+    destroy:
+      success: "Wine origin denomination successfully deleted"
+    set_denomination:
+      not_found: "Requested wine origin denomination not found"
     common:
       edit: "Edit"
       delete: "Delete"
@@ -325,6 +387,14 @@ en:
       destroy: "Destroy this wine type"
       back: "Back to wine types"
   wines:
+    create:
+      success_with_translations: "Wine added! It will be automatically activated when translations are complete."
+    update:
+      success: "Wine successfully updated"
+    destroy:
+      success: "Wine deleted!"
+    set_wine:
+      not_found: "Wine not found"
     common:
       back: "Back"
       save: "Save"

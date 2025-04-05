@@ -23,9 +23,9 @@ module SpecialMenus
       @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
 
       if @dish.save
-        redirect_to special_menus_path, notice: 'Plato engadido ao menú especial con éxito.'
+        redirect_to special_menus_path, notice: t('.success')
       else
-        render :new, status: :unprocessable_entity, alert: 'Erro ao engadir o plato ao menú especial.'
+        render :new, status: :unprocessable_entity, alert: t('.error')
       end
     end
 
@@ -43,9 +43,9 @@ module SpecialMenus
 
         @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
 
-        redirect_to special_menus_path, notice: 'Plato actualizado con éxito.'
+        redirect_to special_menus_path, notice: t('.success')
       else
-        render :edit, status: :unprocessable_entity, alert: 'Erro ao actualizar o plato.'
+        render :edit, status: :unprocessable_entity, alert: t('.error')
       end
     end
 
@@ -56,16 +56,16 @@ module SpecialMenus
         Translators::ProcessTranslationsService.new(@dish, :destroy).call
       end
 
-      redirect_to special_menus_path, status: 303, notice: 'Plato eliminado con éxito.'
+      redirect_to special_menus_path, status: 303, notice: t('.success')
     end
 
     private
 
     def set_dish
       @dish = Dish.find_by(id: params[:id], restaurant_id: current_restaurant.id)
-      if @dish.nil?
-        redirect_to special_menus_path, alert: 'Plato non atopado.'
-      end
+      return unless @dish.nil?
+
+      redirect_to special_menus_path, alert: t('.not_found')
     end
 
     def dish_params

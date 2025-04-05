@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WineOriginDenominationsController < ApplicationController
   before_action :authenticate_restaurant!
   before_action :set_denomination, only: [:show, :edit, :update, :destroy]
@@ -19,11 +21,11 @@ class WineOriginDenominationsController < ApplicationController
     @denomination.restaurant_id = current_restaurant.id
 
     if @denomination.save
-      flash[:notice] = 'Denominación de origen creada con éxito.'
+      flash[:notice] = t('.success')
       render :new
       flash.clear
     else
-      flash[:alert] = 'Houbo un erro'
+      flash[:alert] = t('.error')
       render :new, status: :unprocessable_entity
       flash.clear
     end
@@ -31,7 +33,7 @@ class WineOriginDenominationsController < ApplicationController
 
   def update
     if @denomination.update(wine_origin_denomination_params)
-      redirect_to denominations_path, notice: 'Denominación de origen actualizada con éxito.'
+      redirect_to denominations_path, notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -39,16 +41,16 @@ class WineOriginDenominationsController < ApplicationController
 
   def destroy
     @denomination.destroy
-    redirect_to denominations_path, notice: 'Denominación de origen eliminada con éxito.'
+    redirect_to denominations_path, notice: t('.success')
   end
 
   private
 
   def set_denomination
     @denomination = WineOriginDenomination.find_by(id: params[:id], restaurant_id: current_restaurant.id)
-    if @denomination.nil?
-      redirect_to denominations_path, alert: 'Non atopamos a denominación de orixe solicitada.'
-    end
+    return unless @denomination.nil?
+
+    redirect_to denominations_path, alert: t('.not_found')
   end
 
   def wine_origin_denomination_params

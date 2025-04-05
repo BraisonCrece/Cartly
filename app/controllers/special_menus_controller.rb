@@ -14,9 +14,9 @@ class SpecialMenusController < ApplicationController
     @special_menu = SpecialMenu.new(special_menu_params)
     @special_menu.restaurant_id = current_restaurant.id
     if @special_menu.save
-      redirect_to special_menus_path, notice: 'Menú especial creado con éxito.'
+      redirect_to special_menus_path, notice: t('.success')
     else
-      render :new, alert: 'Erro ao crear o menú especial.'
+      render :new, alert: t('.error')
     end
   end
 
@@ -25,15 +25,15 @@ class SpecialMenusController < ApplicationController
 
   def update
     if @special_menu.update(special_menu_params)
-      redirect_to special_menus_path, notice: 'Menú especial actualizado con éxito.'
+      redirect_to special_menus_path, notice: t('.success')
     else
-      render :edit, alert: 'Erro ao actualizar o menú especial.'
+      render :edit, alert: t('.error')
     end
   end
 
   def destroy
     @special_menu.destroy
-    redirect_to special_menus_path, notice: 'Menú especial eliminado con éxito.'
+    redirect_to special_menus_path, notice: t('.success')
   end
 
   def toggle_active
@@ -49,9 +49,9 @@ class SpecialMenusController < ApplicationController
 
   def set_special_menu
     @special_menu = SpecialMenu.find_by(id: params[:id], restaurant_id: current_restaurant.id)
-    if @special_menu.nil?
-      redirect_to special_menus_path, alert: 'Menú especial non atopado.'
-    end
+    return unless @special_menu.nil?
+
+    redirect_to special_menus_path, alert: t('.not_found')
   end
 
   def special_menu_params

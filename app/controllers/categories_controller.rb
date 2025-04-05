@@ -19,9 +19,9 @@ class CategoriesController < ApplicationController
     @category.position = position
 
     if @category.save
-      redirect_to categories_path, notice: 'Categoría agregada con éxito'
+      redirect_to categories_path, notice: t('.success')
     else
-      flash[:alert] = 'Datos inválidos'
+      flash[:alert] = t('.invalid')
       render :new, status: :unprocessable_entity
     end
   end
@@ -30,22 +30,21 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      flash[:notice] = 'Categoría actualizada con éxito'
+      flash[:notice] = t('.success')
       redirect_to categories_path
     else
-      flash[:alert] = 'Datos inválidos'
+      flash[:alert] = t('.invalid')
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
     @category.destroy
-    flash[:notice] = 'Categoría eliminada con éxito'
+    flash[:notice] = t('.success')
     redirect_to categories_path
   end
 
   def reorder
-    # TODO: Show onl restaurant categories
     category = Category.find_by(id: params[:id], restaurant_id: current_restaurant.id)
     order = params[:order]
     categories = Category.where(category_type: category.category_type, restaurant_id: current_restaurant.id)

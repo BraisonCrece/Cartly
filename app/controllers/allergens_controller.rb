@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AllergensController < ApplicationController
   before_action :authenticate_restaurant!
   before_action :set_allergen, only: [:edit, :update, :destroy]
@@ -16,11 +18,11 @@ class AllergensController < ApplicationController
     @allergen.restaurant_id = current_restaurant.id
 
     if @allergen.save
-      flash[:notice] = 'Alérgeno agregado con éxito'
+      flash[:notice] = t('.success')
       render :new, status: :ok
       flash.clear
     else
-      flash[:alert] = 'Datos inválidos'
+      flash[:alert] = t('.invalid')
       render :new, status: :unprocessable_entity
       flash.clear
     end
@@ -35,7 +37,7 @@ class AllergensController < ApplicationController
 
   def update
     if @allergen.update(allergen_params)
-      redirect_to allergens_path
+      redirect_to allergens_path, notice: t('.success')
     else
       render :edit
     end
@@ -43,7 +45,7 @@ class AllergensController < ApplicationController
 
   def destroy
     @allergen.destroy
-    redirect_to allergens_path, status: 303, notice: 'Alérgeno eliminado!'
+    redirect_to allergens_path, status: 303, notice: t('.success')
   end
 
   private
@@ -52,7 +54,7 @@ class AllergensController < ApplicationController
     @allergen = Allergen.find_by(id: params[:id], restaurant_id: current_restaurant.id)
     return unless @allergen.nil?
 
-    redirect_to allergens_path, alert: 'Alérgeno non atopado.'
+    redirect_to allergens_path, alert: t('.not_found')
   end
 
   def allergen_params

@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Restaurants
   class ProfileController < ApplicationController
     def edit
@@ -9,9 +7,9 @@ module Restaurants
     def update
       @restaurant = current_restaurant
       if @restaurant.update(restaurant_params)
-        redirect_to dishes_control_panel_path, notice: 'Perfil actualizado con éxito'
+        redirect_to dishes_control_panel_path, notice: t('.success')
       else
-        render :edit, alert: 'Houbo un erro ao actualizar o perfil'
+        render :edit, alert: t('.error')
       end
     end
 

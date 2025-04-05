@@ -6,7 +6,7 @@ class DishesController < ApplicationController
   before_action :set_dish, only: [:edit, :update, :destroy]
   before_action :set_categories, only: [:index, :new, :edit]
 
-  WINE_COLORS = ['Blanco', 'Tinto'].freeze
+  WINE_COLORS = [t('wines.colors.white'), t('wines.colors.red')].freeze
 
   def index
     @restaurant = Restaurant.find_by(id: params[:restaurant_id])
@@ -36,7 +36,7 @@ class DishesController < ApplicationController
     @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
 
     if @dish.save
-      flash[:notice] = 'Plato engadido! Será automáticamente activado cando as traduccións rematen.'
+      flash[:notice] = t('.success_with_translations')
       redirect_to dishes_control_panel_path
     else
       render :new, status: :unprocessable_entity
@@ -56,7 +56,7 @@ class DishesController < ApplicationController
       request_translations(@dish, :update) if ENV['OPENAI_KEY'].present? && title_or_description_changed?
 
       @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
-      redirect_to dishes_control_panel_path, notice: 'Plato editado con éxito'
+      redirect_to dishes_control_panel_path, notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -66,7 +66,7 @@ class DishesController < ApplicationController
     @dish.destroy
     request_translations(@dish, :destroy) if ENV['OPENAI_KEY'].present?
 
-    redirect_to dishes_control_panel_path, status: 303, notice: 'Plato eliminado!'
+    redirect_to dishes_control_panel_path, status: 303, notice: t('.success')
   end
 
   private
@@ -90,9 +90,9 @@ class DishesController < ApplicationController
     restaurant_id = params[:restaurant_id] || current_restaurant&.id
     @dish = Dish.find_by(id: params[:id], restaurant_id:)
 
-    if @dish.nil?
-      redirect_to dishes_control_panel_path, alert: 'Plato non atopado'
-    end
+    return unless @dish.nil?
+
+    redirect_to dishes_control_panel_path, alert: t('.not_found')
   end
 
   def set_categories

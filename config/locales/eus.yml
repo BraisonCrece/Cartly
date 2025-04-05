@@ -1,5 +1,17 @@
 eus:
   dishes:
+    create:
+      success_with_translations: "Platera gehitu da! Automatikoki aktibatuko da itzulpenak amaitzen direnean."
+    update:
+      success: "Platera behar bezala editatu da"
+    destroy:
+      success: "Platera ezabatu da!"
+    set_dish:
+      not_found: "Platera ez da aurkitu"
+    wines:
+      colors:
+        white: "Zuria"
+        red: "Beltza"
     index:
       skip_to_main: "Eduki nagusira joan"
       categories_menu: "Kategorien menua"
@@ -74,6 +86,14 @@ eus:
       allergens_list: "Alergenoen zerrenda"
       allergen_icon: "%{name} ikonoa"
   allergens:
+    create:
+      success: "Alergenoa behar bezala gehitu da"
+      invalid: "Datu baliogabeak"
+    update:
+      success: "Alergenoa behar bezala eguneratu da"
+    destroy:
+      success: "Alergenoa ezabatu da!"
+    not_found: "Alergenoa ez da aurkitu"
     allergen:
       edit: "Editatu"
       delete: "Ezabatu"
@@ -100,6 +120,14 @@ eus:
       title: "Alergenoa gehitu"
       back: "Atzera"
   categories:
+    create:
+      success: "Kategoria behar bezala gehitu da"
+      invalid: "Datu baliogabeak"
+    update:
+      success: "Kategoria behar bezala eguneratu da"
+      invalid: "Datu baliogabeak"
+    destroy:
+      success: "Kategoria behar bezala ezabatu da"
     category:
       edit_category: "Kategoria editatu"
       delete_confirm: "Ziur zaude?"
@@ -145,7 +173,11 @@ eus:
       search_placeholder: "Ardoa bilatu"
       search_button: "Bilatu"
   restaurants:
+    sessions:
+      signed_in: "Saioa behar bezala hasi da"
     profile:
+      success: "Profila behar bezala eguneratu da"
+      error: "Errorea gertatu da profila eguneratzean"
       edit:
         title: "Profila"
         labels:
@@ -162,6 +194,8 @@ eus:
         select_province: "Hautatu probintzia"
         save: "Aldaketak gorde"
   settings:
+    update:
+      success: "Ezarpenak behar bezala eguneratu dira"
     edit:
       title: "Ezarpenak"
       errors:
@@ -238,6 +272,16 @@ eus:
       moon_icon: "Ilargi ikonoa"
       sun_icon: "Eguzki ikonoa"
   special_menus:
+    create:
+      success: "Menu berezia behar bezala sortu da"
+      error: "Errorea menu berezia sortzean"
+    update:
+      success: "Menu berezia behar bezala eguneratu da"
+      error: "Errorea menu berezia eguneratzean"
+    destroy:
+      success: "Menu berezia behar bezala ezabatu da"
+    set_special_menu:
+      not_found: "Menu berezia ez da aurkitu"
     common:
       edit: "Editatu"
       delete: "Ezabatu"
@@ -263,6 +307,15 @@ eus:
           other: "%{count} erroreek menu berezi hau gordetzea eragotzi dute:"
 
     dishes:
+      create:
+        success: "Platera menu berezira behar bezala gehitu da"
+        error: "Errorea platera menu berezira gehitzean"
+      update:
+        success: "Platera behar bezala eguneratu da"
+        error: "Errorea platera eguneratzean"
+      destroy:
+        success: "Platera behar bezala ezabatu da"
+      not_found: "Platera ez da aurkitu"
       form:
         title: "Platera gehitu %{name} menu berezira"
         labels:
@@ -298,6 +351,15 @@ eus:
     new:
       title: "Menu berezia gehitu"
   wine_origin_denominations:
+    create:
+      success: "Jatorri-deitura behar bezala sortu da"
+      error: "Errorea gertatu da"
+    update:
+      success: "Jatorri-deitura behar bezala eguneratu da"
+    destroy:
+      success: "Jatorri-deitura behar bezala ezabatu da"
+    set_denomination:
+      not_found: "Ez dugu eskatutako jatorri-deitura aurkitu"
     common:
       edit: "Editatu"
       delete: "Ezabatu"
@@ -365,6 +427,14 @@ eus:
       destroy: "Ardo mota hau ezabatu"
       back: "Ardo motetara itzuli"
   wines:
+    create:
+      success_with_translations: "Ardoa gehitu da! Automatikoki aktibatuko da itzulpenak amaitzen direnean."
+    update:
+      success: "Ardoa behar bezala eguneratu da"
+    destroy:
+      success: "Ardoa ezabatu da!"
+    set_wine:
+      not_found: "Ardoa ez da aurkitu"
     common:
       back: "Atzera"
       save: "Gorde"

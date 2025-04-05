@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WinesController < ApplicationController
   before_action :authenticate_restaurant!, except: [:index, :show]
   before_action :set_wine, only: [:edit, :update, :destroy]
@@ -34,7 +36,7 @@ class WinesController < ApplicationController
 
     if @wine.save
       redirect_to wines_control_panel_path,
-                  notice: 'Viño engadido! Será automáticamente activado cando as traduccións rematen.'
+                  notice: t('.success_with_translations')
     else
       render :new, status: :unprocessable_entity
     end
@@ -48,7 +50,7 @@ class WinesController < ApplicationController
         end
       end
       @wine.process_wine(params[:wine][:image]) if params[:wine][:image]
-      redirect_to wines_control_panel_path, notice: 'Viño actualizado con éxito.'
+      redirect_to wines_control_panel_path, notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -59,7 +61,7 @@ class WinesController < ApplicationController
     Thread.new do
       Translators::ProcessTranslationsService.new(@wine, :destroy).call
     end
-    redirect_to wines_control_panel_path, notice: 'Viño eliminado!'
+    redirect_to wines_control_panel_path, notice: t('.success')
   end
 
   def control_panel
@@ -79,11 +81,11 @@ class WinesController < ApplicationController
   end
 
   def set_wine
-     restaurant_id = params[:restaurant_id] || current_restaurant&.id
+    restaurant_id = params[:restaurant_id] || current_restaurant&.id
     @wine = Wine.find_by(id: params[:id], restaurant_id:)
-    if @wine.nil?
-      redirect_to wines_control_panel_path, alert: 'Viño non atopado'
-    end
+    return unless @wine.nil?
+
+    redirect_to wines_control_panel_path, alert: t('.not_found')
   end
 
   def wine_params

@@ -1,5 +1,17 @@
 es:
   dishes:
+    create:
+      success_with_translations: "¡Plato añadido! Será automáticamente activado cuando las traducciones terminen."
+    update:
+      success: "Plato editado con éxito"
+    destroy:
+      success: "¡Plato eliminado!"
+    set_dish:
+      not_found: "Plato no encontrado"
+    wines:
+      colors:
+        white: "Blanco"
+        red: "Tinto"
     index:
       skip_to_main: "Saltar al contenido principal"
       categories_menu: "Menú de categorías"
@@ -74,6 +86,14 @@ es:
       allergens_list: "Lista de alérgenos"
       allergen_icon: "Icono de %{name}"
   allergens:
+    create:
+      success: "Alérgeno agregado con éxito"
+      invalid: "Datos inválidos"
+    update:
+      success: "Alérgeno actualizado con éxito"
+    destroy:
+      success: "¡Alérgeno eliminado!"
+    not_found: "Alérgeno no encontrado"
     allergen:
       edit: "Editar"
       delete: "Eliminar"
@@ -145,7 +165,11 @@ es:
       search_placeholder: "Buscar vino"
       search_button: "Buscar"
   restaurants:
+    sessions:
+      signed_in: "Sesión iniciada correctamente"
     profile:
+      success: "Perfil actualizado con éxito"
+      error: "Hubo un error al actualizar el perfil"
       edit:
         title: "Perfil"
         labels:
@@ -162,6 +186,8 @@ es:
         select_province: "Selecciona provincia"
         save: "Guardar cambios"
   settings:
+    update:
+      success: "Configuración actualizada con éxito"
     edit:
       title: "Configuración"
       errors:
@@ -238,6 +264,16 @@ es:
       moon_icon: "Icono de luna"
       sun_icon: "Icono de sol"
   special_menus:
+    create:
+      success: "Menú especial creado con éxito"
+      error: "Error al crear el menú especial"
+    update:
+      success: "Menú especial actualizado con éxito"
+      error: "Error al actualizar el menú especial"
+    destroy:
+      success: "Menú especial eliminado con éxito"
+    set_special_menu:
+      not_found: "Menú especial no encontrado"
     common:
       edit: "Editar"
       delete: "Eliminar"
@@ -263,6 +299,15 @@ es:
           other: "%{count} errores impidieron guardar este menú especial:"
 
     dishes:
+      create:
+        success: "Plato añadido al menú especial con éxito"
+        error: "Error al añadir el plato al menú especial"
+      update:
+        success: "Plato actualizado con éxito"
+        error: "Error al actualizar el plato"
+      destroy:
+        success: "Plato eliminado con éxito"
+      not_found: "Plato no encontrado"
       form:
         title: "Añadir plato al menú especial %{name}"
         labels:
@@ -298,6 +343,15 @@ es:
     new:
       title: "Añadir Menú especial"
   wine_origin_denominations:
+    create:
+      success: "Denominación de origen creada con éxito"
+      error: "Hubo un error"
+    update:
+      success: "Denominación de origen actualizada con éxito"
+    destroy:
+      success: "Denominación de origen eliminada con éxito"
+    set_denomination:
+      not_found: "No encontramos la denominación de origen solicitada"
     common:
       edit: "Editar"
       delete: "Eliminar"
@@ -365,6 +419,14 @@ es:
       destroy: "Eliminar este tipo de vino"
       back: "Volver a tipos de vino"
   wines:
+    create:
+      success_with_translations: "¡Vino añadido! Será automáticamente activado cuando las traducciones terminen."
+    update:
+      success: "Vino actualizado con éxito"
+    destroy:
+      success: "¡Vino eliminado!"
+    set_wine:
+      not_found: "Vino no encontrado"
     common:
       back: "Atrás"
       save: "Guardar"

@@ -1,5 +1,17 @@
 cat:
   dishes:
+    create:
+      success_with_translations: "Plat afegit! Serà automàticament activat quan les traduccions acabin."
+    update:
+      success: "Plat editat amb èxit"
+    destroy:
+      success: "Plat eliminat!"
+    set_dish:
+      not_found: "Plat no trobat"
+    wines:
+      colors:
+        white: "Blanc"
+        red: "Negre"
     index:
       skip_to_main: "Saltar al contingut principal"
       categories_menu: "Menú de categories"
@@ -74,6 +86,14 @@ cat:
       allergens_list: "Llista d'al·lèrgens"
       allergen_icon: "Icona de %{name}"
   allergens:
+    create:
+      success: "Al·lergen afegit amb èxit"
+      invalid: "Dades no vàlides"
+    update:
+      success: "Al·lergen actualitzat amb èxit"
+    destroy:
+      success: "Al·lergen eliminat!"
+    not_found: "Al·lergen no trobat"
     allergen:
       edit: "Editar"
       delete: "Eliminar"
@@ -100,6 +120,14 @@ cat:
       title: "Afegir al·lergen"
       back: "Enrere"
   categories:
+    create:
+      success: "Categoria afegida amb èxit"
+      invalid: "Dades no vàlides"
+    update:
+      success: "Categoria actualitzada amb èxit"
+      invalid: "Dades no vàlides"
+    destroy:
+      success: "Categoria eliminada amb èxit"
     category:
       edit_category: "Editar categoria"
       delete_confirm: "N'estàs segur?"
@@ -145,7 +173,11 @@ cat:
       search_placeholder: "Buscar vi"
       search_button: "Cercar"
   restaurants:
+    sessions:
+      signed_in: "Sessió iniciada correctament"
     profile:
+      success: "Perfil actualitzat amb èxit"
+      error: "Hi ha hagut un error en actualitzar el perfil"
       edit:
         title: "Perfil"
         labels:
@@ -162,6 +194,8 @@ cat:
         select_province: "Selecciona província"
         save: "Desar canvis"
   settings:
+    update:
+      success: "Configuració actualitzada amb èxit"
     edit:
       title: "Configuració"
       errors:
@@ -238,6 +272,16 @@ cat:
       moon_icon: "Icona de lluna"
       sun_icon: "Icona de sol"
   special_menus:
+    create:
+      success: "Menú especial creat amb èxit"
+      error: "Error en crear el menú especial"
+    update:
+      success: "Menú especial actualitzat amb èxit"
+      error: "Error en actualitzar el menú especial"
+    destroy:
+      success: "Menú especial eliminat amb èxit"
+    set_special_menu:
+      not_found: "Menú especial no trobat"
     common:
       edit: "Editar"
       delete: "Eliminar"
@@ -263,6 +307,15 @@ cat:
           other: "%{count} errors han impedit desar aquest menú especial:"
 
     dishes:
+      create:
+        success: "Plat afegit al menú especial amb èxit"
+        error: "Error en afegir el plat al menú especial"
+      update:
+        success: "Plat actualitzat amb èxit"
+        error: "Error en actualitzar el plat"
+      destroy:
+        success: "Plat eliminat amb èxit"
+      not_found: "Plat no trobat"
       form:
         title: "Afegir plat al menú especial %{name}"
         labels:
@@ -298,6 +351,15 @@ cat:
     new:
       title: "Afegir Menú especial"
   wine_origin_denominations:
+    create:
+      success: "Denominació d'origen creada amb èxit"
+      error: "Hi ha hagut un error"
+    update:
+      success: "Denominació d'origen actualitzada amb èxit"
+    destroy:
+      success: "Denominació d'origen eliminada amb èxit"
+    set_denomination:
+      not_found: "No hem trobat la denominació d'origen sol·licitada"
     common:
       edit: "Editar"
       delete: "Eliminar"
@@ -365,6 +427,14 @@ cat:
       destroy: "Eliminar aquest tipus de vi"
       back: "Tornar a tipus de vi"
   wines:
+    create:
+      success_with_translations: "Vi afegit! Serà automàticament activat quan les traduccions acabin."
+    update:
+      success: "Vi actualitzat amb èxit"
+    destroy:
+      success: "Vi eliminat!"
+    set_wine:
+      not_found: "Vi no trobat"
     common:
       back: "Enrere"
       save: "Desar"
