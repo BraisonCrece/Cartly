@@ -1,0 +1,86 @@
+gl:
+  devise:
+    confirmations:
+      title: "Reenviar instrucións de confirmación"
+      send_instructions: "Reenviar instrucións"
+
+    mailer:
+      confirmation_instructions:
+        welcome: "Benvido/a %{email}!"
+        confirm_text: "Podes confirmar a túa conta a través da seguinte ligazón:"
+        confirm_link: "Confirmar a miña conta"
+
+      email_changed:
+        greeting: "Ola %{email}!"
+        changing: "Poñémonos en contacto para notificarche que o teu email está a ser cambiado a %{email}."
+        changed: "Poñémonos en contacto para notificarche que o teu email foi cambiado a %{email}."
+
+      password_change:
+        greeting: "Ola %{email}!"
+        message: "Poñémonos en contacto para notificarche que o teu contrasinal foi cambiado."
+
+      reset_password:
+        greeting: "Ola %{email}!"
+        requested: "Alguén solicitou unha ligazón para cambiar o teu contrasinal. Podes facelo a través da seguinte ligazón."
+        change_link: "Cambiar o meu contrasinal"
+        ignore: "Se non solicitaches isto, por favor ignora este email."
+        wont_change: "O teu contrasinal non cambiará ata que accedas á ligazón e crees un novo."
+
+      unlock:
+        greeting: "Ola %{email}!"
+        locked: "A túa conta foi bloqueada debido a un número excesivo de intentos fallidos de inicio de sesión."
+        instruction: "Fai clic na seguinte ligazón para desbloquear a túa conta:"
+        unlock_link: "Desbloquear a miña conta"
+
+    passwords:
+      edit:
+        title: "Cambiar o teu contrasinal"
+        new_password: "Novo contrasinal"
+        confirm_password: "Confirmar novo contrasinal"
+        min_chars: "(%{length} caracteres mínimo)"
+        change_button: "Cambiar o meu contrasinal"
+      new:
+        title: "Esqueciches o teu contrasinal?"
+        send_instructions: "Enviarme instrucións para restablecer o contrasinal"
+
+    registrations:
+      edit:
+        title: "Editar %{resource}"
+        waiting_confirmation: "Agardando confirmación para: %{email}"
+        leave_blank: "(deixar en branco se non queres cambialo)"
+        current_password_needed: "(precisamos o teu contrasinal actual para confirmar os cambios)"
+        update_button: "Actualizar"
+        cancel_account: "Cancelar a miña conta"
+        unhappy: "Non estás contento?"
+        cancel_confirm: "Estás seguro?"
+        back: "Volver"
+      new:
+        title: "Rexistro"
+        restaurant_name: "Nome do restaurante"
+        sign_up: "Rexistrarse"
+        min_chars: "(%{length} caracteres mínimo)"
+
+    sessions:
+      new:
+        title: "Iniciar sesión"
+        email: "Email"
+        password: "Contrasinal"
+        remember_me: "Lémbrame"
+        login: "Iniciar sesión"
+
+    shared:
+      links:
+        login: "Iniciar sesión"
+        sign_up: "Rexistro"
+        forgot_password: "Esqueciches o contrasinal?"
+        no_confirmation: "Non recibiches instrucións de confirmación?"
+        no_unlock: "Non recibiches instrucións de desbloqueo?"
+        sign_in_with: "Iniciar sesión con %{provider}"
+
+      error_messages:
+        problems:
+          one: "1 erro impediu que este %{resource} se gardase:"
+          other: "%{count} erros impediron que este %{resource} se gardase:"
+    unlocks:
+      title: "Reenviar instrucións de desbloqueo"
+      resend_button: "Reenviar instrucións de desbloqueo"

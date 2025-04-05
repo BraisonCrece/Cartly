@@ -1,0 +1,76 @@
+es:
+  devise:
+    confirmations:
+      title: "Reenviar instrucciones de confirmación"
+      send_instructions: "Reenviar instrucciones"
+    mailer:
+      confirmation_instructions:
+        welcome: "¡Bienvenido %{email}!"
+        confirm_text: "Puedes confirmar tu cuenta a través del siguiente enlace:"
+        confirm_link: "Confirmar mi cuenta"
+      email_changed:
+        greeting: "¡Hola %{email}!"
+        changing: "Nos ponemos en contacto para notificarte que tu email está siendo cambiado a %{email}."
+        changed: "Nos ponemos en contacto para notificarte que tu email ha sido cambiado a %{email}."
+      password_change:
+        greeting: "¡Hola %{email}!"
+        message: "Nos ponemos en contacto para notificarte que tu contraseña ha sido cambiada."
+      reset_password:
+        greeting: "¡Hola %{email}!"
+        requested: "Alguien ha solicitado un enlace para cambiar tu contraseña. Puedes hacerlo a través del siguiente enlace."
+        change_link: "Cambiar mi contraseña"
+        ignore: "Si no solicitaste esto, por favor ignora este email."
+        wont_change: "Tu contraseña no cambiará hasta que accedas al enlace y crees una nueva."
+      unlock:
+        greeting: "¡Hola %{email}!"
+        locked: "Tu cuenta ha sido bloqueada debido a un número excesivo de intentos fallidos de inicio de sesión."
+        instruction: "Haz clic en el siguiente enlace para desbloquear tu cuenta:"
+        unlock_link: "Desbloquear mi cuenta"
+    passwords:
+      edit:
+        title: "Cambiar tu contraseña"
+        new_password: "Nueva contraseña"
+        confirm_password: "Confirmar nueva contraseña"
+        min_chars: "(%{length} caracteres mínimo)"
+        change_button: "Cambiar mi contraseña"
+      new:
+        title: "¿Olvidaste tu contraseña?"
+        send_instructions: "Enviarme instrucciones para restablecer contraseña"
+    registrations:
+      edit:
+        title: "Editar %{resource}"
+        waiting_confirmation: "Esperando confirmación para: %{email}"
+        leave_blank: "(dejar en blanco si no quieres cambiarla)"
+        current_password_needed: "(necesitamos tu contraseña actual para confirmar los cambios)"
+        update_button: "Actualizar"
+        cancel_account: "Cancelar mi cuenta"
+        unhappy: "¿No estás contento?"
+        cancel_confirm: "¿Estás seguro?"
+        back: "Volver"
+      new:
+        title: "Registro"
+        restaurant_name: "Nombre del restaurante"
+        sign_up: "Registrarse"
+        min_chars: "(%{length} caracteres mínimo)"
+    sessions:
+      new:
+        title: "Iniciar sesión"
+        email: "Email"
+        password: "Contraseña"
+        remember_me: "Recordarme"
+        login: "Iniciar sesión"
+    shared:
+      links:
+        login: "Iniciar sesión"
+        sign_up: "Registro"
+        forgot_password: "¿Olvidaste tu contraseña?"
+        no_confirmation: "¿No recibiste instrucciones de confirmación?"
+        no_unlock: "¿No recibiste instrucciones de desbloqueo?"
+        sign_in_with: "Iniciar sesión con %{provider}"
+      error_messages:
+        problems:
+          one: "1 error impidió que este %{resource} se guardara:"
+          other: "%{count} errores impidieron que este %{resource} se guardara:"
+    unlocks:
+      title: "Reenviar instrucciones de desbloqueo"
+      resend_button: "Reenviar instrucciones de desbloqueo"
