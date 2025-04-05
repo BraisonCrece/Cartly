@@ -73,3 +73,29 @@ gl:
       dish_price: "Prezo do prato"
       allergens_list: "Lista de alérxenos"
       allergen_icon: "Icona de %{name}"
+  allergens:
+    allergen:
+      edit: "Editar"
+      delete: "Eliminar"
+      confirm_delete: "Seguro que queres eliminar o alérxeno?"
+    form:
+      errors:
+        header:
+          one: "%{count} erro impediu gardar este alérxeno"
+          other: "%{count} erros impediron gardar este alérxeno"
+      labels:
+        name: "Nome"
+        photo: "Foto"
+      placeholders:
+        select_file: "Seleccione un arquivo"
+      buttons:
+        browse: "Examinar"
+        save: "Gardar"
+    edit:
+      title: "Editar alérxeno"
+      back: "Atrás"
+    index:
+      title: "Alérxenos"
+    new:
+      title: "Engadir alérxeno"
+      back: "Atrás"

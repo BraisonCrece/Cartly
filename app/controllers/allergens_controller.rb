@@ -1,9 +1,10 @@
 class AllergensController < ApplicationController
   before_action :authenticate_restaurant!
-  before_action :set_allergen, only: %i[ edit update destroy ]
+  before_action :set_allergen, only: [:edit, :update, :destroy]
 
   def index
-    @allergens = Allergen.where(restaurant_id: current_restaurant.id)
+    @system_allergens = Allergen.where(restaurant_id: nil)
+    @restaurant_allergens = Allergen.where(restaurant_id: current_restaurant.id)
   end
 
   def new
@@ -15,11 +16,11 @@ class AllergensController < ApplicationController
     @allergen.restaurant_id = current_restaurant.id
 
     if @allergen.save
-      flash[:notice] = "Alérgeno agregado con éxito"
+      flash[:notice] = 'Alérgeno agregado con éxito'
       render :new, status: :ok
       flash.clear
     else
-      flash[:alert] = "Datos inválidos"
+      flash[:alert] = 'Datos inválidos'
       render :new, status: :unprocessable_entity
       flash.clear
     end
@@ -49,9 +50,9 @@ class AllergensController < ApplicationController
 
   def set_allergen
     @allergen = Allergen.find_by(id: params[:id], restaurant_id: current_restaurant.id)
-    if @allergen.nil?
-      redirect_to allergens_path, alert: 'Alérgeno non atopado.'
-    end
+    return unless @allergen.nil?
+
+    redirect_to allergens_path, alert: 'Alérgeno non atopado.'
   end
 
   def allergen_params

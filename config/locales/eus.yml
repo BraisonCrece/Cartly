@@ -73,3 +73,29 @@ eus:
       dish_price: "Plateraren prezioa"
       allergens_list: "Alergenoen zerrenda"
       allergen_icon: "%{name} ikonoa"
+  allergens:
+    allergen:
+      edit: "Editatu"
+      delete: "Ezabatu"
+      confirm_delete: "Ziur zaude alergeno hau ezabatu nahi duzula?"
+    form:
+      errors:
+        header:
+          one: "%{count} erroreak alergeno hau gordetzea eragotzi du"
+          other: "%{count} erroreek alergeno hau gordetzea eragotzi dute"
+      labels:
+        name: "Izena"
+        photo: "Argazkia"
+      placeholders:
+        select_file: "Hautatu fitxategia"
+      buttons:
+        browse: "Arakatu"
+        save: "Gorde"
+    edit:
+      title: "Alergenoa editatu"
+      back: "Atzera"
+    index:
+      title: "Alergenoak"
+    new:
+      title: "Alergenoa gehitu"
+      back: "Atzera"

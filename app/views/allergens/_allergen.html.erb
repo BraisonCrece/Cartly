@@ -2,7 +2,15 @@
     <%= truncate(allergen.name, length: 10, separator: ' ', omission: '...') %>
     <%= image_tag allergen.icon, alt: allergen.name, width: '50px' if allergen.icon.attached? %>
     <div class='absolute bottom-0 flex gap-2 left-2'>
-        <%= button_to 'Editar', edit_allergen_path(allergen), data: { turbo: false }, class: 'text-xs font-thin text-blue-800 dark:text-blue-900 p-0', method: :get%>
-        <%= button_to 'Eliminar', allergen_path(allergen), data: { turbo_confirm: 'Seguro que queres eliminar o alérxeno?'}, class: 'text-xs font-thin text-red-800 dark:text-red-900 p-0', method: :delete %>
+        <%= button_to(t('.edit'),
+            edit_allergen_path(allergen),
+            data: { turbo: false },
+            class: 'text-xs font-thin text-blue-800 dark:text-blue-900 p-0',
+            method: :get) if allergen.restaurant_id %>
+        <%= button_to(t('.delete'),
+            allergen_path(allergen),
+            data: { turbo_confirm: t('.confirm_delete') },
+            class: 'text-xs font-thin text-red-800 dark:text-red-900 p-0',
+            method: :delete) if allergen.restaurant_id %>
     </div>
 </div>

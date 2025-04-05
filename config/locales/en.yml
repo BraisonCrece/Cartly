@@ -32,3 +32,29 @@ en:
       dish_price: "Dish price"
       allergens_list: "Allergens list"
       allergen_icon: "Icon of %{name}"
+  allergens:
+    allergen:
+      edit: "Edit"
+      delete: "Delete"
+      confirm_delete: "Are you sure you want to delete this allergen?"
+    form:
+      errors:
+        header:
+          one: "%{count} error prevented this allergen from being saved"
+          other: "%{count} errors prevented this allergen from being saved"
+      labels:
+        name: "Name"
+        photo: "Photo"
+      placeholders:
+        select_file: "Select a file"
+      buttons:
+        browse: "Browse"
+        save: "Save"
+    edit:
+      title: "Edit allergen"
+      back: "Back"
+    index:
+      title: "Allergens"
+    new:
+      title: "Add allergen"
+      back: "Back"

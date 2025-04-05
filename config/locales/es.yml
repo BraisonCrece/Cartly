@@ -73,3 +73,29 @@ es:
       dish_price: "Precio del plato"
       allergens_list: "Lista de alérgenos"
       allergen_icon: "Icono de %{name}"
+  allergens:
+    allergen:
+      edit: "Editar"
+      delete: "Eliminar"
+      confirm_delete: "¿Seguro que quieres eliminar el alérgeno?"
+    form:
+      errors:
+        header:
+          one: "%{count} error impidió guardar este alérgeno"
+          other: "%{count} errores impidieron guardar este alérgeno"
+      labels:
+        name: "Nombre"
+        photo: "Foto"
+      placeholders:
+        select_file: "Seleccione un archivo"
+      buttons:
+        browse: "Examinar"
+        save: "Guardar"
+    edit:
+      title: "Editar alérgeno"
+      back: "Atrás"
+    index:
+      title: "Alérgenos"
+    new:
+      title: "Añadir alérgeno"
+      back: "Atrás"

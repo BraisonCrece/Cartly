@@ -73,3 +73,29 @@ cat:
       dish_price: "Preu del plat"
       allergens_list: "Llista d'al·lèrgens"
       allergen_icon: "Icona de %{name}"
+  allergens:
+    allergen:
+      edit: "Editar"
+      delete: "Eliminar"
+      confirm_delete: "Estàs segur que vols eliminar l'al·lergen?"
+    form:
+      errors:
+        header:
+          one: "%{count} error va impedir guardar aquest al·lergen"
+          other: "%{count} errors van impedir guardar aquest al·lergen"
+      labels:
+        name: "Nom"
+        photo: "Foto"
+      placeholders:
+        select_file: "Seleccioni un arxiu"
+      buttons:
+        browse: "Examinar"
+        save: "Guardar"
+    edit:
+      title: "Editar al·lergen"
+      back: "Enrere"
+    index:
+      title: "Al·lèrgens"
+    new:
+      title: "Afegir al·lergen"
+      back: "Enrere"
