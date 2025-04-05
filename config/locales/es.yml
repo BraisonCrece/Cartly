@@ -99,3 +99,29 @@ es:
     new:
       title: "Añadir alérgeno"
       back: "Atrás"
+  categories:
+    category:
+      edit_category: "Editar categoría"
+      delete_confirm: "¿Estás seguro?"
+    form:
+      labels:
+        name: "Nombre"
+      buttons:
+        save: "Guardar"
+    form_errors:
+      header:
+        one: "%{count} error"
+        other: "%{count} errores"
+      message: "No se pudo guardar la categoría:"
+    edit:
+      title: "Editar Categoría"
+      back: "Volver"
+    index:
+      title: "Categorías"
+      menu_section:
+        title: "Carta"
+      daily_section:
+        title: "Menú del día"
+    new:
+      title: "Añadir Categoría"
+      back: "Volver"

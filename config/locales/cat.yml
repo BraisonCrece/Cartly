@@ -99,3 +99,29 @@ cat:
     new:
       title: "Afegir al·lergen"
       back: "Enrere"
+  categories:
+    category:
+      edit_category: "Editar categoria"
+      delete_confirm: "N'estàs segur?"
+    form:
+      labels:
+        name: "Nom"
+      buttons:
+        save: "Desar"
+    form_errors:
+      header:
+        one: "%{count} error"
+        other: "%{count} errors"
+      message: "No s'ha pogut desar la categoria:"
+    edit:
+      title: "Editar Categoria"
+      back: "Tornar"
+    index:
+      title: "Categories"
+      menu_section:
+        title: "Carta"
+      daily_section:
+        title: "Menú del dia"
+    new:
+      title: "Afegir Categoria"
+      back: "Tornar"

@@ -99,3 +99,29 @@ eus:
     new:
       title: "Alergenoa gehitu"
       back: "Atzera"
+  categories:
+    category:
+      edit_category: "Kategoria editatu"
+      delete_confirm: "Ziur zaude?"
+    form:
+      labels:
+        name: "Izena"
+      buttons:
+        save: "Gorde"
+    form_errors:
+      header:
+        one: "%{count} errore"
+        other: "%{count} errore"
+      message: "Ezin izan da kategoria gorde:"
+    edit:
+      title: "Kategoria Editatu"
+      back: "Itzuli"
+    index:
+      title: "Kategoriak"
+      menu_section:
+        title: "Karta"
+      daily_section:
+        title: "Eguneko menua"
+    new:
+      title: "Kategoria Gehitu"
+      back: "Itzuli"

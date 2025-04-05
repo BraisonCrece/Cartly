@@ -99,3 +99,29 @@ gl:
     new:
       title: "Engadir alérxeno"
       back: "Atrás"
+  categories:
+    category:
+      edit_category: "Editar categoría"
+      delete_confirm: "Estás seguro?"
+    form:
+      labels:
+        name: "Nome"
+      buttons:
+        save: "Gardar"
+    form_errors:
+      header:
+        one: "%{count} erro"
+        other: "%{count} erros"
+      message: "Non se puido gardar a categoría:"
+    edit:
+      title: "Editar Categoría"
+      back: "Volver"
+    index:
+      title: "Categorías"
+      menu_section:
+        title: "Carta"
+      daily_section:
+        title: "Menú do día"
+    new:
+      title: "Engadir Categoría"
+      back: "Volver"

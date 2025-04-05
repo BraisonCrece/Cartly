@@ -58,3 +58,30 @@ en:
     new:
       title: "Add allergen"
       back: "Back"
+  categories:
+    category:
+      edit_category: "Edit category"
+      delete_confirm: "Are you sure?"
+    form:
+      labels:
+        name: "Name"
+      buttons:
+        save: "Save"
+
+    form_errors:
+      header:
+        one: "%{count} error"
+        other: "%{count} errors"
+      message: "Could not save the category:"
+    edit:
+      title: "Edit Category"
+      back: "Back"
+    index:
+      title: "Categories"
+      menu_section:
+        title: "Menu"
+      daily_section:
+        title: "Daily menu"
+    new:
+      title: "Add Category"
+      back: "Back"
