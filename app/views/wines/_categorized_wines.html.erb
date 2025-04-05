@@ -1,24 +1,34 @@
 <%= turbo_stream_from "wines" %>
 
-<main role="main" aria-label="Lista de viños">
+<main role="main" aria-label="<%= t('wines.common.wine_list') %>">
   <% if Wine.where(restaurant_id: params[:restaurant_id], active: true).exists? %>
-    <h1 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25 categoryHeader" id='viños' data-scroll-target="categoryHeader"> <%= translate("category.Viños.name", "🍷 Viños 🍷") %></h1>
+    <h1 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25 categoryHeader"
+        id='viños'
+        data-scroll-target="categoryHeader">
+      <%= translate("category.Viños.name", t('wines.common.wines_section')) %>
+    </h1>
   <% end %>
 
   <% @categorized_wines.each do |color, wines_by_denomination| %>
     <% next if wines_by_denomination.empty? %>
     <section role="region" aria-labelledby="category-<%= color %>">
-      <h2 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25" id="category-<%= color %>"><%= translate("#{color}s", color) %></h2>
+      <h2 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25"
+          id="category-<%= color %>">
+        <%= translate("#{color}s", color) %>
+      </h2>
       <% wines_by_denomination.each do |denomination_id, wines| %>
         <% denomination = @denominations.find { |d| d.id == denomination_id } %>
         <div class="pb-8" role="region" aria-labelledby="category-<%= denomination.id %>">
-          <h3 class="px-4 pb-4 text-2xl font-medium text-brand-comp-dark/80 dark:text-brand-comp/80" id="category-<%= denomination.id %>"><%= denomination.name %></h3>
-          <div role="list" aria-label="Viños de <%= denomination.name %>">
+          <h3 class="px-4 pb-4 text-2xl font-medium text-brand-comp-dark/80 dark:text-brand-comp/80"
+              id="category-<%= denomination.id %>">
+            <%= denomination.name %>
+          </h3>
+          <div role="list" aria-label="<%= t('.wines_of', name: denomination.name) %>">
             <% wines.each do |wine| %>
               <div role="listitem">
                 <%= link_to build_link(wine),
                     data: { turbo_frame: "modal" },
-                    aria: { label: "Ver detalles de #{wine.name}" } do %>
+                    aria: { label: t('wines.common.bottle_of', name: wine.name) } do %>
                   <%= render "wines/wine", wine: wine %>
                 <% end %>
               </div>
@@ -29,7 +39,10 @@
     </section>
   <% end %>
   <footer role="contentinfo" class="flex items-center justify-center max-w-2xl gap-2 mt-5 italic font-thin prose text-emerald-900 dark:text-emerald-200">
-      <%= image_tag "info.svg", class: "w-6", alt: "Icona de información", aria_hidden:"true" %>
-      <%= translate("IVA", "Todos os prezos levan o IVE incluído") %>
+    <%= image_tag "info.svg",
+        class: "w-6",
+        alt: t('.info_icon'),
+        aria_hidden: "true" %>
+    <%= translate("IVA", t('wines.common.vat_included')) %>
   </footer>
 </main>

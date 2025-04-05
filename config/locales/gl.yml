@@ -364,3 +364,60 @@ gl:
       edit: "Editar este tipo de viño"
       destroy: "Eliminar este tipo de viño"
       back: "Volver a tipos de viño"
+  wines:
+    common:
+      back: "Atrás"
+      save: "Gardar"
+      wine_list: "Lista de viños"
+      price_currency: "€"
+      available_by_glass: "Dispoñible por copa"
+      price_by_glass: "Prezo por copa: %{price}€"
+      price_by_bottle: "Prezo por botella: %{price}€"
+      bottle_of: "Botella de %{name}"
+      wines_section: "🍷 Viños 🍷"
+      vat_included: "Todos os prezos levan o IVE incluído"
+      search_wine: "Buscar viño"
+
+    form:
+      title:
+        new: "Engadir viño"
+        edit: "Editar viño"
+      labels:
+        photo: "📸 Foto"
+        name: "Nome"
+        description: "Descrición"
+        wine_type: "Tipo de viño"
+        denomination: "Denominación de orixe"
+        price: "Prezo"
+        price_per_glass: "Prezo por copa (opcional)"
+        available_by_glass: "¿Dispoñible por copa? 🍷"
+      placeholders:
+        select_file: "Seleccione un arquivo"
+        browse: "Examinar"
+        name: "Viño delicioso"
+        description: '"Un viño delicioso que combina o sabor da uva coa calor do alcohol"'
+        select_type: "Selecciona un tipo de viño"
+        select_denomination: "Selecciona unha denominación de orixe"
+      wine_types:
+        red: "Tinto"
+        white: "Branco"
+      buttons:
+        generate_description: "Xerar descrición"
+        generating: "Consultando ao oráculo..."
+        save: "Gardar"
+      errors:
+        header:
+          one: "%{count} erro impediu gardar este viño:"
+          other: "%{count} erros impediron gardar este viño:"
+
+    control_panel:
+      title: "Viños"
+      search_placeholder: "Buscar viño"
+
+    categorized_wines:
+      info_icon: "Icona de información"
+      wines_of: "Viños de %{name}"
+
+    wine:
+      aria_labels:
+        wine_info: "Información do viño"

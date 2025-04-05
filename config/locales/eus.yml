@@ -364,3 +364,60 @@ eus:
       edit: "Ardo mota hau editatu"
       destroy: "Ardo mota hau ezabatu"
       back: "Ardo motetara itzuli"
+  wines:
+    common:
+      back: "Atzera"
+      save: "Gorde"
+      wine_list: "Ardoen zerrenda"
+      price_currency: "€"
+      available_by_glass: "Kopaka eskuragarri"
+      price_by_glass: "Kopako prezioa: %{price}€"
+      price_by_bottle: "Botilako prezioa: %{price}€"
+      bottle_of: "%{name} botila"
+      wines_section: "🍷 Ardoak 🍷"
+      vat_included: "Prezio guztiek BEZa barne dute"
+      search_wine: "Ardoa bilatu"
+
+    form:
+      title:
+        new: "Ardoa gehitu"
+        edit: "Ardoa editatu"
+      labels:
+        photo: "📸 Argazkia"
+        name: "Izena"
+        description: "Deskribapena"
+        wine_type: "Ardo mota"
+        denomination: "Jatorri-deitura"
+        price: "Prezioa"
+        price_per_glass: "Kopako prezioa (aukerakoa)"
+        available_by_glass: "Kopaka eskuragarri? 🍷"
+      placeholders:
+        select_file: "Fitxategia aukeratu"
+        browse: "Arakatu"
+        name: "Ardo goxoa"
+        description: '"Mahatsaren zaporea eta alkoholaren beroa konbinatzen dituen ardo goxoa"'
+        select_type: "Ardo mota aukeratu"
+        select_denomination: "Jatorri-deitura aukeratu"
+      wine_types:
+        red: "Beltza"
+        white: "Zuria"
+      buttons:
+        generate_description: "Deskribapena sortu"
+        generating: "Orakuluari kontsultatzen..."
+        save: "Gorde"
+      errors:
+        header:
+          one: "%{count} erroreak ardo hau gordetzea eragotzi du:"
+          other: "%{count} erroreek ardo hau gordetzea eragotzi dute:"
+
+    control_panel:
+      title: "Ardoak"
+      search_placeholder: "Ardoa bilatu"
+
+    categorized_wines:
+      info_icon: "Informazio ikonoa"
+      wines_of: "%{name}ko ardoak"
+
+    wine:
+      aria_labels:
+        wine_info: "Ardoaren informazioa"

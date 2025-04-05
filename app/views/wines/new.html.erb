@@ -1,4 +1,9 @@
 <div class="flex flex-col w-[90%] max-w-2xl">
-  <%= render 'form', wine: @wine, denominations: @denominations, message: 'Engadir viño' %>
-  <%= link_to "Atrás", wines_control_panel_path, class: 'underline underline-blue-800 text-blue-600' %>
+  <%= render 'form',
+      wine: @wine,
+      denominations: @denominations,
+      message: t('wines.form.title.new') %>
+  <%= link_to t('wines.common.back'),
+      wines_control_panel_path,
+      class: 'underline underline-blue-800 text-blue-600' %>
 </div>

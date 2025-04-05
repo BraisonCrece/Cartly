@@ -324,3 +324,60 @@ en:
       edit: "Edit this wine type"
       destroy: "Destroy this wine type"
       back: "Back to wine types"
+  wines:
+    common:
+      back: "Back"
+      save: "Save"
+      wine_list: "Wine list"
+      price_currency: "€"
+      available_by_glass: "Available by glass"
+      price_by_glass: "Price by glass: %{price}€"
+      price_by_bottle: "Price by bottle: %{price}€"
+      bottle_of: "Bottle of %{name}"
+      wines_section: "🍷 Wines 🍷"
+      vat_included: "All prices include VAT"
+      search_wine: "Search wine"
+
+    form:
+      title:
+        new: "Add wine"
+        edit: "Edit wine"
+      labels:
+        photo: "📸 Photo"
+        name: "Name"
+        description: "Description"
+        wine_type: "Wine type"
+        denomination: "Denomination of origin"
+        price: "Price"
+        price_per_glass: "Price per glass (optional)"
+        available_by_glass: "Available by glass? 🍷"
+      placeholders:
+        select_file: "Select a file"
+        browse: "Browse"
+        name: "Delicious wine"
+        description: '"A delicious wine that combines the flavor of the grape with the warmth of alcohol"'
+        select_type: "Select a wine type"
+        select_denomination: "Select a denomination of origin"
+      wine_types:
+        red: "Red"
+        white: "White"
+      buttons:
+        generate_description: "Generate description"
+        generating: "Consulting the oracle..."
+        save: "Save"
+      errors:
+        header:
+          one: "%{count} error prevented this wine from being saved:"
+          other: "%{count} errors prevented this wine from being saved:"
+
+    control_panel:
+      title: "Wines"
+      search_placeholder: "Search wine"
+
+    categorized_wines:
+      info_icon: "Information icon"
+      wines_of: "Wines from %{name}"
+
+    wine:
+      aria_labels:
+        wine_info: "Wine information"

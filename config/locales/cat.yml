@@ -364,3 +364,60 @@ cat:
       edit: "Editar aquest tipus de vi"
       destroy: "Eliminar aquest tipus de vi"
       back: "Tornar a tipus de vi"
+  wines:
+    common:
+      back: "Enrere"
+      save: "Desar"
+      wine_list: "Llista de vins"
+      price_currency: "€"
+      available_by_glass: "Disponible per copa"
+      price_by_glass: "Preu per copa: %{price}€"
+      price_by_bottle: "Preu per ampolla: %{price}€"
+      bottle_of: "Ampolla de %{name}"
+      wines_section: "🍷 Vins 🍷"
+      vat_included: "Tots els preus porten l'IVA inclòs"
+      search_wine: "Cercar vi"
+
+    form:
+      title:
+        new: "Afegir vi"
+        edit: "Editar vi"
+      labels:
+        photo: "📸 Foto"
+        name: "Nom"
+        description: "Descripció"
+        wine_type: "Tipus de vi"
+        denomination: "Denominació d'origen"
+        price: "Preu"
+        price_per_glass: "Preu per copa (opcional)"
+        available_by_glass: "Disponible per copa? 🍷"
+      placeholders:
+        select_file: "Seleccioni un arxiu"
+        browse: "Examinar"
+        name: "Vi deliciós"
+        description: '"Un vi deliciós que combina el sabor del raïm amb la calor de l''alcohol"'
+        select_type: "Seleccioni un tipus de vi"
+        select_denomination: "Seleccioni una denominació d'origen"
+      wine_types:
+        red: "Negre"
+        white: "Blanc"
+      buttons:
+        generate_description: "Generar descripció"
+        generating: "Consultant l'oracle..."
+        save: "Desar"
+      errors:
+        header:
+          one: "%{count} error ha impedit desar aquest vi:"
+          other: "%{count} errors han impedit desar aquest vi:"
+
+    control_panel:
+      title: "Vins"
+      search_placeholder: "Cercar vi"
+
+    categorized_wines:
+      info_icon: "Icona d'informació"
+      wines_of: "Vins de %{name}"
+
+    wine:
+      aria_labels:
+        wine_info: "Informació del vi"

@@ -1,15 +1,24 @@
 <div class="w-full max-w-2xl" data-controller="dish-search">
-    <div class="sticky top-[-1px] bg-white dark:bg-gray-800 pt-4 pb-1 z-10 cubic-transition" data-controller="sticky-shadow" data-sticky-shadow-target="sticky">
-        <h1 class="mb-8 text-4xl font-thin text-center text-pretty"> Viños </h1>
+    <div class="sticky top-[-1px] bg-white dark:bg-gray-800 pt-4 pb-1 z-10 cubic-transition"
+         data-controller="sticky-shadow"
+         data-sticky-shadow-target="sticky">
+        <h1 class="mb-8 text-4xl font-thin text-center text-pretty">
+          <%= t('wines.control_panel.title') %>
+        </h1>
         <div class="flex items-center justify-center gap-2 px-3 mb-6 align-middle">
           <%= render "shared/add_button", path: new_wine_path %>
-          <input type="search" id="dishSearch" placeholder="Buscar viño" data-dish-search-target="search" data-action="input->dish-search#search" class="bg-white focus:ring-blue-500 focus:border-blue-500 border border-gray-300 dark:text-gray-800 rounded-[3px] py-2 px-4 block w-full" />
+          <input type="search"
+              id="dishSearch"
+              placeholder="<%= t('wines.control_panel.search_placeholder') %>"
+              data-dish-search-target="search"
+              data-action="input->dish-search#search"
+              class="bg-white focus:ring-blue-500 focus:border-blue-500 border border-gray-300 dark:text-gray-800 rounded-[3px] py-2 px-4 block w-full" />
         </div>
     </div>
     <div id="winesList" class="p-3">
       <% @wines.each do |wine| %>
-          <%= turbo_stream_from wine %>
-          <%= render "control_panel_wine", wine: wine %>
+        <%= turbo_stream_from wine %>
+        <%= render "control_panel_wine", wine: wine %>
       <% end %>
     </div>
 </div>

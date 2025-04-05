@@ -364,3 +364,60 @@ es:
       edit: "Editar este tipo de vino"
       destroy: "Eliminar este tipo de vino"
       back: "Volver a tipos de vino"
+  wines:
+    common:
+      back: "Atrás"
+      save: "Guardar"
+      wine_list: "Lista de vinos"
+      price_currency: "€"
+      available_by_glass: "Disponible por copa"
+      price_by_glass: "Precio por copa: %{price}€"
+      price_by_bottle: "Precio por botella: %{price}€"
+      bottle_of: "Botella de %{name}"
+      wines_section: "🍷 Vinos 🍷"
+      vat_included: "Todos los precios llevan el IVA incluido"
+      search_wine: "Buscar vino"
+
+    form:
+      title:
+        new: "Añadir vino"
+        edit: "Editar vino"
+      labels:
+        photo: "📸 Foto"
+        name: "Nombre"
+        description: "Descripción"
+        wine_type: "Tipo de vino"
+        denomination: "Denominación de origen"
+        price: "Precio"
+        price_per_glass: "Precio por copa (opcional)"
+        available_by_glass: "¿Disponible por copa? 🍷"
+      placeholders:
+        select_file: "Seleccione un archivo"
+        browse: "Examinar"
+        name: "Vino delicioso"
+        description: '"Un vino delicioso que combina el sabor de la uva con el calor del alcohol"'
+        select_type: "Seleccione un tipo de vino"
+        select_denomination: "Seleccione una denominación de origen"
+      wine_types:
+        red: "Tinto"
+        white: "Blanco"
+      buttons:
+        generate_description: "Generar descripción"
+        generating: "Consultando al oráculo..."
+        save: "Guardar"
+      errors:
+        header:
+          one: "%{count} error impidió guardar este vino:"
+          other: "%{count} errores impidieron guardar este vino:"
+
+    control_panel:
+      title: "Vinos"
+      search_placeholder: "Buscar vino"
+
+    categorized_wines:
+      info_icon: "Icono de información"
+      wines_of: "Vinos de %{name}"
+
+    wine:
+      aria_labels:
+        wine_info: "Información del vino"

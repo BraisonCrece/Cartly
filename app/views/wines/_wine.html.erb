@@ -1,14 +1,28 @@
-<article role="article" aria-label="<%= wine.name %>" class='flex justify-between gap-2 px-4 py-6 border-t border-gray-100 text-brand-gray dark:text-gray-200 print:my-6 dark:border-gray-100/25 animate__animated animate__fadeIn animate__slower active:scale-[0.98] active:opacity-80 transition-all cursor-pointer'>
-  <div class="title price flex flex-col max-w-[72.5%]" role="group" aria-label="Información do viño">
+<article role="article"
+    aria-label="<%= wine.name %>"
+    class='flex justify-between gap-2 px-4 py-6 border-t border-gray-100 text-brand-gray dark:text-gray-200 print:my-6 dark:border-gray-100/25 animate__animated animate__fadeIn animate__slower active:scale-[0.98] active:opacity-80 transition-all cursor-pointer'>
+  <div class="title price flex flex-col max-w-[72.5%]"
+       role="group"
+       aria-label="<%= t('wines.wine.aria_labels.wine_info') %>">
     <h2 class='text-2xl font-light playfare balance'><%= wine.name %></h2>
     <% if wine.price_per_glass %>
       <div class="flex gap-2 align-baseline">
-        <span class='self-end text-xs font-thin'><%= translate("copa", "Dispoñible por copa") %>: </span>
-        <p class='self-end font-light lato mb-[-2px]' id='per_glass' aria-label="Prezo por copa: <%= wine.price_per_glass %>€"><%= number_to_currency(wine.price_per_glass, { unit: "€", separator: ",", format: "%n %u" }) %></p>
+        <span class='self-end text-xs font-thin'>
+          <%= translate("copa", t('wines.common.available_by_glass')) %>:
+        </span>
+        <p class='self-end font-light lato mb-[-2px]'
+           id='per_glass'
+           aria-label="<%= t('wines.common.price_by_glass', price: wine.price_per_glass) %>">
+          <%= number_to_currency(wine.price_per_glass, { unit: t('wines.common.price_currency'), separator: ",", format: "%n %u" }) %>
+        </p>
       </div>
     <% end %>
   </div>
-  <div class="self-center text-2xl font-extralight" aria-label="Prezo por botella: <%= wine.price %>€">
-    <%= number_with_precision(wine.price, precision: 2, separator: ",") %><small class='text-lg text-black font-extralight dark:text-white'>€</small>
+  <div class="self-center text-2xl font-extralight"
+       aria-label="<%= t('wines.common.price_by_bottle', price: wine.price) %>">
+    <%= number_with_precision(wine.price, precision: 2, separator: ",") %>
+    <small class='text-lg text-black font-extralight dark:text-white'>
+      <%= t('wines.common.price_currency') %>
+    </small>
   </div>
 </article>
