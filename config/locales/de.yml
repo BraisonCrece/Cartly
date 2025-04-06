@@ -1,0 +1,485 @@
+de:
+  dishes:
+    create:
+      success_with_translations: "Gericht hinzugefügt! Es wird automatisch aktiviert, sobald die Übersetzungen fertig sind."
+    update:
+      success: "Gericht erfolgreich bearbeitet"
+    destroy:
+      success: "Gericht gelöscht!"
+    set_dish:
+      not_found: "Gericht nicht gefunden"
+    wines:
+      colors:
+        white: "Weiß"
+        red: "Rot"
+    index:
+      skip_to_main: "Zum Hauptinhalt springen"
+      categories_menu: "Kategorien-Menü"
+    categories_select:
+      select_category: "Kategorie auswählen"
+      separator: "──────────"
+    category_links:
+      go_to_category: "Zur Kategorie %{name} gehen"
+      wines_section: "Weine"
+      go_to_wines: "Zum Weinbereich gehen"
+    dish:
+      dish_info: "Gerichtsinformationen"
+      dish_name: "Gerichtsname"
+      dish_price: "Gerichtspreis"
+      measure: "Maßeinheit"
+      per_person: "pro Person"
+      per_kg: "pro kg"
+      per_half_kg: "pro halbem kg"
+      per_unit: "pro Einheit"
+    form:
+      title: "Formulartitel" # Muss als Variable übergeben werden
+      errors:
+        header:
+          one: "%{count} Fehler verhinderte das Speichern dieses Gerichts"
+          other: "%{count} Fehler verhinderten das Speichern dieses Gerichts"
+      labels:
+        picture: "📸 Foto"
+        name: "Name"
+        description: "Beschreibung"
+        price: "Preis"
+        special_menu: "Spezialmenü"
+        category: "Kategorie"
+        allergens: "Allergene"
+      placeholders:
+        file: "Datei auswählen"
+        name: "Köstliches Gericht"
+        description: '"Ein köstliches Gericht, das den Geschmack des Meeres mit der Frische des Landes verbindet"'
+      buttons:
+        browse: "Durchsuchen"
+        generate_description: "Beschreibung generieren"
+        loading: "Orakel wird konsultiert..."
+        save: "Speichern"
+      special_menu:
+        question: "🍱 Spezialmenü?"
+        select_prompt: "Spezialmenü auswählen"
+      price_options:
+        per_kg: "/kg"
+        per_gr: "/gr"
+        per_unit: "/Stück"
+      accessibility:
+        form_role: "Formular"
+        dish_photo: "Foto des Gerichts"
+        price_options: "Preisoptionen"
+        price_type: "Preistyp"
+        price_input: "Preis des Gerichts"
+        per_kg_label: "Preis pro Kilo"
+        per_gr_label: "Preis pro Gramm"
+        per_unit_label: "Preis pro Stück"
+        allergens_list: "Liste der Allergene"
+        allergen_contains: "Markieren, wenn das Gericht %{allergen} enthält"
+    menu_dish:
+      dish_info: "Gerichtsinformationen"
+      name_and_price: "Name und Preis"
+      dish_name: "Gerichtsname"
+    new:
+      title: "Gericht hinzufügen"
+      back: "Zurück"
+    show:
+      dish_photo: "Foto von %{title}"
+      default_photo: "Gericht"
+      dish_price: "Gerichtspreis"
+      allergens_list: "Liste der Allergene"
+      allergen_icon: "Symbol für %{name}"
+  allergens:
+    create:
+      success: "Allergen erfolgreich hinzugefügt"
+      invalid: "Ungültige Daten"
+    update:
+      success: "Allergen erfolgreich aktualisiert"
+    destroy:
+      success: "Allergen gelöscht!"
+    not_found: "Allergen nicht gefunden"
+    allergen:
+      edit: "Bearbeiten"
+      delete: "Löschen"
+      confirm_delete: "Möchten Sie das Allergen wirklich löschen?"
+    form:
+      errors:
+        header:
+          one: "%{count} Fehler verhinderte das Speichern dieses Allergens"
+          other: "%{count} Fehler verhinderten das Speichern dieses Allergens"
+      labels:
+        name: "Name"
+        photo: "Foto"
+      placeholders:
+        select_file: "Datei auswählen"
+      buttons:
+        browse: "Durchsuchen"
+        save: "Speichern"
+    edit:
+      title: "Allergen bearbeiten"
+      back: "Zurück"
+    index:
+      title: "Allergene"
+    new:
+      title: "Allergen hinzufügen"
+      back: "Zurück"
+  categories:
+    category:
+      edit_category: "Kategorie bearbeiten"
+      delete_confirm: "Sind Sie sicher?"
+    form:
+      labels:
+        name: "Name"
+      buttons:
+        save: "Speichern"
+    form_errors:
+      header:
+        one: "%{count} Fehler"
+        other: "%{count} Fehler"
+      message: "Kategorie konnte nicht gespeichert werden:"
+    edit:
+      title: "Kategorie bearbeiten"
+      back: "Zurück"
+    index:
+      title: "Kategorien"
+      menu_section:
+        title: "Karte"
+      daily_section:
+        title: "Tagesmenü"
+    new:
+      title: "Kategorie hinzufügen"
+      back: "Zurück"
+  control_panel:
+    dish:
+      edit: "Bearbeiten"
+      delete: "Löschen"
+      delete_confirm: "Möchten Sie das Gericht wirklich löschen?"
+    wine:
+      edit: "Bearbeiten"
+      delete: "Löschen"
+      delete_confirm: "Möchten Sie den Wein wirklich löschen?"
+    dishes:
+      title: "Gerichte"
+      menu: "Menü"
+      carta: "Karte"
+      search_placeholder: "Gericht suchen"
+      search_button: "Suchen"
+    wines:
+      title: "Weine"
+      search_placeholder: "Wein suchen"
+      search_button: "Suchen"
+  restaurants:
+    sessions:
+      signed_in: "Erfolgreich angemeldet"
+    profile:
+      success: "Profil erfolgreich aktualisiert"
+      error: "Es gab einen Fehler beim Aktualisieren des Profils"
+      edit:
+        title: "Profil"
+        labels:
+          name: "Name"
+          province: "Bundesland"
+          city: "Stadt"
+          address: "Adresse"
+          phone: "Telefon"
+        placeholders:
+          name: "Restaurant Delicias"
+          city: "Avenida del sabor, n7"
+          address: "Avenida del sabor, 7, bajo"
+          phone: "654 321 098"
+        select_province: "Bundesland auswählen"
+        save: "Änderungen speichern"
+  settings:
+    update:
+      success: "Einstellungen erfolgreich aktualisiert"
+    edit:
+      title: "Einstellungen"
+      errors:
+        header:
+          one: "%{count} Fehler verhinderte das Speichern dieser Einstellungen:"
+          other: "%{count} Fehler verhinderten das Speichern dieser Einstellungen:"
+      labels:
+        root_page: "Standardseite"
+        show_toggler: "Menüauswahlschalter anzeigen"
+        locale_toggler: "Sprachauswahlschalter anzeigen"
+        menu_price: "Preis des Tagesmenüs"
+      options:
+        menu: "Menü"
+        carta: "Karte"
+        show: "Anzeigen"
+        hide: "Verbergen"
+      buttons:
+        save: "Speichern"
+        back: "Zurück"
+  shared:
+    add_button:
+      add: "Hinzufügen"
+      add_icon: "Hinzufügen-Symbol"
+
+    card_menu_switch:
+      menu: "MENÜ"
+      carta: "KARTE"
+
+    close_button:
+      close: "Schließen"
+
+    flash:
+      success: "Erfolg!"
+      error: "Fehler!"
+      close_button: "Schließen-Button"
+      close_notification: "Benachrichtigung schließen"
+
+    info:
+      no_products: "Keine aktiven Produkte, bitte später noch einmal versuchen"
+      add_products: "Fügen Sie dem Menü Produkte hinzu!"
+      add_dish: "Gericht hinzufügen"
+      menu_includes: "Das Tagesmenü beinhaltet"
+      first_course: "1. Gang"
+      second_course: "2. Gang"
+      bread_and_water: "Brot und Wasser"
+      dessert_or_coffee: "Dessert oder Kaffee"
+      contact_info: "Kontaktinformationen"
+      map_icon: "Kartensymbol"
+      phone_icon: "Telefonsymbol"
+      restaurant_logo: "Logo von %{name}"
+
+    items:
+      dishes: "Gerichte"
+      wines: "Weine"
+      denominations: "Herkunftsbezeichnungen"
+      categories: "Kategorien"
+      allergens: "Allergene"
+      profile: "Profil"
+      settings: "Einstellungen"
+      view_menu: "Karte ansehen"
+      download_qr: "QR herunterladen"
+      reload_i18n: "i18n neu laden"
+      logout: "Abmelden"
+
+    menu:
+      open_menu: "Button zum Öffnen des Optionsmenüs"
+      close_menu: "Optionsmenü schließen"
+
+    theme_switch:
+      to_dark: "Zum dunklen Thema wechseln"
+      to_light: "Zum hellen Thema wechseln"
+      dark: "Dunkel"
+      light: "Hell"
+      moon_icon: "Mondsymbol"
+      sun_icon: "Sonnensymbol"
+  special_menus:
+    create:
+      success: "Spezialmenü erfolgreich erstellt"
+      error: "Fehler beim Erstellen des Spezialmenüs"
+    update:
+      success: "Spezialmenü erfolgreich aktualisiert"
+      error: "Fehler beim Aktualisieren des Spezialmenüs"
+    destroy:
+      success: "Spezialmenü erfolgreich gelöscht"
+    set_special_menu:
+      not_found: "Spezialmenü nicht gefunden"
+    common:
+      edit: "Bearbeiten"
+      delete: "Löschen"
+      delete_confirm: "Möchten Sie das Gericht wirklich löschen?"
+      back: "Zurück"
+      save: "Speichern"
+
+    active_special_menus:
+      title: "Specials"
+      price_currency: "€"
+
+    control_panel_special_menu:
+      dishes_section: "Gerichte"
+
+    form:
+      labels:
+        name: "Name"
+        description: "Beschreibung"
+        price: "Preis"
+      errors:
+        header:
+          one: "%{count} Fehler verhinderte das Speichern dieses Spezialmenüs:"
+          other: "%{count} Fehler verhinderten das Speichern dieses Spezialmenüs:"
+
+    dishes:
+      create:
+        success: "Gericht erfolgreich zum Spezialmenü hinzugefügt"
+        error: "Fehler beim Hinzufügen des Gerichts zum Spezialmenü"
+      update:
+        success: "Gericht erfolgreich aktualisiert"
+        error: "Fehler beim Aktualisieren des Gerichts"
+      destroy:
+        success: "Gericht erfolgreich gelöscht"
+      not_found: "Gericht nicht gefunden"
+      form:
+        title: "Gericht zum Spezialmenü %{name} hinzufügen"
+        labels:
+          photo: "📸 Foto"
+          name: "Name"
+          description: "Beschreibung"
+          price: "Preis"
+          allergens: "Allergene"
+        placeholders:
+          select_file: "Datei auswählen"
+          browse: "Durchsuchen"
+          name: "Köstliches Gericht"
+          description: '"Ein köstliches Gericht, das den Geschmack des Meeres mit der Frische des Landes verbindet"'
+        buttons:
+          generate_description: "Beschreibung generieren"
+          generating: "Orakel wird konsultiert..."
+          save: "Speichern"
+        price_units:
+          kg: "/kg"
+          gr: "/gr"
+          unit: "/Stück"
+      new:
+        title: "Gericht hinzufügen"
+      edit:
+        title: "Gericht bearbeiten"
+
+    edit:
+      title: "Spezialmenü bearbeiten"
+
+    index:
+      title: "Spezialmenüs"
+
+    new:
+      title: "Spezialmenü hinzufügen"
+  wine_origin_denominations:
+    create:
+      success: "Herkunftsbezeichnung erfolgreich erstellt"
+      error: "Es gab einen Fehler"
+    update:
+      success: "Herkunftsbezeichnung erfolgreich aktualisiert"
+    destroy:
+      success: "Herkunftsbezeichnung erfolgreich gelöscht"
+    set_denomination:
+      not_found: "Wir konnten die angeforderte Herkunftsbezeichnung nicht finden"
+    common:
+      edit: "Bearbeiten"
+      delete: "Löschen"
+      delete_confirm: "Möchten Sie die Bezeichnung wirklich löschen?"
+      back: "Zurück"
+      save: "Speichern"
+
+    denomination:
+      edit: "Bearbeiten"
+      delete: "Löschen"
+      delete_confirm: "Möchten Sie die Bezeichnung wirklich löschen?"
+
+    form:
+      labels:
+        name: "Name"
+      errors:
+        header:
+          one: "%{count} Fehler verhinderte das Speichern dieser Bezeichnung:"
+          other: "%{count} Fehler verhinderten das Speichern dieser Bezeichnung:"
+
+    edit:
+      title: "Herkunftsbezeichnung bearbeiten"
+
+    index:
+      title: "Herkunftsbezeichnungen"
+
+    new:
+      title: "Herkunftsbezeichnung hinzufügen"
+  wine_types:
+    common:
+      edit: "Bearbeiten"
+      show: "Anzeigen"
+      back: "Zurück"
+      destroy: "Löschen"
+      new: "Neue Weinsorte"
+      notice: "Hinweis"
+
+    form:
+      labels:
+        name: "Name"
+      errors:
+        header:
+          one: "%{count} Fehler verhinderte das Speichern dieser Weinsorte:"
+          other: "%{count} Fehler verhinderten das Speichern dieser Weinsorte:"
+
+    wine_type:
+      show: "Diese Weinsorte anzeigen"
+      edit: "Diese Weinsorte bearbeiten"
+
+    edit:
+      title: "Weinsorte bearbeiten"
+      show: "Diese Weinsorte anzeigen"
+      back: "Zurück zu Weinsorten"
+
+    index:
+      title: "Weinsorten"
+      new: "Neue Weinsorte"
+
+    new:
+      title: "Neue Weinsorte"
+      back: "Zurück zu Weinsorten"
+
+    show:
+      edit: "Diese Weinsorte bearbeiten"
+      destroy: "Diese Weinsorte löschen"
+      back: "Zurück zu Weinsorten"
+  wines:
+    create:
+      success_with_translations: "Wein hinzugefügt! Er wird automatisch aktiviert, sobald die Übersetzungen fertig sind."
+    update:
+      success: "Wein erfolgreich aktualisiert"
+    destroy:
+      success: "Wein gelöscht!"
+    set_wine:
+      not_found: "Wein nicht gefunden"
+    common:
+      back: "Zurück"
+      save: "Speichern"
+      wine_list: "Weinliste"
+      price_currency: "€"
+      available_by_glass: "Glasweise erhältlich"
+      price_by_glass: "Preis pro Glas: %{price}€"
+      price_by_bottle: "Preis pro Flasche: %{price}€"
+      bottle_of: "Flasche %{name}"
+      wines_section: "🍷 Weine 🍷"
+      vat_included: "Alle Preise inklusive Mehrwertsteuer"
+      search_wine: "Wein suchen"
+
+    form:
+      title:
+        new: "Wein hinzufügen"
+        edit: "Wein bearbeiten"
+      labels:
+        photo: "📸 Foto"
+        name: "Name"
+        description: "Beschreibung"
+        wine_type: "Weinsorte"
+        denomination: "Herkunftsbezeichnung"
+        price: "Preis"
+        price_per_glass: "Preis pro Glas (optional)"
+        available_by_glass: "Glasweise erhältlich? 🍷"
+      placeholders:
+        select_file: "Datei auswählen"
+        browse: "Durchsuchen"
+        name: "Köstlicher Wein"
+        description: '"Ein köstlicher Wein, der den Geschmack der Traube mit der Wärme des Alkohols verbindet"'
+        select_type: "Weinsorte auswählen"
+        select_denomination: "Herkunftsbezeichnung auswählen"
+      wine_types:
+        red: "Rot"
+        white: "Weiß"
+      buttons:
+        generate_description: "Beschreibung generieren"
+        generating: "Orakel wird konsultiert..."
+        save: "Speichern"
+      errors:
+        header:
+          one: "%{count} Fehler verhinderte das Speichern dieses Weins:"
+          other: "%{count} Fehler verhinderten das Speichern dieses Weins:"
+
+    control_panel:
+      title: "Weine"
+      search_placeholder: "Wein suchen"
+
+    categorized_wines:
+      info_icon: "Info-Symbol"
+      wines_of: "Weine aus %{name}"
+
+    wine:
+      aria_labels:
+        wine_info: "Weininformationen"

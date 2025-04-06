@@ -1,11 +1,8 @@
 <div class='flex justify-between gap-2 px-4 py-6 border-t border-gray-100 text-brand-gray dark:text-gray-200 print:my-6 dark:border-gray-100/25 animate__animated animate__fadeIn animate__slower active:scale-[0.98] active:opacity-80 transition-all cursor-pointer'
-     role="article"
-     aria-label="<%= t('.dish_info') %>">
-  <div class="flex flex-col w-full title price"
-       aria-label="<%= t('.name_and_price') %>">
-    <p class='w-full text-2xl font-light playfare'
-       aria-label="<%= t('.dish_name') %>">
-      <%= translate("dish.#{dish.id}.title", dish.title) %>
+     role="article">
+  <div class="flex flex-col w-full title price">
+    <p class='w-full text-2xl font-light playfare'>
+      <%= dish.title %>
     </p>
   </div>
 </div>

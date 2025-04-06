@@ -1,4 +1,4 @@
-require 'httparty'
+# frozen_string_literal: true
 
 class DescriptionController < ApplicationController
   before_action :authenticate_restaurant!
@@ -8,27 +8,26 @@ class DescriptionController < ApplicationController
     description_type = params[:description_type] || 'plato'
 
     system_messages = {
-      plato: 'Eres un experto en cociña e en definir platos para a carta dun restaurante. As túas respostas limítanse a dar a descripción dun prato dado dun xeito profesional e atractivo, limitando esta a 300 caracteres para manter concisión e interese. A interacción co usuario será completamente en Galego',
-      vino: 'Eres un experto en viños e en describir estos viños para a carta dun restaurante. Para cada viño, xera unha descrición breve en Galego. Destaca sabor, cor, matices e notas de cata, tipo de uva, rexión de orixe e recomendacións de maridaxe cando sexa pertinente. Limítaa a 300 caracteres para manter concisión e interese. O formato das túas respostas ha de ser soamente a descripción en si, nada máis.'
-    }
-
-    example_prompt = {
-      plato: 'Carpaccio de tenreira con rúcula e parmesano',
-      vino: 'Leirana'
-    }
-
-    example_response = {
-      plato: 'Unha deliciosa combinación de finas láminas de tenreira e a frescura da rúcula, coronado con queixo parmesano e aliñado con aceite de oliva, un toque de lima e sal. Un prato sabroso e moi elegante',
-      vino: 'Este viño é elaborado polo recoñecido enólogo Rodrigo Méndez coas mellores uvas albariño da zona do Val do Salnés. Leirana é un viño fresco e elegante, con notas florais e de froitas brancas. Un albariño de gran complexidade e persistencia en boca, ideal para acompañar mariscos e peixes frescos.'
+      plato: 'Eres un experto en cocina y en definir platos para la carta de un restaurante. Tus respuestas se limitan a dar la descripción de un plato de manera profesional y atractiva, limitándola a 300 caracteres para mantener concisión e interés. Devuelve directamente la descripción del plato sin añadir nada más.',
+      vino: 'Eres un experto en vinos y en describir estos vinos para la carta de un restaurante. Para cada vino, genera una descripción breve en gallego. Destaca sabor, color, matices y notas de cata, tipo de uva, región de origen y recomendaciones de maridaje cuando sea pertinente. Limítala a 300 caracteres para mantener concisión e interés. El formato de tus respuestas debe ser solamente la descripción en sí, nada más.',
     }
 
     system = system_messages[description_type.to_sym]
+    prompt = "Describe este #{description_type}: \"#{plato}\""
 
     begin
-      open_ai_service = OpenAiService.new
-      description = open_ai_service.request(system_message: system, prompt: plato,
-                                            example_prompt: example_prompt[description_type.to_sym], example_response: example_response[description_type.to_sym], temperature: 1).content
-      render json: { description: }, status: :ok
+      result = GeminiAiService.new(
+        system_msg: system,
+        prompt: prompt,
+        temperature: 1
+      ).call
+
+      if result.success?
+        description = result.value!
+        render json: { description: description }, status: :ok
+      else
+        render json: { error: result.failure[:error] }, status: :unprocessable_entity
+      end
     rescue StandardError => e
       render json: { error: e.message }, status: :unprocessable_entity
     end

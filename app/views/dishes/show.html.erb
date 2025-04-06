@@ -25,19 +25,19 @@
                     id="modal-titulo"
                     class="mb-2 text-2xl font-medium playfare skeleton skeleton-dark"
                     data-modal-target="skeleton">
-                    <%= translate("dish.#{@dish.id}.title", @dish.title) %>
+                    <%= @dish.title %>
                 </div>
                 <p
                     class="w-full mb-2 text-gray-900 break-words lato skeleton skeleton-dark dark:text-slate-100"
                     data-modal-target="skeleton">
-                    <%= translate("dish.#{@dish.id}.description", @dish.description) %>
+                    <%= @dish.description %>
                 </p>
                 <div class="flex items-center justify-between align-middle">
                     <% unless @dish&.category&.category_type == "daily" %>
                         <div
                             class="self-center block text-xl font-semibold skeleton skeleton-dark"
                             data-modal-target="skeleton"
-                            aria-label="<%= t('.dish_price') %>" >
+                        >
                             <%= number_with_precision(@dish.prize, precision: 2, separator: ",") %>
                             <small class='text-sm italic text-black duration-500 font-extralight place-self-end dark:text-white'>
                                 <%= render_measure(@dish) %>
@@ -47,14 +47,14 @@
                     <div
                         class="flex items-center gap-1 alergenos skeleton skeleton-dark"
                         data-modal-target="skeleton"
-                        aria-label="<%= t('.allergens_list') %>" >
+                    >
                         <% @dish.allergens.each do |allergen| %>
                             <span
                                 class="inline-block py-1 tooltip"
                                 data-controller="tooltip"
                                 data-action="click->tooltip#toggle"
                                 role="tooltip"
-                                aria-label="<%= allergen.name %>">
+                            >
                                 <%= image_tag allergen.icon.variant(:thumb),
                                     data: { modal_target: "image" },
                                     class: "w-8 h-8 opacity-70",

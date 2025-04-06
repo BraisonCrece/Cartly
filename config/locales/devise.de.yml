@@ -1,0 +1,76 @@
+de:
+  devise:
+    confirmations:
+      title: "Bestätigungsanweisungen erneut senden"
+      send_instructions: "Anweisungen erneut senden"
+    mailer:
+      confirmation_instructions:
+        welcome: "Willkommen %{email}!"
+        confirm_text: "Du kannst dein Konto über den folgenden Link bestätigen:"
+        confirm_link: "Mein Konto bestätigen"
+      email_changed:
+        greeting: "Hallo %{email}!"
+        changing: "Wir kontaktieren dich, um dich darüber zu informieren, dass deine E-Mail-Adresse zu %{email} geändert wird."
+        changed: "Wir kontaktieren dich, um dich darüber zu informieren, dass deine E-Mail-Adresse zu %{email} geändert wurde."
+      password_change:
+        greeting: "Hallo %{email}!"
+        message: "Wir kontaktieren dich, um dich darüber zu informieren, dass dein Passwort geändert wurde."
+      reset_password:
+        greeting: "Hallo %{email}!"
+        requested: "Jemand hat einen Link angefordert, um dein Passwort zu ändern. Du kannst dies über den folgenden Link tun."
+        change_link: "Mein Passwort ändern"
+        ignore: "Wenn du dies nicht angefordert hast, ignoriere diese E-Mail bitte."
+        wont_change: "Dein Passwort wird sich erst ändern, wenn du auf den Link zugreifst und ein neues erstellst."
+      unlock:
+        greeting: "Hallo %{email}!"
+        locked: "Dein Konto wurde aufgrund einer übermäßigen Anzahl fehlgeschlagener Anmeldeversuche gesperrt."
+        instruction: "Klicke auf den folgenden Link, um dein Konto zu entsperren:"
+        unlock_link: "Mein Konto entsperren"
+    passwords:
+      edit:
+        title: "Dein Passwort ändern"
+        new_password: "Neues Passwort"
+        confirm_password: "Neues Passwort bestätigen"
+        min_chars: "(%{length} Zeichen Minimum)"
+        change_button: "Mein Passwort ändern"
+      new:
+        title: "Passwort vergessen?"
+        send_instructions: "Sende mir Anweisungen zum Zurücksetzen des Passworts"
+    registrations:
+      edit:
+        title: "%{resource} bearbeiten"
+        waiting_confirmation: "Warte auf Bestätigung für: %{email}"
+        leave_blank: "(leer lassen, wenn du es nicht ändern möchtest)"
+        current_password_needed: "(wir benötigen dein aktuelles Passwort, um die Änderungen zu bestätigen)"
+        update_button: "Aktualisieren"
+        cancel_account: "Mein Konto löschen"
+        unhappy: "Nicht zufrieden?"
+        cancel_confirm: "Bist du sicher?"
+        back: "Zurück"
+      new:
+        title: "Registrierung"
+        restaurant_name: "Name des Restaurants"
+        sign_up: "Registrieren"
+        min_chars: "(%{length} Zeichen Minimum)"
+    sessions:
+      new:
+        title: "Anmelden"
+        email: "E-Mail"
+        password: "Passwort"
+        remember_me: "Erinnere mich"
+        login: "Anmelden"
+    shared:
+      links:
+        login: "Anmelden"
+        sign_up: "Registrierung"
+        forgot_password: "Passwort vergessen?"
+        no_confirmation: "Keine Bestätigungsanweisungen erhalten?"
+        no_unlock: "Keine Entsperranweisungen erhalten?"
+        sign_in_with: "Anmelden mit %{provider}"
+      error_messages:
+        problems:
+          one: "1 Fehler verhinderte, dass diese(r) %{resource} gespeichert wurde:"
+          other: "%{count} Fehler verhinderten, dass diese(r) %{resource} gespeichert wurde:"
+    unlocks:
+      title: "Entsperranweisungen erneut senden"
+      resend_button: "Entsperranweisungen erneut senden"

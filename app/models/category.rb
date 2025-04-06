@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Category < ApplicationRecord
+  extend Mobility
+  translates :name, type: :string
+
   has_many :dishes, dependent: :destroy
   belongs_to :restaurant
 

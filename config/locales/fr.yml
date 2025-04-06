@@ -1,0 +1,485 @@
+fr:
+  dishes:
+    create:
+      success_with_translations: "Plat ajouté ! Il sera automatiquement activé lorsque les traductions seront terminées."
+    update:
+      success: "Plat modifié avec succès"
+    destroy:
+      success: "Plat supprimé !"
+    set_dish:
+      not_found: "Plat non trouvé"
+    wines:
+      colors:
+        white: "Blanc"
+        red: "Rouge"
+    index:
+      skip_to_main: "Passer au contenu principal"
+      categories_menu: "Menu des catégories"
+    categories_select:
+      select_category: "Sélectionnez une catégorie"
+      separator: "──────────"
+    category_links:
+      go_to_category: "Aller à la catégorie %{name}"
+      wines_section: "Vins"
+      go_to_wines: "Aller à la section des vins"
+    dish:
+      dish_info: "Informations sur le plat"
+      dish_name: "Nom du plat"
+      dish_price: "Prix du plat"
+      measure: "Mesure"
+      per_person: "par personne"
+      per_kg: "par kg"
+      per_half_kg: "par demi-kg"
+      per_unit: "par unité"
+    form:
+      title: "Titre du formulaire" # À passer comme variable
+      errors:
+        header:
+          one: "%{count} erreur a empêché la sauvegarde de ce plat"
+          other: "%{count} erreurs ont empêché la sauvegarde de ce plat"
+      labels:
+        picture: "📸 Photo"
+        name: "Nom"
+        description: "Description"
+        price: "Prix"
+        special_menu: "Menu spécial"
+        category: "Catégorie"
+        allergens: "Allergènes"
+      placeholders:
+        file: "Sélectionnez un fichier"
+        name: "Plat délicieux"
+        description: '"Un plat délicieux qui combine les saveurs de la mer avec la fraîcheur de la terre"'
+      buttons:
+        browse: "Parcourir"
+        generate_description: "Générer une description"
+        loading: "Consultation de l'oracle..."
+        save: "Enregistrer"
+      special_menu:
+        question: "🍱 Menu spécial ?"
+        select_prompt: "Sélectionnez un menu spécial"
+      price_options:
+        per_kg: "/kg"
+        per_gr: "/gr"
+        per_unit: "/u"
+      accessibility:
+        form_role: "formulaire"
+        dish_photo: "Photo du plat"
+        price_options: "Options de prix"
+        price_type: "Type de prix"
+        price_input: "Prix du plat"
+        per_kg_label: "Prix par kilo"
+        per_gr_label: "Prix par gramme"
+        per_unit_label: "Prix par unité"
+        allergens_list: "Liste des allergènes"
+        allergen_contains: "Cocher si le plat contient %{allergen}"
+    menu_dish:
+      dish_info: "Informations sur le plat"
+      name_and_price: "Nom et prix"
+      dish_name: "Nom du plat"
+    new:
+      title: "Ajouter un plat"
+      back: "Retour"
+    show:
+      dish_photo: "Photo de %{title}"
+      default_photo: "plat"
+      dish_price: "Prix du plat"
+      allergens_list: "Liste des allergènes"
+      allergen_icon: "Icône de %{name}"
+  allergens:
+    create:
+      success: "Allergène ajouté avec succès"
+      invalid: "Données invalides"
+    update:
+      success: "Allergène mis à jour avec succès"
+    destroy:
+      success: "Allergène supprimé !"
+    not_found: "Allergène non trouvé"
+    allergen:
+      edit: "Modifier"
+      delete: "Supprimer"
+      confirm_delete: "Êtes-vous sûr de vouloir supprimer cet allergène ?"
+    form:
+      errors:
+        header:
+          one: "%{count} erreur a empêché la sauvegarde de cet allergène"
+          other: "%{count} erreurs ont empêché la sauvegarde de cet allergène"
+      labels:
+        name: "Nom"
+        photo: "Photo"
+      placeholders:
+        select_file: "Sélectionnez un fichier"
+      buttons:
+        browse: "Parcourir"
+        save: "Enregistrer"
+    edit:
+      title: "Modifier l'allergène"
+      back: "Retour"
+    index:
+      title: "Allergènes"
+    new:
+      title: "Ajouter un allergène"
+      back: "Retour"
+  categories:
+    category:
+      edit_category: "Modifier la catégorie"
+      delete_confirm: "Êtes-vous sûr ?"
+    form:
+      labels:
+        name: "Nom"
+      buttons:
+        save: "Enregistrer"
+    form_errors:
+      header:
+        one: "%{count} erreur"
+        other: "%{count} erreurs"
+      message: "Impossible d'enregistrer la catégorie :"
+    edit:
+      title: "Modifier la catégorie"
+      back: "Retour"
+    index:
+      title: "Catégories"
+      menu_section:
+        title: "Menu"
+      daily_section:
+        title: "Menu du jour"
+    new:
+      title: "Ajouter une catégorie"
+      back: "Retour"
+  control_panel:
+    dish:
+      edit: "Modifier"
+      delete: "Supprimer"
+      delete_confirm: "Êtes-vous sûr de vouloir supprimer ce plat ?"
+    wine:
+      edit: "Modifier"
+      delete: "Supprimer"
+      delete_confirm: "Êtes-vous sûr de vouloir supprimer ce vin ?"
+    dishes:
+      title: "Plats"
+      menu: "Menu"
+      carta: "Carte"
+      search_placeholder: "Rechercher un plat"
+      search_button: "Rechercher"
+    wines:
+      title: "Vins"
+      search_placeholder: "Rechercher un vin"
+      search_button: "Rechercher"
+  restaurants:
+    sessions:
+      signed_in: "Connecté avec succès"
+    profile:
+      success: "Profil mis à jour avec succès"
+      error: "Une erreur s'est produite lors de la mise à jour du profil"
+      edit:
+        title: "Profil"
+        labels:
+          name: "Nom"
+          province: "Province"
+          city: "Ville"
+          address: "Adresse"
+          phone: "Téléphone"
+        placeholders:
+          name: "Restaurant Délices"
+          city: "Avenue du goût, n7"
+          address: "Avenue du goût, 7, rez-de-chaussée"
+          phone: "654 321 098"
+        select_province: "Sélectionnez une province"
+        save: "Enregistrer les modifications"
+  settings:
+    update:
+      success: "Configuration mise à jour avec succès"
+    edit:
+      title: "Configuration"
+      errors:
+        header:
+          one: "%{count} erreur a empêché la sauvegarde de cette configuration :"
+          other: "%{count} erreurs ont empêché la sauvegarde de cette configuration :"
+      labels:
+        root_page: "Page par défaut"
+        show_toggler: "Afficher le bouton de sélection de menu"
+        locale_toggler: "Afficher le bouton de sélection de langue"
+        menu_price: "Prix du menu du jour"
+      options:
+        menu: "Menu"
+        carta: "Carte"
+        show: "Afficher"
+        hide: "Masquer"
+      buttons:
+        save: "Enregistrer"
+        back: "Retour"
+  shared:
+    add_button:
+      add: "Ajouter"
+      add_icon: "Icône d'ajout"
+
+    card_menu_switch:
+      menu: "MENU"
+      carta: "CARTE"
+
+    close_button:
+      close: "Fermer"
+
+    flash:
+      success: "Succès !"
+      error: "Erreur !"
+      close_button: "Bouton de fermeture"
+      close_notification: "Fermer la notification"
+
+    info:
+      no_products: "Aucun produit actif, revenez plus tard"
+      add_products: "Commencez à ajouter des produits au menu !"
+      add_dish: "Ajouter un plat"
+      menu_includes: "Le menu du jour comprend"
+      first_course: "1er plat"
+      second_course: "2ème plat"
+      bread_and_water: "Pain et eau"
+      dessert_or_coffee: "Dessert ou café"
+      contact_info: "Informations de contact"
+      map_icon: "Icône de carte"
+      phone_icon: "Icône de téléphone"
+      restaurant_logo: "Logo de %{name}"
+
+    items:
+      dishes: "Plats"
+      wines: "Vins"
+      denominations: "Appellations d'origine"
+      categories: "Catégories"
+      allergens: "Allergènes"
+      profile: "Profil"
+      settings: "Configuration"
+      view_menu: "Voir la carte"
+      download_qr: "Télécharger QR"
+      reload_i18n: "Recharger i18n"
+      logout: "Déconnexion"
+
+    menu:
+      open_menu: "Bouton d'ouverture du menu d'options"
+      close_menu: "Fermer le menu d'options"
+
+    theme_switch:
+      to_dark: "Passer au thème sombre"
+      to_light: "Passer au thème clair"
+      dark: "Sombre"
+      light: "Clair"
+      moon_icon: "Icône de lune"
+      sun_icon: "Icône de soleil"
+  special_menus:
+    create:
+      success: "Menu spécial créé avec succès"
+      error: "Erreur lors de la création du menu spécial"
+    update:
+      success: "Menu spécial mis à jour avec succès"
+      error: "Erreur lors de la mise à jour du menu spécial"
+    destroy:
+      success: "Menu spécial supprimé avec succès"
+    set_special_menu:
+      not_found: "Menu spécial non trouvé"
+    common:
+      edit: "Modifier"
+      delete: "Supprimer"
+      delete_confirm: "Êtes-vous sûr de vouloir supprimer ce plat ?"
+      back: "Retour"
+      save: "Enregistrer"
+
+    active_special_menus:
+      title: "Spéciaux"
+      price_currency: "€"
+
+    control_panel_special_menu:
+      dishes_section: "Plats"
+
+    form:
+      labels:
+        name: "Nom"
+        description: "Description"
+        price: "Prix"
+      errors:
+        header:
+          one: "%{count} erreur a empêché la sauvegarde de ce menu spécial :"
+          other: "%{count} erreurs ont empêché la sauvegarde de ce menu spécial :"
+
+    dishes:
+      create:
+        success: "Plat ajouté au menu spécial avec succès"
+        error: "Erreur lors de l'ajout du plat au menu spécial"
+      update:
+        success: "Plat mis à jour avec succès"
+        error: "Erreur lors de la mise à jour du plat"
+      destroy:
+        success: "Plat supprimé avec succès"
+      not_found: "Plat non trouvé"
+      form:
+        title: "Ajouter un plat au menu spécial %{name}"
+        labels:
+          photo: "📸 Photo"
+          name: "Nom"
+          description: "Description"
+          price: "Prix"
+          allergens: "Allergènes"
+        placeholders:
+          select_file: "Sélectionnez un fichier"
+          browse: "Parcourir"
+          name: "Plat délicieux"
+          description: '"Un plat délicieux qui combine les saveurs de la mer avec la fraîcheur de la terre"'
+        buttons:
+          generate_description: "Générer une description"
+          generating: "Consultation de l'oracle..."
+          save: "Enregistrer"
+        price_units:
+          kg: "/kg"
+          gr: "/gr"
+          unit: "/u"
+      new:
+        title: "Ajouter un plat"
+      edit:
+        title: "Modifier le plat"
+
+    edit:
+      title: "Modifier le menu spécial"
+
+    index:
+      title: "Menus spéciaux"
+
+    new:
+      title: "Ajouter un menu spécial"
+  wine_origin_denominations:
+    create:
+      success: "Appellation d'origine créée avec succès"
+      error: "Une erreur s'est produite"
+    update:
+      success: "Appellation d'origine mise à jour avec succès"
+    destroy:
+      success: "Appellation d'origine supprimée avec succès"
+    set_denomination:
+      not_found: "Nous n'avons pas trouvé l'appellation d'origine demandée"
+    common:
+      edit: "Modifier"
+      delete: "Supprimer"
+      delete_confirm: "Êtes-vous sûr de vouloir supprimer cette appellation ?"
+      back: "Retour"
+      save: "Enregistrer"
+
+    denomination:
+      edit: "Modifier"
+      delete: "Supprimer"
+      delete_confirm: "Êtes-vous sûr de vouloir supprimer cette appellation ?"
+
+    form:
+      labels:
+        name: "Nom"
+      errors:
+        header:
+          one: "%{count} erreur a empêché la sauvegarde de cette appellation :"
+          other: "%{count} erreurs ont empêché la sauvegarde de cette appellation :"
+
+    edit:
+      title: "Modifier l'appellation d'origine"
+
+    index:
+      title: "Appellations d'Origine"
+
+    new:
+      title: "Ajouter une appellation d'origine"
+  wine_types:
+    common:
+      edit: "Modifier"
+      show: "Voir"
+      back: "Retour"
+      destroy: "Supprimer"
+      new: "Nouveau type de vin"
+      notice: "Avis"
+
+    form:
+      labels:
+        name: "Nom"
+      errors:
+        header:
+          one: "%{count} erreur a empêché la sauvegarde de ce type de vin :"
+          other: "%{count} erreurs ont empêché la sauvegarde de ce type de vin :"
+
+    wine_type:
+      show: "Voir ce type de vin"
+      edit: "Modifier ce type de vin"
+
+    edit:
+      title: "Modification du type de vin"
+      show: "Voir ce type de vin"
+      back: "Retour aux types de vin"
+
+    index:
+      title: "Types de vin"
+      new: "Nouveau type de vin"
+
+    new:
+      title: "Nouveau type de vin"
+      back: "Retour aux types de vin"
+
+    show:
+      edit: "Modifier ce type de vin"
+      destroy: "Supprimer ce type de vin"
+      back: "Retour aux types de vin"
+  wines:
+    create:
+      success_with_translations: "Vin ajouté ! Il sera automatiquement activé lorsque les traductions seront terminées."
+    update:
+      success: "Vin mis à jour avec succès"
+    destroy:
+      success: "Vin supprimé !"
+    set_wine:
+      not_found: "Vin non trouvé"
+    common:
+      back: "Retour"
+      save: "Enregistrer"
+      wine_list: "Liste des vins"
+      price_currency: "€"
+      available_by_glass: "Disponible au verre"
+      price_by_glass: "Prix au verre : %{price}€"
+      price_by_bottle: "Prix par bouteille : %{price}€"
+      bottle_of: "Bouteille de %{name}"
+      wines_section: "🍷 Vins 🍷"
+      vat_included: "Tous les prix incluent la TVA"
+      search_wine: "Rechercher un vin"
+
+    form:
+      title:
+        new: "Ajouter un vin"
+        edit: "Modifier un vin"
+      labels:
+        photo: "📸 Photo"
+        name: "Nom"
+        description: "Description"
+        wine_type: "Type de vin"
+        denomination: "Appellation d'origine"
+        price: "Prix"
+        price_per_glass: "Prix au verre (optionnel)"
+        available_by_glass: "Disponible au verre ? 🍷"
+      placeholders:
+        select_file: "Sélectionnez un fichier"
+        browse: "Parcourir"
+        name: "Vin délicieux"
+        description: '"Un vin délicieux qui combine la saveur du raisin avec la chaleur de l''alcool"'
+        select_type: "Sélectionnez un type de vin"
+        select_denomination: "Sélectionnez une appellation d'origine"
+      wine_types:
+        red: "Rouge"
+        white: "Blanc"
+      buttons:
+        generate_description: "Générer une description"
+        generating: "Consultation de l'oracle..."
+        save: "Enregistrer"
+      errors:
+        header:
+          one: "%{count} erreur a empêché la sauvegarde de ce vin :"
+          other: "%{count} erreurs ont empêché la sauvegarde de ce vin :"
+
+    control_panel:
+      title: "Vins"
+      search_placeholder: "Rechercher un vin"
+
+    categorized_wines:
+      info_icon: "Icône d'information"
+      wines_of: "Vins de %{name}"
+
+    wine:
+      aria_labels:
+        wine_info: "Informations sur le vin"

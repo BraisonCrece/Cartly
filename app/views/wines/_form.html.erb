@@ -1,15 +1,11 @@
-<div data-controller="toggle-price-per-glass description file-input"
-     class="w-full"
-     role="main"
-     aria-labelledby="form-title">
+<div data-controller="toggle-price-per-glass description file-input" class="w-full" role="main">
   <h1 id="form-title" class="font-thin text-4xl text-center mb-8 text-pretty">
     <%= message %>
   </h1>
   <%= form_with(model: wine,
       data: { turbo: false },
       class: "shadow-md rounded-[3px] px-6 pt-4 pb-8 mb-4 dark:shadow-white/25",
-      role: "form",
-      "aria-label": t('wines.form.title.new')) do |f| %>
+      role: "form") do |f| %>
 
     <% if wine.errors.any? %>
       <div id="error_explanation"
@@ -45,7 +41,7 @@
           <span data-file-input-target="fileName" class="text-gray-400">
             <%= t('.placeholders.select_file') %>
           </span>
-          <button type="button" class="text-blue-500" aria-label="<%= t('.placeholders.browse') %>">
+          <button type="button" class="text-blue-500">
             <%= t('.placeholders.browse') %>
           </button>
         </div>
@@ -55,8 +51,7 @@
             data: {
               action: "change->file-input#updateFile",
               file_input_target: "fileInput"
-            },
-            "aria-label": t('wines.form.labels.photo') %>
+            } %>
       </div>
     </div>
 
@@ -69,8 +64,7 @@
         onfocus: "this.placeholder=''",
         onblur: "this.placeholder='#{t('.placeholders.name')}'",
         data: { description_target: 'input'},
-        "aria-required": "true",
-        "aria-label": t('.labels.name') %>
+        "aria-required": "true" %>
     </div>
 
     <div class="mb-8">
@@ -85,9 +79,7 @@
         maxlength: 350,
         data: { description_target: 'output' },
         "aria-label": t('.labels.description') %>
-      <button data-action="click->description#describeWine"
-          class="w-full bg-purple-800 hover:bg-purple-950 text-white font-semibold py-2 px-4 rounded-[3px] focus:outline-none focus:shadow-outline-blue focus:ring ring-blue-300 focus:border-blue-300 active:bg-blue-800"
-          aria-label="<%= t('.buttons.generate_description') %>">
+      <button data-action="click->description#describeWine" class="w-full bg-purple-800 hover:bg-purple-950 text-white font-semibold py-2 px-4 rounded-[3px] focus:outline-none focus:shadow-outline-blue focus:ring ring-blue-300 focus:border-blue-300 active:bg-blue-800">
         <span data-description-target="buttonText">
           <%= t('.buttons.generate_description') %>
         </span>
@@ -108,8 +100,7 @@
           [[t('.wine_types.red'), "Tinto"], [t('.wine_types.white'), "Blanco"]],
           { prompt: t('.placeholders.select_type') },
           class: "dark:text-gray-800 form-select mt-1 block w-full rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
-          "aria-required": "true",
-          "aria-label": t('.labels.wine_type') %>
+          "aria-required": "true" %>
     </div>
 
     <div class="mb-8">
@@ -119,8 +110,7 @@
           denominations, :id, :name,
           { prompt: t('.placeholders.select_denomination') },
           { class: "dark:text-gray-800 form-select mt-1 block rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full",
-            "aria-required": "true",
-            "aria-label": t('.labels.denomination') } %>
+            "aria-required": "true" %>
     </div>
 
     <div class="mb-8">
@@ -129,8 +119,7 @@
       <%= f.number_field :price,
           step: :any,
           class: "dark:text-gray-800 mt-1 block w-full rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
-          "aria-required": "true",
-          "aria-label": t('.labels.price') %>
+          "aria-required": "true" %>
     </div>
 
     <div class="mb-8 flex items-center gap-4">
@@ -141,7 +130,7 @@
           id="por-copa"
           class="form-checkbox rounded-[3px]"
           data-action="change->toggle-price-per-glass#toggle"
-          aria-label="<%= t('.labels.available_by_glass') %>">
+        >
     </div>
 
     <div class="mb-8 hidden" data-toggle-price-per-glass-target="pricePerGlassField">
@@ -150,8 +139,7 @@
       <%= f.number_field :price_per_glass,
           step: :any,
           class: "dark:text-gray-800 mt-1 block w-full rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
-          data: { toggle_price_per_glass_target: "input" },
-          "aria-label": t('.labels.price_per_glass') %>
+          data: { toggle_price_per_glass_target: "input" } %>
     </div>
 
     <div class="flex flex-wrap items-center gap-1 justify-between">

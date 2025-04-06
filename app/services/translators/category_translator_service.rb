@@ -4,17 +4,18 @@ require 'dry/monads'
 require 'dry/monads/do'
 
 module Translators
-  class WineTranslatorService
+  class CategoryTranslatorService
     include Dry::Monads[:result, :try]
     include Dry::Monads::Do
 
-    attr_reader :wine, :language, :system_message
+    attr_reader :category, :language, :temperature, :model, :name_system_message,
+                :example_name, :example_name_response
 
-    def initialize(wine, language)
-      @wine = wine
+    def initialize(category, language)
+      @category = category
       @language = language
-      @system_message = %(Actúa como un servicio de traducción. El usuario te pasará la descripción de un vino y tú debes
-    responder solamente con la traducción precisa de la descripción dada. Traducirás del Gallego al #{language}.)
+      @name_system_message = %(Actúa como un servicio de traducción. El usuario te enviará el nombre de una categoría y debes
+      responder solamente con la traducción precisa de la categoría. Traducirás del Gallego al #{language}.)
     end
 
     def call
@@ -24,8 +25,8 @@ module Translators
     private
 
     def translate
-      description_translation = yield request_translation(@system_message, @wine.description)
-      store_translations(description_translation)
+      name_translation = yield request_translation(@name_system_message, @category.name)
+      store_translations(name_translation)
     end
 
     def request_translation(system_message, text)
@@ -36,10 +37,10 @@ module Translators
       )
     end
 
-    def store_translations(description_translation)
+    def store_translations(name_translation)
       Try[ActiveRecord::ActiveRecordError] do
-        @wine.update!(
-          "description_#{@language}": description_translation
+        @category.update!(
+          "name_#{@language}": name_translation
         )
       end.to_result
     end

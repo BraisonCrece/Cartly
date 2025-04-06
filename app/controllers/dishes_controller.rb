@@ -6,7 +6,7 @@ class DishesController < ApplicationController
   before_action :set_dish, only: [:edit, :update, :destroy]
   before_action :set_categories, only: [:index, :new, :edit]
 
-  WINE_COLORS = [t('wines.colors.white'), t('wines.colors.red')].freeze
+  WINE_COLORS = ['Tinto', 'Blanco'].freeze
 
   def index
     @restaurant = Restaurant.find_by(id: params[:restaurant_id])
@@ -32,7 +32,7 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
     @dish.restaurant_id = current_restaurant.id
-    request_translations(@dish, :create) if ENV['OPENAI_KEY'].present?
+    request_translations(@dish, :create)
     @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
 
     if @dish.save
@@ -64,7 +64,6 @@ class DishesController < ApplicationController
 
   def destroy
     @dish.destroy
-    request_translations(@dish, :destroy) if ENV['OPENAI_KEY'].present?
 
     redirect_to dishes_control_panel_path, status: 303, notice: t('.success')
   end
@@ -101,7 +100,7 @@ class DishesController < ApplicationController
 
   def dish_params
     params.require(:dish).permit(
-      :title, :description, :prize, :category_id, :special_menu_id,
+      :title_es, :description_es, :prize, :category_id, :special_menu_id,
       :picture, :per_gram, :per_kilo, :per_unit, allergen_ids: []
     )
   end

@@ -6,9 +6,8 @@ require 'dry/monads/do'
 module Translators
   class DestroyItemTranslatorService
     include Dry::Monads[:result, :try]
-    include Dry::Monads::Do.for(:call)
+    include Dry::Monads::Do
 
-    YAML_FILES = ['es', 'en', 'fr', 'de', 'it', 'ru'].freeze
     attr_reader :item
 
     def initialize(item)

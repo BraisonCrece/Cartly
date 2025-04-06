@@ -6,116 +6,65 @@ require 'dry/monads/do'
 module Translators
   class AllergenTranslatorService
     include Dry::Monads[:result, :try]
-    include Dry::Monads::Do.for(:call)
+    include Dry::Monads::Do
 
     attr_reader :allergen, :language, :temperature, :model, :name_system_message,
                 :example_name, :example_name_response
 
-    def initialize(allergen, language, temperature: 0.3, model: 'gpt-4o-mini')
+    def initialize(allergen, language)
       @allergen = allergen
       @language = language
-      @temperature = temperature
-      @model = model
-      @name_system_message = %(Actúa como un servicio de traducción. O ususario pasarache o nome dun alérxeno alimentario e debes
-      respostar soamente coa traducción precisa do alérxeno. Traducirás do Galego ao #{language}.)
+      @name_system_message = %(Actúa como un servicio de traducción. El usuario te enviará el nombre de un alérgeno alimentario y debes
+      responder solamente con la traducción precisa del alérgeno. Traducirás del Gallego al #{language}.)
     end
 
     def call
-      yield initialize_example_prompts
-      file_path = yield get_file_path
-      file_content = yield get_file_content(file_path)
-      name_translation = yield ask_for_translation(name_system_message, example_name, example_name_response,
-                                                   allergen.name)
-      save_translation(file_path, file_content, name_translation)
-      Rails.logger.info("Allergen #{allergen.id} translated to #{language}")
+      translate
     end
 
     private
 
-    def initialize_example_prompts
-      @example_name = 'Leite'
-      @example_name_response = example_responses(language)
-      Success('Example prompts initialized')
+    def translate
+      name_translation = yield request_translation(@name_system_message, @allergen.name)
+      store_translations(name_translation)
     end
 
-    def get_file_path
-      language_key = get_language_key(language)
-      return Failure('Language not found') if language_key.nil?
-
-      file_path = Rails.root.join('config', 'locale', "#{language_key}.yml")
-      Success(file_path)
+    def request_translation(system_message, text)
+      GeminiAiService.call(
+        system_msg: system_message,
+        prompt: text,
+        temperature: @temperature
+      )
     end
 
-    def get_file_content(file_path)
-      if File.exist?(file_path)
-        Success(YAML.load_file(file_path))
-      else
-        Failure('File not found')
-      end
-    end
-
-    def ask_for_translation(system_message, example_prompt, example_response, prompt)
-      result = OpenAiService.new.request(system_message:, prompt:, example_prompt:, example_response:, model:,
-                                         temperature: 0.3)
-      if result.success?
-        # Remove the final period in case it was added by the AI
-        result.content.chomp!('.') if result.content.end_with?('.')
-        Success(result.content)
-      else
-        Failure(result.error)
-      end
-    end
-
-    def save_translation(file_path, file_content, name_translation)
-      language_key = get_language_key(language)
-
-      # Inicializar la estructura si no existe
-      file_content[language_key] ||= {}
-      file_content[language_key]['allergen'] ||= {}
-
-      file_content[language_key]['allergen'][allergen.id] = {
-        'name' => name_translation,
-      }
-
-      result = Try[Errno::ENOENT, Errno::EACCES] do
-        File.write(file_path, YAML.dump(file_content))
+    def store_translations(name_translation)
+      Try[ActiveRecord::ActiveRecordError] do
+        @allergen.update!(
+          "name_#{@language}": name_translation
+        )
       end.to_result
-
-      Rails.logger.error("Failed to save translation: #{result.failure}") if result.failure?
-      result
     end
 
-    def get_language_key(language)
-      case language
-      when 'Inglés'
-        'en'
-      when 'Español'
-        'es'
-      when 'Alemán'
-        'de'
-      when 'Italiano'
-        'it'
-      when 'Francés'
-        'fr'
-      when 'Ruso'
-        'ru'
-      end
-    end
-
-    def example_responses(language)
-      case language
-      when 'Inglés'
-        'Milk'
-      when 'Español'
-        'Leche'
-      when 'Alemán'
-        'Milch'
-      when 'Italiano'
-        'Latte'
-      when 'Francés'
-        'Lait'
-      when 'Ruso'
-        'Молоко'
+    def key_to_lang(lang_key)
+      case lang_key
+      when :gl
+        'Gallego'
+      when :cat
+        'Catalán'
+      when :eus
+        'Euskera'
+      when :en
+        'Inglés'
+      when :fr
+        'Francés'
+      when :de
+        'Alemán'
+      when :it
+        'Italiano'
+      when :ru
+        'Ruso'
+      when :pt
+        'Portugués'
       end
     end
   end

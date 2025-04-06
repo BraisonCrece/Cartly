@@ -6,9 +6,11 @@ require 'dry/monads/do'
 module Translators
   class NewItemTranslatorService
     include Dry::Monads[:result, :try]
-    include Dry::Monads::Do.for(:call)
+    include Dry::Monads::Do
 
-    LANGUAGES = ['Español', 'Inglés', 'Francés', 'Alemán', 'Italiano', 'Ruso'].freeze
+    # Español va a ser el default de la app
+    LANGUAGES = [:cat, :gl, :eus, :en, :fr, :it, :de, :pt, :ru].freeze
+
     attr_reader :item, :model, :temperature
 
     def initialize(item, model: 'gpt-4o-mini', temperature: 0.3)
@@ -19,8 +21,7 @@ module Translators
 
     def call
       yield process_item_translations
-      yield unlock_item
-      reload_i18n
+      unlock_item!
     end
 
     private
@@ -28,7 +29,9 @@ module Translators
     def process_item_translations
       result = LANGUAGES.each do |language|
         service = Try[NameError] do
-          "Translators::#{item.class.name}TranslatorService".constantize.new(item, language, model:, temperature:)
+          "Translators::#{item.class.name}TranslatorService"
+            .constantize
+            .new(item, language)
         end.to_result
 
         raise "Service #{item.class.name}TranslatorService not found" if service.failure?
@@ -45,15 +48,10 @@ module Translators
       result.all? ? Success('All translations successful') : Failure("Failed translations: #{result.filter(&:failure?).map(&:failure).join(', ')}")
     end
 
-    def unlock_item
+    def unlock_item!
       Try[ActiveRecord::RecordInvalid] do
-        item.update(lock: false, active: true) unless item.instance_of?(::Allergen)
+        item.update(lock: false, active: true) unless item.instance_of?(::Allergen) || item.instance_of?(::Category)
       end.to_result
-    end
-
-    def reload_i18n
-      I18n.reload!
-      Success('Item translated and reloaded I18n')
     end
   end
 end

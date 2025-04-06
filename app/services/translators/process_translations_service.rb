@@ -6,7 +6,7 @@ require 'dry/monads/do'
 module Translators
   class ProcessTranslationsService
     include Dry::Monads[:result, :try]
-    include Dry::Monads::Do.for(:call)
+    include Dry::Monads::Do
 
     attr_reader :item, :method
 
@@ -25,8 +25,6 @@ module Translators
       case method
       when :create, :update
         Translators::NewItemTranslatorService.new(item).call
-      when :destroy
-        Translators::DestroyItemTranslatorService.new(item).call
       else
         Failure('Method not found')
       end

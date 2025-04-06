@@ -1,0 +1,485 @@
+pt:
+  dishes:
+    create:
+      success_with_translations: "Prato adicionado! Será automaticamente ativado quando as traduções estiverem concluídas."
+    update:
+      success: "Prato editado com sucesso"
+    destroy:
+      success: "Prato removido!"
+    set_dish:
+      not_found: "Prato não encontrado"
+    wines:
+      colors:
+        white: "Branco"
+        red: "Tinto"
+    index:
+      skip_to_main: "Saltar para o conteúdo principal"
+      categories_menu: "Menu de categorias"
+    categories_select:
+      select_category: "Selecione uma categoria"
+      separator: "──────────"
+    category_links:
+      go_to_category: "Ir para a categoria %{name}"
+      wines_section: "Vinhos"
+      go_to_wines: "Ir para a seção de vinhos"
+    dish:
+      dish_info: "Informação do prato"
+      dish_name: "Nome do prato"
+      dish_price: "Preço do prato"
+      measure: "Medida"
+      per_person: "por pessoa"
+      per_kg: "por kg"
+      per_half_kg: "por meio kg"
+      per_unit: "por unidade"
+    form:
+      title: "Título do formulário" # Este deve ser passado como variável
+      errors:
+        header:
+          one: "%{count} erro impediu a gravação deste prato"
+          other: "%{count} erros impediram a gravação deste prato"
+      labels:
+        picture: "📸 Foto"
+        name: "Nome"
+        description: "Descrição"
+        price: "Preço"
+        special_menu: "Menu especial"
+        category: "Categoria"
+        allergens: "Alérgenos"
+      placeholders:
+        file: "Selecione um arquivo"
+        name: "Prato delicioso"
+        description: '"Um prato delicioso que combina o sabor do mar com a frescura da terra"'
+      buttons:
+        browse: "Procurar"
+        generate_description: "Gerar descrição"
+        loading: "Consultando o oráculo..."
+        save: "Salvar"
+      special_menu:
+        question: "🍱 Menu especial?"
+        select_prompt: "Selecione um menu especial"
+      price_options:
+        per_kg: "/kg"
+        per_gr: "/gr"
+        per_unit: "/u"
+      accessibility:
+        form_role: "formulário"
+        dish_photo: "Foto do prato"
+        price_options: "Opções de preço"
+        price_type: "Tipo de preço"
+        price_input: "Preço do prato"
+        per_kg_label: "Preço por quilo"
+        per_gr_label: "Preço por grama"
+        per_unit_label: "Preço por unidade"
+        allergens_list: "Lista de alérgenos"
+        allergen_contains: "Marcar se o prato contém %{allergen}"
+    menu_dish:
+      dish_info: "Informação do prato"
+      name_and_price: "Nome e preço"
+      dish_name: "Nome do prato"
+    new:
+      title: "Adicionar prato"
+      back: "Voltar"
+    show:
+      dish_photo: "Foto de %{title}"
+      default_photo: "prato"
+      dish_price: "Preço do prato"
+      allergens_list: "Lista de alérgenos"
+      allergen_icon: "Ícone de %{name}"
+  allergens:
+    create:
+      success: "Alérgeno adicionado com sucesso"
+      invalid: "Dados inválidos"
+    update:
+      success: "Alérgeno atualizado com sucesso"
+    destroy:
+      success: "Alérgeno removido!"
+    not_found: "Alérgeno não encontrado"
+    allergen:
+      edit: "Editar"
+      delete: "Remover"
+      confirm_delete: "Tem certeza que deseja remover o alérgeno?"
+    form:
+      errors:
+        header:
+          one: "%{count} erro impediu a gravação deste alérgeno"
+          other: "%{count} erros impediram a gravação deste alérgeno"
+      labels:
+        name: "Nome"
+        photo: "Foto"
+      placeholders:
+        select_file: "Selecione um arquivo"
+      buttons:
+        browse: "Procurar"
+        save: "Salvar"
+    edit:
+      title: "Editar alérgeno"
+      back: "Voltar"
+    index:
+      title: "Alérgenos"
+    new:
+      title: "Adicionar alérgeno"
+      back: "Voltar"
+  categories:
+    category:
+      edit_category: "Editar categoria"
+      delete_confirm: "Tem certeza?"
+    form:
+      labels:
+        name: "Nome"
+      buttons:
+        save: "Salvar"
+    form_errors:
+      header:
+        one: "%{count} erro"
+        other: "%{count} erros"
+      message: "Não foi possível salvar a categoria:"
+    edit:
+      title: "Editar Categoria"
+      back: "Voltar"
+    index:
+      title: "Categorias"
+      menu_section:
+        title: "Carta"
+      daily_section:
+        title: "Menu do dia"
+    new:
+      title: "Adicionar Categoria"
+      back: "Voltar"
+  control_panel:
+    dish:
+      edit: "Editar"
+      delete: "Remover"
+      delete_confirm: "Tem certeza que deseja remover o prato?"
+    wine:
+      edit: "Editar"
+      delete: "Remover"
+      delete_confirm: "Tem certeza que deseja remover o vinho?"
+    dishes:
+      title: "Pratos"
+      menu: "Menu"
+      carta: "Carta"
+      search_placeholder: "Pesquisar prato"
+      search_button: "Pesquisar"
+    wines:
+      title: "Vinhos"
+      search_placeholder: "Pesquisar vinho"
+      search_button: "Pesquisar"
+  restaurants:
+    sessions:
+      signed_in: "Sessão iniciada com sucesso"
+    profile:
+      success: "Perfil atualizado com sucesso"
+      error: "Houve um erro ao atualizar o perfil"
+      edit:
+        title: "Perfil"
+        labels:
+          name: "Nome"
+          province: "Província"
+          city: "Cidade"
+          address: "Endereço"
+          phone: "Telefone"
+        placeholders:
+          name: "Restaurante Delícias"
+          city: "Avenida do sabor, n7"
+          address: "Avenida do sabor, 7, baixo"
+          phone: "654 321 098"
+        select_province: "Selecione província"
+        save: "Salvar alterações"
+  settings:
+    update:
+      success: "Configurações atualizadas com sucesso"
+    edit:
+      title: "Configurações"
+      errors:
+        header:
+          one: "%{count} erro impediu a gravação desta configuração:"
+          other: "%{count} erros impediram a gravação desta configuração:"
+      labels:
+        root_page: "Página padrão"
+        show_toggler: "Mostrar botão de seleção de menu"
+        locale_toggler: "Mostrar botão de seleção de idioma"
+        menu_price: "Preço do menu do dia"
+      options:
+        menu: "Menu"
+        carta: "Carta"
+        show: "Mostrar"
+        hide: "Ocultar"
+      buttons:
+        save: "Salvar"
+        back: "Voltar"
+  shared:
+    add_button:
+      add: "Adicionar"
+      add_icon: "Ícone de adicionar"
+
+    card_menu_switch:
+      menu: "MENU"
+      carta: "CARTA"
+
+    close_button:
+      close: "Fechar"
+
+    flash:
+      success: "Sucesso!"
+      error: "Erro!"
+      close_button: "Botão de fechar"
+      close_notification: "Fechar notificação"
+
+    info:
+      no_products: "Não há produtos ativos, volte mais tarde"
+      add_products: "Comece a adicionar produtos ao menu!"
+      add_dish: "Adicionar prato"
+      menu_includes: "O menu do dia inclui"
+      first_course: "1º prato"
+      second_course: "2º prato"
+      bread_and_water: "Pão e Água"
+      dessert_or_coffee: "Sobremesa ou Café"
+      contact_info: "Informação de contato"
+      map_icon: "Ícone de mapa"
+      phone_icon: "Ícone de telefone"
+      restaurant_logo: "Logo de %{name}"
+
+    items:
+      dishes: "Pratos"
+      wines: "Vinhos"
+      denominations: "Denominações de Origem"
+      categories: "Categorias"
+      allergens: "Alérgenos"
+      profile: "Perfil"
+      settings: "Configurações"
+      view_menu: "Ver carta"
+      download_qr: "Baixar QR"
+      reload_i18n: "Recarregar i18n"
+      logout: "Sair"
+
+    menu:
+      open_menu: "Botão de abertura do menu de opções"
+      close_menu: "Fechar menu de opções"
+
+    theme_switch:
+      to_dark: "Mudar para tema escuro"
+      to_light: "Mudar para tema claro"
+      dark: "Escuro"
+      light: "Claro"
+      moon_icon: "Ícone de lua"
+      sun_icon: "Ícone de sol"
+  special_menus:
+    create:
+      success: "Menu especial criado com sucesso"
+      error: "Erro ao criar o menu especial"
+    update:
+      success: "Menu especial atualizado com sucesso"
+      error: "Erro ao atualizar o menu especial"
+    destroy:
+      success: "Menu especial removido com sucesso"
+    set_special_menu:
+      not_found: "Menu especial não encontrado"
+    common:
+      edit: "Editar"
+      delete: "Remover"
+      delete_confirm: "Tem certeza que deseja remover o prato?"
+      back: "Voltar"
+      save: "Salvar"
+
+    active_special_menus:
+      title: "Especiais"
+      price_currency: "€"
+
+    control_panel_special_menu:
+      dishes_section: "Pratos"
+
+    form:
+      labels:
+        name: "Nome"
+        description: "Descrição"
+        price: "Preço"
+      errors:
+        header:
+          one: "%{count} erro impediu a gravação deste menu especial:"
+          other: "%{count} erros impediram a gravação deste menu especial:"
+
+    dishes:
+      create:
+        success: "Prato adicionado ao menu especial com sucesso"
+        error: "Erro ao adicionar o prato ao menu especial"
+      update:
+        success: "Prato atualizado com sucesso"
+        error: "Erro ao atualizar o prato"
+      destroy:
+        success: "Prato removido com sucesso"
+      not_found: "Prato não encontrado"
+      form:
+        title: "Adicionar prato ao menu especial %{name}"
+        labels:
+          photo: "📸 Foto"
+          name: "Nome"
+          description: "Descrição"
+          price: "Preço"
+          allergens: "Alérgenos"
+        placeholders:
+          select_file: "Selecione um arquivo"
+          browse: "Procurar"
+          name: "Prato delicioso"
+          description: '"Um prato delicioso que combina o sabor do mar com a frescura da terra"'
+        buttons:
+          generate_description: "Gerar descrição"
+          generating: "Consultando o oráculo..."
+          save: "Salvar"
+        price_units:
+          kg: "/kg"
+          gr: "/gr"
+          unit: "/u"
+      new:
+        title: "Adicionar prato"
+      edit:
+        title: "Editar prato"
+
+    edit:
+      title: "Editar menu especial"
+
+    index:
+      title: "Menus especiais"
+
+    new:
+      title: "Adicionar Menu especial"
+  wine_origin_denominations:
+    create:
+      success: "Denominação de origem criada com sucesso"
+      error: "Houve um erro"
+    update:
+      success: "Denominação de origem atualizada com sucesso"
+    destroy:
+      success: "Denominação de origem removida com sucesso"
+    set_denomination:
+      not_found: "Não encontramos a denominação de origem solicitada"
+    common:
+      edit: "Editar"
+      delete: "Remover"
+      delete_confirm: "Tem certeza que deseja remover a denominação?"
+      back: "Voltar"
+      save: "Salvar"
+
+    denomination:
+      edit: "Editar"
+      delete: "Remover"
+      delete_confirm: "Tem certeza que deseja remover a denominação?"
+
+    form:
+      labels:
+        name: "Nome"
+      errors:
+        header:
+          one: "%{count} erro impediu a gravação desta denominação:"
+          other: "%{count} erros impediram a gravação desta denominação:"
+
+    edit:
+      title: "Editar denominação de origem"
+
+    index:
+      title: "Denominações de Origem"
+
+    new:
+      title: "Adicionar denominação de origem"
+  wine_types:
+    common:
+      edit: "Editar"
+      show: "Ver"
+      back: "Voltar"
+      destroy: "Remover"
+      new: "Novo tipo de vinho"
+      notice: "Aviso"
+
+    form:
+      labels:
+        name: "Nome"
+      errors:
+        header:
+          one: "%{count} erro impediu a gravação deste tipo de vinho:"
+          other: "%{count} erros impediram a gravação deste tipo de vinho:"
+
+    wine_type:
+      show: "Ver este tipo de vinho"
+      edit: "Editar este tipo de vinho"
+
+    edit:
+      title: "Editando tipo de vinho"
+      show: "Ver este tipo de vinho"
+      back: "Voltar a tipos de vinho"
+
+    index:
+      title: "Tipos de vinho"
+      new: "Novo tipo de vinho"
+
+    new:
+      title: "Novo tipo de vinho"
+      back: "Voltar a tipos de vinho"
+
+    show:
+      edit: "Editar este tipo de vinho"
+      destroy: "Remover este tipo de vinho"
+      back: "Voltar a tipos de vinho"
+  wines:
+    create:
+      success_with_translations: "Vinho adicionado! Será automaticamente ativado quando as traduções estiverem concluídas."
+    update:
+      success: "Vinho atualizado com sucesso"
+    destroy:
+      success: "Vinho removido!"
+    set_wine:
+      not_found: "Vinho não encontrado"
+    common:
+      back: "Voltar"
+      save: "Salvar"
+      wine_list: "Lista de vinhos"
+      price_currency: "€"
+      available_by_glass: "Disponível a copo"
+      price_by_glass: "Preço por copo: %{price}€"
+      price_by_bottle: "Preço por garrafa: %{price}€"
+      bottle_of: "Garrafa de %{name}"
+      wines_section: "🍷 Vinhos 🍷"
+      vat_included: "Todos os preços incluem IVA"
+      search_wine: "Pesquisar vinho"
+
+    form:
+      title:
+        new: "Adicionar vinho"
+        edit: "Editar vinho"
+      labels:
+        photo: "📸 Foto"
+        name: "Nome"
+        description: "Descrição"
+        wine_type: "Tipo de vinho"
+        denomination: "Denominação de origem"
+        price: "Preço"
+        price_per_glass: "Preço por copo (opcional)"
+        available_by_glass: "Disponível a copo? 🍷"
+      placeholders:
+        select_file: "Selecione um arquivo"
+        browse: "Procurar"
+        name: "Vinho delicioso"
+        description: '"Um vinho delicioso que combina o sabor da uva com o calor do álcool"'
+        select_type: "Selecione um tipo de vinho"
+        select_denomination: "Selecione uma denominação de origem"
+      wine_types:
+        red: "Tinto"
+        white: "Branco"
+      buttons:
+        generate_description: "Gerar descrição"
+        generating: "Consultando o oráculo..."
+        save: "Salvar"
+      errors:
+        header:
+          one: "%{count} erro impediu a gravação deste vinho:"
+          other: "%{count} erros impediram a gravação deste vinho:"
+
+    control_panel:
+      title: "Vinhos"
+      search_placeholder: "Pesquisar vinho"
+
+    categorized_wines:
+      info_icon: "Ícone de informação"
+      wines_of: "Vinhos de %{name}"
+
+    wine:
+      aria_labels:
+        wine_info: "Informação do vinho"

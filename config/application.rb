@@ -13,9 +13,11 @@ module CartaQr
     config.load_defaults 7.0
 
     config.rails_i18n.enabled_modules = [:locale]
-    # Spanish, German, English, Italian, French, Russian
-    config.i18n.available_locales = [:es, :en, :cat, :gl, :eus]
-    config.i18n.default_locale = :gl
+
+    # Catalan, Galician, Basque, English, French, Italian, German, Portuguese, Russian
+    config.i18n.available_locales = [:es, :cat, :gl, :eus, :en, :fr, :it, :de, :pt, :ru]
+    config.i18n.default_locale = :es
+    config.i18n.fallbacks.default = [:es]
 
     # ../data/locales
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '*.{rb,yml}')]

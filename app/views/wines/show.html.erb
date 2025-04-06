@@ -22,12 +22,10 @@
         </h2>
         <p class="w-full mb-4 text-gray-700 break-words lato text-start balance skeleton skeleton-dark dark:text-slate-300"
            data-modal-target="skeleton">
-          <%= translate("wine.#{@wine.id}.description", @wine.description) %>
+          <%= @wine.description %>
         </p>
         <div class="flex items-center justify-between align-middle">
-          <div class="self-center block text-xl font-semibold skeleton skeleton-dark"
-               data-modal-target="skeleton"
-               aria-label="<%= t('wines.common.price_by_bottle', price: @wine.price) %>">
+          <div class="self-center block text-xl font-semibold skeleton skeleton-dark" data-modal-target="skeleton">
             <%= number_to_currency(@wine.price, { unit: t('wines.common.price_currency'), separator: ",", format: "%n %u" }) %>
           </div>
           <% if @wine.price_per_glass %>
@@ -35,12 +33,11 @@
               <label class='text-sm font-thin skeleton'
                      for="per_glass"
                      data-modal-target="skeleton">
-                <%= translate("copa", t('wines.common.available_by_glass')) %>:
+                <%= t('wines.common.available_by_glass') %>:
               </label>
               <p class="mb-4 font-light text-gray-700 dark:text-gray-300 lato skeleton skeleton-dark"
                  data-modal-target="skeleton"
-                 id='per_glass'
-                 aria-label="<%= t('wines.common.price_by_glass', price: @wine.price_per_glass) %>">
+                 id='per_glass'>
                 <%= number_to_currency(@wine.price_per_glass, { unit: t('wines.common.price_currency'), separator: ",", format: "%n %u" }) %>
               </p>
             </div>

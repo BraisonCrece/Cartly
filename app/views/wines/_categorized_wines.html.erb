@@ -1,11 +1,11 @@
 <%= turbo_stream_from "wines" %>
 
-<main role="main" aria-label="<%= t('wines.common.wine_list') %>">
+<main role="main">
   <% if Wine.where(restaurant_id: params[:restaurant_id], active: true).exists? %>
     <h1 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25 categoryHeader"
         id='viños'
         data-scroll-target="categoryHeader">
-      <%= translate("category.Viños.name", t('wines.common.wines_section')) %>
+      <%= t('wines.common.wines_section') %>
     </h1>
   <% end %>
 
@@ -14,7 +14,7 @@
     <section role="region" aria-labelledby="category-<%= color %>">
       <h2 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25"
           id="category-<%= color %>">
-        <%= translate("#{color}s", color) %>
+        <%= color %>
       </h2>
       <% wines_by_denomination.each do |denomination_id, wines| %>
         <% denomination = @denominations.find { |d| d.id == denomination_id } %>
@@ -23,7 +23,7 @@
               id="category-<%= denomination.id %>">
             <%= denomination.name %>
           </h3>
-          <div role="list" aria-label="<%= t('.wines_of', name: denomination.name) %>">
+          <div role="list">
             <% wines.each do |wine| %>
               <div role="listitem">
                 <%= link_to build_link(wine),
@@ -43,6 +43,6 @@
         class: "w-6",
         alt: t('.info_icon'),
         aria_hidden: "true" %>
-    <%= translate("IVA", t('wines.common.vat_included')) %>
+    <%= t('wines.common.vat_included') %>
   </footer>
 </main>

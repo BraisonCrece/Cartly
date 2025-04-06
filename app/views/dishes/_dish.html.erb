@@ -1,17 +1,14 @@
 <div class='flex justify-between gap-2 px-4 py-6 border-t border-gray-100 text-brand-gray dark:text-gray-200 print:my-6 dark:border-gray-100/25 animate__animated animate__fadeIn animate__slower active:scale-[0.98] active:opacity-80 transition-all cursor-pointer'
      role="article"
-     aria-label="<%= t('.dish_info') %>">
-  <div class="title price flex flex-col max-w-[72.5%]"
-       aria-label="<%= t('.dish_name') %>">
+>
+  <div class="title price flex flex-col max-w-[72.5%]">
     <h2 class='text-2xl font-light playfare balance'>
-      <%= translate("dish.#{dish.id}.title", dish.title) %>
+      <%= dish.title %>
     </h2>
   </div>
-  <div class="flex self-center gap-1 text-2xl font-extralight"
-       aria-label="<%= t('.dish_price') %>">
+  <div class="flex self-center gap-1 text-2xl font-extralight">
     <%= number_with_precision(dish.prize, precision: 2, separator: ",") %>
-    <small class='text-sm italic text-black duration-500 font-extralight place-self-end dark:text-white'
-           aria-label="<%= t('.measure') %>">
+    <small class='text-sm italic text-black duration-500 font-extralight place-self-end dark:text-white'>
       <%= render_measure(dish) %>
     </small>
   </div>

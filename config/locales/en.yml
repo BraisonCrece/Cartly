@@ -38,11 +38,17 @@ en:
     new:
       title: "Add dish"
       back: "Back"
+    form:
+      buttons:
+        browse: "Browse"
+        generate_description: "Generate description"
+        loading: "Consulting the oracle..."
+        save: "Save"
     show:
       dish_photo: "Photo of %{title}"
       default_photo: "dish"
       dish_price: "Dish price"
-      allergens_list: "Allergens list"
+      allergens_list: Allergens list
       allergen_icon: "Icon of %{name}"
   allergens:
     create:

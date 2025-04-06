@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class Wine < ApplicationRecord
+  extend Mobility
+
   broadcasts_refreshes_to ->(stream) { stream.class.broadcast_target_default }
 
   belongs_to :wine_origin_denomination
@@ -9,6 +11,8 @@ class Wine < ApplicationRecord
 
   validates :price_per_glass, numericality: { greater_than: 0 }, allow_nil: true
   validate :active_when_not_locked
+
+  translates :description, type: :string
 
   def self.search(restaurant_id:, query: nil)
     scope = where(restaurant_id:)

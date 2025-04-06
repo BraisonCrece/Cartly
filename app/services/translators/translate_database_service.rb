@@ -6,7 +6,7 @@ require 'dry/monads/do'
 module Translators
   class TranslateDatabaseService
     include Dry::Monads[:result, :try]
-    include Dry::Monads::Do.for(:call)
+    include Dry::Monads::Do
 
     attr_reader :yaml, :dishes, :wines, :allergens
 
@@ -51,7 +51,6 @@ module Translators
     end
 
     def reload_i18n_backend
-      I18n.backend.reload!
       Success('All done! :)')
     end
   end

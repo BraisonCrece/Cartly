@@ -1,14 +1,18 @@
 # frozen_string_literal: true
 
 class Dish < ApplicationRecord
+  extend Mobility
   broadcasts_refreshes_to ->(stream) { stream.class.broadcast_target_default }
+
+  translates :title, type: :string
+  translates :description, type: :text
 
   belongs_to :category, optional: true
   has_and_belongs_to_many :allergens, dependent: :destroy
   has_one_attached :picture, dependent: :destroy
   belongs_to :restaurant
 
-  validates :title, :description, presence: true
+  validates :title_es, :description_es, presence: true
   validate :active_when_not_locked
 
   scope :categorized_dishes, lambda { |restaurant_id|
