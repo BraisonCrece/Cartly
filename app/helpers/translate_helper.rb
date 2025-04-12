@@ -21,18 +21,26 @@ module TranslateHelper
     case locale || I18n.locale
     when :es
       'spain.png'
+    when :cat
+      'catalonia.png'
+    when :gl
+      'galicia.png'
+    when :eus
+      'basque.png'
     when :en
       'ingles.png'
     when :fr
       'france.png'
-    when :de
-      'germany.png'
     when :it
       'italy.png'
+    when :de
+      'germany.png'
+    when :pt
+      'portugal.webp'
     when :ru
       'rusia.png'
     else
-      'galicia.png'
+      'spain.png'
     end
   end
 end
