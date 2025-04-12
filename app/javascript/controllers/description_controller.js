@@ -1,78 +1,70 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="description"
 export default class extends Controller {
-  static targets = ['input', 'output', 'spinner', 'buttonText']
+  static targets = [
+    "input",
+    "output",
+    "spinner",
+    "buttonText",
+    "descriptionImage",
+  ];
 
-  async describeDish(e) {
-    e.preventDefault()
-    const plato = this.inputTarget.value;
-    const requestOptions = this.buildRequestOptions(plato);
+  async describe(e) {
+    e.preventDefault();
+    const isWine = e.currentTarget.dataset.type === "wine";
+    const text = this.inputTarget.value;
+    let imageBase64 = "";
 
-    this.showSpinner()
+    if (!isWine && this.descriptionImageTarget.files[0]) {
+      imageBase64 = await this.convertToBase64(
+        this.descriptionImageTarget.files[0],
+      );
+    }
+
+    const requestOptions = this.buildRequestOptions(text, {
+      image: imageBase64,
+      description_type: isWine ? "vino" : "plato",
+    });
+
+    await this.fetchDescription(requestOptions);
+  }
+
+  async fetchDescription(requestOptions) {
+    this.showSpinner();
     try {
-      const response = await fetch('/describe_dish', requestOptions);
-      if (!response.ok) {
-        console.error(response);
+      const response = await fetch("/describe_dish", requestOptions);
+      if (!response.ok)
         throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const result = await response.json();
-      const description = result.description;
 
+      const { description } = await response.json();
       this.outputTarget.value = description;
     } catch (error) {
-      console.error('Error fetching description:', error);
+      console.error("Error fetching description:", error);
     } finally {
-      this.hideSpinner()
+      this.hideSpinner();
     }
   }
 
-  async describeWine(e) {
-    e.preventDefault()
-    const wine = this.inputTarget.value;
-    const requestOptions = this.buildWineRequestOptions(wine);
-
-    this.showSpinner()
-    try {
-      const response = await fetch('/describe_dish', requestOptions);
-      if (!response.ok) {
-        console.warn(response);
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const result = await response.json();
-      const description = result.description;
-
-      this.outputTarget.value = description;
-    } catch (error) {
-      console.error('Error fetching description:', error);
-    } finally {
-      this.hideSpinner()
-    }
+  convertToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = (error) => reject(error);
+    });
   }
 
-  buildRequestOptions(plato) {
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      'X-CSRF-Token': this.getCSRFToken()
-    });
-
+  buildRequestOptions(text, options = {}) {
     return {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({ plato: plato })
-    };
-  }
-
-  buildWineRequestOptions(plato) {
-    const headers = new Headers({
-      'Content-Type': 'application/json',
-      'X-CSRF-Token': this.getCSRFToken()
-    });
-
-    return {
-      method: 'POST',
-      headers: headers,
-      body: JSON.stringify({ plato: plato, description_type: "vino" })
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "X-CSRF-Token": this.getCSRFToken(),
+      },
+      body: JSON.stringify({
+        plato: text,
+        ...options,
+      }),
     };
   }
 
@@ -81,15 +73,14 @@ export default class extends Controller {
   }
 
   showSpinner() {
-    this.spinnerTarget.classList.remove('hidden');
-    this.spinnerTarget.classList.add('flex');
-    this.buttonTextTarget.classList.add('hidden');
+    this.spinnerTarget.classList.remove("hidden");
+    this.spinnerTarget.classList.add("flex");
+    this.buttonTextTarget.classList.add("hidden");
   }
 
   hideSpinner() {
-    this.spinnerTarget.classList.add('hidden');
-    this.spinnerTarget.classList.remove('flex');
-    this.buttonTextTarget.classList.remove('hidden');
+    this.spinnerTarget.classList.add("hidden");
+    this.spinnerTarget.classList.remove("flex");
+    this.buttonTextTarget.classList.remove("hidden");
   }
-
 }

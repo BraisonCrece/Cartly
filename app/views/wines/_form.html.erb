@@ -79,7 +79,7 @@
         maxlength: 350,
         data: { description_target: 'output' },
         "aria-label": t('.labels.description') %>
-      <button data-action="click->description#describeWine" class="w-full bg-purple-800 hover:bg-purple-950 text-white font-semibold py-2 px-4 rounded-[3px] focus:outline-none focus:shadow-outline-blue focus:ring ring-blue-300 focus:border-blue-300 active:bg-blue-800">
+      <button data-action="click->description#describe" data-type="wine" class="w-full bg-purple-800 hover:bg-purple-950 text-white font-semibold py-2 px-4 rounded-[3px] focus:outline-none focus:shadow-outline-blue focus:ring ring-blue-300 focus:border-blue-300 active:bg-blue-800">
         <span data-description-target="buttonText">
           <%= t('.buttons.generate_description') %>
         </span>

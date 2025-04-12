@@ -9,14 +9,24 @@
         }) do |f| %>
 
         <label id="logo" class="mb-4">
-            <%= image_tag @restaurant.logo.attached? ? @restaurant.logo : 'logo-placeholder.svg',
-                class: "w-full h-auto rounded",
-                data: { profile_logo_target: "image" } %>
+            <div class="relative w-full" style="padding-top: 56.25%">
+                <div data-profile-logo-target="loader"
+                     class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-700 transition-opacity duration-300 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 animate-spin" width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12 19a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 3c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd" opacity="0.2"/><path d="M2 12C2 6.477 6.477 2 12 2v3a7 7 0 0 0-7 7z"/></g></svg>
+                </div>
+
+                <%= image_tag @restaurant.logo.attached? ? @restaurant.logo : 'logo-placeholder.svg',
+                    class: "absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 rounded",
+                    data: {
+                        profile_logo_target: "image",
+                        action: "load->profile-logo#imageLoaded"
+                    } %>
+            </div>
             <%= f.file_field :logo,
                 class: "hidden",
                 data: {
-                  action: "change->profile-logo#change",
-                  profile_logo_target: "input"
+                    action: "change->profile-logo#change",
+                    profile_logo_target: "input"
                 },
                 accept: "image/png, image/jpeg, image/jpg" %>
         </label>
