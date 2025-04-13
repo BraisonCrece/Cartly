@@ -23,12 +23,11 @@ class WineOriginDenominationsController < ApplicationController
     if @denomination.save
       flash[:notice] = t('.success')
       render :new
-      flash.clear
     else
       flash[:alert] = t('.error')
       render :new, status: :unprocessable_entity
-      flash.clear
     end
+    flash.clear
   end
 
   def update
@@ -41,7 +40,10 @@ class WineOriginDenominationsController < ApplicationController
 
   def destroy
     @denomination.destroy
-    redirect_to denominations_path, notice: t('.success')
+    render turbo_stream: [
+      turbo_stream.remove(@denomination),
+      turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { notice: t('.success') }),
+    ]
   end
 
   private

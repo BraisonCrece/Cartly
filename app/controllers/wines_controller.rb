@@ -58,10 +58,10 @@ class WinesController < ApplicationController
 
   def destroy
     @wine.destroy
-    Thread.new do
-      Translators::ProcessTranslationsService.new(@wine, :destroy).call
-    end
-    redirect_to wines_control_panel_path, notice: t('.success')
+    render turbo_stream: [
+      turbo_stream.remove(@wine),
+      turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { notice: t('.success') }),
+    ]
   end
 
   def control_panel

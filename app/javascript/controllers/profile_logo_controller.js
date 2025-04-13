@@ -4,7 +4,6 @@ export default class extends Controller {
   static targets = ["input", "image", "loader"];
 
   connect() {
-    // Verifica si la imagen ya está cargada cuando el controlador se conecta
     if (this.imageTarget.complete) {
       this.imageLoaded();
     }
@@ -15,7 +14,6 @@ export default class extends Controller {
     const image = this.imageTarget;
 
     if (input.files && input.files[0]) {
-      // Mostrar loader y ocultar imagen
       this.loaderTarget.classList.remove("hidden");
       this.imageTarget.classList.add("opacity-0");
 
@@ -28,7 +26,6 @@ export default class extends Controller {
   }
 
   imageLoaded() {
-    // Ocultar loader y mostrar imagen
     this.loaderTarget.classList.add("hidden");
     this.imageTarget.classList.remove("opacity-0");
   }

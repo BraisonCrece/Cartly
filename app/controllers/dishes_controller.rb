@@ -32,7 +32,7 @@ class DishesController < ApplicationController
   def create
     @dish = Dish.new(dish_params)
     @dish.restaurant_id = current_restaurant.id
-    request_translations(@dish, :create)
+    request_translations(@dish, :create) if ENV['GEMINI_KEY'].present?
     @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
 
     if @dish.save
@@ -53,7 +53,7 @@ class DishesController < ApplicationController
 
   def update
     if @dish.update(dish_params)
-      request_translations(@dish, :update) if ENV['OPENAI_KEY'].present? && title_or_description_changed?
+      request_translations(@dish, :update) if ENV['GEMINI_KEY'].present? && title_or_description_changed?
 
       @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
       redirect_to dishes_control_panel_path, notice: t('.success')
@@ -64,8 +64,10 @@ class DishesController < ApplicationController
 
   def destroy
     @dish.destroy
-
-    redirect_to dishes_control_panel_path, status: 303, notice: t('.success')
+    render turbo_stream: [
+      turbo_stream.remove(@dish),
+      turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { notice: t('.success') }),
+    ]
   end
 
   private

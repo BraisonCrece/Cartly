@@ -1,15 +1,17 @@
-<div class="bg-gray-100 dark:bg-gray-200 dark:text-gray-700 rounded-[3px] p-4 hover:bg-gray-200 flex justify-between items-center relative">
-    <p class="text-xl mb-2 text-center"><%= denomination.name %></p>
-    <div class='absolute bottom-0 flex gap-2 left-2'>
-        <%= button_to t('.edit'),
-            edit_denomination_path(denomination),
-            data: { turbo: false },
-            class: 'text-xs font-thin text-blue-800 dark:text-blue-900 p-0',
-            method: :get %>
-        <%= button_to t('.delete'),
-            denomination_path(denomination),
-            data: { turbo_confirm: t('.delete_confirm') },
-            class: 'text-xs font-thin text-red-800 dark:text-red-900 p-0',
-            method: :delete %>
+<%= turbo_frame_tag denomination do %>
+    <div class="bg-gray-100 dark:bg-gray-200 dark:text-gray-700 rounded-[3px] p-4 hover:bg-gray-200 flex justify-between items-center relative">
+        <p class="text-xl mb-2 text-center"><%= denomination.name %></p>
+        <div class='absolute bottom-0 flex gap-2 left-2'>
+            <%= button_to t('.edit'),
+                edit_denomination_path(denomination),
+                data: { turbo: false },
+                class: 'text-xs font-thin text-blue-800 dark:text-blue-900 p-0',
+                method: :get %>
+            <%= button_to t('.delete'),
+                denomination_path(denomination),
+                data: { turbo_confirm: t('.delete_confirm') },
+                class: 'text-xs font-thin text-red-800 dark:text-red-900 p-0',
+                method: :delete %>
+        </div>
     </div>
-</div>
+<% end %>

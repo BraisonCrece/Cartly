@@ -1,28 +1,49 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="notifications"
 export default class extends Controller {
-  static targets = ["x"]
-  close(e) {
-    this.hideNotification()
-  }
+  static values = {
+    delay: { type: Number, default: 5000 },
+    transitionDuration: { type: Number, default: 500 },
+  };
 
   connect() {
-    this.timeout = setTimeout(() => {
-      this.hideNotification()
-    }, 3000)
+    requestAnimationFrame(() => {
+      this.element.classList.remove("opacity-0", "-translate-y-2");
+    });
+
+    this.startAutoHideTimer();
   }
 
   disconnect() {
-    clearTimeout(this.timeout)
+    this.clearAutoHideTimer();
   }
 
-  hideNotification() {
-    this.element.classList.remove("animate__fadeInRight")
-    this.element.classList.add("animate__fadeOutRight")
+  startAutoHideTimer() {
+    this.clearAutoHideTimer();
+    this.hideTimer = setTimeout(() => {
+      this.close();
+    }, this.delayValue);
+  }
 
-    setTimeout(() => {
-      this.element.remove()
-    }, 100)
+  clearAutoHideTimer() {
+    if (this.hideTimer) {
+      clearTimeout(this.hideTimer);
+      this.hideTimer = null;
+    }
+    if (this.removeTimer) {
+      clearTimeout(this.removeTimer);
+      this.removeTimer = null;
+    }
+  }
+
+  close() {
+    this.clearAutoHideTimer();
+
+    this.element.classList.add("opacity-0");
+    this.removeTimer = setTimeout(() => {
+      if (this.element && this.element.parentNode) {
+        this.element.remove();
+      }
+    }, this.transitionDurationValue);
   }
 }

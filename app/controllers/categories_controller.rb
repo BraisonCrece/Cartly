@@ -39,9 +39,21 @@ class CategoriesController < ApplicationController
   end
 
   def destroy
-    @category.destroy
-    flash[:notice] = t('.success')
-    redirect_to categories_path
+    if @category.destroy
+      render turbo_stream: [
+        turbo_stream.remove(@category),
+        turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { notice: t('.success') }),
+      ]
+    else
+      # TODO: translate
+      render turbo_stream: [
+        turbo_stream.prepend(
+          'notifications',
+          partial: 'shared/notification',
+          locals: { alert: 'Erro ao eliminar a categoria', type: :alert }
+        ),
+      ]
+    end
   end
 
   def reorder
