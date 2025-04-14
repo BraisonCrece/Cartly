@@ -44,8 +44,6 @@ RUN git clone https://github.com/jemalloc/jemalloc.git && \
 
 WORKDIR /rails
 
-COPY config/locale /rails/config/locale
-
 ARG RAILS_ENV=production
 ENV RAILS_ENV=${RAILS_ENV}
 

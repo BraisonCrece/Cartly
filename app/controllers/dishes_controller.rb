@@ -73,7 +73,7 @@ class DishesController < ApplicationController
   private
 
   def request_translations(dish, action)
-    if action == :create
+    if action.in? [:create, :update]
       dish.active = false
       dish.lock_it!
     end

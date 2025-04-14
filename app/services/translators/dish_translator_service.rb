@@ -23,8 +23,8 @@ module Translators
 
     def prompt(attribute, lang)
       %(Actúa como un servicio de traducción. El usuario te pasará #{attribute}
-      de un plato de comida o postre y debes responder solamente con la traducción
-      precisa del plato de comida, postre o alimento. Traducirás del Castellano al #{lang}.)
+        de un plato de comida o postre y debes responder solamente con la traducción
+        precisa del plato de comida, postre o alimento. Traducirás al #{lang}.)
     end
 
     def translate
@@ -51,26 +51,17 @@ module Translators
     end
 
     def key_to_lang(lang_key)
-      case lang_key
-      when :gl
-        'Gallego'
-      when :cat
-        'Catalán'
-      when :eus
-        'Euskera'
-      when :en
-        'Inglés'
-      when :fr
-        'Francés'
-      when :de
-        'Alemán'
-      when :it
-        'Italiano'
-      when :ru
-        'Ruso'
-      when :pt
-        'Portugués'
-      end
+      {
+        gl: 'Gallego',
+        cat: 'Catalán',
+        eus: 'Euskera',
+        en: 'Inglés',
+        fr: 'Francés',
+        de: 'Alemán',
+        it: 'Italiano',
+        ru: 'Ruso',
+        pt: 'Portugués',
+      }[lang_key]
     end
   end
 end

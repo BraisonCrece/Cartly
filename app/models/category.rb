@@ -5,7 +5,6 @@ class Category < ApplicationRecord
   translates :name, type: :string
 
   has_many :dishes, dependent: :destroy
-  belongs_to :restaurant
 
   before_create :set_position
 

@@ -50,7 +50,12 @@ module Translators
 
     def unlock_item!
       Try[ActiveRecord::RecordInvalid] do
-        item.update(lock: false, active: true) unless item.instance_of?(::Allergen) || item.instance_of?(::Category)
+        unless item.instance_of?(::Allergen) || item.instance_of?(::Category)
+          item.update!(
+            lock: false,
+            active: true
+          )
+        end
       end.to_result
     end
   end

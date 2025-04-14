@@ -15,7 +15,7 @@ module Translators
       @category = category
       @language = language
       @name_system_message = %(Actúa como un servicio de traducción. El usuario te enviará el nombre de una categoría y debes
-      responder solamente con la traducción precisa de la categoría. Traducirás del Gallego al #{language}.)
+      responder solamente con la traducción precisa de la categoría. Traducirás al #{language}.)
     end
 
     def call

@@ -14,7 +14,7 @@ module Translators
       @wine = wine
       @language = language
       @system_message = %(Actúa como un servicio de traducción. El usuario te pasará la descripción de un vino y tú debes
-    responder solamente con la traducción precisa de la descripción dada. Traducirás del Gallego al #{language}.)
+    responder solamente con la traducción precisa de la descripción dada. Traducirás al #{language}.)
     end
 
     def call

@@ -10,7 +10,7 @@ console_command = '/rails/bin/rails console'
 [build]
 
 [deploy]
-release_command = './bin/rails db:migrate'
+release_command = 'DISABLE_DATABASE_ENVIRONMENT_CHECK=1./bin/rails db:reset'
 
 [env]
 RACK_ENV = 'production'

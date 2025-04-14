@@ -15,7 +15,7 @@ module Translators
       @allergen = allergen
       @language = language
       @name_system_message = %(Actúa como un servicio de traducción. El usuario te enviará el nombre de un alérgeno alimentario y debes
-      responder solamente con la traducción precisa del alérgeno. Traducirás del Gallego al #{language}.)
+      responder solamente con la traducción precisa del alérgeno. Traducirás al #{language}.)
     end
 
     def call
