@@ -1,4 +1,4 @@
-# QR Menu Card for Restaurants 
+# QR Menu Card for Restaurants
 (Under development 🔨)
 (mobile 1st 📱)
 
@@ -21,8 +21,8 @@ This application allows restaurants to create and manage their menu of food and 
 ## Main features
 
 - Mobile first 📲
-- Auto translation in the background each time a new product / wine is created / updated. (`OpenAI` 🔮 + `i18n`) `[ES, IT, FR, EN, RU, IT]`
-- Auto generative descriptions based on the name of the product (AI 🔮)
+- Auto translation in the background each time a new product / wine is created / updated. (`GeminiAI` 🔮 + `i18n`) `[ES, IT, FR, EN, RU, IT]`
+- Auto generative descriptions based on the name of the product AND / OR the image (AI 🔮)
 - Activate / Deactivate / Modify / Delete products on the fly, the user wont have to refresh the page to see the updates (`WebSocket`)
 - User authentication: Allowing restaurant owners to access their account and manage the data on the fly using a smartphone / tablet / desktop.
 - Automatic image processing and compression to improve the performance while reducing the storage cost. (`libvips`)
@@ -41,14 +41,14 @@ This application allows restaurants to create and manage their menu of food and 
 - Tailwind CSS
 - ImportMaps
 - MySQL
-- StimulusJS
+- Hotwire
 
 ## Installation and configuration
 
 1. Clone the GitHub repository: `git clone https://github.com/BraisonCrece/Restaurant_QR_menu_dashboard`
 2. Go to the main directory
 3. Run `make install`
-4. That's all 
+4. That's all
 
 ## Contributions
 

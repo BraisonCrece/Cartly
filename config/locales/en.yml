@@ -131,7 +131,7 @@ en:
     dishes:
       title: "Dishes"
       menu: "Menu"
-      carta: "Menu Card"
+      carta: "Daily"
       search_placeholder: "Search dish"
       search_button: "Search"
     wines:

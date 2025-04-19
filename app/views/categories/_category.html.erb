@@ -1,4 +1,4 @@
-<%= turbo_frame_tag category do %>
+<%= turbo_frame_tag category, data: { id: category.id } do %>
     <div class='hover:cursor-grab flex justify-between items-center px-4 py-5 border border-gray-600 rounded bg-white dark:bg-gray-800 duration-500 transition-colors' data-id="<%= category.id %>">
         <h2 class="text-xl dark:text-white text-black"><%= category.name %></h2>
         <div class='flex gap-4 dark:text-white text-black'>

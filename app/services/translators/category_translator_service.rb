@@ -25,7 +25,7 @@ module Translators
     private
 
     def translate
-      name_translation = yield request_translation(@name_system_message, @category.name)
+      name_translation = yield request_translation(@name_system_message, @category.name_es)
       store_translations(name_translation)
     end
 

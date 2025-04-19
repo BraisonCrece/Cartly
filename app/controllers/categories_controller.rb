@@ -19,6 +19,7 @@ class CategoriesController < ApplicationController
     @category.position = position
 
     if @category.save
+      request_translations(@category) if ENV['GEMINI_KEY'].present?
       redirect_to categories_path, notice: t('.success')
     else
       flash[:alert] = t('.invalid')
@@ -30,6 +31,7 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
+      request_translations(@category) if ENV['GEMINI_KEY'].present?
       flash[:notice] = t('.success')
       redirect_to categories_path
     else
@@ -68,8 +70,16 @@ class CategoriesController < ApplicationController
 
   private
 
+  def request_translations(category)
+    Thread.new do
+      Translators::NewItemTranslatorService
+        .new(category)
+        .call
+    end
+  end
+
   def category_params
-    params.require(:category).permit(:name, :category_type)
+    params.require(:category).permit(:name_es, :category_type)
   end
 
   def set_category

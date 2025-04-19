@@ -1,8 +1,8 @@
 <%= form_with model: @category, data: { turbo: false }, class: "w-full shadow-md rounded-[3px] px-6 pt-4 pb-8 mb-2 dark:shadow-white/25" do |f| %>
   <%= render "form_errors", category: @category %>
   <div class="form-group mb-8">
-    <%= f.label :name, t('.labels.name'), class: "block text-gray-700 font-bold mb-2 dark:text-gray-200" %>
-    <%= f.text_field :name, class: "dark:text-gray-800 form-input mt-1 block w-full rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
+    <%= f.label :name_es, t('.labels.name'), class: "block text-gray-700 font-bold mb-2 dark:text-gray-200" %>
+    <%= f.text_field :name_es, class: "dark:text-gray-800 form-input mt-1 block w-full rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
   </div>
   <%= f.hidden_field :category_type, value: @category.category_type %>
   <div class="flex items-center justify-between">
