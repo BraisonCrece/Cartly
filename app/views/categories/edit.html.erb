@@ -1,5 +1,6 @@
-<div class="flex flex-col gap-2 w-full px-6 max-w-2xl">
-    <h1 class="text-3xl text-center mb-4"><%= t('.title') %></h1>
-    <%= render "form" %>
-    <%= link_to t('.back'), categories_path, class: "text-blue-400 underline underline-offset-2" %>
-</div>
+<%= turbo_frame_tag @category do %>
+    <div class='hover:cursor-grab flex justify-between items-center px-4 py-5 border border-gray-600 rounded bg-white dark:bg-gray-800 duration-500 transition-colors' data-id="<%= @category.id %>">
+        <!-- render form -->
+        <%= render 'form', category: @category %>
+    </div>
+<% end %>

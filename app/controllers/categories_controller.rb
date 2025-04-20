@@ -12,6 +12,11 @@ class CategoriesController < ApplicationController
     @category = Category.new(category_type: params[:type])
   end
 
+  def show
+    @category = Category.find(params[:id])
+    render @category
+  end
+
   def create
     position = Category.where(category_type: category_params[:category_type]).count + 1
     @category = Category.new(category_params)
@@ -19,10 +24,13 @@ class CategoriesController < ApplicationController
     @category.position = position
 
     if @category.save
-      request_translations(@category) if ENV['GEMINI_KEY'].present?
-      redirect_to categories_path, notice: t('.success')
+      list_frame_id = "#{@category.category_type}_list"
+      render turbo_stream: [
+        turbo_stream.append(list_frame_id, partial: 'categories/category', locals: { category: @category }),
+        turbo_notification('Categoría creada exitosamente', type: :success),
+      ]
     else
-      flash[:alert] = t('.invalid')
+      flash[:alert] = 'Ha ocurrido un error al crear la categoría'
       render :new, status: :unprocessable_entity
     end
   end
@@ -32,10 +40,12 @@ class CategoriesController < ApplicationController
   def update
     if @category.update(category_params)
       request_translations(@category) if ENV['GEMINI_KEY'].present?
-      flash[:notice] = t('.success')
-      redirect_to categories_path
+      render turbo_stream: [
+        turbo_stream.replace(@category),
+        turbo_notification('La categoría se ha actualizado con éxito', type: :success),
+      ]
     else
-      flash[:alert] = t('.invalid')
+      flash[:alert] = 'Ha ocurrido un error al actualizar la categoría'
       render :edit, status: :unprocessable_entity
     end
   end
@@ -44,17 +54,10 @@ class CategoriesController < ApplicationController
     if @category.destroy
       render turbo_stream: [
         turbo_stream.remove(@category),
-        turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { notice: t('.success') }),
+        turbo_notification('La categoría se ha eliminado con éxito', type: :success),
       ]
     else
-      # TODO: translate
-      render turbo_stream: [
-        turbo_stream.prepend(
-          'notifications',
-          partial: 'shared/notification',
-          locals: { alert: 'Erro ao eliminar a categoria', type: :alert }
-        ),
-      ]
+      render turbo_stream: turbo_notification('Ha ocurrido un error al eliminar la categoría', type: :alert)
     end
   end
 

@@ -2,14 +2,14 @@
   type ||= :notice
   base_classes = "flex items-center w-full max-w-xl mx-auto text-lg px-4 py-3 rounded-lg shadow-md mb-2"
   color_classes = type == :alert ? "border border-red-400 bg-red-100 text-red-700" : "border border-green-400 bg-green-100 text-green-700"
-  message = notice || alert || options[:message]
+  msg = notice || alert || message
 %>
 
 <div data-controller="notifications"
      class="opacity-0 transform -translate-y-2 transition-all duration-500 ease-out pointer-events-auto w-full"
      data-notifications-delay-value="5000">
   <div class="<%= base_classes %> <%= color_classes %>">
-    <span class="flex-grow"><%= message %></span>
+    <span class="flex-grow"><%= msg %></span>
     <button data-action="click->notifications#close" type="button" class="ml-2 text-current opacity-75 hover:opacity-100 focus:outline-none">
       &times;
     </button>

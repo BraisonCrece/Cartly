@@ -1,5 +1,12 @@
-<div class="flex flex-col gap-2 w-full px-6 max-w-2xl">
-    <h1 class="text-3xl text-center mb-4"><%= t('.title') %></h1>
-    <%= render "form" %>
-    <%= link_to t('.back'), categories_path, class: "text-blue-400 underline underline-offset-2" %>
-</div>
+<%= turbo_frame_tag "new_category_form" do %>
+    <div class="flex flex-col gap-2 w-full px-6 max-w-2xl">
+        <%= form_with(
+            model: @category,
+            class: "flex w-full justify-between align-center"
+        ) do |f| %>
+            <%= f.label :name, "Name" %>
+            <%= f.text_field :name %>
+            <%= f.submit "Create Category" %>
+        <% end %>
+    </div>
+<% end %>
