@@ -1,60 +1,28 @@
 <section class='flex flex-col gap-3 w-full px-6 max-w-2xl' data-controller="sortable categories">
     <h1 class="text-center font-bold text-3xl mb-10">Categorias</h1>
-    <%= form_with model: Category.new, class: "flex flex-col gap-2 w-full border border-gray-600 p-4 rounded mb-10" do |f| %>
-      <%= f.label :name_es, "Añadir categoría" %>
-      <%= f.text_field :name_es, class: "text-black rounded" %>
-      <%= f.hidden_field :category_type,
-            data: { categories_target: "categoryType" } %>
+    <!-- Form -->
+    <%= render "form" %>
 
-      <!-- FORM BUTTONS -->
-      <div class="flex items-center justify-between gap-4 mt-2">
-          <div data-categories-target="selector"
-               class="relative flex h-full w-40
-                      overflow-hidden border
-                      border-gray-400 rounded-full
-                      font-light isolate">
-
-            <!-- 2ª mitad -->
-            <button type="button"
-                    data-action="click->categories#switch"
-                    data-categories-target="menuSelector"
-                    data-value="menu"
-                    class="relative flex-1 px-3 py-1 font-semibold rounded-full bg-brand-red text-red-50">
-              carta
-            </button>
-
-            <!-- 1ª mitad -->
-            <button type="button"
-                    data-action="click->categories#switch"
-                    data-value="daily"
-                    data-categories-target="dailySelector"
-                    class="relative flex-1 px-3 py-1 font-semibold rounded-full">
-              menú
-            </button>
-
-          </div>
-        <%= f.submit "Enviar", class: "px-4 py-2 rounded border cursor-pointer hover:text-black hover:bg-gray-100 transition-colors duration-150 ease-in-out" %>
-      </div>
-    <% end %>
-
+    <!-- Menu List -->
     <div class="flex flex-col gap-3 mb-10">
         <section class='flex gap-4 justify-between mb-2'>
             <h1 class="text-3xl font-thin text-center font-roboto underline-offset-[.25rem] underline">
-              <%= t('.menu_section.title') %>
+                Carta
             </h1>
         </section>
-        <%= turbo_frame_tag "menu_list", class: "flex flex-col gap-3", data: { sortable_target: "menuList" } do %>
+        <%= turbo_frame_tag @menu_list_frame_tag, class: "flex flex-col gap-3", data: { sortable_target: "menuList" } do %>
             <%= render @categories.menu.order(:position) %>
         <% end %>
     </div>
 
+    <!-- Daily Menu List -->
     <div class="flex flex-col gap-3 mb-10">
         <section class="flex gap-4 justify-between mb-2">
             <h1 class="text-3xl font-thin text-center font-roboto underline-offset-[.25rem] underline">
-              <%= t('.daily_section.title') %>
+              Menú del dia
             </h1>
         </section>
-        <%= turbo_frame_tag "daily_list", class: "flex flex-col gap-3", data: { sortable_target: "dailyList" } do %>
+        <%= turbo_frame_tag @daily_list_frame_tag, class: "flex flex-col gap-3", data: { sortable_target: "dailyList" } do %>
             <%= render @categories.daily.order(:position) %>
         <% end %>
     </div>

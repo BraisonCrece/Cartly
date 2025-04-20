@@ -6,6 +6,9 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.where(restaurant_id: current_restaurant.id)
+    @menu_list_frame_tag = "#{current_restaurant.id}_menu_list"
+    @daily_list_frame_tag = "#{current_restaurant.id}_daily_list"
+    @category_form_frame_tag = "#{current_restaurant.id}_category_form"
   end
 
   def new
@@ -24,14 +27,18 @@ class CategoriesController < ApplicationController
     @category.position = position
 
     if @category.save
-      list_frame_id = "#{@category.category_type}_list"
+      request_translations(@category)
+      list_frame_id = "#{current_restaurant.id}_#{@category.category_type}_list"
       render turbo_stream: [
+        turbo_stream.replace("#{current_restaurant.id}_category_form", partial: 'categories/form', locals: { category: @category }),
         turbo_stream.append(list_frame_id, partial: 'categories/category', locals: { category: @category }),
         turbo_notification('Categoría creada exitosamente', type: :success),
       ]
     else
-      flash[:alert] = 'Ha ocurrido un error al crear la categoría'
-      render :new, status: :unprocessable_entity
+      render turbo_stream: [
+        turbo_stream.replace("#{current_restaurant.id}_category_form", partial: 'categories/form', locals: { category: @category }),
+        turbo_notification('Ha ocurrido un error al crear la categoría', type: :alert),
+      ], status: :unprocessable_entity
     end
   end
 
@@ -39,14 +46,16 @@ class CategoriesController < ApplicationController
 
   def update
     if @category.update(category_params)
-      request_translations(@category) if ENV['GEMINI_KEY'].present?
+      request_translations(@category)
       render turbo_stream: [
         turbo_stream.replace(@category),
         turbo_notification('La categoría se ha actualizado con éxito', type: :success),
       ]
     else
-      flash[:alert] = 'Ha ocurrido un error al actualizar la categoría'
-      render :edit, status: :unprocessable_entity
+      render turbo_stream: [
+        turbo_stream.replace("#{current_restaurant.id}_category_form", partial: 'categories/form', locals: { category: @category }),
+        turbo_notification('Ha ocurrido un error al actualizar la categoría', type: :alert),
+      ], status: :unprocessable_entity
     end
   end
 
@@ -57,7 +66,9 @@ class CategoriesController < ApplicationController
         turbo_notification('La categoría se ha eliminado con éxito', type: :success),
       ]
     else
-      render turbo_stream: turbo_notification('Ha ocurrido un error al eliminar la categoría', type: :alert)
+      render turbo_stream: [
+        turbo_notification('Ha ocurrido un error al eliminar la categoría', type: :alert),
+      ], status: :unprocessable_entity
     end
   end
 
@@ -74,6 +85,8 @@ class CategoriesController < ApplicationController
   private
 
   def request_translations(category)
+    return unless ENV['GEMINI_KEY'].present?
+
     Thread.new do
       Translators::NewItemTranslatorService
         .new(category)

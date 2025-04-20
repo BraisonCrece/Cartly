@@ -1,6 +1,5 @@
 <%= turbo_frame_tag @category do %>
     <div class='hover:cursor-grab flex justify-between items-center px-4 py-5 border border-gray-600 rounded bg-white dark:bg-gray-800 duration-500 transition-colors' data-id="<%= @category.id %>">
-        <!-- render form -->
-        <%= render 'form', category: @category %>
+        <%= render 'inline_form', category: @category %>
     </div>
 <% end %>
