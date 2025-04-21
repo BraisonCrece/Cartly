@@ -6,6 +6,8 @@ class WineOriginDenominationsController < ApplicationController
 
   def index
     @denominations = WineOriginDenomination.where(restaurant_id: current_restaurant.id)
+    @form_frame_tag = "#{current_restaurant.id}_wine_denomination_form"
+    @denominations_list_frame_tag = "#{current_restaurant.id}_wine_denominations_list"
   end
 
   def show; end
@@ -21,13 +23,17 @@ class WineOriginDenominationsController < ApplicationController
     @denomination.restaurant_id = current_restaurant.id
 
     if @denomination.save
-      flash[:notice] = t('.success')
-      render :new
+      render turbo_stream: [
+        turbo_stream.replace("#{current_restaurant.id}_wine_denomination_form", partial: 'form'),
+        turbo_stream.append("#{current_restaurant.id}_wine_denominations_list", partial: 'wine_origin_denomination', locals: { wine_origin_denomination: @denomination }),
+        turbo_notification('Denominación creada exitosamente', type: :success),
+      ]
     else
-      flash[:alert] = t('.error')
-      render :new, status: :unprocessable_entity
+      render turbo_stream: [
+        turbo_stream.replace("#{current_restaurant.id}_wine_denomination_form", partial: 'form'),
+        turbo_notification('Ha ocurrido un error al crear la denominación', type: :error),
+      ], status: :unprocessable_entity
     end
-    flash.clear
   end
 
   def update
@@ -39,11 +45,16 @@ class WineOriginDenominationsController < ApplicationController
   end
 
   def destroy
-    @denomination.destroy
-    render turbo_stream: [
-      turbo_stream.remove(@denomination),
-      turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { notice: t('.success') }),
-    ]
+    if @denomination.destroy
+      render turbo_stream: [
+        turbo_stream.remove(@denomination),
+        turbo_notification('La denominación se ha eliminado con éxito', type: :success),
+      ]
+    else
+      render turbo_stream: [
+        turbo_notification('Ha ocurrido un error al eliminar la denominación', type: :alert),
+      ], status: :unprocessable_entity
+    end
   end
 
   private
@@ -52,7 +63,7 @@ class WineOriginDenominationsController < ApplicationController
     @denomination = WineOriginDenomination.find_by(id: params[:id], restaurant_id: current_restaurant.id)
     return unless @denomination.nil?
 
-    redirect_to denominations_path, alert: t('.not_found')
+    redirect_to denominations_path, alert: 'No se encontró la denominación'
   end
 
   def wine_origin_denomination_params

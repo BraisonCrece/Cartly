@@ -1,9 +1,5 @@
-<div class='w-[90%] max-w-xl'>
-  <%= render "form",
-      wine: @denomination,
-      url: denomination_path,
-      message: t('.title') %>
-  <%= link_to t('wine_origin_denominations.common.back'),
-      denominations_path,
-      class: 'underline underline-blue-800 text-blue-600' %>
-</div>
+<%= turbo_frame_tag @denomination do %>
+    <div class='hover:cursor-grab flex justify-between items-center px-4 py-5 border border-gray-600 rounded bg-white dark:bg-gray-800 duration-500 transition-colors' data-id="<%= @denomination.id %>">
+        <%= render 'inline_form', denomination: @denomination %>
+    </div>
+<% end %>

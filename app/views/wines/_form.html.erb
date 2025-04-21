@@ -63,8 +63,7 @@
         placeholder: t('.placeholders.name'),
         onfocus: "this.placeholder=''",
         onblur: "this.placeholder='#{t('.placeholders.name')}'",
-        data: { description_target: 'input'},
-        "aria-required": "true" %>
+        data: { description_target: 'input'} %>
     </div>
 
     <div class="mb-8">
@@ -99,8 +98,7 @@
       <%= f.select :wine_type,
           [[t('.wine_types.red'), "Tinto"], [t('.wine_types.white'), "Blanco"]],
           { prompt: t('.placeholders.select_type') },
-          class: "dark:text-gray-800 form-select mt-1 block w-full rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
-          "aria-required": "true" %>
+          class: "dark:text-gray-800 form-select mt-1 block w-full rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
     </div>
 
     <div class="mb-8">
@@ -109,8 +107,7 @@
       <%= f.collection_select :wine_origin_denomination_id,
           denominations, :id, :name,
           { prompt: t('.placeholders.select_denomination') },
-          { class: "dark:text-gray-800 form-select mt-1 block rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full",
-            "aria-required": "true" %>
+          { class: "dark:text-gray-800 form-select mt-1 block rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full" } %>
     </div>
 
     <div class="mb-8">
@@ -118,8 +115,7 @@
           class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
       <%= f.number_field :price,
           step: :any,
-          class: "dark:text-gray-800 mt-1 block w-full rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
-          "aria-required": "true" %>
+          class: "dark:text-gray-800 mt-1 block w-full rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" %>
     </div>
 
     <div class="mb-8 flex items-center gap-4">

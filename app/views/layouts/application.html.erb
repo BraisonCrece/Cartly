@@ -17,18 +17,20 @@
     <%= yield :head %>
   </head>
 
-  <body class="flex flex-col justify-center w-auto h-full mt-0 transition-colors duration-500 bg-white main-content dark:bg-gray-800 dark:text-white">
+  <body class="flex flex-col justify-center items-center w-auto h-full mt-0 transition-colors duration-500 bg-white main-content dark:bg-gray-800 dark:text-white">
     <%= render "shared/notifications" %>
     <%= render "shared/theme_switch" %>
     <%= render "shared/menu" %>
     <%= render "shared/logo_link" %>
 
-    <main class="flex justify-center w-full">
+    <main class="flex justify-center w-full max-w-xl items-center">
       <%= yield %>
       <%= render "shared/locale_switch" %>
       <%= render "shared/card_menu_switch" if products?(params[:restaurant_id]) %>
     </main>
 
-    <%= render "shared/footer" %>
+    <section class="max-w-xl">
+        <%= render "shared/footer" %>
+    </section>
   </body>
 </html>
