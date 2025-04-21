@@ -10,7 +10,9 @@ class WineOriginDenominationsController < ApplicationController
     @denominations_list_frame_tag = "#{current_restaurant.id}_wine_denominations_list"
   end
 
-  def show; end
+  def show
+    render @denomination
+  end
 
   def new
     @denomination = WineOriginDenomination.new
@@ -38,9 +40,15 @@ class WineOriginDenominationsController < ApplicationController
 
   def update
     if @denomination.update(wine_origin_denomination_params)
-      redirect_to denominations_path, notice: t('.success')
+      render turbo_stream: [
+        turbo_stream.replace(@denomination),
+        turbo_notification('La denominación de origen se ha actualizado con éxito', type: :success),
+      ]
     else
-      render :edit, status: :unprocessable_entity
+      render turbo_stream: [
+        turbo_stream.replace(@denomination),
+        turbo_notification('Ha ocurrido un error al actualizar la denominación de origen', type: :alert),
+      ], status: :unprocessable_entity
     end
   end
 

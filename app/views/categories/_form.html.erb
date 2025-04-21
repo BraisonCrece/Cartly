@@ -1,15 +1,14 @@
 <%= turbo_frame_tag @category_form_frame_tag do %>
-    <%= form_with model: Category.new, class: "flex flex-col gap-2 w-full border border-gray-600 p-4 rounded mb-10" do |f| %>
-        <%= f.label :name_es, "Añadir categoría" %>
-        <%= f.text_field :name_es, class: "text-black rounded" %>
-        <%= f.hidden_field :category_type,
-            data: { categories_target: "categoryType" } %>
+    <%= form_with model: Category.new, class: "flex flex-col gap-2 w-full border border-gray-400 p-4 rounded mb-10" do |f| %>
+        <%= f.label :name_es, "Añadir categoría", class: "text-gray-700 dark:text-gray-200" %>
+        <%= f.text_field :name_es, class: "border-gray-400 text-black rounded dark:bg-gray-200" %>
+        <%= f.hidden_field :category_type, data: { categories_target: "categoryType" } %>
 
         <!-- FORM BUTTONS -->
         <div class="flex items-center justify-between gap-4 mt-2">
             <div data-categories-target="selector" class="relative flex h-full w-40
                 overflow-hidden border
-                border-gray-400 rounded-full
+                border-gray-400 rounded-full p-[0.175rem]
                 font-light isolate">
                 <button type="button"
                         data-action="click->categories#switch"
@@ -22,11 +21,11 @@
                         data-action="click->categories#switch"
                         data-value="daily"
                         data-categories-target="dailySelector"
-                        class="flex-1 px-3 py-1 font-semibold rounded-full">
+                        class="flex-1 px-3 py-1 rounded-full text-gray-600 dark:text-gray-200">
                     menú
                 </button>
             </div>
-        <%= f.submit "Enviar", class: "px-4 py-2 rounded border cursor-pointer hover:text-black hover:bg-gray-100 transition-colors duration-150 ease-in-out" %>
+        <%= f.submit "Enviar", class: "px-4 py-2 border-gray-400 text-gray-700 dark:text-gray-200 rounded border cursor-pointer hover:text-black hover:bg-gray-100 dark:hover:text-gray-700 transition-colors duration-150 ease-in-out" %>
         </div>
     <% end %>
 <% end %>

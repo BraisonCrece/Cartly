@@ -1,11 +1,11 @@
 <%= turbo_frame_tag @form_frame_tag do %>
-    <%= form_with model: WineOriginDenomination.new, url: denominations_path, class: "flex flex-col gap-2 w-full border border-gray-600 p-4 rounded mb-10" do |f| %>
-        <%= f.label :name, "Añadir Denominación de Origen" %>
-        <%= f.text_field :name, class: "text-black rounded" %>
+    <%= form_with model: WineOriginDenomination.new, url: denominations_path, class: "flex flex-col gap-2 w-full border border-gray-400 p-4 rounded mb-10" do |f| %>
+        <%= f.label :name, "Añadir Denominación de Origen", class: "text-gray-700 dark:text-gray-200" %>
+        <%= f.text_field :name, class: "border-gray-400 text-black rounded dark:bg-gray-200" %>
 
         <!-- FORM BUTTONS -->
         <div class="flex items-center justify-end w-full gap-4 mt-2">
-            <%= f.submit "Enviar", class: "px-4 py-2 rounded border cursor-pointer hover:text-black hover:bg-gray-100 transition-colors duration-150 ease-in-out" %>
+            <%= f.submit "Enviar", class: "px-4 py-2 border-gray-400 text-gray-700 dark:text-gray-200 rounded border cursor-pointer hover:text-black hover:bg-gray-100 dark:hover:text-gray-700 transition-colors duration-150 ease-in-out" %>
         </div>
     <% end %>
 <% end %>

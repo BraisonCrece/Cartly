@@ -15,7 +15,19 @@ export default class extends Controller {
 
   switch(e) {
     this.categoryTypeTarget.setAttribute("value", e.target.dataset.value);
-    this.dailySelectorTarget.classList.toggle("bg-brand-red");
-    this.menuSelectorTarget.classList.toggle("bg-brand-red");
+    const targets = [this.dailySelectorTarget, this.menuSelectorTarget];
+    const classes = [
+      "bg-brand-red",
+      "text-red-50",
+      "font-semibold",
+      "text-gray-700",
+      "dark:text-gray-200",
+    ];
+
+    targets.forEach((target) => {
+      classes.forEach((className) => {
+        target.classList.toggle(className);
+      });
+    });
   }
 }
