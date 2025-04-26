@@ -1,22 +1,20 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
-// Connects to data-controller="image-loader"
 export default class extends Controller {
   static targets = ["image", "loader"];
 
   connect() {
-    this.imageTarget.style.display = "none";
-    this.loaderTarget.style.display = "block";
-    this.loadImage();
+    if (this.hasImageTarget && this.imageTarget.complete) {
+      this.imageLoaded();
+    }
   }
 
-  loadImage() {
-    const image = new Image();
-    image.src = this.imageTarget.dataset.src;
-    image.onload = () => {
-      this.loaderTarget.style.display = "none";
-      this.imageTarget.src = image.src;
-      this.imageTarget.style.display = "block";
-    };
+  imageLoaded() {
+    if (this.hasLoaderTarget) {
+      this.loaderTarget.classList.add("hidden");
+    }
+    if (this.hasImageTarget) {
+      this.imageTarget.classList.remove("opacity-0");
+    }
   }
 }

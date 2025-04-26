@@ -26,13 +26,20 @@
     <div class="mb-8">
       <%= f.label :image, t('.labels.photo'),
           class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
-      <%= image_tag wine.image.attached? ? wine.image : "wine-placeholder.webp",
-          alt: t('wines.common.bottle_of', name: wine.name),
-          class: "w-full aspect-1 rounded-[3px] mb-4 object-cover hover:scale-[101%] hover:cursor-pointer",
-          data: {
-            file_input_target: "imagePreview",
-            action: "click->file-input#changePicture"
-          } %>
+      <div data-controller="image-loader" class="relative w-full aspect-1 mb-4">
+        <div data-image-loader-target="loader"
+             class="absolute inset-0 flex items-center justify-center bg-gray-100/80 dark:bg-gray-700/80 transition-opacity duration-300 rounded-lg">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 animate-spin" width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12 19a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 3c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd" opacity="0.2"/><path d="M2 12C2 6.477 6.477 2 12 2v3a7 7 0 0 0-7 7z"/></g></svg>
+        </div>
+        <%= image_tag wine.image.attached? ? wine.image : "wine-placeholder.webp",
+            alt: t('wines.common.bottle_of', name: wine.name),
+            class: "absolute inset-0 w-full h-full object-cover rounded-[3px] hover:scale-[101%] hover:cursor-pointer opacity-0 transition-opacity duration-300",
+            data: {
+              file_input_target: "imagePreview",
+              action: "click->file-input#changePicture load->image-loader#imageLoaded",
+              image_loader_target: "image"
+            } %>
+      </div>
       <div class="hidden" data-file-input-target="placeholderUrl">
         <%= asset_path("wine-placeholder.webp") %>
       </div>

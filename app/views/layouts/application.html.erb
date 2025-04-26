@@ -23,11 +23,15 @@
     <%= render "shared/menu" %>
     <%= render "shared/logo_link" %>
 
-    <main class="flex justify-center w-full max-w-xl items-center">
+    <% if current_page?(root_path) %>
       <%= yield %>
-      <%= render "shared/locale_switch" %>
-      <%= render "shared/card_menu_switch" if products?(params[:restaurant_id]) %>
-    </main>
+    <% else %>
+        <main class="flex justify-center w-full max-w-xl items-center">
+            <%= yield %>
+            <%= render "shared/locale_switch" %>
+            <%= render "shared/card_menu_switch" if products?(params[:restaurant_id]) %>
+        </main>
+    <% end %>
 
     <section class="max-w-xl">
         <%= render "shared/footer" %>

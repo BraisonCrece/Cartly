@@ -1,6 +1,28 @@
-<div class="bg-gray-100 rounded-[3px] p-4 flex justify-between items-center relative hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-700">
+<div class="h-16 bg-gray-100 rounded-[3px] p-4 flex justify-between items-center relative hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-700">
     <%= truncate(allergen.name, length: 10, separator: ' ', omission: '...') %>
-    <%= image_tag allergen.icon, alt: allergen.name, width: '50px' if allergen.icon.attached? %>
+    <% if allergen.icon.attached? %>
+      <div
+        data-controller="image-loader"
+        class="relative w-[50px] h-[50px] flex items-center justify-center"
+        style="min-width:50px; min-height:50px;"
+      >
+        <div
+          data-image-loader-target="loader"
+          class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-100 transition-opacity duration-300 rounded-lg"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 animate-spin" width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12 19a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 3c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd" opacity="0.2"/><path d="M2 12C2 6.477 6.477 2 12 2v3a7 7 0 0 0-7 7z"/></g></svg>
+        </div>
+        <%= image_tag allergen.icon,
+              alt: allergen.name,
+              width: '50px',
+              height: '50px',
+              class: "absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 rounded",
+              data: {
+                image_loader_target: "image",
+                action: "load->image-loader#imageLoaded"
+              } %>
+      </div>
+    <% end %>
     <div class='absolute bottom-0 flex gap-2 left-2'>
         <%= button_to(t('.edit'),
             edit_allergen_path(allergen),

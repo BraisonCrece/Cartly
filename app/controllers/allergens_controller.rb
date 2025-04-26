@@ -32,8 +32,7 @@ class AllergensController < ApplicationController
     @allergen = Allergen.find_by(id: params[:id], restaurant_id: current_restaurant.id)
   end
 
-  def edit
-  end
+  def edit; end
 
   def update
     if @allergen.update(allergen_params)
