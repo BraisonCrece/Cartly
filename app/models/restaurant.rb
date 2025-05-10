@@ -2,6 +2,7 @@
 
 class Restaurant < ApplicationRecord
   has_one_attached :logo, dependent: :destroy
+  has_one_attached :logo_white, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
