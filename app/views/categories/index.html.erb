@@ -26,4 +26,16 @@
             <%= render @categories.daily.order(:position) %>
         <% end %>
     </div>
+
+    <!-- Drinks List -->
+    <div class="flex flex-col gap-3 mb-10">
+        <section class="flex gap-4 justify-between mb-2">
+            <h1 class="text-3xl font-thin text-center font-roboto underline-offset-[.25rem] underline decoration-brand-red">
+                Bebidas
+            </h1>
+        </section>
+        <%= turbo_frame_tag @drinks_list_frame_tag, class: "flex flex-col gap-3", data: { sortable_target: "drinksList" } do %>
+            <%= render @categories.drinks.order(:position) %>
+        <% end %>
+    </div>
 </section>

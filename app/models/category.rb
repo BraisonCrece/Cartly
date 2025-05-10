@@ -10,6 +10,7 @@ class Category < ApplicationRecord
 
   scope :menu, -> { where(category_type: 'menu').order(position: :asc) }
   scope :daily, -> { where(category_type: 'daily').order(position: :asc) }
+  scope :drinks, -> { where(category_type: 'drinks').order(position: :asc) }
 
   private
 

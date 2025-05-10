@@ -6,7 +6,7 @@
 
         <!-- FORM BUTTONS -->
         <div class="flex items-center justify-between gap-4 mt-2">
-            <div data-categories-target="selector" class="relative flex h-full w-40
+            <div data-categories-target="selector" class="relative flex h-full w-60
                 overflow-hidden border
                 border-gray-400 rounded-full p-[0.175rem]
                 font-light isolate">
@@ -23,6 +23,13 @@
                         data-categories-target="dailySelector"
                         class="flex-1 px-3 py-1 rounded-full text-gray-600 dark:text-gray-200">
                     menú
+                </button>
+                <button type="button"
+                        data-action="click->categories#switch"
+                        data-value="drinks"
+                        data-categories-target="drinksSelector"
+                        class="flex-1 px-3 py-1 rounded-full text-gray-600 dark:text-gray-200">
+                            bebidas
                 </button>
             </div>
         <%= f.submit "Enviar", class: "px-4 py-2 border-gray-400 text-gray-700 dark:text-gray-200 rounded border cursor-pointer hover:text-black hover:bg-gray-100 dark:hover:text-gray-700 transition-colors duration-150 ease-in-out" %>

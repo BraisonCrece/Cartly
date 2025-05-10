@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_06_110643) do
+ActiveRecord::Schema[8.0].define(version: 2025_04_26_190526) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -59,6 +59,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_06_110643) do
     t.index ["dish_id"], name: "index_allergens_dishes_on_dish_id"
   end
 
+  create_table "allergens_drinks", force: :cascade do |t|
+    t.bigint "allergen_id", null: false
+    t.bigint "drink_id", null: false
+    t.index ["allergen_id", "drink_id"], name: "index_allergens_drinks_on_allergen_id_and_drink_id", unique: true
+    t.index ["allergen_id"], name: "index_allergens_drinks_on_allergen_id"
+    t.index ["drink_id"], name: "index_allergens_drinks_on_drink_id"
+  end
+
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -85,6 +93,19 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_06_110643) do
     t.bigint "restaurant_id"
     t.index ["restaurant_id"], name: "index_dishes_on_restaurant_id"
     t.index ["special_menu_id"], name: "index_dishes_on_special_menu_id"
+  end
+
+  create_table "drinks", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.boolean "active", default: true
+    t.boolean "lock", default: false
+    t.bigint "category_id"
+    t.bigint "restaurant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_drinks_on_category_id"
+    t.index ["restaurant_id"], name: "index_drinks_on_restaurant_id"
   end
 
   create_table "mobility_string_translations", force: :cascade do |t|
@@ -188,9 +209,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_06_110643) do
   add_foreign_key "allergens", "restaurants"
   add_foreign_key "allergens_dishes", "allergens"
   add_foreign_key "allergens_dishes", "dishes"
+  add_foreign_key "allergens_drinks", "allergens"
+  add_foreign_key "allergens_drinks", "drinks"
   add_foreign_key "categories", "restaurants"
   add_foreign_key "dishes", "restaurants"
   add_foreign_key "dishes", "special_menus"
+  add_foreign_key "drinks", "categories"
+  add_foreign_key "drinks", "restaurants"
   add_foreign_key "settings", "restaurants"
   add_foreign_key "special_menus", "restaurants"
   add_foreign_key "wine_origin_denominations", "restaurants"

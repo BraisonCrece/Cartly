@@ -14,6 +14,13 @@ class ControlPanelController < ApplicationController
     @pagy, @dishes, @color = pagy_dishes(filter, query, restaurant_id)
   end
 
+  def drinks
+    filter = params[:filter]
+    query = params[:query]
+    restaurant_id = current_restaurant.id
+    @pagy, @wines = pagy_drinks(filter, query, restaurant_id)
+  end
+
   def wines
     query = params[:query]
     restaurant_id = current_restaurant.id
@@ -38,6 +45,17 @@ class ControlPanelController < ApplicationController
     else
       pagy, dishes = pagy_countless(Dish.menu(restaurant_id:, query:), limit: 10)
       [pagy, dishes, { carta: 'selected', menu: 'not-selected' }]
+    end
+  end
+
+  def pagy_drinks(filter, query, restaurant_id)
+    case filter
+    when 'drink'
+      pagy, drinks = pagy_countless(Drink.search(restaurant_id:, query:), limit: 10)
+      [pagy, drinks, { wines: 'not-selected', drinks: 'selected' }]
+    when 'wine'
+      pagy, wines = pagy_countless(Wine.search(restaurant_id:, query: query), limit: 10)
+      [pagy, wines, { wines: 'selected', drinks: 'not-selected' }]
     end
   end
 

@@ -3,7 +3,7 @@
   <%= form_with(model: dish, data: { turbo: false }, class: "shadow-md rounded-[3px] px-6 pt-4 pb-8 mb-4 dark:shadow-white/25") do |f| %>
     <% if @dish.errors.any? %>
       <div id="error_explanation" role="alert" aria-live="polite" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded-[3px] mb-8">
-        <h2 class='mb-2 font-semibold'><%= t('.errors.header', count: @dish.errors.count) %></h2>
+        <h2 class='mb-2 font-semibold'>Se encontraron <%= @dish.errors.count %> errores en el formulario:</h2>
         <ul class="ml-5 list-disc">
           <% @dish.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
@@ -13,14 +13,14 @@
     <% end %>
 
     <div class="mb-8">
-      <%= f.label :picture, t('.labels.picture'), class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
+      <%= f.label :picture, "Foto del plato", class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
       <div data-controller="image-loader" class="relative w-full aspect-1 mb-4">
         <div data-image-loader-target="loader"
              class="absolute inset-0 flex items-center justify-center bg-gray-100/80 dark:bg-gray-700/80 transition-opacity duration-300 rounded-lg">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 animate-spin" width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12 19a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 3c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd" opacity="0.2"/><path d="M2 12C2 6.477 6.477 2 12 2v3a7 7 0 0 0-7 7z"/></g></svg>
         </div>
         <%= image_tag @dish.persisted? && @dish.picture.attached? ? @dish.picture : "placeholder.webp",
-          alt: t('.accessibility.dish_photo'),
+          alt: "Foto del plato",
           class: "absolute inset-0 w-full h-full object-cover rounded-[3px] hover:scale-[101%] hover:cursor-pointer opacity-0 transition-opacity duration-300",
           data: {
             file_input_target: "imagePreview",
@@ -33,98 +33,98 @@
       </div>
       <div class="relative">
         <div class="flex items-center justify-between border border-gray-300 rounded-[3px] px-4 py-2 w-full">
-          <span data-file-input-target="fileName" class="text-gray-400"><%= t('.placeholders.file') %></span>
-          <button type="button" class="text-teal-400"><%= t('.buttons.browse') %></button>
+          <span data-file-input-target="fileName" class="text-gray-400">Selecciona un archivo...</span>
+          <button type="button" class="text-teal-400">Examinar</button>
         </div>
         <%= f.file_field :picture, class: "absolute inset-0 opacity-0 cursor-pointer w-full h-full", accept: "image/*", data: { action: "change->file-input#updateFile", file_input_target: "fileInput", description_target: "descriptionImage" } %>
       </div>
     </div>
 
     <div class="mb-8">
-      <%= f.label :title_es, t('.labels.name'), class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
+      <%= f.label :title_es, "Nombre", class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
       <%= f.text_field :title_es,
         class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight dark:text-gray-800 form-input mt-1 block w-full overflow-scroll rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
-        placeholder: t('.placeholders.name'),
+        placeholder: "Nombre del plato",
         onfocus: "this.placeholder=''",
-        onblur: "this.placeholder='#{t('.placeholders.name')}'",
+        onblur: "this.placeholder='Nombre del plato'",
         data: { description_target: 'input'} %>
     </div>
 
     <div class="mb-8">
-      <%= f.label :description_es, t('.labels.description'), class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
+      <%= f.label :description_es, "Descripción", class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
       <%= f.text_area :description_es,
         class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight dark:text-gray-800 form-textarea mt-1 block w-full rounded-[3px] rounded-b-none border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
-        placeholder: t('.placeholders.description'),
+        placeholder: "Describe brevemente el plato...",
         onfocus: "this.placeholder=''",
-        onblur: "this.placeholder='#{t('.placeholders.description')}'",
+        onblur: "this.placeholder='Describe brevemente el plato...'",
         rows: 8,
         maxlength: 350,
         data: { description_target: 'output' } %>
       <button data-action="click->description#describe" class="w-full bg-teal-700 hover:bg-teal-950 text-white font-semibold py-2 px-4 rounded-[3px] rounded-t-none focus:outline-none focus:shadow-outline-blue focus:ring ring-blue-300 focus:border-blue-300 active:bg-blue-800">
-        <span data-description-target="buttonText"><%= t('.buttons.generate_description') %></span>
+        <span data-description-target="buttonText">Generar descripción</span>
         <span data-description-target="spinner" class="items-center justify-center hidden space-x-2">
           <svg aria-hidden="true" role="status" class="inline w-6 h-6 mr-1 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB"/>
             <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor"/>
           </svg>
-          <span class="text-base"><%= t('.buttons.loading') %></span>
+          <span class="text-base">Generando descripción...</span>
         </span>
       </button>
     </div>
 
     <div class="flex gap-4 mb-8" role="group">
       <div class="flex-grow">
-        <%= f.label :prize, t('.labels.price'), class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
+        <%= f.label :prize, "Precio", class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
         <%= f.number_field :prize, step: :any,
             class: "dark:text-gray-800 form-input mt-1 block w-full rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50",
-            aria_label: t('.accessibility.price_input') %>
+            aria_label: "Campo de precio" %>
       </div>
       <div class="flex items-end gap-4" data-controller="price-per" role="group">
         <div class="flex items-center gap-2">
           <%= f.check_box :per_kilo,
               class: "rounded-[3px] h-5 w-5 dark:checked:bg-emerald-500 dark:focus:ring-emerald-200 focus:ring-1 border-gray-300 shadow",
               data: { action: "change->price-per#toggle", price_per_target: "pricePerKg" },
-              aria: { label: t('.accessibility.per_kg_label') } %>
-          <%= f.label :per_kilo, t('.price_options.per_kg'), class: "block text-gray-700 dark:text-gray-100 font-thin text-xl" %>
+              aria: { label: "Por kilo" } %>
+          <%= f.label :per_kilo, "kg", class: "block text-gray-700 dark:text-gray-100 font-thin text-xl" %>
         </div>
         <div class="flex items-center gap-2">
           <%= f.check_box :per_gram,
               class: "rounded-[3px] h-5 w-5 dark:checked:bg-emerald-500 dark:focus:ring-emerald-200 focus:ring-1 border-gray-300 shadow",
               data: { action: "change->price-per#toggle", price_per_target: "pricePerGr" },
-              aria: { label: t('.accessibility.per_gr_label') } %>
-          <%= f.label :per_gram, t('.price_options.per_gr'), class: "block text-gray-700 dark:text-gray-100 font-thin text-xl" %>
+              aria: { label: "Por gramo" } %>
+          <%= f.label :per_gram, "g", class: "block text-gray-700 dark:text-gray-100 font-thin text-xl" %>
         </div>
         <div class="flex items-center gap-2">
           <%= f.check_box :per_unit,
               class: "rounded-[3px] h-5 w-5 dark:checked:bg-emerald-500 dark:focus:ring-emerald-200 focus:ring-1 border-gray-300 shadow",
               data: { action: "change->price-per#toggle", price_per_target: "pricePerUnit" },
-              aria: { label: t('.accessibility.per_unit_label') } %>
-          <%= f.label :per_unit, t('.price_options.per_unit'), class: "block text-gray-700 dark:text-gray-100 font-thin text-xl" %>
+              aria: { label: "Por unidad" } %>
+          <%= f.label :per_unit, "ud", class: "block text-gray-700 dark:text-gray-100 font-thin text-xl" %>
         </div>
       </div>
     </div>
 
     <div class="flex items-center gap-4 mb-8 align-middle">
-      <div class="font-semibold text-gray-700 dark:text-gray-200"><%= t('.special_menu.question') %></div>
+      <div class="font-semibold text-gray-700 dark:text-gray-200">¿Pertenece a un menú especial?</div>
       <input type="checkbox" id="especial" class="rounded-[3px] h-5 w-5 dark:checked:bg-emerald-500 dark:focus:ring-emerald-200 focus:ring-1 border-gray-300 shadow" data-action="change->dish-form#toggle">
     </div>
 
     <div class="hidden mb-8" data-dish-form-target="specialMenuField">
-      <%= f.label :special_menu_id, t('.labels.special_menu'), class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
+      <%= f.label :special_menu_id, "Menú especial", class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
       <%= f.collection_select :special_menu_id,
           SpecialMenu.where(restaurant_id: current_restaurant.id),
           :id, :name,
-          {prompt: t('.special_menu.select_prompt')},
+          {prompt: "Selecciona un menú especial"},
           {class: "dark:text-gray-800 form-select mt-1 block rounded-[3px] border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full"} %>
     </div>
 
     <div class="mb-8">
-      <%= f.label :category_id, t('.labels.category'), class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
+      <%= f.label :category_id, "Categoría", class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
       <%= render "categories_select", dish: @dish %>
     </div>
 
     <div class="mb-8" role="group" aria-labelledby="allergens-label">
-      <%= f.label :allergen_ids, t('.labels.allergens'), id: "allergens-label", class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
+      <%= f.label :allergen_ids, "Alérgenos", id: "allergens-label", class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
       <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6" role="group" >
         <%= f.collection_check_boxes :allergen_ids, [Allergen.where(restaurant_id: current_restaurant.id) + Allergen.where(restaurant_id: nil)].flatten.uniq, :id, :name do |cb| %>
           <div class="relative items-center truncate justify-center mb-2 rounded-[3px] p-2 shadow shadow-black/25 dark:shadow-white/25 hover:cursor-pointer"
@@ -139,13 +139,28 @@
                   "aria-describedby": "allergen-desc-#{cb.object.id}"
               ) %>
               <div class="flex flex-col items-center justify-center w-full gap-2">
-                <%= image_tag cb.object.icon,
-                    alt: "Icona de #{cb.text}",
-                    class: "w-14 h-14",
-                    role: "img" %>
+                <div data-controller="image-loader" class="relative w-14 h-14 flex items-center justify-center">
+                  <div data-image-loader-target="loader"
+                       class="absolute inset-0 flex items-center justify-center bg-gray-100/80 dark:bg-gray-700/80 transition-opacity duration-300 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 animate-spin" width="24" height="24" viewBox="0 0 24 24">
+                      <g fill="currentColor">
+                        <path fill-rule="evenodd" d="M12 19a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 3c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd" opacity="0.2"/>
+                        <path d="M2 12C2 6.477 6.477 2 12 2v3a7 7 0 0 0-7 7z"/>
+                      </g>
+                    </svg>
+                  </div>
+                  <%= image_tag cb.object.icon,
+                      alt: "Icono de #{cb.text}",
+                      class: "absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 rounded",
+                      role: "img",
+                      data: {
+                        image_loader_target: "image",
+                        action: "load->image-loader#imageLoaded"
+                      } %>
+                </div>
                 <%= cb.label class: "dark:text-white" %>
                 <span class="sr-only" id="allergen-desc-<%= cb.object.id %>">
-                  <%= t('.accessibility.allergen_contains', allergen: cb.text) %>
+                  Contiene el alérgeno: <%= cb.text %>
                 </span>
               </div>
             </label>
@@ -155,7 +170,7 @@
     </div>
 
     <div class="flex flex-wrap items-center justify-between gap-1">
-      <%= f.submit t('.buttons.save'), class: "w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-[3px] focus:outline-none focus:shadow-outline-blue focus:ring ring-blue-300 focus:border-blue-300 active:bg-blue-800" %>
+      <%= f.submit "Guardar", class: "w-full bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded-[3px] focus:outline-none focus:shadow-outline-blue focus:ring ring-blue-300 focus:border-blue-300 active:bg-blue-800" %>
     </div>
   <% end %>
 </div>

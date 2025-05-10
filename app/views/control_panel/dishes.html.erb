@@ -2,7 +2,7 @@
     <div class="sticky top-[-1px] bg-white dark:bg-gray-800 pb-1 z-10 cubic-transition" data-controller="sticky-shadow" data-sticky-shadow-target="sticky">
         <h1 class="mb-8 text-4xl font-thin text-center text-pretty"><%= t('.title') %></h1>
         <div class="flex flex-col md:items-center justify-center gap-6 px-3 mb-6 align-middle md:flex-row">
-            <div class="flex gap-2 items-center shrink-0">
+            <div class="flex gap-2 items-center shrink-0 text-2xl">
                 <%= render "shared/add_button", path: new_dish_path %>
                 <%= link_to t('.menu'),
                     dishes_control_panel_path(filter: 'daily'),
@@ -11,6 +11,19 @@
                 <%= link_to t('.carta'),
                     dishes_control_panel_path(filter: 'menu'),
                     class: "p-1 #{@color[:carta]} dark:text-white text-gray-800 rounded-[3px]"
+                %>
+                <!-- TODO - Unificar todo en un solo control pannel donde se rendericen
+                  os productos seleccionados -->
+
+                  <!-- Arriba as categorias xerais: Platos Menú, Platos Carta, Bebidas (category type)
+                  Debaixo as subcategorías dependendo da categoría seleccionada (category / denominacion) -->
+                <%= link_to "Bebidas",
+                    dishes_control_panel_path(filter: 'menu'),
+                    class: "p-1 #{@color[:menu]} dark:text-white text-gray-800 rounded-[3px]"
+                %>
+                <%= link_to "Vinos",
+                    dishes_control_panel_path(filter: 'menu'),
+                    class: "p-1 #{@color[:menu]} dark:text-white text-gray-800 rounded-[3px]"
                 %>
             </div>
             <%= form_with url: dishes_control_panel_path, method: :get, html: { class: 'flex gap-2 flex-1'} do |form| %>
