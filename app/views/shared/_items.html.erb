@@ -1,11 +1,9 @@
 <% if current_restaurant %>
-  <% blue_link_classes = "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-blue-600" %>
-  <% blue_light_link_classes = "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-blue-400" %>
-  <% red_link_classes = "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-red-600" %>
+  <% blue_link_classes = "text-center py-3 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-blue-600" %>
+  <% blue_light_link_classes = "text-center py-3 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-blue-400" %>
+  <% red_link_classes = "text-center py-3 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-red-600" %>
 
-  <%= link_to t('.dishes'), dishes_control_panel_path, class: blue_link_classes %>
-  <%= link_to "Bebidas", drinks_control_panel_path, class: blue_link_classes %>
-  <%= link_to t('.wines'), wines_control_panel_path, class: blue_link_classes %>
+  <%= link_to "Productos", control_panel_products_path, class: blue_link_classes %>
   <%= link_to t('.denominations'), denominations_path, class: blue_link_classes %>
   <%= link_to t('.categories'), categories_path, class: blue_link_classes %>
   <%= link_to t('.allergens'), allergens_path, class: blue_link_classes %>

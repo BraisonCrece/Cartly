@@ -35,7 +35,7 @@ class WinesController < ApplicationController
     @wine.process_wine(params[:wine][:image]) if params[:wine][:image]
 
     if @wine.save
-      redirect_to wines_control_panel_path,
+      redirect_to control_panel_products_path(filter: 'wines'),
                   notice: t('.success_with_translations')
     else
       render :new, status: :unprocessable_entity
@@ -50,7 +50,7 @@ class WinesController < ApplicationController
         end
       end
       @wine.process_wine(params[:wine][:image]) if params[:wine][:image]
-      redirect_to wines_control_panel_path, notice: t('.success')
+      redirect_to control_panel_products_path(filter: 'wines'), notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -85,7 +85,7 @@ class WinesController < ApplicationController
     @wine = Wine.find_by(id: params[:id], restaurant_id:)
     return unless @wine.nil?
 
-    redirect_to wines_control_panel_path, alert: t('.not_found')
+    redirect_to control_panel_products_path(filter: 'wines'), alert: t('.not_found')
   end
 
   def wine_params

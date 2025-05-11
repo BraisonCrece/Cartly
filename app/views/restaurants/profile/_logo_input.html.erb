@@ -7,7 +7,7 @@
       <% end %>
     </span>
 
-    <div class="relative w-full mt-2 bg-gray-50/15 rounded" style="padding-top: 56.25%">
+    <div class="relative w-full mt-2 bg-gray-400/25 rounded hover:cursor-pointer" style="padding-top: 56.25%">
       <div
           data-profile-logo-target="<%= "#{field.to_s.camelize(:lower)}Loader" %>"
           class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 rounded-lg"
@@ -17,10 +17,10 @@
 
       <% placeholder_image = form.object.send(field).attached? ?
             form.object.send(field) :
-            (field == :logo_white ? 'logo-white-placeholder.svg' : 'logo-placeholder.svg') %>
+            (field == :logo_white ? 'logo-placeholder-white.png' : 'logo-placeholder-black.png') %>
 
       <%= image_tag placeholder_image,
-          class: "absolute inset-0 w-full h-full object-contain #{ field == :logo_white ? '' : 'opacity-0' } transition-opacity duration-300 rounded",
+          class: "absolute inset-0 w-full h-full object-contain transition-opacity duration-300 rounded",
           data: {
               profile_logo_target: "#{field.to_s.camelize(:lower)}Image",
               action: "load->profile-logo##{field == :logo_white ? 'imageWhiteLoaded' : 'imageLoaded'}"

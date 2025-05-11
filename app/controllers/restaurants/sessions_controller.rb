@@ -20,7 +20,7 @@ class Restaurants::SessionsController < Devise::SessionsController
     sign_in(resource_name, resource)
 
     respond_to do |format|
-      format.html { redirect_to dishes_control_panel_path }
+      format.html { redirect_to control_panel_products_path(filter: 'food') }
       format.json { render :show, status: :ok, location: resource }
     end
   end

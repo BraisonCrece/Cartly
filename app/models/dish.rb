@@ -33,6 +33,17 @@ class Dish < ApplicationRecord
       .group_by(&:category_id)
   }
 
+  def self.query(restaurant_id:, query: nil)
+    scope = where(restaurant_id:)
+            .joins(:category)
+            .where(restaurant_id:)
+            .order('dishes.active DESC, dishes.title ASC')
+
+    scope = scope.where('dishes.title ILIKE ?', "%#{query}%") if query.present?
+
+    scope.load_async
+  end
+
   def self.daily_menu(restaurant_id:, query: nil)
     scope = where(restaurant_id:)
             .joins(:category)

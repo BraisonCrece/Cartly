@@ -24,7 +24,9 @@
     <%= render "shared/logo_link" %>
 
     <% if current_page?(root_path) %>
-      <%= yield %>
+        <div class="mt-10">
+            <%= yield %>
+        </div>
     <% else %>
         <main class="flex justify-center w-full max-w-xl items-center">
             <%= yield %>

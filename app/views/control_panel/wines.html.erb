@@ -3,7 +3,7 @@
         <h1 class="mb-8 text-4xl font-thin text-center text-pretty"><%= t('.title') %></h1>
         <div class="flex items-center justify-center gap-2 px-3 mb-6 align-middle">
           <%= render "shared/add_button", path: new_wine_path %>
-          <%= form_with url: wines_control_panel_path, method: :get, html: { class: 'flex gap-2 flex-1'} do |form| %>
+          <%= form_with url: control_panel_products_path(filter: 'wines'), method: :get, html: { class: 'flex gap-2 flex-1'} do |form| %>
               <%= form.hidden_field :filter, value: params[:filter] %>
               <%= form.text_field :query,
                   placeholder: t('.search_placeholder'),

@@ -1,0 +1,78 @@
+<div class="w-full mb-20">
+    <div class="sticky top-[-1px] bg-white dark:bg-gray-800 pb-1 z-10 cubic-transition" data-controller="sticky-shadow" data-sticky-shadow-target="sticky">
+        <h1 class="mb-8 text-4xl font-thin text-center text-pretty mt-5">Panel de control</h1>
+        <div class="flex flex-col md:items-center justify-center gap-6 px-3 mb-6 align-middle md:flex-row">
+            <!-- Categorías principales -->
+            <div class="flex gap-2 items-center shrink-0 text-2xl">
+                <%= link_to "Comida",
+                    control_panel_products_path(filter: 'food'),
+                    class: "p-1 #{@selected[:name] == 'food' && 'selected'} dark:text-white text-gray-800 rounded-[3px]"
+                %>
+                <%= link_to "Bebida",
+                    control_panel_products_path(filter: 'drinks'),
+                    class: "p-1 #{@selected[:name] == 'drinks' && 'selected'} dark:text-white text-gray-800 rounded-[3px]"
+                %>
+                <%= link_to "Vinos",
+                    control_panel_products_path(filter: 'wines'),
+                    class: "p-1 #{@selected[:name] == 'wines' && 'selected'} dark:text-white text-gray-800 rounded-[3px]"
+                %>
+            </div>
+            <!-- Busqueda -->
+            <%= form_with url: control_panel_products_path, method: :get, html: { class: 'flex gap-3 flex-col w-full'} do |form| %>
+                <div class="flex gap-2 flex-1">
+                    <%= render "shared/add_button", path: @selected[:path] %>
+                    <%= form.hidden_field :filter, value: params[:filter] %>
+                    <%= form.text_field :query,
+                        placeholder: 'Buscar producto...',
+                        data: { dish_search_target: 'search', action: 'input->dish-search#search' },
+                        class: "bg-white focus:ring-blue-600 focus:border-blue-600 border border-gray-300 dark:text-gray-800 rounded-[3px] py-2 px-4 block w-full"
+                    %>
+                    <%= button_tag(type: 'submit', class: "p-2 bg-brand-red-light text-white rounded-full shrink-0 shadow-md w-10 h-10") do %>
+                        <%= image_tag 'icons/search.svg',
+                            class: 'w-5 h-5 text-white shrink-0 mx-auto',
+                            alt: t('.search_button') %>
+                    <% end %>
+                </div>
+                <!-- Selector -->
+                <div class="flex-shrink-0">
+                    <%
+                        select_opts = if @selected[:name] == "drinks"
+                            [['Todas', 'all'], ['Vinos', 'wines']]
+                        elsif @selected[:name] == 'food'
+                            [['Todos', 'all'], ['Menu del dia', 'daily'], ['Carta', 'menu']]
+                        else
+                            [['Todos', 'all']]
+                        end
+                    %>
+                    <%= form.select :category,
+                        options_for_select(select_opts, @category), {},
+                        class: "bg-white focus:ring-blue-600 focus:border-blue-600 border border-gray-300 dark:text-gray-800 rounded-[3px] py-2 px-4 block w-full",
+                        onchange: "this.form.submit()"
+                    %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+
+    <%
+        product = case @selected[:name]
+        when 'food'
+            'dish'
+        when 'drinks'
+            'drink'
+        when 'wines'
+            'wine'
+        end
+    %>
+    <div id=<%= "#{product}List" %> class="p-3">
+        <%= turbo_frame_tag "#{product.pluralize}-#{@pagy.page}" do %>
+            <%= render partial: product, collection: @products %>
+
+            <%= turbo_frame_tag "#{product.pluralize}-#{@pagy.next}",
+                src: pagy_url_for(@pagy, @pagy.next),
+                loading: :lazy,
+                class: "w-full" if @pagy.next
+            %>
+        <% end %>
+    </div>
+</div>

@@ -11,6 +11,7 @@ export default class extends Controller {
 
   connect() {
     this.setActiveSelector("menu");
+    this.categoryTypeTarget.value = "menu";
   }
 
   switch(e) {

@@ -37,7 +37,7 @@ class DishesController < ApplicationController
 
     if @dish.save
       flash[:notice] = t('.success_with_translations')
-      redirect_to dishes_control_panel_path
+      redirect_to control_panel_products_path(filter: 'food')
     else
       render :new, status: :unprocessable_entity
     end
@@ -56,7 +56,7 @@ class DishesController < ApplicationController
       request_translations(@dish, :update) if ENV['GEMINI_KEY'].present? && title_or_description_changed?
 
       @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
-      redirect_to dishes_control_panel_path, notice: t('.success')
+      redirect_to control_panel_products_path(filter: 'food'), notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -93,7 +93,7 @@ class DishesController < ApplicationController
 
     return unless @dish.nil?
 
-    redirect_to dishes_control_panel_path, alert: t('.not_found')
+    redirect_to control_panel_products_path(filter: 'food'), alert: t('.not_found')
   end
 
   def set_categories

@@ -1,14 +1,23 @@
-<div class="w-full flex mt-4 justify-center text-gray-700 dark:text-white">
-    <div class="w-1/3 md:w-1/4 lg:w-1/6">
+<div class="w-full flex mt-12 justify-center text-gray-700 dark:text-white pb-3">
+    <div class="w-1/2 md:w-1/4 lg:w-1/6">
         <% if request.path =~ /\/carta|\/menu/ %>
             <% if @restaurant.logo.attached? %>
                 <%= image_tag(
                         @restaurant.logo,
-                        class: "w-full h-auto rounded-lg mb-1",
+                        class: "w-full h-auto rounded-lg mb-1 #{@restaurant.logo_white.attached? ? 'dark:hidden' : ''}",
                         alt: @restaurant.name
                     )
                 %>
-            <% else %>
+            <% end %>
+
+            <% if @restaurant.logo_white.attached? %>
+                <%= image_tag(
+                        @restaurant.logo_white,
+                        class: "w-full h-auto rounded-lg mb-1 hidden dark:block",
+                        alt: @restaurant.name
+                    )
+                %>
+            <% elsif !@restaurant.logo.attached? %>
                 <%= render "shared/logo" %>
             <% end %>
         <% end %>

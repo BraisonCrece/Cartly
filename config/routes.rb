@@ -32,9 +32,10 @@ Rails.application.routes.draw do
   post ':restaurant_id/reload_i18n', to: 'translate#reload_i18n'
 
   # Control Panel
-  get '/control_panel/dishes', to: 'control_panel#dishes', as: :dishes_control_panel
-  get '/control_panel/wines', to: 'control_panel#wines', as: :wines_control_panel
-  get '/control_panel/bebidas', to: 'control_panel#drinks', as: :drinks_control_panel
+  get '/admin/productos', to: 'control_panel#products', as: :control_panel_products
+
+  # get '/admin/vinos', to: 'control_panel#wines', as: :wines_control_panel
+  # get '/admin/bebidas', to: 'control_panel#drinks', as: :drinks_control_panel
   post 'toggle_active', to: 'control_panel#toggle_active', as: :toggle_active
   post 'toggle_special_menu/:special_menu_id', to: 'special_menus#toggle_active', as: :toggle_special_menu
 
