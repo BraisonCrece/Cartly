@@ -1,5 +1,5 @@
 class SpecialMenu < ApplicationRecord
-  broadcasts_refreshes
+  # broadcasts_refreshes
   extend Mobility
 
   has_many :dishes, dependent: :destroy

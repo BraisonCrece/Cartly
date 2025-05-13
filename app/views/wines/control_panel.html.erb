@@ -17,7 +17,6 @@
     </div>
     <div id="winesList" class="p-3">
       <% @wines.each do |wine| %>
-        <%= turbo_stream_from wine %>
         <%= render "control_panel_wine", wine: wine %>
       <% end %>
     </div>

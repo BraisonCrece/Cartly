@@ -14,7 +14,7 @@
 <% end %>
 
 <% if Wine.where(active: true).exists? %>
-  <%= link_to t('.wines_section')
+  <%= link_to t('dishes.category_links.wines_section')
               .gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
               "#viños",
               class: caterogy_link_classes,

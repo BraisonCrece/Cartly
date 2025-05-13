@@ -8,25 +8,12 @@ class ControlPanelController < ApplicationController
   include Pagy::Backend
 
   def products
-    filter = params[:filter] || 'food'
     query = params[:query]
     restaurant_id = current_restaurant.id
-    @category = params[:category] || 'all'
+    filter = params[:filter].presence || 'food'
+    @category = params[:category].presence || 'all'
     @selected = { name: filter, path: selected_path(filter) }
     @pagy, @products = pagy_products(filter, query, @category, restaurant_id)
-  end
-
-  def drinks
-    filter = params[:filter]
-    query = params[:query]
-    restaurant_id = current_restaurant.id
-    @pagy, @wines = pagy_drinks(filter, query, restaurant_id)
-  end
-
-  def wines
-    query = params[:query]
-    restaurant_id = current_restaurant.id
-    @pagy, @wines = pagy_wines(query, restaurant_id)
   end
 
   def toggle_active

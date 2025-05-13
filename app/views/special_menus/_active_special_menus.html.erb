@@ -27,7 +27,7 @@
                     <div class="card-body">
                         <div class="flex flex-col">
                             <% special_menu.dishes.filter(&:active?).each do |dish| %>
-                                <%= link_to build_link(dish), data: { turbo_frame: "modal" } do %>
+                                <%= link_to build_link(dish, params[:restaurant_id]), data: { turbo_frame: "modal" } do %>
                                     <% unless special_menu.price.present? %>
                                         <%= render "dish", dish: dish %>
                                     <% else %>

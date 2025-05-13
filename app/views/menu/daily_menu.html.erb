@@ -1,3 +1,5 @@
+<%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_dishes" %>
+
  <div class="relative w-full h-full print:max-w-[80%]" data-controller="scroll navbar">
     <div data-navbar-target="trigger"></div>
     <div
@@ -7,7 +9,7 @@
         <%= render "menu_category_links" %>
     </div>
   <div class="p-3 space-y-4">
-    <%= render "menu_categorized_dishes" %>
+    <%= render "dishes/menu_categorized_dishes" %>
     <%= turbo_frame_tag :modal %>
   </div>
 </div>

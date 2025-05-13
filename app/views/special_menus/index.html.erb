@@ -5,7 +5,6 @@
   </div>
   <div id="specialMenuList" class="flex flex-col gap-3">
     <% @special_menus.each do |special_menu| %>
-      <%= turbo_stream_from special_menu %>
       <%= render "control_panel_special_menu", special_menu: special_menu %>
     <% end %>
   </div>

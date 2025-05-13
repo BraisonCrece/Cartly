@@ -2,8 +2,7 @@
 
 class Drink < ApplicationRecord
   # extend Mobility
-  broadcasts_refreshes_to ->(stream) { stream.class.broadcast_target_default }
-
+  broadcasts_refreshes_to ->(drink) { "restaurant_#{drink.restaurant_id}_drinks" }
   # translates :name, type: :string
   # translates :description, type: :text
 

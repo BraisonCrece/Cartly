@@ -2,7 +2,8 @@
 
 class Dish < ApplicationRecord
   extend Mobility
-  broadcasts_refreshes_to ->(stream) { stream.class.broadcast_target_default }
+
+  broadcasts_refreshes_to ->(dish) { "restaurant_#{dish.restaurant_id}_dishes" }
 
   translates :title, type: :string
   translates :description, type: :text
