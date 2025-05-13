@@ -1,0 +1,13 @@
+<% @drink_categories.each do |category| %>
+  <% drinks = @categorized_drinks[category.id] %>
+  <% next if drinks.blank? %>
+  <div>
+    <h2 class="px-4 pb-4 text-3xl font-semibold text-center text-brand-comp-dark dark:text-brand-comp categoryHeader" data-scroll-target="categoryHeader" id="category-<%= category.id %>"><%= category.name %></h2>
+    <% drinks.each do |drink| %>
+        <%= link_to build_link(drink, params[:restaurant_id]), data: { turbo_frame: "modal" } do %>
+            <%= render "drinks/drink", drink: drink %>
+        <% end %>
+    <% end %>
+    <div class='py-3'></div>
+  </div>
+<% end %>

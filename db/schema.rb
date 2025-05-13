@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_04_26_190526) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_13_201622) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -104,6 +104,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_04_26_190526) do
     t.bigint "restaurant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "price", precision: 10, scale: 2
+    t.decimal "measure", precision: 10, scale: 2
+    t.string "unit"
     t.index ["category_id"], name: "index_drinks_on_category_id"
     t.index ["restaurant_id"], name: "index_drinks_on_restaurant_id"
   end

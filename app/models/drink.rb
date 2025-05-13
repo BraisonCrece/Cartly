@@ -11,14 +11,11 @@ class Drink < ApplicationRecord
   has_one_attached :image, dependent: :destroy
   belongs_to :restaurant
 
-  # validates :title_es, :description_es, presence: true
-  # validate :active_when_not_locked
-
   scope :categorized_drinks, lambda { |restaurant_id|
     where(active: true, restaurant_id:)
       .joins(:category)
       .where(categories: { category_type: 'drinks' })
-      .order('categories.position ASC', 'dishes.title ASC')
+      .order('categories.position ASC', 'drinks.name ASC')
       .load_async
       .group_by(&:category_id)
   }
@@ -29,7 +26,7 @@ class Drink < ApplicationRecord
             .where(categories: { category_type: 'drinks' }, restaurant_id:)
             .order('drinks.active DESC, drinks.name ASC')
 
-    scope = scope.where('dishes.name ILIKE ?', "%#{query}%") if query.present?
+    scope = scope.where('drinks.name ILIKE ?', "%#{query}%") if query.present?
 
     scope.load_async
   end
@@ -45,7 +42,7 @@ class Drink < ApplicationRecord
   # Image procesing before attach, allowed formats [:jpg, :png, :webp]
   def process_image(file)
     # change this to drink: true
-    ImageProcessingService.new(file:, record: self, attachment_name: :picture, wine: true).call
+    ImageProcessingService.new(file:, record: self, attachment_name: :image, wine: true).call
   end
 
   private

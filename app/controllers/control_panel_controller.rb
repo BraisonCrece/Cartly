@@ -21,6 +21,8 @@ class ControlPanelController < ApplicationController
       toggle_dish_active
     elsif params[:wine_id]
       toggle_wine_active
+    elsif params[:drink_id]
+      toggle_drink_active
     end
   end
 
@@ -74,6 +76,17 @@ class ControlPanelController < ApplicationController
       "wine_active_#{wine.id}",
       partial: 'wine_active',
       locals: { wine: }
+    )
+  end
+
+  def toggle_drink_active
+    drink = Drink.find_by(id: params[:drink_id], restaurant_id: current_restaurant.id)
+    drink.toggle!(:active)
+
+    render turbo_stream: turbo_stream.replace(
+      "drink_active_#{drink.id}",
+      partial: 'drink_active',
+      locals: { drink: }
     )
   end
 end

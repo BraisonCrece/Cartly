@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :allergens
   resources :categories
   resources :dishes
+  resources :drinks
   resources :special_menus
   resources :wines
   resources :wine_types
