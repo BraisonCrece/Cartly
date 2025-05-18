@@ -76,7 +76,7 @@ class DishesController < ApplicationController
   def dish_params
     params.require(:dish).permit(
       :title_es, :description_es, :prize, :category_id, :special_menu_id,
-      :picture, :per_gram, :per_kilo, :per_unit, allergen_ids: []
+      :picture, :per_gram, :per_kilo, :per_unit, dietary_labels: [], allergen_ids: []
     )
   end
 end

@@ -20,12 +20,11 @@ class AllergensController < ApplicationController
     if @allergen.save
       flash[:notice] = t('.success')
       render :new, status: :ok
-      flash.clear
     else
       flash[:alert] = t('.invalid')
       render :new, status: :unprocessable_entity
-      flash.clear
     end
+    flash.clear
   end
 
   def show

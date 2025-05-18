@@ -67,6 +67,14 @@ class Dish < ApplicationRecord
     scope.load_async
   end
 
+  def vegan?
+    dietary_labels.include?(DietaryLabels::VEGAN)
+  end
+
+  def vegetarian?
+    dietary_labels.include?(DietaryLabels::VEGETARIAN)
+  end
+
   def lock_it!
     update(lock: true)
   end

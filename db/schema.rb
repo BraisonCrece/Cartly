@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_13_201622) do
+ActiveRecord::Schema[8.0].define(version: 2025_05_18_205422) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -91,6 +91,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_13_201622) do
     t.boolean "per_kilo", default: false
     t.boolean "per_unit", default: false
     t.bigint "restaurant_id"
+    t.string "dietary_labels", default: [], array: true
+    t.index ["dietary_labels"], name: "index_dishes_on_dietary_labels", using: :gin
     t.index ["restaurant_id"], name: "index_dishes_on_restaurant_id"
     t.index ["special_menu_id"], name: "index_dishes_on_special_menu_id"
   end
