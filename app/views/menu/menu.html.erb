@@ -2,7 +2,7 @@
 <%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_wines" %>
 <%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_drinks" %>
 
-<div class="relative w-full h-full print:max-w-[80%]" data-controller="scroll navbar">
+<div class="relative w-full h-full print:max-w-[80%]">
     <a href="#contenido-principal" class="sr-only focus:not-sr-only">
       <%= t('.skip_to_main') %>
     </a>

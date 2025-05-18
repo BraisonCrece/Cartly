@@ -15,7 +15,21 @@
   ) %>
 <% end %>
 
-<% if Wine.where(active: true).exists? %>
+<% @drink_categories.each do |category| %>
+  <%= link_to(
+      category.name.gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
+      "#category-#{category.id}",
+      class: caterogy_link_classes,
+      aria_label: t('.go_to_category', name: category.name),
+      data: {
+        turbo_frame: "_top",
+        controller: "scroll",
+        action: "click->scroll#scrollToCategory"
+      }
+  ) %>
+<% end %>
+
+<% unless @categorized_wines.blank? %>
   <%= link_to(
     t('dishes.category_links.wines_section').gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
     "#viños",

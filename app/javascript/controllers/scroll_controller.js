@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["navbar", "categoryHeader"];
 
   initialize() {
-    // Improve this, if the target has to make the scroll go down, do not go up and then down. Just go down.
     this.observer = new IntersectionObserver(
       (entries, _observer) => {
         entries.forEach((entry) => {
@@ -46,7 +45,7 @@ export default class extends Controller {
     const elementWidth = element.offsetWidth;
     const navbarWidth = navbar.offsetWidth;
 
-    const scrollLeft = elementOffset - navbarWidth / 2 + elementWidth / 2;
+    const scrollLeft = elementOffset - navbarWidth / 3 + elementWidth / 3;
 
     navbar.scrollTo({
       left: scrollLeft,

@@ -24,7 +24,7 @@ class Category < ApplicationRecord
 
   scope :drinks, lambda { |restaurant_id|
     joins(:drinks)
-      .where(category_type: 'drinks', restaurant_id: restaurant_id)
+      .where(category_type: 'drinks', restaurant_id: restaurant_id, drinks: { active: true })
       .distinct
       .order(position: :asc)
   }
