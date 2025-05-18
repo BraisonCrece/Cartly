@@ -55,7 +55,7 @@ export default class extends Controller {
   }
 
   scrollToTarget(targetElement) {
-    const headerOffset = -75;
+    const headerOffset = 0;
     const elementPosition = targetElement.offsetTop;
     const offsetPosition = elementPosition - headerOffset;
 
