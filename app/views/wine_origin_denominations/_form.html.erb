@@ -1,5 +1,5 @@
 <%= turbo_frame_tag @form_frame_tag do %>
-    <%= form_with model: WineOriginDenomination.new, url: denominations_path, class: "flex flex-col gap-2 w-full border border-gray-400 p-4 rounded mb-10" do |f| %>
+    <%= form_with model: WineOriginDenomination.new, url: admin_denominations_path, class: "flex flex-col gap-2 w-full border border-gray-400 p-4 rounded mb-10" do |f| %>
         <%= f.label :name, "Añadir Denominación de Origen", class: "text-gray-700 dark:text-gray-200" %>
         <%= f.text_field :name, class: "border-gray-400 text-black rounded dark:bg-gray-200" %>
 
