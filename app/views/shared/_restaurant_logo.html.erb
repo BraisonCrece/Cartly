@@ -1,0 +1,21 @@
+<% if request.path =~ /\/carta|\/menu/ %>
+    <% if @restaurant.logo.attached? %>
+        <%= image_tag(
+                @restaurant.logo,
+                class: "w-full h-auto rounded-lg mb-1 #{@restaurant.logo_white.attached? ? 'dark:hidden' : ''}",
+                alt: @restaurant.name
+            )
+        %>
+    <% end %>
+
+    <% if @restaurant.logo_white.attached? %>
+        <%= image_tag(
+                @restaurant.logo_white,
+                class: "w-full h-auto rounded-lg mb-1 hidden dark:block",
+                alt: @restaurant.name
+            )
+        %>
+    <% elsif !@restaurant.logo.attached? %>
+        <%= render "shared/logo" %>
+    <% end %>
+<% end %>

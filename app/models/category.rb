@@ -8,9 +8,20 @@ class Category < ApplicationRecord
 
   before_create :set_position
 
-  scope :menu, -> { where(category_type: 'menu').order(position: :asc) }
-  scope :daily, -> { where(category_type: 'daily').order(position: :asc) }
-  scope :drinks, -> { where(category_type: 'drinks').order(position: :asc) }
+  scope :menu, lambda { |restaurant_id|
+    joins(:dishes)
+      .where(category_type: 'menu', restaurant_id: restaurant_id, dishes: { active: true })
+      .distinct
+      .order(position: :asc)
+  }
+  scope :daily, lambda { |restaurant_id|
+    joins(:dishes)
+      .where(category_type: 'daily', restaurant_id: restaurant_id, dishes: { active: true })
+      .distinct
+      .order(position: :asc)
+  }
+
+  scope :drinks, ->(restaurant_id) { where(category_type: 'drinks', restaurant_id: restaurant_id).order(position: :asc) }
 
   private
 

@@ -7,8 +7,8 @@ class MenuController < ApplicationController
     @restaurant = Restaurant.find_by(id: params[:restaurant_id])
     return redirect_to root_path unless @restaurant
 
-    @categories = Category.menu
-    @drink_categories = Category.drinks
+    @categories = Category.menu(@restaurant.id)
+    @drink_categories = Category.drinks(@restaurant.id)
     @denominations = WineOriginDenomination.all.includes(:wines)
     @categorized_wines = Wine.categorized_wines(@restaurant.id, @denominations, WINE_COLORS)
     @categorized_dishes = Dish.categorized_dishes(@restaurant.id)
@@ -19,7 +19,7 @@ class MenuController < ApplicationController
     @restaurant = Restaurant.find_by(id: params[:restaurant_id])
     return redirect_to root_path unless @restaurant
 
+    @categories = Category.daily(@restaurant.id)
     @categorized_dishes = Dish.menu_categorized_dishes(params[:restaurant_id])
-    @menu_categories = Category.daily
   end
 end

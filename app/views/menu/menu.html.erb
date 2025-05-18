@@ -7,14 +7,6 @@
       <%= t('.skip_to_main') %>
     </a>
 
-    <div data-navbar-target="trigger"></div>
-    <nav
-        class="absolute w-full max-w-xl overflow-x-scroll scrollbar-hide top-[-1px] -translate-y-[500px]  transition-all z-10 border-t border-gray-100 dark:border-gray-100/25 bg-white dark:bg-gray-800 flex justify-evenly content-center items-center gap-8 py-4 px-6 duration-200 shadow-md"
-        data-navbar-target="navbar"
-        data-scroll-target="navbar">
-        <%= render "category_links" %>
-    </nav>
-
     <main id="contenido-principal" class="p-3 space-y-4">
         <%= render "dishes/categorized_dishes" %>
         <%= render "drinks/categorized_drinks" %>
