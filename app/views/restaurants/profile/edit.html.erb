@@ -2,7 +2,7 @@
     <h2 class='my-4 text-4xl text-center'><%= t('.title') %></h2>
 
     <%= form_with(model: @restaurant,
-        url: profile_path,
+        url: admin_profile_path,
         local: true,
         html: {
           class: 'flex flex-col rounded-[3px] shadow p-8 dark:shadow-gray-600'

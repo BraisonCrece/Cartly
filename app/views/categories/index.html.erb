@@ -11,7 +11,7 @@
             </h1>
         </section>
         <%= turbo_frame_tag @menu_list_frame_tag, class: "flex flex-col gap-3", data: { sortable_target: "menuList" } do %>
-            <%= render @categories.menu.order(:position) %>
+            <%= render @menu_categories.order(:position) %>
         <% end %>
     </div>
 
@@ -23,7 +23,7 @@
             </h1>
         </section>
         <%= turbo_frame_tag @daily_list_frame_tag, class: "flex flex-col gap-3", data: { sortable_target: "dailyList" } do %>
-            <%= render @categories.daily.order(:position) %>
+            <%= render @daily_categories.order(:position) %>
         <% end %>
     </div>
 
@@ -35,7 +35,7 @@
             </h1>
         </section>
         <%= turbo_frame_tag @drinks_list_frame_tag, class: "flex flex-col gap-3", data: { sortable_target: "drinksList" } do %>
-            <%= render @categories.drinks.order(:position) %>
+            <%= render @drinks_categories.order(:position) %>
         <% end %>
     </div>
 </section>

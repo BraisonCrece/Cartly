@@ -26,7 +26,7 @@
             <%= yield %>
         </div>
     <% else %>
-        <%= render "shared/navbar" %>
+        <%= render "shared/navbar" unless request.path.include?("admin") %>
         <main class="flex justify-center w-full max-w-xl items-center">
             <%= yield %>
             <%= render "shared/locale_switch" %>

@@ -13,7 +13,7 @@ class SettingsController < ApplicationController
   def update
     @settings = @restaurant.setting
     if @settings.update(setting_params)
-      redirect_to settings_path, notice: t('.success')
+      redirect_to admin_settings_path, notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end

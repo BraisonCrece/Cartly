@@ -5,6 +5,7 @@ class Category < ApplicationRecord
   translates :name, type: :string
 
   has_many :dishes, dependent: :destroy
+  has_many :drinks, dependent: :destroy
 
   before_create :set_position
 
@@ -21,7 +22,12 @@ class Category < ApplicationRecord
       .order(position: :asc)
   }
 
-  scope :drinks, ->(restaurant_id) { where(category_type: 'drinks', restaurant_id: restaurant_id).order(position: :asc) }
+  scope :drinks, lambda { |restaurant_id|
+    joins(:drinks)
+      .where(category_type: 'drinks', restaurant_id: restaurant_id)
+      .distinct
+      .order(position: :asc)
+  }
 
   private
 

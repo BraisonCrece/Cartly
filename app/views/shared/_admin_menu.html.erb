@@ -1,37 +1,42 @@
 <% if current_restaurant %>
-  <div data-controller="admin-menu" class="">
-    <!-- Floating open/close button -->
-    <button class="fixed z-30 p-2 bg-white dark:bg-gray-800 text-gray-600 dark:text-white rounded-l-full shadow right-0 top-1/2 -translate-y-1/2 shadow-gray-400 print:hidden active:shadow-gray-700 hover:bg-gray-100 transition-all duration-500"
-            data-action="click->admin-menu#toggle">
+  <div data-controller="drag-menu">
+    <!-- Open/Close button -->
+    <button class="fixed z-50 p-2 bg-white dark:bg-gray-900 text-gray-600 dark:text-white rounded-l-full shadow shadow-gray-400 print:hidden active:shadow-gray-700 hover:bg-gray-100 touch-manipulation transition-transform duration-300 ease-out"
+            style="top: 50%; transform: translateY(-50%); right: 0;"
+            data-drag-menu-target="handle"
+    >
       <svg xmlns="http://www.w3.org/2000/svg"
            fill="none"
            viewBox="0 0 24 24"
            stroke-width="4"
            stroke="currentColor"
-           class="w-6 h-12 md:hidden animate-pulse">
+           class="w-6 h-12 md:hidden animate-pulse transition-transform duration-100 ease-out"
+           data-drag-menu-target="icon"
+      >
         <path stroke-linecap="round"
               stroke-linejoin="round"
               d="M15.75 19.5L8.25 12l7.5-7.5" />
       </svg>
     </button>
 
-    <!-- Menu with the links -->
-    <div class="fixed bg-white top-0 right-0 shadow z-40 h-full min-w-[45%] md:min-w-[25%] ease-in-out p-5 translate-x-full dark:bg-gray-900 cubic-transition"
-         data-admin-menu-target="items">
-      <button class="mb-3 mr-8 select-none dark:text-white" data-action="click->admin-menu#toggle">
+    <!-- Admin menu -->
+    <div class="fixed bg-white top-0 right-0 shadow z-40 h-full min-w-[45%] md:min-w-[25%] ease-in-out p-5 translate-x-full dark:bg-gray-900 transition-transform duration-300"
+         data-drag-menu-target="menu"
+    >
+        <button class="mb-3 mr-8 select-none dark:text-white" data-action="click->drag-menu#closeMenu">
         <svg xmlns="http://www.w3.org/2000/svg"
-             fill="currentColor"
-             viewBox="0 0 24 24"
-             stroke-width="1.5"
-             stroke="currentColor"
-             class="w-10 h-10 dark:text-white">
-          <path stroke="currentColor"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-10 h-10 dark:text-white">
+            <path stroke="currentColor"
                 fill="currentColor"
                 stroke-linecap="round"
                 stroke-linejoin="round"
                 d="M6 18L18 6M6 6l12 12" />
         </svg>
-      </button>
+        </button>
       <div class="h-full flex flex-col items-center">
         <%= render "/shared/items" %>
       </div>

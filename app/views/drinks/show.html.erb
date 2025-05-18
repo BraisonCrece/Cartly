@@ -34,6 +34,15 @@
                 </p>
                 <div class="flex items-center justify-between align-middle">
                     <div
+                        class="self-center block text-xl font-semibold skeleton skeleton-dark"
+                        data-modal-target="skeleton"
+                    >
+                        <%= number_with_precision(@drink.price, precision: 2, separator: ",") %>
+                        <small class='text-sm italic text-black duration-500 font-extralight place-self-end dark:text-white'>
+                            €
+                        </small>
+                    </div>
+                    <div
                         class="flex items-center gap-1 alergenos skeleton skeleton-dark"
                         data-modal-target="skeleton"
                     >
