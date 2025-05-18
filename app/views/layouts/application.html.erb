@@ -19,9 +19,7 @@
 
   <body class="flex flex-col justify-center items-center w-auto h-full mt-0 transition-colors duration-500 bg-white main-content dark:bg-gray-800 dark:text-white">
     <%= render "shared/notifications" %>
-    <%# render "shared/theme_switch" %>
-    <%# render "shared/menu" %>
-    <%# render "shared/logo_link" %>
+    <%= render "shared/admin_menu" %>
 
     <% if current_page?(root_path) %>
         <div class="mt-10">
