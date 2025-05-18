@@ -12,22 +12,20 @@ Rails.application.routes.draw do
       sessions: 'restaurants/sessions',
       registrations: 'restaurants/registrations',
     }
-  # Auth
-  # unless defined?(Rake::SprocketsTask)
-  # end
 
-  # Model CRUDs
-  resources :settings, only: :update
-  resources :allergens
-  resources :dishes
-  resources :drinks
-  resources :wines
 
   # User-facing routes
   get ':restaurant_id/menu', to: 'menu#daily_menu', as: :menu
   get ':restaurant_id/carta', to: 'menu#menu', as: :carta
   get ':restaurant_id/qr', to: 'dynamic_router#call', as: :qr
   post ':restaurant_id/reload_i18n', to: 'translate#reload_i18n'
+
+  # Model CRUDs
+  resources :settings, only: :update
+  resources :allergens, path: 'admin/alergenos'
+  resources :dishes, path: 'admin/platos'
+  resources :drinks, path: 'admin/bebidas'
+  resources :wines, path: 'admin/vinos'
 
   # Control Panel
   get '/admin/productos', to: 'control_panel#products', as: :control_panel_products

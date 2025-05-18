@@ -7,13 +7,13 @@
   class="dark:text-gray-800 form-select mt-1 block rounded-[3px] border-gray-300 shadow focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full animate__animated"
 >
     <option><%= t('.select_category') %></option>
-    <% Category.menu.each do |cat| %>
+    <% Category.menu(current_restaurant.id).each do |cat| %>
         <option value="<%= cat.id %>" <%= "selected" if dish.category_id == cat.id %>><%= cat.name %></option>
     <% end %>
-    <% unless Category.daily.empty? %>
+    <% unless Category.daily(current_restaurant.id).empty? %>
         <option disabled><%= t('.separator') %></option>
     <% end %>
-    <% Category.daily.each do |cat| %>
+    <% Category.daily(current_restaurant.id).each do |cat| %>
         <option value="<%= cat.id %>" <%= "selected" if dish.category_id == cat.id %>><%= cat.name %></option>
     <% end %>
 </select>

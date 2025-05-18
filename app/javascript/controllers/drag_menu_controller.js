@@ -86,8 +86,8 @@ export default class extends Controller {
   }
 
   openMenu() {
-    this.menuTarget.style.transform = "translateX(2px)";
-    this.handleTarget.style.transform = `translateY(-50%) translateX(-${this.menuWidth}px)`;
+    this.menuTarget.style.transform = "translateX(0)";
+    this.handleTarget.style.transform = `translateY(-50%) translateX(-${this.menuWidth - 1}px)`;
     this.iconTarget.style.transform = "rotate(180deg)";
   }
 
