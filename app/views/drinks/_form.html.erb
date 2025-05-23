@@ -1,4 +1,4 @@
-<div data-controller="description drink-form file-input" class="w-full">
+<div data-controller="description drink-form file-input allergens-toggle" class="w-full">
   <h1 id="form-title" class="mb-8 text-4xl font-thin text-center text-pretty"><%= message %></h1>
   <%= form_with(model: drink, data: { turbo: false }, class: "shadow-md rounded-[3px] px-6 pt-4 pb-8 mb-4 dark:shadow-white/25") do |f| %>
     <% if @drink.errors.any? %>
@@ -88,9 +88,24 @@
       <% end %>
     </div>
 
+    <!-- Allergens -->
     <div class="mb-8" role="group" aria-labelledby="allergens-label">
-      <%= f.label :allergen_ids, "Alérgenos", id: "allergens-label", class: "block text-gray-700 font-semibold mb-2 dark:text-gray-200" %>
-      <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6" role="group" >
+      <button type="button" 
+              data-action="click->allergens-toggle#toggle" 
+              data-allergens-toggle-target="button"
+              class="flex items-center justify-between w-full text-left text-gray-700 font-semibold mb-2 dark:text-gray-200 hover:text-gray-900 dark:hover:text-gray-100">
+        <span id="allergens-label">Alérgenos</span>
+        <svg data-allergens-toggle-target="icon" 
+             class="w-5 h-5 transition-transform duration-300" 
+             fill="none" 
+             stroke="currentColor" 
+             viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+        </svg>
+      </button>
+      <div data-allergens-toggle-target="content" 
+           class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6 overflow-hidden transition-all duration-300" 
+           role="group">
         <%= f.collection_check_boxes :allergen_ids, [Allergen.where(restaurant_id: current_restaurant.id) + Allergen.where(restaurant_id: nil)].flatten.uniq, :id, :name do |cb| %>
           <div class="relative items-center truncate justify-center mb-2 rounded-[3px] p-2 shadow shadow-black/25 dark:shadow-white/25 hover:cursor-pointer"
                id=<%= "allergen-#{cb.object.id}" %>
