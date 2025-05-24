@@ -4,7 +4,7 @@ require 'dry/monads'
 require 'dry/monads/do'
 
 module Translators
-  class DishTranslatorService
+  class DrinkTranslatorService
     include Dry::Monads[:result, :try]
     include Dry::Monads::Do
 
@@ -28,6 +28,7 @@ module Translators
     end
 
     def translate
+      debugger
       name_translation = yield request_translation(@name_system_message, @drink.name)
       description_translation = yield request_translation(@description_system_message, @drink.description)
       store_translations(name_translation, description_translation)

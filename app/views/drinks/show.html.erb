@@ -21,27 +21,45 @@
             </div>
             <!-- CARD BODY -->
             <div class="card__body h-full px-6 py-2 sm:max-w-[70%] flex flex-col justify-around">
+                <!-- NAME -->
                 <div
                     id="modal-titulo"
                     class="mb-2 text-2xl font-medium playfare skeleton skeleton-dark"
                     data-modal-target="skeleton">
                     <%= @drink.name %>
                 </div>
+                <!-- DESCRIPTION -->
                 <p
                     class="w-full mb-2 text-gray-900 break-words lato skeleton skeleton-dark dark:text-slate-100"
                     data-modal-target="skeleton">
                     <%= @drink.description %>
                 </p>
+                <!-- FOOTER INFO -->
                 <div class="flex items-center justify-between align-middle">
-                    <div
-                        class="self-center block text-xl font-semibold skeleton skeleton-dark"
-                        data-modal-target="skeleton"
-                    >
-                        <%= number_with_precision(@drink.price, precision: 2, separator: ",") %>
-                        <small class='text-sm italic text-black duration-500 font-extralight place-self-end dark:text-white'>
-                            €
-                        </small>
-                    </div>
+                    <!-- PRICE -->
+                    <section class="flex gap-4">
+                        <div
+                            class="self-center block text-xl font-semibold skeleton skeleton-dark"
+                            data-modal-target="skeleton"
+                        >
+                            <%= number_with_precision(@drink.price, precision: 2, separator: ",") %>
+                            <small class='text-sm italic text-black duration-500 font-extralight place-self-end dark:text-white'>
+                                €
+                            </small>
+                        </div>
+                        <!-- QUANTITY -->
+                        <div
+                            class="self-center block text-md font-normal text-gray-400 skeleton skeleton-dark"
+                            data-modal-target="skeleton"
+                        >
+                            <%= @drink.measure %>
+                            <small class='text-sm italic text-black duration-500 font-extralight place-self-end dark:text-white'>
+                                <%= @drink.unit %>
+                            </small>
+                        </div>
+                    </section>
+
+                    <!-- ALERGENS -->
                     <div
                         class="flex items-center gap-1 alergenos skeleton skeleton-dark"
                         data-modal-target="skeleton"

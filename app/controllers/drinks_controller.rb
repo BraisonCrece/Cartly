@@ -11,7 +11,7 @@ class DrinksController < ApplicationController
   def create
     @drink = Drink.new(drink_params)
     @drink.restaurant_id = current_restaurant.id
-    request_translations(@drink, :create) if ENV['GEMINI_KEY'].present?
+    request_translations(@drink, :create)
     @drink.process_image(params[:drink][:image]) if params[:drink][:image]
 
     if @drink.save
@@ -27,7 +27,7 @@ class DrinksController < ApplicationController
 
   def update
     if @drink.update(drink_params)
-      request_translations(@drink, :update) if ENV['GEMINI_KEY'].present? && name_or_description_changed?
+      request_translations(@drink, :update) if name_or_description_changed?
 
       @drink.process_image(params[:drink][:image]) if params[:drink][:image]
       redirect_to control_panel_products_path(filter: 'drinks'), notice: t('.success')
@@ -51,13 +51,16 @@ class DrinksController < ApplicationController
   private
 
   def request_translations(drink, action)
+    return unless ENV['GEMINI_KEY'].present?
+
     if action.in? [:create, :update]
       drink.active = false
       drink.lock_it!
     end
-    Thread.new do
-      Translators::ProcessTranslationsService.new(drink, action).call
-    end
+
+    # Thread.new do
+    Translators::ProcessTranslationsService.new(drink, action).call
+    # end
   end
 
   def name_or_description_changed?
@@ -76,7 +79,7 @@ class DrinksController < ApplicationController
   def drink_params
     params.require(:drink).permit(
       :name, :description, :category_id,
-      :image, :active, allergen_ids: []
+      :image, :active, :price, :measure, :unit, allergen_ids: []
     )
   end
 end

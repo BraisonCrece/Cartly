@@ -1,3 +1,7 @@
+<%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_dishes" %>
+<%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_wines" %>
+<%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_drinks" %>
+
 <div class="w-full mb-20">
     <div class="sticky top-[-1px] bg-white dark:bg-gray-800 pb-1 z-10 cubic-transition" data-controller="sticky-shadow" data-sticky-shadow-target="sticky">
         <h1 class="mb-8 text-4xl font-thin text-center text-pretty mt-5">Panel de control</h1>

@@ -1,10 +1,12 @@
 # frozen_string_literal: true
 
 class Drink < ApplicationRecord
-  # extend Mobility
+  extend Mobility
+
   broadcasts_refreshes_to ->(drink) { "restaurant_#{drink.restaurant_id}_drinks" }
-  # translates :name, type: :string
-  # translates :description, type: :text
+
+  translates :name, type: :string
+  translates :description, type: :text
 
   belongs_to :category, optional: true
   has_and_belongs_to_many :allergens, dependent: :destroy
