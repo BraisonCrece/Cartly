@@ -58,9 +58,9 @@ class DrinksController < ApplicationController
       drink.lock_it!
     end
 
-    # Thread.new do
-    Translators::ProcessTranslationsService.new(drink, action).call
-    # end
+    Thread.new do
+      Translators::ProcessTranslationsService.new(drink, action).call
+    end
   end
 
   def name_or_description_changed?
@@ -78,7 +78,7 @@ class DrinksController < ApplicationController
 
   def drink_params
     params.require(:drink).permit(
-      :name, :description, :category_id,
+      :name_es, :description_es, :category_id,
       :image, :active, :price, :measure, :unit, allergen_ids: []
     )
   end
