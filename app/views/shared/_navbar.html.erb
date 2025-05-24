@@ -1,6 +1,6 @@
 <nav
     class="max-w-xl sticky top-0 z-10 flex flex-col w-full bg-white dark:bg-gray-800 dark:text-white transition-colors duration-500"
-    data-controller="search-toggle filter-toggle sticky-shadow search"
+    data-controller="sticky-shadow filter filter-toggle"
     data-sticky-shadow-target="parent"
 >
     <div class="relative">
@@ -16,42 +16,24 @@
                 <%= render "shared/restaurant_logo" %>
             </div>
 
-            <!-- search button -->
+            <!-- filter button -->
             <div class="justify-self-end w-20 flex justify-end">
-                <button class="flex gap-2 items-center" data-action="click->search-toggle#toggle">
-                    <div class="w-12 text-gray-300">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-                            <path fill="currentColor" d="M256 64C150.13 64 64 150.13 64 256s86.13 192 192 192s192-86.13 192-192S361.87 64 256 64m91.31 283.31a16 16 0 0 1-22.62 0l-42.84-42.83a88.08 88.08 0 1 1 22.63-22.63l42.83 42.84a16 16 0 0 1 0 22.62"/>
-                            <circle cx="232" cy="232" r="56" fill="currentColor"/>
-                        </svg>
-                    </div>
+                <button type="button" data-action="click->filter-toggle#toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 28 28">
+                        <path fill="currentColor" d="M17.25 19a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5zm4-6a.75.75 0 0 1 0 1.5H6.75a.75.75 0 0 1 0-1.5zm3-6a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5z"/>
+                    </svg>
                 </button>
             </div>
         </section>
 
-        <!-- search section open -->
+        <!-- filter section open -->
         <%= form_with(
-            url: carta_path,
-            method: :get,
-            class: "flex flex-col gap-4 px-5 shadow rounded-b-2xl max-h-0 overflow-hidden transition-all duration-300 ease-in-out opacity-0",
-            data: { search_toggle_target: "searchSection", search_target: "form" }
-        ) do |f| %>
-            <div class="relative w-full">
-                <%= f.search_field(
-                    :query,
-                    placeholder: "Escribe para buscar...",
-                    class: "w-full pl-4 pr-16 py-3 border border-gray-300 rounded focus:outline-none focus:border-blue-500 text-gray-700",
-                    data: { search_target: "input", turbo_frame: "products" }
-                ) %>
-                <div class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-700">
-                    <button type="button" data-action="click->filter-toggle#toggle" data-filter-toggle-target="filterButton">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 28 28">
-                            <path fill="currentColor" d="M17.25 19a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5zm4-6a.75.75 0 0 1 0 1.5H6.75a.75.75 0 0 1 0-1.5zm3-6a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5z"/>
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <section class="w-full max-h-0 overflow-hidden transition-all duration-300 ease-in-out opacity-0" data-filter-toggle-target="filterMenu">
+                   url: carta_path,
+                   method: :get,
+                   class: "flex flex-col gap-4 px-5 max-h-0 opacity-0 overflow-hidden transition-all duration-300 ease-in-out",
+                   data: { filter_toggle_target: "filterSection" }
+               ) do |f| %>
+            <section class="w-full">
                 <div class="rounded border border-gray-300 flex flex-col gap-4 p-4 mb-4">
                     <div>No mostrar productos con:</div>
                     <div class="flex flex-wrap gap-4">
@@ -69,6 +51,7 @@
             </section>
         <% end %>
 
+        <!-- navbar links -->
         <nav
             class="w-full max-w-xl overflow-x-scroll scrollbar-hide border-t border-gray-100 dark:border-gray-100/25 bg-white dark:bg-gray-800 flex justify-evenly content-center items-center gap-10 py-4 px-6 transition-colors duration-500"
             data-sticky-shadow-target="sticky"

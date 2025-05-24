@@ -235,3 +235,7 @@ select:disabled {
     -ms-overflow-style: none; /* Para Internet Explorer */
     scrollbar-width: none; /* Para Firefox */
 }
+
+.open-filter {
+    height: calc-size(auto);
+}
