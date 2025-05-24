@@ -17,15 +17,20 @@ export default class extends Controller {
 
   open() {
     const section = this.filterSectionTarget;
-    section.classList.remove("max-h-0", "opacity-0");
-    section.classList.add("max-h-96", "opacity-100");
+    const scrollHeight = section.scrollHeight;
+
+    section.style.maxHeight = scrollHeight + "px";
+    section.classList.remove("opacity-0");
+    section.classList.add("opacity-100");
     this.isOpen = true;
   }
 
   close() {
     const section = this.filterSectionTarget;
-    section.classList.remove("max-h-96", "opacity-100");
-    section.classList.add("max-h-0", "opacity-0");
+
+    section.style.maxHeight = "0px";
+    section.classList.remove("opacity-100");
+    section.classList.add("opacity-0");
     this.isOpen = false;
   }
 }
