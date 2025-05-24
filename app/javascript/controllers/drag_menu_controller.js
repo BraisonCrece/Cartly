@@ -26,10 +26,8 @@ export default class extends Controller {
     });
     this.handleTarget.addEventListener("click", this.handleClick.bind(this));
 
-    // Cerrar menú al hacer clic fuera
     document.addEventListener("click", this.handleDocumentClick.bind(this));
-    
-    // Initialize dimensions
+
     this.updateDimensions();
   }
 
@@ -52,7 +50,6 @@ export default class extends Controller {
     this.startX = event.touches[0].clientX;
     this.updateDimensions();
 
-    // Desactivar transiciones durante el arrastre
     this.handleTarget.style.transition = "none";
     this.menuTarget.style.transition = "none";
   }
@@ -69,15 +66,13 @@ export default class extends Controller {
     }
 
     const moveX = this.startX - this.currentX;
-    if (moveX <= 0) return; // Solo permitir arrastre hacia la izquierda
+    if (moveX <= 0) return;
 
-    // Calcular cuánto se ha movido como porcentaje de la anchura del menú
     const percentMoved = Math.min(moveX / this.menuWidth, 1);
     const menuTranslate = -percentMoved * 100;
 
-    // Mover el menú y el manipulador juntos
     this.menuTarget.style.transform = `translateX(${100 + menuTranslate}%)`;
-    const handleOffset = (percentMoved * this.menuWidth) - (this.handleWidth / 2);
+    const handleOffset = percentMoved * this.menuWidth;
     this.handleTarget.style.transform = `translateY(-50%) translateX(-${handleOffset}px)`;
   }
 
@@ -86,12 +81,10 @@ export default class extends Controller {
 
     this.isDragging = false;
 
-    // Reactivar transiciones
     this.handleTarget.style.transition = "transform 0.3s ease-out";
     this.menuTarget.style.transition = "transform 0.3s ease-out";
 
     if (this.hasDragged) {
-      // Si se arrastró más del 40%, abrir completamente
       const diffX = this.startX - this.currentX;
       if (diffX > this.menuWidth * 0.4) {
         this.openMenu();
@@ -103,7 +96,7 @@ export default class extends Controller {
 
   handleClick(event) {
     if (this.hasDragged) return;
-    
+
     event.preventDefault();
     this.toggleMenu();
   }
@@ -125,7 +118,7 @@ export default class extends Controller {
     this.isMenuOpen = true;
     this.updateDimensions();
     this.menuTarget.style.transform = "translateX(0)";
-    this.handleTarget.style.transform = `translateY(-50%) translateX(-${this.menuWidth - (this.handleWidth / 2)}px)`;
+    this.handleTarget.style.transform = `translateY(-50%) translateX(-${this.menuWidth}px)`;
     this.iconTarget.style.transform = "rotate(180deg)";
   }
 
