@@ -13,13 +13,24 @@ class Drink < ApplicationRecord
   has_one_attached :image, dependent: :destroy
   belongs_to :restaurant
 
-  scope :categorized_drinks, lambda { |restaurant_id|
-    where(active: true, restaurant_id:)
-      .joins(:category)
-      .where(categories: { category_type: 'drinks' })
-      .order('categories.position ASC', 'drinks.name ASC')
-      .load_async
-      .group_by(&:category_id)
+  scope :categorized_drinks, lambda { |restaurant_id, filter_allergens = []|
+    scope = where(active: true, restaurant_id:)
+            .joins(:category)
+            .where(categories: { category_type: 'drinks' })
+
+    if filter_allergens.present?
+      excluded_drink_ids = joins(:allergens)
+                           .where(allergens: { id: filter_allergens })
+                           .distinct
+                           .pluck(:id)
+
+      scope = scope.where.not(id: excluded_drink_ids) if excluded_drink_ids.any?
+    end
+
+    scope.order('categories.position ASC', 'drinks.name ASC')
+         .includes(:category)
+         .load_async
+         .group_by(&:category_id)
   }
 
   def self.query_drinks(restaurant_id:, query: nil)

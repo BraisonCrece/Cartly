@@ -1,7 +1,7 @@
 <% caterogy_link_classes = "text-lg font-light italic align-middle text-center font-medium text-blue-950 subpixel-antialiased hover:text-teal-900 dark:text-emerald-100" %>
 
 <% @categories.each do |category| %>
-  <% next if category.dishes.blank? %>
+  <% next if @categorized_dishes[category.id].blank? %>
   <%= link_to(
       category.name.gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
       "#category-#{category.id}",
@@ -16,6 +16,7 @@
 <% end %>
 
 <% @drink_categories&.each do |category| %>
+  <% next if @categorized_drinks[category.id].blank? %>
   <%= link_to(
       category.name.gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
       "#category-#{category.id}",
