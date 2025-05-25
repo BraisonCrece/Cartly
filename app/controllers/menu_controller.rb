@@ -8,6 +8,7 @@ class MenuController < ApplicationController
     return redirect_to root_path unless @restaurant
 
     handle_allergen_filters
+    @has_active_products = active_products?
 
     @categories = Category.menu(@restaurant.id)
     @drink_categories = Category.drinks(@restaurant.id)
@@ -23,12 +24,19 @@ class MenuController < ApplicationController
     return redirect_to root_path unless @restaurant
 
     handle_allergen_filters
+    @has_active_products = active_products?
 
     @categories = Category.daily(@restaurant.id)
     @categorized_dishes = Dish.menu_categorized_dishes(@restaurant.id, current_allergen_filters)
   end
 
   private
+
+  def active_products?
+    @restaurant.dishes.where(active: true).exists? ||
+      @restaurant.drinks.where(active: true).exists? ||
+      @restaurant.wines.where(active: true).exists?
+  end
 
   def handle_allergen_filters
     return unless params[:filter_applied] == 'true'

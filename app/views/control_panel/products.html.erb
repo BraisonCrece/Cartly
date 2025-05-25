@@ -41,7 +41,7 @@
                 <div class="flex-shrink-0">
                     <%
                         select_opts = if @selected[:name] == "drinks"
-                            ['Todas', 'all']
+                            [['Todas', 'all']]
                         elsif @selected[:name] == 'food'
                             [['Todos', 'all'], ['Menu del dia', 'daily'], ['Carta', 'menu']]
                         else

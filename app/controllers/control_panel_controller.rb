@@ -50,8 +50,7 @@ class ControlPanelController < ApplicationController
       finder = dish_finders[category] || dish_finders['all']
       pagy_countless(finder.call, limit: 10)
     when 'drinks'
-      # TODO
-      pagy_countless(Drink.all, limit: 10)
+      pagy_countless(Drink.query_drinks(restaurant_id:, query:), limit: 10)
     else
       pagy_countless(Wine.search(restaurant_id:, query: query), limit: 10)
     end

@@ -16,7 +16,7 @@ class Drink < ApplicationRecord
   scope :categorized_drinks, lambda { |restaurant_id, filter_allergens = []|
     scope = where(active: true, restaurant_id:)
             .joins(:category)
-            .where(categories: { category_type: 'drinks' })
+            .where(categories: { category_type: 'drinks', restaurant_id: })
 
     if filter_allergens.present?
       excluded_drink_ids = joins(:allergens)

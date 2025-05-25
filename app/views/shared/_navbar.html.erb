@@ -16,25 +16,27 @@
                 <%= render "shared/restaurant_logo" %>
             </div>
 
-            <!-- filter button -->
-            <div class="justify-self-end w-20 flex justify-end">
-                <div class="relative">
-                    <button type="button" data-action="click->filter-toggle#toggle">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 28 28">
-                            <path fill="currentColor" d="M17.25 19a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5zm4-6a.75.75 0 0 1 0 1.5H6.75a.75.75 0 0 1 0-1.5zm3-6a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5z"/>
-                        </svg>
-                    </button>
+            <% if @has_active_products %>
+                <!-- filter button -->
+                <div class="justify-self-end w-20 flex justify-end">
+                    <div class="relative">
+                        <button type="button" data-action="click->filter-toggle#toggle">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10" viewBox="0 0 28 28">
+                                <path fill="currentColor" d="M17.25 19a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5zm4-6a.75.75 0 0 1 0 1.5H6.75a.75.75 0 0 1 0-1.5zm3-6a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1 0-1.5z"/>
+                            </svg>
+                        </button>
 
-                    <% if (session[:allergen_filters] || []).any? %>
-                        <div class="absolute top-[4px] right-0">
-                            <span class="relative flex size-3">
-                                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
-                                <span class="relative inline-flex size-3 rounded-full bg-sky-500"></span>
-                            </span>
-                        </div>
-                    <% end %>
+                        <% if (session[:allergen_filters] || []).any? %>
+                            <div class="absolute top-[4px] right-0">
+                                <span class="relative flex size-3">
+                                    <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75"></span>
+                                    <span class="relative inline-flex size-3 rounded-full bg-sky-500"></span>
+                                </span>
+                            </div>
+                        <% end %>
+                    </div>
                 </div>
-            </div>
+            <% end %>
         </section>
 
         <!-- filter section open -->

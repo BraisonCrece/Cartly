@@ -11,6 +11,7 @@ class Restaurant < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
 
   has_many :dishes, dependent: :destroy
+  has_many :drinks, dependent: :destroy
   has_many :categories, dependent: :destroy
   has_many :allergens, dependent: :destroy
   has_many :special_menus, dependent: :destroy

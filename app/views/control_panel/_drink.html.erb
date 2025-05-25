@@ -1,7 +1,7 @@
 <%= turbo_frame_tag drink do %>
     <div class='flex justify-between w-[90%] h-24 mx-auto border-t align-middle relative drink-item' data-drink-title='<%= drink.name.downcase %>' data-drink-search-target="item">
         <p class='max-w-[75%] self-center flex flex-col gap-2 text-lg font-medium'>
-            <%= truncate(drink.name, length: 30, separator: " ", omission: "...") %>
+            <%= truncate(drink.name_es, length: 30, separator: " ", omission: "...") %>
         </p>
         <p class='self-center'>
             <% if drink.lock? %>
