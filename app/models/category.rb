@@ -22,6 +22,18 @@ class Category < ApplicationRecord
       .order(position: :asc)
   }
 
+  # TODO: Remove this patch for Mon
+  scope :menu_categories, lambda { |restaurant_id|
+    where(category_type: 'menu', restaurant_id: restaurant_id)
+      .distinct
+      .order(position: :asc)
+  }
+  scope :daily_categories, lambda { |restaurant_id|
+    where(category_type: 'daily', restaurant_id: restaurant_id)
+      .distinct
+      .order(position: :asc)
+  }
+
   scope :drinks, lambda { |restaurant_id|
     joins(:drinks)
       .where(category_type: 'drinks', restaurant_id: restaurant_id, drinks: { active: true })

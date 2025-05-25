@@ -5,13 +5,15 @@
 Rails.application.routes.draw do
   root 'landing#index'
 
-  devise_for :restaurants,
-    path: 'admin',
-    path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' },
-    controllers: {
-      sessions: 'restaurants/sessions',
-      registrations: 'restaurants/registrations',
-    }
+  unless defined?(::Rake::SprocketsTask)
+    devise_for :restaurants,
+      path: 'admin',
+      path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' },
+      controllers: {
+        sessions: 'restaurants/sessions',
+        registrations: 'restaurants/registrations',
+      }
+  end
 
 
   # User-facing routes
@@ -31,7 +33,7 @@ Rails.application.routes.draw do
   get '/admin/productos', to: 'control_panel#products', as: :control_panel_products
   get '/admin/settings', to: 'settings#edit', as: :admin_settings
   get '/admin/perfil', to: 'restaurants/profile#edit', as: :admin_profile
-  patch '/admin/profile', to: 'restaurants/profile#update'
+  patch '/admin/profile', to: 'restaurants/profile#update', as: :update_admin_profile
   resources :wine_origin_denominations, as: :admin_denominations, path: 'admin/denominaciones'
   resources :categories, as: :admin_categories, path: 'admin/categorias'
   resources :allergens, as: :admin_allergens, path: 'admin/alergenos'
