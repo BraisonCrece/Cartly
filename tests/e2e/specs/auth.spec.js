@@ -1,6 +1,6 @@
 import { test, expect } from "@playwright/test";
 import { AuthPage } from "../pages/auth.page.js";
-import { TestFixtures, ApiHelpers } from "../utils/fixtures.js";
+import { TestFixtures } from "../utils/fixtures.js";
 
 test.describe("Authentication", () => {
   let authPage;
