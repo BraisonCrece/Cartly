@@ -9,7 +9,7 @@ test.describe('Authentication Edge Cases', () => {
     authPage = new AuthPage(page);
   });
 
-  test.afterEach(async ({ page }) => {
+  test.afterEach(async () => {
     await authPage.clearSession();
   });
 
