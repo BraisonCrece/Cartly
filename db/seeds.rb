@@ -211,7 +211,7 @@ def create_dishes(names, descriptions, images_map, category_name, restaurant)
       active: true,
       prize: rand(5.0..25.0).round(2),
       category: Category.find_by(name: category_name),
-      restaurant:
+      restaurant_id: restaurant.id
     )
     add_random_allergens_to_dish(dish)
     dish.process_image(dish_image_file)
@@ -346,12 +346,12 @@ Mobility.with_locale(:es) do
   daily_categories = ['Primeiros', 'Segundos', 'Postres']
 
   menu_categories.each do |name|
-    Category.create!(name: name, category_type: 'menu', restaurant: restaurant)
+    Category.create!(name: name, category_type: 'menu', restaurant_id: restaurant.id)
     print_info("Created menu category: #{name}")
   end
 
   daily_categories.each do |name|
-    Category.create!(name: name, category_type: 'daily', restaurant: restaurant)
+    Category.create!(name: name, category_type: 'daily', restaurant_id: restaurant.id)
     print_info("Created daily category: #{name}")
   end
 
@@ -368,14 +368,14 @@ Mobility.with_locale(:es) do
   print_header('Creating Wines')
 
   white_denominations_wines_names_map.each do |denomination, wines|
-    origin = WineOriginDenomination.create!(name: denomination, restaurant:)
+    origin = WineOriginDenomination.create!(name: denomination, restaurant_id: restaurant.id)
     print_info("Creating white wines for denomination: #{denomination}")
     wines.each do |wine_name|
       path = Rails.root.join('app', 'assets', 'images', 'seeds', 'wines', "#{white_wines_images_map[wine_name]}")
       wine_image_file = open_image_file(path)
 
       wine = Wine.create(
-        restaurant:,
+        restaurant_id: restaurant.id,
         name: wine_name,
         wine_type: 'Blanco',
         description: white_denominations_wines_descriptions_map[wine_name],
@@ -388,13 +388,13 @@ Mobility.with_locale(:es) do
   end
 
   red_denominations_wines_names_map.each do |denomination, wines|
-    origin = WineOriginDenomination.find_or_create_by(name: denomination, restaurant:)
+    origin = WineOriginDenomination.find_or_create_by(name: denomination, restaurant_id: restaurant.id)
     print_info("Creating white wines for denomination: #{denomination}")
     wines.each do |wine_name|
       path = Rails.root.join('app', 'assets', 'images', 'seeds', 'wines', "#{red_wines_images_map[wine_name]}")
       wine_image_file = open_image_file(path)
       wine = Wine.create(
-        restaurant:,
+        restaurant_id: restaurant.id,
         name: wine_name,
         wine_type: 'Tinto',
         description: red_denominations_wines_descriptions_map[wine_name],

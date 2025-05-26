@@ -38,6 +38,7 @@ install:
 	$(DC) build
 	$(MAKE) bundle
 	$(MAKE) db.setup
+	$(MAKE) test.install
 	$(MAKE) print.img
 
 print.img:
@@ -55,6 +56,40 @@ print.img:
 	@echo "🔧 The test user is 'test@test.com' with password 'Abc123..'"
 	@echo "🌟 Enjoy! 🌟"
 	@echo "\n"
+
+# Testing commands
+.PHONY: test test.install test.auth test.smoke test.mobile test.desktop test.headed test.debug test.report test.codegen
+
+test.install:
+	npm install
+	npm run test:install
+
+test.auth:
+	npm test -- auth-core.spec.js
+
+test.smoke:
+	npm test -- auth-smoke.spec.js
+
+test.mobile:
+	npm run test:mobile
+
+test.desktop:
+	npm run test:desktop
+
+test.headed:
+	npm run test:headed
+
+test.debug:
+	npm run test:debug
+
+test.report:
+	npm run test:report
+
+test.codegen:
+	npm run test:codegen
+
+test: test.smoke test.auth
+	@echo "✅ All core tests passed!"
 
 # Database commands
 .PHONY: db.setup db.migrate db.rollback db.reset db.seed db.session

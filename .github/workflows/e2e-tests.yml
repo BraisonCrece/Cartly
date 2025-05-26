@@ -1,0 +1,268 @@
+name: E2E Tests
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main, develop ]
+  workflow_dispatch:
+
+jobs:
+  e2e-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: cartly_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libvips-dev
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.5
+          bundler-cache: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Node.js dependencies
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: Set up database
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/cartly_test
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
+          bundle exec rails db:seed
+
+      - name: Precompile assets
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/cartly_test
+        run: bundle exec rails assets:precompile
+
+      - name: Start Rails server
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/cartly_test
+        run: |
+          echo "Starting Rails server..."
+          bundle exec rails server -e test -p 3000 -b 0.0.0.0 > rails.log 2>&1 &
+          echo $! > rails.pid
+          sleep 15
+          echo "Rails server started with PID: $(cat rails.pid)"
+          echo "Server logs:"
+          tail -n 20 rails.log || echo "No logs yet"
+
+      - name: Wait for Rails server
+        run: |
+          echo "Waiting for Rails server to be ready..."
+          for i in {1..30}; do
+            if curl -s -f http://localhost:3000 > /dev/null 2>&1; then
+              echo "✅ Rails server is ready"
+              exit 0
+            else
+              echo "⏳ Attempt $i/30: Server not ready yet..."
+              if [ -f rails.log ]; then
+                echo "Recent server logs:"
+                tail -n 10 rails.log
+              fi
+              sleep 3
+            fi
+          done
+          echo "❌ Rails server failed to start"
+          if [ -f rails.log ]; then
+            echo "Full server logs:"
+            cat rails.log
+          fi
+          exit 1
+
+      - name: Run smoke tests
+        run: npm run test:ci:smoke
+
+      - name: Run authentication tests
+        run: npm run test:ci:auth
+
+      - name: Run mobile tests
+        run: npm run test:ci:mobile
+
+      - name: Stop Rails server
+        if: always()
+        run: |
+          if [ -f rails.pid ]; then
+            kill $(cat rails.pid) || true
+            rm rails.pid
+          fi
+          if [ -f rails.log ]; then
+            rm rails.log
+          fi
+          if [ -f rails.log ]; then
+            rm rails.log
+          fi
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results
+          path: |
+            tests/results/
+            test-results/
+          retention-days: 7
+
+      - name: Upload test report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+  e2e-tests-cross-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    if: github.event_name == 'pull_request'
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: cartly_test
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install system dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libvips-dev
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.3.5
+          bundler-cache: true
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install Node.js dependencies
+        run: npm install
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps ${{ matrix.browser }}
+
+      - name: Set up database
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/cartly_test
+        run: |
+          bundle exec rails db:create
+          bundle exec rails db:schema:load
+          bundle exec rails db:seed
+
+      - name: Precompile assets
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/cartly_test
+        run: bundle exec rails assets:precompile
+
+      - name: Start Rails server
+        env:
+          RAILS_ENV: test
+          DATABASE_URL: postgres://postgres:postgres@localhost:5432/cartly_test
+        run: |
+          echo "Starting Rails server..."
+          bundle exec rails server -e test -p 3000 -b 0.0.0.0 > rails.log 2>&1 &
+          echo $! > rails.pid
+          sleep 15
+          echo "Rails server started with PID: $(cat rails.pid)"
+          echo "Server logs:"
+          tail -n 20 rails.log || echo "No logs yet"
+
+      - name: Wait for Rails server
+        run: |
+          echo "Waiting for Rails server to be ready..."
+          for i in {1..30}; do
+            if curl -s -f http://localhost:3000 > /dev/null 2>&1; then
+              echo "✅ Rails server is ready"
+              exit 0
+            else
+              echo "⏳ Attempt $i/30: Server not ready yet..."
+              if [ -f rails.log ]; then
+                echo "Recent server logs:"
+                tail -n 10 rails.log
+              fi
+              sleep 3
+            fi
+          done
+          echo "❌ Rails server failed to start"
+          if [ -f rails.log ]; then
+            echo "Full server logs:"
+            cat rails.log
+          fi
+          exit 1
+
+      - name: Run cross-browser tests
+        run: npx playwright test auth-smoke.spec.js --config=playwright.ci.config.js --project=chromium-ci
+
+      - name: Stop Rails server
+        if: always()
+        run: |
+          if [ -f rails.pid ]; then
+            kill $(cat rails.pid) || true
+            rm rails.pid
+          fi
+
+      - name: Upload test results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-cross-browser
+          path: |
+            tests/results/
+            test-results/
+          retention-days: 3

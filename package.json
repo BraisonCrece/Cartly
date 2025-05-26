@@ -1,0 +1,31 @@
+{
+  "name": "cartly",
+  "version": "1.0.0",
+  "description": "(Under development 🔨) (mobile 1st 📱)",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:mobile": "playwright test --project=chromium-mobile --project=iPhone --project=android",
+    "test:desktop": "playwright test --project=chromium-desktop --project=firefox --project=webkit",
+    "test:debug": "playwright test --debug",
+    "test:report": "playwright show-report",
+    "test:install": "playwright install",
+    "test:codegen": "playwright codegen localhost:3000",
+    "test:ci": "playwright test --config=playwright.ci.config.js",
+    "test:ci:smoke": "playwright test auth-smoke.spec.js --config=playwright.ci.config.js --project=chromium-ci",
+    "test:ci:auth": "playwright test auth-core.spec.js --config=playwright.ci.config.js --project=chromium-ci",
+    "test:ci:mobile": "playwright test auth-core.spec.js --config=playwright.ci.config.js --project=mobile-ci",
+    "test:ci:full": "./scripts/ci-test.sh full",
+    "pretest:ci": "npm run test:install"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.52.0"
+  }
+}
