@@ -7,17 +7,13 @@ class ControlPanelController < ApplicationController
   before_action :authenticate_restaurant!
   include Pagy::Backend
 
-  def dishes
-    filter = params[:filter]
+  def products
     query = params[:query]
     restaurant_id = current_restaurant.id
-    @pagy, @dishes, @color = pagy_dishes(filter, query, restaurant_id)
-  end
-
-  def wines
-    query = params[:query]
-    restaurant_id = current_restaurant.id
-    @pagy, @wines = pagy_wines(query, restaurant_id)
+    filter = params[:filter].presence || 'food'
+    @category = params[:category].presence || 'all'
+    @selected = { name: filter, path: selected_path(filter) }
+    @pagy, @products = pagy_products(filter, query, @category, restaurant_id)
   end
 
   def toggle_active
@@ -25,25 +21,39 @@ class ControlPanelController < ApplicationController
       toggle_dish_active
     elsif params[:wine_id]
       toggle_wine_active
+    elsif params[:drink_id]
+      toggle_drink_active
     end
   end
 
   private
 
-  def pagy_dishes(filter, query, restaurant_id)
-    case filter
-    when 'daily'
-      pagy, dishes = pagy_countless(Dish.daily_menu(restaurant_id:, query:), limit: 10)
-      [pagy, dishes, { carta: 'not-selected', menu: 'selected' }]
-    else
-      pagy, dishes = pagy_countless(Dish.menu(restaurant_id:, query:), limit: 10)
-      [pagy, dishes, { carta: 'selected', menu: 'not-selected' }]
+  def selected_path(type)
+    case type
+    when 'food'
+      new_dish_path
+    when 'drinks'
+      new_drink_path
+    when 'wines'
+      new_wine_path
     end
   end
 
-  def pagy_wines(query, restaurant_id)
-    pagy, wines = pagy_countless(Wine.search(restaurant_id:, query: query), limit: 10)
-    [pagy, wines]
+  def pagy_products(filter, query, category, restaurant_id)
+    case filter
+    when 'food'
+      dish_finders = {
+        'daily' => -> { Dish.daily_menu(restaurant_id:, query:) },
+        'menu' => -> { Dish.menu(restaurant_id:, query:) },
+        'all' => -> { Dish.query(restaurant_id:, query:) },
+      }
+      finder = dish_finders[category] || dish_finders['all']
+      pagy_countless(finder.call, limit: 10)
+    when 'drinks'
+      pagy_countless(Drink.query_drinks(restaurant_id:, query:), limit: 10)
+    else
+      pagy_countless(Wine.search(restaurant_id:, query: query), limit: 10)
+    end
   end
 
   def toggle_dish_active
@@ -65,6 +75,17 @@ class ControlPanelController < ApplicationController
       "wine_active_#{wine.id}",
       partial: 'wine_active',
       locals: { wine: }
+    )
+  end
+
+  def toggle_drink_active
+    drink = Drink.find_by(id: params[:drink_id], restaurant_id: current_restaurant.id)
+    drink.toggle!(:active)
+
+    render turbo_stream: turbo_stream.replace(
+      "drink_active_#{drink.id}",
+      partial: 'drink_active',
+      locals: { drink: }
     )
   end
 end

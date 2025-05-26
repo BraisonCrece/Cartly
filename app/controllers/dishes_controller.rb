@@ -1,29 +1,8 @@
 # frozen_string_literal: true
 
-# Controller for managing dish-related actions
 class DishesController < ApplicationController
-  before_action :authenticate_restaurant!, except: [:index, :menu, :show]
-  before_action :set_dish, only: [:edit, :update, :destroy]
-  before_action :set_categories, only: [:index, :new, :edit]
-
-  WINE_COLORS = ['Tinto', 'Blanco'].freeze
-
-  def index
-    @restaurant = Restaurant.find_by(id: params[:restaurant_id])
-    return redirect_to root_path unless @restaurant
-
-    @categorized_dishes = Dish.categorized_dishes(@restaurant.id)
-    @special_menus = SpecialMenu.active(@restaurant.id)
-    @categories = Category.menu
-    @denominations = WineOriginDenomination.all.includes(:wines)
-    @categorized_wines = Wine.categorized_wines(@restaurant.id, @denominations, WINE_COLORS)
-  end
-
-  def menu
-    @restaurant = Restaurant.find_by(id: params[:restaurant_id])
-    @categorized_dishes = Dish.menu_categorized_dishes(params[:restaurant_id])
-    @menu_categories = Category.daily
-  end
+  before_action :authenticate_restaurant!, except: [:show]
+  before_action :set_dish, only: [:show, :edit, :update, :destroy]
 
   def new
     @dish = Dish.new
@@ -36,27 +15,22 @@ class DishesController < ApplicationController
     @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
 
     if @dish.save
-      flash[:notice] = t('.success_with_translations')
-      redirect_to dishes_control_panel_path
+      redirect_to control_panel_products_path(filter: 'food'), notice: 'Plato creado exitosamente :)'
     else
       render :new, status: :unprocessable_entity
     end
   end
 
-  def show
-    @dish = Dish.find_by(id: params[:id])
-  end
+  def show; end
 
-  def edit
-    @categories = Category.all
-  end
+  def edit; end
 
   def update
     if @dish.update(dish_params)
       request_translations(@dish, :update) if ENV['GEMINI_KEY'].present? && title_or_description_changed?
 
       @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
-      redirect_to dishes_control_panel_path, notice: t('.success')
+      redirect_to control_panel_products_path(filter: 'food'), notice: t('.success')
     else
       render :edit, status: :unprocessable_entity
     end
@@ -66,7 +40,11 @@ class DishesController < ApplicationController
     @dish.destroy
     render turbo_stream: [
       turbo_stream.remove(@dish),
-      turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { notice: t('.success') }),
+      turbo_stream.prepend(
+        'notifications',
+        partial: 'shared/notification',
+        locals: { notice: t('.success') }
+      ),
     ]
   end
 
@@ -77,7 +55,6 @@ class DishesController < ApplicationController
       dish.active = false
       dish.lock_it!
     end
-
     Thread.new do
       Translators::ProcessTranslationsService.new(dish, action).call
     end
@@ -93,17 +70,13 @@ class DishesController < ApplicationController
 
     return unless @dish.nil?
 
-    redirect_to dishes_control_panel_path, alert: t('.not_found')
-  end
-
-  def set_categories
-    @categories = Category.all
+    redirect_to control_panel_products_path(filter: 'food'), alert: 'Plato no encontrado'
   end
 
   def dish_params
     params.require(:dish).permit(
       :title_es, :description_es, :prize, :category_id, :special_menu_id,
-      :picture, :per_gram, :per_kilo, :per_unit, allergen_ids: []
+      :picture, :per_gram, :per_kilo, :per_unit, dietary_labels: [], allergen_ids: []
     )
   end
 end

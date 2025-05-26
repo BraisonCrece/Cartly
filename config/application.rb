@@ -10,7 +10,9 @@ module CartaQr
   class Application < Rails::Application
     # Module documentation comment for CartaQr::Application
     # Main application configuration class that sets up defaults and locale settings
-    config.load_defaults 7.0
+    config.load_defaults 8.0
+
+    config.active_support.to_time_preserves_timezone = :zone
 
     config.rails_i18n.enabled_modules = [:locale]
 

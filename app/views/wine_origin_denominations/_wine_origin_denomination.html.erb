@@ -6,7 +6,7 @@
         <div class='flex gap-4 dark:text-white text-black'>
             <!-- Edit -->
             <%= link_to(
-                edit_denomination_path(wine_origin_denomination),
+                edit_admin_denomination_path(wine_origin_denomination),
                 class: 'text-gray-700 dark:text-gray-300 btn btn-primary',
                 aria_label: t('.edit_category')
             )do %>
@@ -14,7 +14,7 @@
             <% end %>
             <!-- Delete -->
             <%= link_to(
-                denomination_path(wine_origin_denomination),
+                admin_denomination_path(wine_origin_denomination),
                 data: {
                     turbo_method: :delete,
                     turbo_confirm: 'text-gray-700 dark:text-gray-300'

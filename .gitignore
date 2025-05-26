@@ -48,3 +48,18 @@ config/credentials_prod.yml.enc
 */**/.DS_Store
 
 digital.md
+
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.npm
+.node_repl_history
+.yarn-integrity
+
+# Playwright
+test-results/
+playwright-report/
+tests/results/
+tests/screenshots/

@@ -1,4 +1,4 @@
-<div class="h-16 bg-gray-100 rounded-[3px] p-4 flex justify-between items-center relative hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-700">
+<div class="h-16 bg-gray-100 rounded-[3px] p-4 flex justify-between gap-2 items-center relative hover:bg-gray-200 dark:bg-gray-200 dark:text-gray-700">
     <%= truncate(allergen.name, length: 10, separator: ' ', omission: '...') %>
     <% if allergen.icon.attached? %>
       <div
@@ -14,14 +14,12 @@
         </div>
         <%= image_tag allergen.icon,
               alt: allergen.name,
-              width: '50px',
-              height: '50px',
-              class: "absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 rounded",
+              class: "absolute inset-0 h-full object-contain opacity-0 transition-opacity duration-300 rounded",
               data: {
                 image_loader_target: "image",
                 action: "load->image-loader#imageLoaded"
               } %>
-      </div>
+    </div>
     <% end %>
     <div class='absolute bottom-0 flex gap-2 left-2'>
         <%= button_to(t('.edit'),

@@ -1,48 +1,51 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="theme-switcher"
 export default class extends Controller {
-  static targets = ["darkButton", "lightButton", "root"]
+  static targets = ["darkButton", "lightButton", "root"];
 
   connect() {
-    this.updateThemeFromLocalStorage()
+    this.updateThemeFromLocalStorage();
 
     document.addEventListener("turbo:load", () => {
-      this.updateThemeFromLocalStorage()
-    })
+      this.updateThemeFromLocalStorage();
+    });
   }
 
   toggle() {
-    document.documentElement.classList.toggle("dark")
+    document.documentElement.classList.toggle("dark");
 
     if (document.documentElement.classList.contains("dark")) {
-      localStorage.setItem("theme", "dark")
-      this.showLightButton()
+      localStorage.setItem("theme", "dark");
+      this.showLightButton();
     } else {
-      localStorage.setItem("theme", "light")
-      this.showDarkButton()
+      localStorage.setItem("theme", "light");
+      this.showDarkButton();
     }
   }
 
   updateThemeFromLocalStorage() {
-    const theme = localStorage.getItem("theme")
+    const theme = localStorage.getItem("theme");
 
     if (theme === "dark") {
-      document.documentElement.classList.add("dark")
-      this.showLightButton()
+      document.documentElement.classList.add("dark");
+      this.showLightButton();
     } else {
-      document.documentElement.classList.remove("dark")
-      this.showDarkButton()
+      document.documentElement.classList.remove("dark");
+      this.showDarkButton();
     }
   }
 
   showLightButton() {
-    this.darkButtonTarget.classList.add("hidden")
-    this.lightButtonTarget.classList.remove("hidden")
+    if (this.hasDarkButtonTarget) this.darkButtonTarget.classList.add("hidden");
+    if (this.hasLightButtonTarget)
+      this.lightButtonTarget.classList.remove("hidden");
   }
 
   showDarkButton() {
-    this.darkButtonTarget.classList.remove("hidden")
-    this.lightButtonTarget.classList.add("hidden")
+    if (this.hasDarkButtonTarget)
+      this.darkButtonTarget.classList.remove("hidden");
+    if (this.hasLightButtonTarget)
+      this.lightButtonTarget.classList.add("hidden");
   }
 }

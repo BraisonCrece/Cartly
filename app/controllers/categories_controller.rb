@@ -5,9 +5,12 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: [:edit, :update, :destroy]
 
   def index
-    @categories = Category.where(restaurant_id: current_restaurant.id)
+    @menu_categories = Category.where(category_type: 'menu', restaurant_id: current_restaurant.id)
+    @daily_categories = Category.where(category_type: 'daily', restaurant_id: current_restaurant.id)
+    @drinks_categories = Category.where(category_type: 'drinks', restaurant_id: current_restaurant.id)
     @menu_list_frame_tag = "#{current_restaurant.id}_menu_list"
     @daily_list_frame_tag = "#{current_restaurant.id}_daily_list"
+    @drinks_list_frame_tag = "#{current_restaurant.id}_drinks_list"
     @category_form_frame_tag = "#{current_restaurant.id}_category_form"
   end
 

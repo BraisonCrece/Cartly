@@ -7,7 +7,7 @@ module Restaurants
     def update
       @restaurant = current_restaurant
       if @restaurant.update(restaurant_params)
-        redirect_to dishes_control_panel_path, notice: t('.success')
+        redirect_to control_panel_products_path(filter: 'food'), notice: t('.success')
       else
         render :edit, alert: t('.error')
       end
@@ -16,7 +16,7 @@ module Restaurants
     private
 
     def restaurant_params
-      params.require(:restaurant).permit(:name, :address, :phone, :province, :city, :logo)
+      params.require(:restaurant).permit(:name, :address, :phone, :province, :city, :logo, :logo_white)
     end
   end
 end

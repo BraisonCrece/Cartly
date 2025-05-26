@@ -1,5 +1,5 @@
 <%= turbo_frame_tag wine do %>
-    <div class='flex justify-between w-[90%] h-20 mx-auto border-t align-middle relative dish-item' data-dish-title='<%= wine.name.downcase %>' data-dish-search-target="item">
+    <div class='flex justify-between w-[90%] h-24 mx-auto border-t align-middle relative dish-item' data-dish-title='<%= wine.name.downcase %>' data-dish-search-target="item">
         <p class='max-w-[75%] self-center flex flex-col gap-2 text-lg font-medium'>
             <%= truncate(wine.name, length: 30, separator: " ", omission: "...") %>
         </p>
@@ -14,12 +14,12 @@
             <% end %>
         </p>
         <div class='absolute flex gap-2'>
-            <%= button_to t('.edit'),
+            <%= button_to "Editar",
                 edit_wine_path(wine),
                 data: { turbo: false },
                 class: "text-xs font-thin text-blue-800 p-0 dark:text-blue-200",
                 method: :get %>
-            <%= button_to t('.delete'),
+            <%= button_to "Eliminar",
                 wine_path(wine),
                 data: { turbo_confirm: t('.delete_confirm') },
                 class: "text-xs font-thin text-red-800 p-0 dark:text-red-200",

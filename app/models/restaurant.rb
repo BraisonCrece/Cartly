@@ -2,6 +2,7 @@
 
 class Restaurant < ApplicationRecord
   has_one_attached :logo, dependent: :destroy
+  has_one_attached :logo_white, dependent: :destroy
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -10,6 +11,7 @@ class Restaurant < ApplicationRecord
   validates :name, presence: true, length: { maximum: 255 }
 
   has_many :dishes, dependent: :destroy
+  has_many :drinks, dependent: :destroy
   has_many :categories, dependent: :destroy
   has_many :allergens, dependent: :destroy
   has_many :special_menus, dependent: :destroy

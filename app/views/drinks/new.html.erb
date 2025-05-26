@@ -1,0 +1,4 @@
+<div class="flex flex-col w-[90%] mb-20">
+  <%= render 'form', drink: Drink.new, message: t('.title') %>
+  <%= link_to 'Atrás', control_panel_products_path(filter: 'drinks'), class: 'underline underline-blue-800 text-blue-600' %>
+</div>

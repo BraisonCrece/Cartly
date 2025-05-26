@@ -1,5 +1,3 @@
-<%= turbo_stream_from "wines" %>
-
 <main role="main">
   <% if Wine.where(restaurant_id: params[:restaurant_id], active: true).exists? %>
     <h1 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25 categoryHeader"
@@ -26,7 +24,7 @@
           <div role="list">
             <% wines.each do |wine| %>
               <div role="listitem">
-                <%= link_to build_link(wine),
+                <%= link_to build_link(wine, params[:restaurant_id]),
                     data: { turbo_frame: "modal" },
                     aria: { label: t('wines.common.bottle_of', name: wine.name) } do %>
                   <%= render "wines/wine", wine: wine %>
@@ -38,11 +36,4 @@
       <% end %>
     </section>
   <% end %>
-  <footer role="contentinfo" class="flex items-center justify-center gap-2 mt-5 italic font-thin prose text-emerald-900 dark:text-emerald-200">
-    <%= image_tag "info.svg",
-        class: "w-6",
-        alt: t('.info_icon'),
-        aria_hidden: "true" %>
-    <%= t('wines.common.vat_included') %>
-  </footer>
 </main>

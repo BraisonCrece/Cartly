@@ -1,9 +1,9 @@
 <div class='w-[90%] max-w-xl'>
   <%= render 'form',
       wine: WineOriginDenomination.new,
-      url: denominations_path,
+      url: admin_denominations_path,
       message: t('.title') %>
   <%= link_to t('wine_origin_denominations.common.back'),
-      denominations_path,
+      admin_denominations_path,
       class: 'underline underline-blue-800 text-blue-600' %>
 </div>

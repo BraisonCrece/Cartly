@@ -18,13 +18,6 @@
 <% if (request.path.include?("/carta") || request.path.include?("/menu")) %>
   <div class="w-[96%] mx-auto border border-gray-400/10 rounded py-4 px-3 my-8 shadow-md flex flex-col gap-4 font-roboto text-lg text-slate-700 dark:text-slate-300 mb-32"
        role="complementary">
-    <section class="flex-col pt-4 items-center max-w-xs mx-auto">
-      <% if @restaurant.logo.attached? %>
-        <%= image_tag @restaurant.logo,
-            class: "w-full h-auto rounded-lg mb-1",
-            alt: t('.restaurant_logo', name: @restaurant.name) %>
-      <% end %>
-    </section>
     <h2 class="text-2xl text-balance text-center py-6 rounded shadow font-play">
       <%= @restaurant.name %>
     </h2>

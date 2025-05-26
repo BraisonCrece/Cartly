@@ -5,11 +5,41 @@ class Category < ApplicationRecord
   translates :name, type: :string
 
   has_many :dishes, dependent: :destroy
+  has_many :drinks, dependent: :destroy
 
   before_create :set_position
 
-  scope :menu, -> { where(category_type: 'menu').order(position: :asc) }
-  scope :daily, -> { where(category_type: 'daily').order(position: :asc) }
+  scope :menu, lambda { |restaurant_id|
+    joins(:dishes)
+      .where(category_type: 'menu', restaurant_id: restaurant_id, dishes: { active: true })
+      .distinct
+      .order(position: :asc)
+  }
+  scope :daily, lambda { |restaurant_id|
+    joins(:dishes)
+      .where(category_type: 'daily', restaurant_id: restaurant_id, dishes: { active: true })
+      .distinct
+      .order(position: :asc)
+  }
+
+  # TODO: Remove this patch for Mon
+  scope :menu_categories, lambda { |restaurant_id|
+    where(category_type: 'menu', restaurant_id: restaurant_id)
+      .distinct
+      .order(position: :asc)
+  }
+  scope :daily_categories, lambda { |restaurant_id|
+    where(category_type: 'daily', restaurant_id: restaurant_id)
+      .distinct
+      .order(position: :asc)
+  }
+
+  scope :drinks, lambda { |restaurant_id|
+    joins(:drinks)
+      .where(category_type: 'drinks', restaurant_id: restaurant_id, drinks: { active: true })
+      .distinct
+      .order(position: :asc)
+  }
 
   private
 

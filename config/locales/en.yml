@@ -175,7 +175,7 @@ en:
         menu_price: "Daily menu price"
       options:
         menu: "Menu"
-        carta: "Menu Card"
+        carta: "Daily Menu"
         show: "Show"
         hide: "Hide"
       buttons:
@@ -188,7 +188,7 @@ en:
 
     card_menu_switch:
       menu: "MENU"
-      carta: "MENU CARD"
+      carta: "DAILY"
 
     close_button:
       close: "Close"

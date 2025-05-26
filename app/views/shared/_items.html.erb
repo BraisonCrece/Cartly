@@ -1,26 +1,25 @@
 <% if current_restaurant %>
-  <% blue_link_classes = "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-blue-600" %>
-  <% blue_light_link_classes = "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-blue-400" %>
-  <% red_link_classes = "text-center py-4 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-red-600" %>
+  <% blue_link_classes = "text-center py-3 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-blue-600" %>
+  <% blue_light_link_classes = "text-center py-3 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-blue-400" %>
+  <% red_link_classes = "text-center py-3 text-xl lg:text-2xl sm:border-none sm:font-light sm:hover:text-red-600" %>
 
-  <%= link_to t('.dishes'), dishes_control_panel_path, class: blue_link_classes %>
-  <%= link_to t('.wines'), wines_control_panel_path, class: blue_link_classes %>
-  <%= link_to t('.denominations'), denominations_path, class: blue_link_classes %>
-  <%= link_to t('.categories'), categories_path, class: blue_link_classes %>
-  <%= link_to t('.allergens'), allergens_path, class: blue_link_classes %>
+  <%= link_to "Productos", control_panel_products_path, class: blue_link_classes %>
+  <%= link_to "Denominaciones de origen", admin_denominations_path, class: blue_link_classes %>
+  <%= link_to "Categorías", admin_categories_path, class: blue_link_classes %>
+  <%= link_to "Alergenos", admin_allergens_path, class: blue_link_classes %>
 
   <hr class="w-[80%] my-6">
 
-  <%= link_to t('.profile'), profile_path, class: blue_light_link_classes %>
-  <%= link_to t('.settings'), settings_path, class: blue_light_link_classes %>
-  <%= link_to t('.view_menu'), carta_path(restaurant_id: current_restaurant.id), class: blue_light_link_classes %>
-  <%= button_to t('.download_qr'), private_generate_qr_code_path, data: { turbo: false }, method: :post, class: blue_light_link_classes %>
+  <%= link_to "Perfil", admin_profile_path, class: blue_light_link_classes %>
+  <%= link_to "Configuración", admin_settings_path, class: blue_light_link_classes %>
+  <%= link_to "Ver Carta", carta_path(restaurant_id: current_restaurant.id), class: blue_light_link_classes %>
+  <%= button_to "Descargar QR", private_generate_qr_code_path, data: { turbo: false }, method: :post, class: blue_light_link_classes %>
 
   <hr class="w-[80%] my-6">
 
   <% if current_restaurant.email == 'braisoncrece@gmail.com' %>
-    <%= link_to t('.reload_i18n'), reload_i18n_path, data: { turbo_method: :post }, class: blue_link_classes %>
+    <%= link_to "Recargar i18n", reload_i18n_path, data: { turbo_method: :post }, class: blue_link_classes %>
   <% end %>
 
-  <%= link_to t('.logout'), destroy_restaurant_session_path, data: { turbo_method: :delete }, class: red_link_classes %>
+  <%= link_to "Cerrar sesión", destroy_restaurant_session_path, data: { turbo_method: :delete }, class: red_link_classes %>
 <% end %>

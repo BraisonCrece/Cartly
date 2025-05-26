@@ -17,23 +17,28 @@
     <%= yield :head %>
   </head>
 
-  <body class="flex flex-col justify-center items-center w-auto h-full mt-0 transition-colors duration-500 bg-white main-content dark:bg-gray-800 dark:text-white">
+  <body
+      class="flex flex-col justify-center items-center w-auto h-full mt-0 transition-colors duration-500 bg-white main-content dark:bg-gray-800 dark:text-white"
+      data-controller="scroll"
+  >
     <%= render "shared/notifications" %>
-    <%= render "shared/theme_switch" %>
-    <%= render "shared/menu" %>
-    <%= render "shared/logo_link" %>
+    <%= render "shared/admin_menu" %>
 
     <% if current_page?(root_path) %>
-      <%= yield %>
+        <div class="mt-10">
+            <%= yield %>
+        </div>
     <% else %>
+        <%= render "shared/navbar" unless request.path.include?("admin") %>
         <main class="flex justify-center w-full max-w-xl items-center">
             <%= yield %>
             <%= render "shared/locale_switch" %>
             <%= render "shared/card_menu_switch" if products?(params[:restaurant_id]) %>
+            <%= turbo_frame_tag :modal %>
         </main>
     <% end %>
 
-    <section class="max-w-xl">
+    <section class="w-full max-w-xl">
         <%= render "shared/footer" %>
     </section>
   </body>

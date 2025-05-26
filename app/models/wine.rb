@@ -3,7 +3,7 @@
 class Wine < ApplicationRecord
   extend Mobility
 
-  broadcasts_refreshes_to ->(stream) { stream.class.broadcast_target_default }
+  broadcasts_refreshes_to ->(wine) { "restaurant_#{wine.restaurant_id}_wines" }
 
   belongs_to :wine_origin_denomination
   belongs_to :restaurant

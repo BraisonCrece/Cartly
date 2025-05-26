@@ -1,4 +1,4 @@
 <div class="flex flex-col w-[90%] mb-20">
   <%= render 'form', dish: @dish, message: 'Editar plato' %>
-  <%= link_to "Atrás", dishes_control_panel_path(filter: @dish.category&.category_type || 'menu'), class: 'underline underline-blue-800 text-blue-600', data: { turbo: false } %>
+  <%= link_to "Atrás", control_panel_products_path(filter: 'food'), class: 'underline underline-blue-800 text-blue-600', data: { turbo: false } %>
 </div>

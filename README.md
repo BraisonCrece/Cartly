@@ -50,6 +50,82 @@ This application allows restaurants to create and manage their menu of food and 
 3. Run `make install`
 4. That's all
 
+## Testing 🧪
+
+Cartly includes comprehensive end-to-end testing with Playwright covering all critical user flows.
+
+### Quick Start
+
+```bash
+# Install test dependencies (included in make install)
+make test.install
+
+# Run all core tests
+make test
+
+# Run quick smoke tests
+make test.smoke
+```
+
+### Available Test Commands
+
+```bash
+# Core authentication tests
+make test.auth
+
+# Mobile device testing
+make test.mobile  
+
+# Cross-browser testing (Chrome, Firefox, Safari)
+make test.desktop
+
+# Visual testing with browser UI
+make test.headed
+
+# Debug mode (step through tests)
+make test.debug
+
+# View test results report
+make test.report
+
+# Generate new tests interactively
+make test.codegen
+```
+
+### Test Suites
+
+- **🔐 Authentication**: Login, registration, logout, password recovery
+- **📱 Mobile-first**: iPhone, Android, responsive design
+- **🌐 Cross-browser**: Chrome, Firefox, Safari compatibility
+- **🔒 Security**: XSS protection, input validation, session management
+- **♿ Accessibility**: Keyboard navigation, screen readers
+
+### CI/CD Integration
+
+Tests run automatically on:
+- Every push to `main` and `develop` branches
+- All pull requests
+- Can be triggered manually
+
+```bash
+# Run CI test suite locally
+npm run test:ci:full
+
+# Individual CI test modes
+npm run test:ci:smoke    # Quick validation
+npm run test:ci:auth     # Authentication flow
+npm run test:ci:mobile   # Mobile devices
+```
+
+### Test Results
+
+- **HTML Report**: Detailed results with screenshots and videos
+- **Screenshots**: Captured on failures for debugging
+- **Videos**: Full test execution recordings
+- **Cross-browser**: Matrix testing across all supported browsers
+
+All test artifacts are automatically uploaded and available for review in failed builds.
+
 ## Contributions
 
 If you want to contribute to the application, please follow these steps:

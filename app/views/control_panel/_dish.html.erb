@@ -14,12 +14,12 @@
             <% end %>
         </p>
         <div class='absolute flex gap-2'>
-            <%= button_to t('.edit'),
+            <%= button_to "Editar",
                 edit_dish_path(dish),
                 data: { turbo: false },
                 class: "text-xs font-thin text-blue-800 p-0 dark:text-blue-200",
                 method: :get %>
-            <%= button_to t('.delete'),
+            <%= button_to "Eliminar",
                 dish_path(dish),
                 data: { turbo_confirm: t('.delete_confirm') },
                 class: "text-xs font-thin text-red-800 p-0 dark:text-red-200",

@@ -1,0 +1,17 @@
+<%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_dishes" %>
+<%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_wines" %>
+<%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_drinks" %>
+
+<div class="relative w-full h-full print:max-w-[80%]">
+    <a href="#contenido-principal" class="sr-only focus:not-sr-only">
+      <%= t('.skip_to_main') %>
+    </a>
+
+    <main id="contenido-principal" class="p-3 space-y-4">
+        <%= turbo_frame_tag "products" do %>
+            <%= render "dishes/categorized_dishes" %>
+            <%= render "drinks/categorized_drinks" %>
+            <%= render "wines/categorized_wines" %>
+        <% end %>
+    </main>
+</div>

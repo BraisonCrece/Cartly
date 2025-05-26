@@ -71,7 +71,7 @@ class WineOriginDenominationsController < ApplicationController
     @denomination = WineOriginDenomination.find_by(id: params[:id], restaurant_id: current_restaurant.id)
     return unless @denomination.nil?
 
-    redirect_to denominations_path, alert: 'No se encontró la denominación'
+    redirect_to admin_denominations_path, alert: 'No se encontró la denominación'
   end
 
   def wine_origin_denomination_params
