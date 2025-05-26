@@ -9,7 +9,7 @@ module TranslateHelper
   end
 
   def build_link(object, restaurant_id)
-    polymorphic_url(object, restaurant_id: restaurant_id, locale: I18n.locale)
+    polymorphic_path(object, restaurant_id: restaurant_id, locale: I18n.locale)
   end
 
   def locale_flag(locale = nil)

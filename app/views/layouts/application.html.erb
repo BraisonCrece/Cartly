@@ -34,6 +34,7 @@
             <%= yield %>
             <%= render "shared/locale_switch" %>
             <%= render "shared/card_menu_switch" if products?(params[:restaurant_id]) %>
+            <%= turbo_frame_tag :modal %>
         </main>
     <% end %>
 
