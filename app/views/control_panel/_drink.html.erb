@@ -1,29 +1,69 @@
 <%= turbo_frame_tag drink do %>
-    <div class='flex justify-between w-[90%] h-24 mx-auto border-t align-middle relative drink-item' data-drink-title='<%= drink.name.downcase %>' data-drink-search-target="item">
-        <p class='max-w-[75%] self-center flex flex-col gap-2 text-lg font-medium'>
-            <%= truncate(drink.name_es, length: 30, separator: " ", omission: "...") %>
-        </p>
-        <p class='self-center'>
-            <% if drink.lock? %>
-                🔒
-            <% else %>
-                <%= turbo_frame_tag "drink_active_#{drink.id}" do %>
-                    <%= link_to "🔴", toggle_active_path(drink_id: drink.id), class: "no-underline select-none text-xl", data: { turbo_method: :post } if !drink.active %>
-                    <%= link_to "🟢", toggle_active_path(drink_id: drink.id), class: "no-underline select-none text-xl", data: { turbo_method: :post } if drink.active %>
-                <% end %>
-            <% end %>
-        </p>
-        <div class='absolute flex gap-2'>
-            <%= button_to "Editar",
-                edit_drink_path(drink),
-                data: { turbo: false },
-                class: "text-xs font-thin text-blue-800 p-0 dark:text-blue-200",
-                method: :get %>
-            <%= button_to "Eliminar",
-                drink_path(drink),
-                data: { turbo_confirm: t('.delete_confirm') },
-                class: "text-xs font-thin text-red-800 p-0 dark:text-red-200",
-                method: :delete %>
+    <div class='bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden drink-item' data-drink-title='<%= drink.name.downcase %>' data-drink-search-target="item">
+        <div class="p-6">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex-1">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-1">
+                        <%= truncate(drink.name_es, length: 40, separator: " ", omission: "...") %>
+                    </h3>
+                    <% if drink.description_es.present? %>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">
+                            <%= truncate(drink.description_es, length: 60, separator: " ", omission: "...") %>
+                        </p>
+                    <% end %>
+                </div>
+                <div class="ml-4">
+                    <% if drink.lock? %>
+                        <span class="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+                            🔒 Bloqueado
+                        </span>
+                    <% else %>
+                        <%= turbo_frame_tag "drink_active_#{drink.id}" do %>
+                            <% if drink.active %>
+                                <%= link_to toggle_active_path(drink_id: drink.id), 
+                                    class: "inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200 hover:bg-green-200 dark:hover:bg-green-800 transition-colors",
+                                    data: { turbo_method: :post } do %>
+                                    🟢 Activo
+                                <% end %>
+                            <% else %>
+                                <%= link_to toggle_active_path(drink_id: drink.id),
+                                    class: "inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-200 hover:bg-red-200 dark:hover:bg-red-800 transition-colors",
+                                    data: { turbo_method: :post } do %>
+                                    🔴 Inactivo
+                                <% end %>
+                            <% end %>
+                        <% end %>
+                    <% end %>
+                </div>
+            </div>
+            
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-2">
+                    <% if drink.price.present? %>
+                        <span class="text-lg font-bold text-sky-600 dark:text-sky-400">
+                            <%= number_to_currency(drink.price, unit: "€", separator: ",", delimiter: ".", format: "%n %u") %>
+                        </span>
+                        <% if drink.measure.present? && drink.unit.present? %>
+                            <span class="text-xs text-gray-500 dark:text-gray-400">
+                                / <%= drink.measure %><%= drink.unit %>
+                            </span>
+                        <% end %>
+                    <% end %>
+                </div>
+                
+                <div class="flex items-center space-x-2">
+                    <%= button_to "Editar",
+                        edit_drink_path(drink),
+                        data: { turbo: false },
+                        class: "text-sm text-sky-600 hover:text-sky-700 dark:text-sky-400 dark:hover:text-sky-300 font-medium",
+                        method: :get %>
+                    <%= button_to "Eliminar",
+                        drink_path(drink),
+                        data: { turbo_confirm: t('.delete_confirm') },
+                        class: "text-sm text-red-600 hover:text-red-700 dark:text-red-400 dark:hover:text-red-300 font-medium",
+                        method: :delete %>
+                </div>
+            </div>
         </div>
     </div>
 <% end %>

@@ -2,81 +2,92 @@
 <%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_wines" %>
 <%= turbo_stream_from "restaurant_#{params[:restaurant_id]}_drinks" %>
 
-<div class="w-full mb-20">
-    <div class="sticky top-[-1px] bg-white dark:bg-gray-800 pb-1 z-10 cubic-transition" data-controller="sticky-shadow" data-sticky-shadow-target="sticky">
-        <h1 class="mb-8 text-4xl font-thin text-center text-pretty mt-5">Panel de control</h1>
-        <div class="flex flex-col md:items-center justify-center gap-6 px-3 mb-6 align-middle md:flex-row">
-            <!-- Categorías principales -->
-            <div class="flex gap-2 items-center shrink-0 text-2xl">
-                <%= link_to "Comida",
-                    control_panel_products_path(filter: 'food'),
-                    class: "p-1 #{@selected[:name] == 'food' && 'selected'} dark:text-white text-gray-800 rounded-[3px]"
-                %>
-                <%= link_to "Bebida",
-                    control_panel_products_path(filter: 'drinks'),
-                    class: "p-1 #{@selected[:name] == 'drinks' && 'selected'} dark:text-white text-gray-800 rounded-[3px]"
-                %>
-                <%= link_to "Vinos",
-                    control_panel_products_path(filter: 'wines'),
-                    class: "p-1 #{@selected[:name] == 'wines' && 'selected'} dark:text-white text-gray-800 rounded-[3px]"
-                %>
-            </div>
-            <!-- Busqueda -->
-            <%= form_with url: control_panel_products_path, method: :get, html: { class: 'flex gap-3 flex-col w-full'} do |form| %>
-                <div class="flex gap-2 flex-1">
-                    <%= render "shared/add_button", path: @selected[:path] %>
-                    <%= button_tag(type: 'submit', class: "p-2 bg-brand-red-light text-white rounded-full shrink-0 shadow-md w-10 h-10") do %>
-                        <%= image_tag 'icons/search.svg',
-                            class: 'w-5 h-5 text-white shrink-0 mx-auto',
-                            alt: t('.search_button') %>
-                    <% end %>
-                    <%= form.hidden_field :filter, value: params[:filter] %>
-                    <%= form.text_field :query,
-                        placeholder: 'Buscar producto...',
-                        data: { dish_search_target: 'search', action: 'input->dish-search#search' },
-                        class: "bg-white focus:ring-blue-600 focus:border-blue-600 border border-gray-300 dark:text-gray-800 rounded-[3px] py-2 px-4 block w-full"
-                    %>
-                </div>
-                <!-- Selector -->
-                <div class="flex-shrink-0">
-                    <%
-                        select_opts = if @selected[:name] == "drinks"
-                            [['Todas', 'all']]
-                        elsif @selected[:name] == 'food'
-                            [['Todos', 'all'], ['Menu del dia', 'daily'], ['Carta', 'menu']]
-                        else
-                            [['Todos', 'all']]
-                        end
-                    %>
-                    <%= form.select :category,
-                        options_for_select(select_opts, @category), {},
-                        class: "bg-white focus:ring-blue-600 focus:border-blue-600 border border-gray-300 dark:text-gray-800 rounded-[3px] py-2 px-4 block w-full",
-                        onchange: "this.form.submit()"
-                    %>
-                </div>
-            <% end %>
-        </div>
+<div class="min-h-[calc(100vh-8rem)] px-4 pb-20">
+  <div class="sticky top-[-1px] bg-white dark:bg-gray-800 mb-4 rounded-lg z-10 cubic-transition" data-controller="sticky-shadow" data-sticky-shadow-target="sticky">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mt-8">Panel de control</h1>
     </div>
 
-    <%
-        product = case @selected[:name]
-        when 'food'
-            'dish'
-        when 'drinks'
-            'drink'
-        when 'wines'
-            'wine'
-        end
-    %>
-    <div id=<%= "#{product}List" %> class="p-3">
-        <%= turbo_frame_tag "#{product.pluralize}-#{@pagy.page}" do %>
-            <%= render partial: product, collection: @products %>
-
-            <%= turbo_frame_tag "#{product.pluralize}-#{@pagy.next}",
-                src: pagy_url_for(@pagy, @pagy.next),
-                loading: :lazy,
-                class: "w-full" if @pagy.next
+    <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <div class="p-6 space-y-6">
+        <!-- Categorías principales -->
+        <div class="flex justify-center">
+          <div class="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg">
+            <%= link_to "Comida",
+                control_panel_products_path(filter: 'food'),
+                class: "px-4 py-2 text-sm font-medium rounded-md transition-colors #{@selected[:name] == 'food' ? 'bg-sky-600 text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100'}"
             %>
+            <%= link_to "Bebida",
+                control_panel_products_path(filter: 'drinks'),
+                class: "px-4 py-2 text-sm font-medium rounded-md transition-colors #{@selected[:name] == 'drinks' ? 'bg-sky-600 text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100'}"
+            %>
+            <%= link_to "Vinos",
+                control_panel_products_path(filter: 'wines'),
+                class: "px-4 py-2 text-sm font-medium rounded-md transition-colors #{@selected[:name] == 'wines' ? 'bg-sky-600 text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100'}"
+            %>
+          </div>
+        </div>
+
+        <!-- Búsqueda y filtros -->
+        <%= form_with url: control_panel_products_path, method: :get, html: { class: 'space-y-4'} do |form| %>
+          <div class="flex gap-3 items-center">
+            <%= render "shared/add_button", path: @selected[:path] %>
+            <div class="flex-1 relative">
+              <%= form.text_field :query,
+                  placeholder: 'Buscar producto...',
+                  data: { dish_search_target: 'search', action: 'input->dish-search#search' },
+                  class: "w-full px-3 py-3 pl-10 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-white transition-colors"
+              %>
+              <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                <%= image_tag 'icons/search.svg',
+                    class: 'w-5 h-5 text-gray-400',
+                    alt: t('.search_button') %>
+              </div>
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <%= form.label :category, "Categoría", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+            <%
+                select_opts = if @selected[:name] == "drinks"
+                    [['Todas', 'all']]
+                elsif @selected[:name] == 'food'
+                    [['Todos', 'all'], ['Menu del dia', 'daily'], ['Carta', 'menu']]
+                else
+                    [['Todos', 'all']]
+                end
+            %>
+            <%= form.select :category,
+                options_for_select(select_opts, @category), {},
+                class: "w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-white transition-colors",
+                onchange: "this.form.submit()"
+            %>
+          </div>
+          <%= form.hidden_field :filter, value: params[:filter] %>
         <% end %>
+      </div>
     </div>
+  </div>
+
+  <%
+      product = case @selected[:name]
+      when 'food'
+          'dish'
+      when 'drinks'
+          'drink'
+      when 'wines'
+          'wine'
+      end
+  %>
+  <div id=<%= "#{product}List" %> class="space-y-4">
+    <%= turbo_frame_tag "#{product.pluralize}-#{@pagy.page}", class: "flex flex-col gap-2" do %>
+      <%= render partial: product, collection: @products %>
+
+      <%= turbo_frame_tag "#{product.pluralize}-#{@pagy.next}",
+          src: pagy_url_for(@pagy, @pagy.next),
+          loading: :lazy,
+          class: "w-full flex flex-col gap-2" if @pagy.next
+      %>
+    <% end %>
+  </div>
 </div>
