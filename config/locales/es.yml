@@ -166,7 +166,8 @@ es:
       search_button: "Buscar"
   restaurants:
     sessions:
-      signed_in: "Sesión iniciada correctamente"
+      signed_in: "Sesión iniciada correctamente. ¡Bienvenido!"
+      signed_out: "Sesión cerrada correctamente. Hasta pronto!"
     profile:
       success: "Perfil actualizado con éxito"
       error: "Hubo un error al actualizar el perfil"

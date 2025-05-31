@@ -7,7 +7,8 @@ class Restaurants::SessionsController < Devise::SessionsController
   after_action :set_session_locale
 
   def switch_locale(&)
-    I18n.with_locale(:en, &)
+    locale = session[:locale] || I18n.default_locale
+    I18n.with_locale(locale, &)
   end
 
   def set_session_locale
@@ -35,6 +36,6 @@ class Restaurants::SessionsController < Devise::SessionsController
   protected
 
   def after_sign_out_path_for(_scope)
-    root_path(restaurant_id: @stored_restaurant_id)
+    carta_path(restaurant_id: @stored_restaurant_id)
   end
 end

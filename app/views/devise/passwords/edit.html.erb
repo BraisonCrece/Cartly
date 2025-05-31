@@ -1,44 +1,55 @@
-<div class="flex flex-col w-[90%] max-w-sm">
-  <h2 class="my-4 text-4xl text-center"><%= t('.title') %></h2>
+<div class="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4">
+  <div class="w-full max-w-md">
+    <div class="text-center mb-8">
+      <h2 class='text-3xl font-bold text-gray-900 dark:text-white'><%= t('.title') %></h2>
+      <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Ingresa tu nueva contraseña</p>
+    </div>
 
-  <%= form_for(resource,
-      as: resource_name,
-      url: password_path(resource_name),
-      html: {
-        method: :put,
-        class: 'flex flex-col rounded-[3px] shadow p-8 dark:shadow-gray-600'
-      }) do |f| %>
+    <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+      <%= form_for(resource,
+          as: resource_name,
+          url: password_path(resource_name),
+          html: {
+            method: :put,
+            class: 'p-8 space-y-6'
+          }) do |f| %>
 
-    <%= render "devise/shared/error_messages", resource: resource %>
-    <%= f.hidden_field :reset_password_token %>
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= f.hidden_field :reset_password_token %>
 
-    <div class="mb-2">
-      <%= f.label :password, t('.new_password'),
-          class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>
-      <% if @minimum_password_length %>
-        <em class="text-xs dark:text-gray-200">
-          <%= t('.min_chars', length: @minimum_password_length) %>
-        </em>
+        <div class="space-y-1">
+          <%= f.label :password, t('.new_password'),
+              class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+          <% if @minimum_password_length %>
+            <p class="text-xs text-gray-500 dark:text-gray-400 mb-1">
+              <%= t('.min_chars', length: @minimum_password_length) %>
+            </p>
+          <% end %>
+          <%= f.password_field :password,
+              autofocus: true,
+              autocomplete: "new-password",
+              class: "w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-white transition-colors" %>
+        </div>
+
+        <div class="space-y-1">
+          <%= f.label :password_confirmation, t('.confirm_password'),
+              class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+          <%= f.password_field :password_confirmation,
+              autocomplete: "new-password",
+              class: "w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-white transition-colors" %>
+        </div>
+
+        <div>
+          <%= f.submit t('.change_button'),
+              class: "w-full py-3 px-4 bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:ring-sky-500 focus:ring-opacity-50 text-white font-medium rounded-lg transition-colors cursor-pointer" %>
+        </div>
       <% end %>
-      <%= f.password_field :password,
-          autofocus: true,
-          autocomplete: "new-password",
-          class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800" %>
-    </div>
 
-    <div class="mb-2">
-      <%= f.label :password_confirmation, t('.confirm_password'),
-          class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>
-      <%= f.password_field :password_confirmation,
-          autocomplete: "new-password",
-          class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800" %>
+      <div class="px-8 py-6 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">
+        <div class="text-center space-y-2">
+          <%= render "devise/shared/links" %>
+        </div>
+      </div>
     </div>
-
-    <div class="mb-2">
-      <%= f.submit t('.change_button'),
-          class: "p-2 w-full bg-sky-800 rounded-[3px] text-white font-bold active:bg-sky-950 cursor-pointer" %>
-    </div>
-  <% end %>
-
-  <%= render "devise/shared/links" %>
+  </div>
 </div>

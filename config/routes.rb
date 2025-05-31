@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       controllers: {
         sessions: 'restaurants/sessions',
         registrations: 'restaurants/registrations',
+        confirmations: 'restaurants/confirmations',
       }
   end
 
