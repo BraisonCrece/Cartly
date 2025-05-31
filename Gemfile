@@ -55,5 +55,6 @@ end
 
 group :development do
   gem 'dockerfile-rails', '>= 1.6'
+  gem 'letter_opener_web'
   gem 'web-console'
 end

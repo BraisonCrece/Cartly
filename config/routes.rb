@@ -5,6 +5,8 @@
 Rails.application.routes.draw do
   root 'landing#index'
 
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
   unless defined?(::Rake::SprocketsTask)
     devise_for :restaurants,
       path: 'admin',

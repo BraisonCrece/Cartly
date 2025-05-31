@@ -4,7 +4,7 @@ class Restaurant < ApplicationRecord
   has_one_attached :logo, dependent: :destroy
   has_one_attached :logo_white, dependent: :destroy
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable, :confirmable
 
   validates :email, presence: { message: 'É obrigatorio o uso dun email' }
   validates :email, uniqueness: { message: 'O email xa existe na base de datos', case_sensitive: false }
