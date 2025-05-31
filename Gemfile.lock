@@ -133,7 +133,6 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
-    diff-lcs (1.5.1)
     dockerfile-rails (1.6.24)
       rails (>= 3.0.0)
     dotenv (3.1.4)
@@ -151,11 +150,6 @@ GEM
       zeitwerk (~> 2.6)
     erubi (1.13.0)
     event_stream_parser (1.0.0)
-    factory_bot (6.5.0)
-      activesupport (>= 5.0.0)
-    factory_bot_rails (6.4.3)
-      factory_bot (~> 6.4)
-      railties (>= 5.0.0)
     faker (3.4.2)
       i18n (>= 1.8.11, < 2)
     faraday (2.12.1)
@@ -342,23 +336,6 @@ GEM
       chunky_png (~> 1.0)
       rqrcode_core (~> 1.0)
     rqrcode_core (1.2.0)
-    rspec-core (3.13.1)
-      rspec-support (~> 3.13.0)
-    rspec-expectations (3.13.3)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
-    rspec-mocks (3.13.1)
-      diff-lcs (>= 1.2.0, < 2.0)
-      rspec-support (~> 3.13.0)
-    rspec-rails (6.0.4)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      railties (>= 6.1)
-      rspec-core (~> 3.12)
-      rspec-expectations (~> 3.12)
-      rspec-mocks (~> 3.12)
-      rspec-support (~> 3.12)
-    rspec-support (3.13.1)
     rubocop (1.68.0)
       json (~> 2.3)
       language_server-protocol (>= 3.17.0)
@@ -390,8 +367,6 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    shoulda-matchers (5.3.0)
-      activesupport (>= 5.2.0)
     sorbet-runtime (0.5.11751)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
@@ -474,7 +449,6 @@ DEPENDENCIES
   dotenv-rails
   dry-initializer
   dry-monads
-  factory_bot_rails (~> 6.2)
   faker (~> 3.1)
   htmlbeautifier
   httparty
@@ -494,13 +468,11 @@ DEPENDENCIES
   rails_live_reload
   redis
   rqrcode
-  rspec-rails (~> 6.0.0)
   rubocop
   ruby-lsp
   ruby-openai
   ruby-vips
   selenium-webdriver
-  shoulda-matchers (~> 5.0)
   sprockets-rails
   stimulus-rails
   tailwindcss-rails

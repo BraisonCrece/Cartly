@@ -11,14 +11,14 @@ services:
         condition: service_healthy
       redis:
         condition: service_started
-    volumes: &app_volumes
+    volumes:
       - .:/rails
       - bundle_data:/usr/local/bundle
       - data:/data
       - bash_history:/root
     ports:
       - "3000:3000"
-    environment: &app_environment
+    environment:
       RAILS_ENV: development
       DATABASE_URL: postgres://postgres:password@db:5432/cartly_development
       POSTGRES_USER: postgres
@@ -27,6 +27,8 @@ services:
       GEMINI_KEY: ${GEMINI_API}
       AWS_ACCESS_KEY_ID: ${CARTLY_S3_KEY}
       AWS_SECRET_ACCESS_KEY: ${CARTLY_S3_SECRET_KEY}
+      BREVO_SMTP_USERNAME: ${BREVO_SMTP_USERNAME}
+      BREVO_SMTP_PASSWORD: ${BREVO_SMTP_PASSWORD}
     networks:
       - cartly_network
     command: bash -c "rm -f tmp/pids/server.pid && bin/dev"

@@ -43,13 +43,13 @@ group :development, :test do
   gem 'capybara'
   gem 'capybara-screenshot'
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'factory_bot_rails', '~> 6.2'
+
   gem 'rails_live_reload'
-  gem 'rspec-rails', '~> 6.0.0'
+
   gem 'rubocop', require: false
   gem 'ruby-lsp'
   gem 'selenium-webdriver'
-  gem 'shoulda-matchers', '~> 5.0'
+
   gem 'webdrivers', '= 5.3.0'
 end
 

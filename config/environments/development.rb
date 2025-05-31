@@ -41,7 +41,19 @@ Rails.application.configure do
   end
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+  
+  config.action_mailer.smtp_settings = {
+    address: 'smtp-relay.brevo.com',
+    port: 587,
+    domain: 'localhost',
+    user_name: ENV['BREVO_SMTP_USERNAME'],
+    password: ENV['BREVO_SMTP_PASSWORD'],
+    authentication: 'login',
+    enable_starttls_auto: true
+  }
 
   config.action_mailer.perform_caching = false
 
