@@ -32,11 +32,17 @@ es:
   devise:
     confirmations:
       confirmed: Tu cuenta de restaurante ha sido confirmada satisfactoriamente.
-      send_instructions: Vas a recibir un correo con instrucciones sobre cómo confirmar tu cuenta de restaurante en unos minutos.
-      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, en unos minutos recibirás un correo con instrucciones sobre cómo confirmar tu cuenta de restaurante.
-      title: "Reenviar instrucciones de confirmación"
+      send_instructions: >-
+        Vas a recibir un correo con instrucciones sobre cómo confirmar tu cuenta
+        de restaurante en unos minutos.
+      send_paranoid_instructions: >-
+        Si tu correo existe en nuestra base de datos, en unos minutos recibirás
+        un correo con instrucciones sobre cómo confirmar tu cuenta de
+        restaurante.
+      title: Reenviar instrucciones de confirmación
       new:
         resend_confirmation_instructions: Reenviar instrucciones de confirmación
+        send_instructions: Reenviar
     failure:
       already_authenticated: Ya has iniciado sesión.
       inactive: Tu cuenta de restaurante aún no ha sido activada.
@@ -44,115 +50,166 @@ es:
       last_attempt: Tienes un intento más antes de que tu cuenta sea bloqueada.
       locked: Tu cuenta está bloqueada.
       not_found_in_database: "%{authentication_keys} o contraseña inválidos."
-      timeout: Tu sesión expiró. Por favor, inicia sesión nuevamente para continuar.
+      timeout: "Tu sesión expiró. Por favor, inicia sesión nuevamente para continuar."
       unauthenticated: Tienes que iniciar sesión o registrarte para poder continuar.
       unconfirmed: Tienes que confirmar tu cuenta de restaurante para poder continuar.
     mailer:
       confirmation_instructions:
         welcome: "¡Bienvenido %{email}!"
-        confirm_text: "Puedes confirmar tu cuenta de restaurante a través del siguiente enlace:"
-        confirm_link: "Confirmar mi cuenta"
-        action: "Confirmar mi cuenta de restaurante"
+        confirm_text: >-
+          Puedes confirmar tu cuenta de restaurante a través del siguiente
+          enlace:
+        confirm_link: Confirmar mi cuenta
+        action: Confirmar mi cuenta de restaurante
         greeting: "¡Bienvenido %{recipient}!"
-        instruction: 'Puedes confirmar el correo electrónico de tu cuenta de restaurante a través de este enlace:'
+        instruction: >-
+          Puedes confirmar el correo electrónico de tu cuenta de restaurante a
+          través de este enlace:
         subject: Instrucciones de confirmación
       email_changed:
         greeting: "¡Hola %{email}!"
-        changing: "Nos ponemos en contacto para notificarte que tu email está siendo cambiado a %{email}."
-        changed: "Nos ponemos en contacto para notificarte que tu email ha sido cambiado a %{email}."
-        message: Estamos contactando contigo para notificarte que tu email de restaurante ha sido cambiado a %{email}.
-        message_unconfirmed: Nos estamos contactando contigo para notificarte que tu correo de restaurante se está cambiando a %{email}.
+        changing: >-
+          Nos ponemos en contacto para notificarte que tu email está siendo
+          cambiado a %{email}.
+        changed: >-
+          Nos ponemos en contacto para notificarte que tu email ha sido cambiado
+          a %{email}.
+        message: >-
+          Estamos contactando contigo para notificarte que tu email de
+          restaurante ha sido cambiado a %{email}.
+        message_unconfirmed: >-
+          Nos estamos contactando contigo para notificarte que tu correo de
+          restaurante se está cambiando a %{email}.
         subject: Email cambiado
       password_change:
         greeting: "¡Hola %{email}!"
-        message: "Nos ponemos en contacto para notificarte que tu contraseña ha sido cambiada."
+        message: >-
+          Nos ponemos en contacto para notificarte que tu contraseña ha sido
+          cambiada.
         subject: Contraseña cambiada
       reset_password_instructions:
         action: Cambiar mi contraseña
         greeting: "¡Hola %{recipient}!"
-        instruction: Alguien ha solicitado un enlace para cambiar su contraseña de restaurante, lo que se puede realizar a través del siguiente enlace.
-        instruction_2: Si usted no lo ha solicitado, por favor ignore este correo electrónico.
-        instruction_3: Su contraseña no será cambiada hasta que usted acceda al enlace y cree una nueva.
+        instruction: >-
+          Alguien ha solicitado un enlace para cambiar su contraseña de
+          restaurante, lo que se puede realizar a través del siguiente enlace.
+        instruction_2: >-
+          Si usted no lo ha solicitado, por favor ignore este correo
+          electrónico.
+        instruction_3: >-
+          Su contraseña no será cambiada hasta que usted acceda al enlace y cree
+          una nueva.
         subject: Instrucciones de recuperación de contraseña
       unlock_instructions:
         action: Desbloquear mi cuenta de restaurante
         greeting: "¡Hola %{recipient}!"
-        instruction: 'Haga click en el siguiente enlace para desbloquear su cuenta de restaurante:'
-        message: Su cuenta de restaurante ha sido bloqueada debido a una cantidad excesiva de intentos infructuosos para ingresar.
+        instruction: >-
+          Haga click en el siguiente enlace para desbloquear su cuenta de
+          restaurante:
+        message: >-
+          Su cuenta de restaurante ha sido bloqueada debido a una cantidad
+          excesiva de intentos infructuosos para ingresar.
         subject: Instrucciones para desbloquear
     omniauth_callbacks:
-      failure: No has sido autorizado en la cuenta %{kind} porque "%{reason}".
-      success: Has sido autorizado satisfactoriamente en la cuenta %{kind}.
+      failure: 'No has sido autorizado en la cuenta %{kind} porque "%{reason}".'
+      success: "Has sido autorizado satisfactoriamente en la cuenta %{kind}."
     passwords:
       edit:
-        title: "Cambiar tu contraseña"
-        new_password: "Nueva contraseña"
-        confirm_new_password: "Confirmar nueva contraseña"
+        title: Cambiar tu contraseña
+        new_password: Nueva contraseña
+        confirm_password: Confirmar nueva contraseña
         min_chars: "(%{length} caracteres mínimo)"
-        change_my_password: "Cambiar mi contraseña"
-        change_your_password: "Cambie su contraseña de restaurante"
+        change_button: Cambiar mi contraseña
+        change_your_password: Cambie su contraseña de restaurante
       new:
-        title: "¿Olvidaste tu contraseña?"
-        forgot_your_password: "¿Ha olvidado su contraseña de restaurante?"
-        send_me_reset_password_instructions: "Envíeme las instrucciones para resetear mi contraseña de restaurante"
-      no_token: No puedes acceder a esta página si no es a través de un enlace para resetear tu contraseña. Si has llegado hasta aquí desde el email para resetear tu contraseña, por favor asegúrate de que la URL introducida está completa.
-      send_instructions: Recibirás un correo con instrucciones sobre cómo resetear tu contraseña en unos pocos minutos.
-      send_paranoid_instructions: Si tu correo existe en nuestra base de datos, recibirás un correo con instrucciones sobre cómo resetear tu contraseña en tu bandeja de entrada.
+        title: ¿Olvidaste tu contraseña?
+        forgot_your_password: ¿Ha olvidado su contraseña de restaurante?
+        send_me_reset_password_instructions: Envíeme las instrucciones para resetear mi contraseña de restaurante
+        send_instructions: Enviar instrucciones
+      no_token: >-
+        No puedes acceder a esta página si no es a través de un enlace para
+        resetear tu contraseña. Si has llegado hasta aquí desde el email para
+        resetear tu contraseña, por favor asegúrate de que la URL introducida
+        está completa.
+      send_instructions: >-
+        Recibirás un correo con instrucciones sobre cómo resetear tu contraseña
+        en unos pocos minutos.
+      send_paranoid_instructions: >-
+        Si tu correo existe en nuestra base de datos, recibirás un correo con
+        instrucciones sobre cómo resetear tu contraseña en tu bandeja de
+        entrada.
       updated: Se ha cambiado tu contraseña. Ya iniciaste sesión.
       updated_not_active: Tu contraseña fue cambiada.
     registrations:
-      destroyed: "¡Adiós! Tu cuenta de restaurante ha sido cancelada correctamente. Esperamos verte pronto."
-      signed_up: "¡Bienvenido! Tu restaurante ha sido registrado exitosamente."
-      signed_up_but_inactive: "Tu restaurante ha sido registrado exitosamente. Sin embargo, no pudimos iniciar tu sesión porque tu cuenta aún no está activada."
-      signed_up_but_locked: "Tu restaurante ha sido registrado exitosamente. Sin embargo, no pudimos iniciar tu sesión porque tu cuenta está bloqueada."
-      signed_up_but_unconfirmed: "Se ha enviado un mensaje con un enlace de confirmación a tu dirección de email. Por favor, sigue el enlace para activar tu cuenta de restaurante."
-      update_needs_confirmation: "Has actualizado tu cuenta de restaurante exitosamente, pero necesitamos verificar tu nueva dirección de email. Por favor, revisa tu email y sigue el enlace de confirmación para confirmar tu nueva dirección de email."
-      updated: "Tu cuenta de restaurante ha sido actualizada exitosamente."
-      updated_but_not_signed_in: "Tu cuenta de restaurante ha sido actualizada exitosamente, pero como tu contraseña fue cambiada, necesitas iniciar sesión de nuevo."
+      destroyed: >-
+        ¡Adiós! Tu cuenta de restaurante ha sido cancelada correctamente.
+        Esperamos verte pronto.
+      signed_up: ¡Bienvenido! Tu restaurante ha sido registrado exitosamente.
+      signed_up_but_inactive: >-
+        Tu restaurante ha sido registrado exitosamente. Sin embargo, no pudimos
+        iniciar tu sesión porque tu cuenta aún no está activada.
+      signed_up_but_locked: >-
+        Tu restaurante ha sido registrado exitosamente. Sin embargo, no pudimos
+        iniciar tu sesión porque tu cuenta está bloqueada.
+      signed_up_but_unconfirmed: >-
+        Se ha enviado un mensaje con un enlace de confirmación a tu dirección de
+        email. Por favor, sigue el enlace para activar tu cuenta de restaurante.
+      update_needs_confirmation: >-
+        Has actualizado tu cuenta de restaurante exitosamente, pero necesitamos
+        verificar tu nueva dirección de email. Por favor, revisa tu email y
+        sigue el enlace de confirmación para confirmar tu nueva dirección de
+        email.
+      updated: Tu cuenta de restaurante ha sido actualizada exitosamente.
+      updated_but_not_signed_in: >-
+        Tu cuenta de restaurante ha sido actualizada exitosamente, pero como tu
+        contraseña fue cambiada, necesitas iniciar sesión de nuevo.
       restaurant:
-        signed_up_but_unconfirmed: "Se ha enviado un mensaje con un enlace de confirmación a tu dirección de email. Por favor, sigue el enlace para activar tu cuenta de restaurante."
+        signed_up_but_unconfirmed: >-
+          Se ha enviado un mensaje con un enlace de confirmación a tu dirección
+          de email. Por favor, sigue el enlace para activar tu cuenta de
+          restaurante.
       edit:
         title: "Editar %{resource}"
         waiting_confirmation: "Esperando confirmación para: %{email}"
-        leave_blank_if_you_don_t_want_to_change_it: "(dejar en blanco si no quieres cambiarla)"
-        current_password_needed: "(necesitamos tu contraseña actual para confirmar los cambios)"
-        update_button: "Actualizar"
-        cancel_my_account: "Cancelar mi cuenta de restaurante"
-        unhappy: "¿No estás contento?"
-        cancel_confirm: "¿Estás seguro?"
-        back: "Volver"
-        are_you_sure: "¿Está usted seguro?"
-        currently_waiting_confirmation_for_email: 'Actualmente esperando la confirmacion de: %{email} '
+        leave_blank_if_you_don_t_want_to_change_it: (dejar en blanco si no quieres cambiarla)
+        current_password_needed: (necesitamos tu contraseña actual para confirmar los cambios)
+        update_button: Actualizar
+        cancel_my_account: Cancelar mi cuenta de restaurante
+        unhappy: ¿No estás contento?
+        cancel_confirm: ¿Estás seguro?
+        back: Volver
+        are_you_sure: ¿Está usted seguro?
+        currently_waiting_confirmation_for_email: "Actualmente esperando la confirmacion de: %{email} "
         we_need_your_current_password_to_confirm_your_changes: necesitamos su contraseña actual para confirmar los cambios
       new:
-        title: "Registro"
-        restaurant_name: "Nombre del restaurante"
-        sign_up: "Registrarse"
+        title: Registro
+        restaurant_name: Nombre del restaurante
+        sign_up: Registrarse
         min_chars: "(%{length} caracteres mínimo)"
     sessions:
-      signed_in: "Sesión iniciada correctamente"
-      signed_out: "Sesión finalizada."
-      already_signed_out: "Sesión finalizada."
+      signed_in: Sesión iniciada correctamente
+      signed_out: Sesión finalizada.
+      already_signed_out: Sesión finalizada.
       new:
-        title: "Iniciar sesión"
-        email: "Email"
-        password: "Contraseña"
-        remember_me: "Recordarme"
-        login: "Iniciar sesión"
-        sign_in: "Iniciar sesión"
+        title: Iniciar sesión
+        email: Email
+        password: Contraseña
+        remember_me: Recordarme
+        login: Iniciar sesión
+        sign_in: Iniciar sesión
     shared:
       links:
-        login: "Iniciar sesión"
-        sign_up: "Registro"
-        forgot_password: "¿Olvidaste tu contraseña?"
-        no_confirmation: "¿No recibiste instrucciones de confirmación?"
-        no_unlock: "¿No recibiste instrucciones de desbloqueo?"
+        login: Iniciar sesión
+        sign_up: Registro
+        forgot_password: ¿Olvidaste tu contraseña?
+        no_confirmation: ¿No recibiste instrucciones de confirmación?
+        no_unlock: ¿No recibiste instrucciones de desbloqueo?
         sign_in_with: "Iniciar sesión con %{provider}"
-        back: Atrás
-        didn_t_receive_confirmation_instructions: "¿No ha recibido las instrucciones de confirmación?"
-        didn_t_receive_unlock_instructions: "¿No ha recibido instrucciones para desbloquear?"
-        forgot_your_password: "¿Ha olvidado su contraseña?"
-        sign_in_with_provider: Iniciar sesión con %{provider}
+        back: Volver
+        didn_t_receive_confirmation_instructions: ¿No ha recibido las instrucciones de confirmación?
+        didn_t_receive_unlock_instructions: ¿No ha recibido instrucciones para desbloquear?
+        forgot_your_password: ¿Ha olvidado su contraseña?
+        sign_in_with_provider: "Iniciar sesión con %{provider}"
       error_messages:
         problems:
           one: "1 error impidió que este %{resource} se guardara:"
@@ -161,20 +218,27 @@ es:
         one: "(%{count} caracter como mínimo)"
         other: "(%{count} caracteres como mínimo)"
     unlocks:
-      title: "Reenviar instrucciones de desbloqueo"
-      resend_button: "Reenviar instrucciones de desbloqueo"
-      send_instructions: Vas a recibir instrucciones para desbloquear tu cuenta de restaurante en unos pocos minutos.
-      send_paranoid_instructions: Si tu cuenta existe, vas a recibir instrucciones para desbloquear tu cuenta de restaurante en unos pocos minutos.
+      link:
+        title: Enviar link de desbloqueo
+        send: Enviar
+      title: Reenviar instrucciones de desbloqueo
+      resend_button: Reenviar instrucciones de desbloqueo
+      send_instructions: >-
+        Vas a recibir instrucciones para desbloquear tu cuenta de restaurante en
+        unos pocos minutos.
+      send_paranoid_instructions: >-
+        Si tu cuenta existe, vas a recibir instrucciones para desbloquear tu
+        cuenta de restaurante en unos pocos minutos.
       unlocked: Tu cuenta de restaurante ha sido desbloqueada. Ya puedes iniciar sesión.
       new:
         resend_unlock_instructions: Reenviar instrucciones para desbloquear
   errors:
     messages:
-      already_confirmed: ya ha sido confirmado, por favor intenta iniciar sesión
-      confirmation_period_expired: necesita confirmarse dentro de %{period}, por favor solicita una nueva
-      expired: ha expirado, por favor solicita una nueva
+      already_confirmed: "ya ha sido confirmado, por favor intenta iniciar sesión"
+      confirmation_period_expired: "necesita confirmarse dentro de %{period}, por favor solicita una nueva"
+      expired: "ha expirado, por favor solicita una nueva"
       not_found: no se ha encontrado
       not_locked: no estaba bloqueada
       not_saved:
-        one: 'Ocurrió un error al tratar de guardar %{resource}:'
-        other: 'Ocurrieron %{count} errores al tratar de guardar %{resource}:'
+        one: "Ocurrió un error al tratar de guardar %{resource}:"
+        other: "Ocurrieron %{count} errores al tratar de guardar %{resource}:"

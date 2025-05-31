@@ -1,7 +1,7 @@
-<div class="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4">
+<div class="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4 w-full py-8">
   <div class="w-full max-w-md">
     <div class="text-center mb-8">
-      <h2 class='text-3xl font-bold text-gray-900 dark:text-white'><%= t('.title') %></h2>
+      <h2 class='text-3xl font-bold text-gray-900 dark:text-white'><%= t('devise.unlocks.link.title') %></h2>
       <p class="mt-2 text-sm text-gray-600 dark:text-gray-400">Te enviaremos un enlace para confirmar tu cuenta</p>
     </div>
 
@@ -26,7 +26,7 @@
         </div>
 
         <div>
-          <%= f.submit t('.send_instructions'),
+          <%= f.submit t('devise.unlocks.link.send'),
               class: "w-full py-3 px-4 bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:ring-sky-500 focus:ring-opacity-50 text-white font-medium rounded-lg transition-colors cursor-pointer" %>
         </div>
       <% end %>
