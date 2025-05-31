@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
 class ApplicationMailer < ActionMailer::Base
-  default from: '8e73c2001@smtp-brevo.com'
+  default from: 'noreply@gocartly.es'
   layout 'mailer'
 end

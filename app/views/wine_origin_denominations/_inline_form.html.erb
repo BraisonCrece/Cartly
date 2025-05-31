@@ -1,35 +1,44 @@
 <%= form_with model: denomination, url: admin_denomination_path(denomination),
-      class: "flex w-full justify-between align-center",
+      class: "flex w-full justify-between items-center",
       turbo_frame: denomination do |f| %>
   <%= render "form_errors", denomination: denomination %>
 
-  <%= f.text_field :name,
-      class: "bg-transparent border-none outline-none w-full p-0 text-xl focus:ring-0 dark:text-gray-100",
-      autofocus: true %>
+  <div class="flex-1 mr-4">
+    <%= f.text_field :name,
+        class: "w-full px-3 py-2 bg-transparent border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:text-white text-gray-900 transition-colors",
+        autofocus: true %>
+  </div>
 
-  <div class='flex gap-4 dark:text-gray-900 text-black align-center items-center'>
-    <!-- Edit Buttons -->
-    <div class="flex justify-center items-center">
-      <!-- Submit Edit -->
-      <%= f.button type: :submit, class: "text-green-600 hover:cursor-pointer" do %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M3 12c0 -4.97 4.03 -9 9 -9c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9Z"/><path d="M8 12l3 3l5 -5"/></g></svg>
-      <% end %>
-      <!-- Cancel Edit -->
-      <%= link_to admin_denomination_path(denomination), class: "text-blue-400 hover:cursor-pointer" do %>
-        <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m4.3 14.3a.996.996 0 0 1-1.41 0L12 13.41L9.11 16.3a.996.996 0 1 1-1.41-1.41L10.59 12L7.7 9.11A.996.996 0 1 1 9.11 7.7L12 10.59l2.89-2.89a.996.996 0 1 1 1.41 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41"/></svg>
-      <% end %>
-    </div>
+  <div class="flex items-center space-x-3">
+    <%= f.button type: :submit, 
+        class: "p-2 text-green-600 hover:text-green-700 dark:text-green-400 dark:hover:text-green-300 transition-colors",
+        aria_label: "Guardar cambios" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M3 12c0 -4.97 4.03 -9 9 -9c4.97 0 9 4.03 9 9c0 4.97 -4.03 9 -9 9c-4.97 0 -9 -4.03 -9 -9Z"/>
+          <path d="M8 12l3 3l5 -5"/>
+        </g>
+      </svg>
+    <% end %>
 
-    <!-- Delete Button -->
-    <%= link_to(
-      admin_denomination_path(denomination),
-      data: {
-        turbo_method: :delete,
-        turbo_confirm: "¿Estás seguro de que deseas eliminar esta denominación?"
-      },
-      class: "dark:text-white"
-    ) do %>
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h4a1 1 0 1 1 0 2h-1.069l-.867 12.142A2 2 0 0 1 17.069 22H6.93a2 2 0 0 1-1.995-1.858L4.07 8H3a1 1 0 0 1 0-2h4zm2 2h6V4H9zM6.074 8l.857 12H17.07l.857-12zM10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1m4 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1"/></svg>
+    <%= link_to admin_denomination_path(denomination), 
+        class: "p-2 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300 transition-colors",
+        aria_label: "Cancelar edición" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10s10-4.47 10-10S17.53 2 12 2m4.3 14.3a.996.996 0 0 1-1.41 0L12 13.41L9.11 16.3a.996.996 0 1 1-1.41-1.41L10.59 12L7.7 9.11A.996.996 0 1 1 9.11 7.7L12 10.59l2.89-2.89a.996.996 0 1 1 1.41 1.41L13.41 12l2.89 2.89c.38.38.38 1.02 0 1.41"/>
+      </svg>
+    <% end %>
+
+    <%= link_to admin_denomination_path(denomination),
+        data: {
+          turbo_method: :delete,
+          turbo_confirm: "¿Estás seguro de que deseas eliminar esta denominación?"
+        },
+        class: "p-2 text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors",
+        aria_label: "Eliminar denominación" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
+        <path fill="currentColor" d="M7 4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2h4a1 1 0 1 1 0 2h-1.069l-.867 12.142A2 2 0 0 1 17.069 22H6.93a2 2 0 0 1-1.995-1.858L4.07 8H3a1 1 0 0 1 0-2h4zm2 2h6V4H9zM6.074 8l.857 12H17.07l.857-12zM10 10a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1m4 0a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1"/>
+      </svg>
     <% end %>
   </div>
 <% end %>
