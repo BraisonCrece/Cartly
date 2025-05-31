@@ -1,38 +1,47 @@
-<div class="flex-1 flex flex-col justify-between h-full">
-  <label id="<%= field %>">
-    <span class="font-semibold text-sm text-gray-600 dark:text-gray-200">
-      <%= label %>
-      <% if is_optional %>
-        <span class="text-xs text-gray-500">Opcional</span>
-      <% end %>
-    </span>
+<div class="space-y-2">
+  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">
+    <%= label %>
+    <% if is_optional %>
+      <span class="text-xs text-gray-500 ml-1">(Opcional)</span>
+    <% end %>
+  </label>
 
-    <div class="relative w-full mt-2 bg-gray-400/25 rounded hover:cursor-pointer" style="padding-top: 56.25%">
-      <div
-          data-profile-logo-target="<%= "#{field.to_s.camelize(:lower)}Loader" %>"
-          class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 rounded-lg"
-      >
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 animate-spin" width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12 19a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 3c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd" opacity="0.2"/><path d="M2 12C2 6.477 6.477 2 12 2v3a7 7 0 0 0-7 7z"/></g></svg>
-      </div>
-
-      <% placeholder_image = form.object.send(field).attached? ?
-            form.object.send(field) :
-            (field == :logo_white ? 'logo-placeholder-white.png' : 'logo-placeholder-black.png') %>
-
-      <%= image_tag placeholder_image,
-          class: "absolute inset-0 w-full h-full object-contain transition-opacity duration-300 rounded",
-          data: {
-              profile_logo_target: "#{field.to_s.camelize(:lower)}Image",
-              action: "load->profile-logo##{field == :logo_white ? 'imageWhiteLoaded' : 'imageLoaded'}"
-          } %>
+  <div data-controller="image-loader" class="relative w-full bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden hover:cursor-pointer" style="padding-top: 56.25%">
+    <div data-image-loader-target="loader"
+         data-profile-logo-target="<%= "#{field.to_s.camelize(:lower)}Loader" %>"
+         class="absolute inset-0 flex items-center justify-center bg-gray-100/80 dark:bg-gray-700/80 transition-opacity duration-300 rounded-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 animate-spin" width="24" height="24" viewBox="0 0 24 24">
+        <g fill="currentColor">
+          <path fill-rule="evenodd" d="M12 19a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 3c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd" opacity="0.2"/>
+          <path d="M2 12C2 6.477 6.477 2 12 2v3a7 7 0 0 0-7 7z"/>
+        </g>
+      </svg>
     </div>
 
+    <% placeholder_image = form.object.send(field).attached? ?
+          form.object.send(field) :
+          (field == :logo_white ? 'logo-placeholder-white.png' : 'logo-placeholder-black.png') %>
+
+    <%= image_tag placeholder_image,
+        class: "absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 rounded-lg hover:scale-[101%]",
+        data: {
+            profile_logo_target: "#{field.to_s.camelize(:lower)}Image",
+            image_loader_target: "image",
+            action: "load->image-loader#imageLoaded load->profile-logo##{field == :logo_white ? 'imageWhiteLoaded' : 'imageLoaded'} click->profile-logo##{field == :logo_white ? 'changeWhite' : 'change'}"
+        } %>
+  </div>
+
+  <div class="relative mt-2">
+    <div class="flex items-center justify-between border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 w-full bg-white dark:bg-gray-800">
+      <span class="text-gray-400 text-sm">Selecciona un archivo...</span>
+      <button type="button" class="text-sky-600 hover:text-sky-700 text-sm">Examinar</button>
+    </div>
     <%= form.file_field field,
-        class: "hidden",
+        class: "absolute inset-0 opacity-0 cursor-pointer w-full h-full",
         data: {
             action: "change->profile-logo##{field == :logo_white ? 'changeWhite' : 'change'}",
             profile_logo_target: "#{field.to_s.camelize(:lower)}Input"
         },
         accept: "image/png, image/jpeg, image/jpg" %>
-  </label>
+  </div>
 </div>

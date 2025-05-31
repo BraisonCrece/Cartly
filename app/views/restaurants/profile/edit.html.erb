@@ -1,70 +1,79 @@
-<div class="flex flex-col w-full" data-controller="profile-logo">
-    <h2 class='my-4 text-4xl text-center'><%= t('.title') %></h2>
+<div class="min-h-[calc(100vh-8rem)] flex items-center justify-center py-8 w-full px-4">
+  <div class="w-full max-w-4xl">
+    <div class="text-center mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white"><%= t('.title') %></h1>
+    </div>
 
-    <%= form_with(model: @restaurant,
-        url: update_admin_profile_path,
-        local: true,
-        method: :patch,
-        html: {
-          class: 'flex flex-col rounded-[3px] shadow p-8 dark:shadow-gray-600'
-        }) do |f| %>
+    <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden w-full">
+      <%= form_with(model: @restaurant,
+          url: update_admin_profile_path,
+          local: true,
+          method: :patch,
+          html: {
+            class: 'p-4 pt-0 space-y-6 w-full'
+          },
+          data: { controller: "profile-logo" }) do |f| %>
 
-        <div class="flex gap-4 w-full mb-4">
-            <%= render 'logo_input',
-                form: f,
-                field: :logo,
-                label: "Logo principal",
-                is_optional: false %>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <%= render 'logo_input',
+              form: f,
+              field: :logo,
+              label: "Logo principal",
+              is_optional: false %>
 
-            <%= render 'logo_input',
-                form: f,
-                field: :logo_white,
-                label: "Logo blanco",
-                is_optional: true %>
+          <%= render 'logo_input',
+              form: f,
+              field: :logo_white,
+              label: "Logo blanco",
+              is_optional: true %>
         </div>
 
-        <div class="mb-2">
-            <%= f.label :name, t('.labels.name'),
-                class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>
-            <%= f.text_field :name,
-                class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800",
-                placeholder: t('.placeholders.name') %>
+        <div class="space-y-1">
+          <%= f.label :name, t('.labels.name'),
+              class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+          <%= f.text_field :name,
+              class: "w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-white transition-colors",
+              placeholder: t('.placeholders.name') %>
         </div>
 
-        <div class="mb-2">
-            <%= f.label :province, t('.labels.province'),
-                class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>
-            <%= f.select :province,
-                options_for_select(provinces, @restaurant.province),
-                { prompt: t('.select_province') },
-                class: "border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800" %>
+        <div class="space-y-1">
+          <%= f.label :province, t('.labels.province'),
+              class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+          <%= f.select :province,
+              options_for_select(provinces, @restaurant.province),
+              { prompt: t('.select_province') },
+              class: "w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-white transition-colors" %>
         </div>
 
-        <div class="mb-2">
-            <%= f.label :city, t('.labels.city'),
-                class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>
-            <%= f.text_field :city,
-                class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800",
-                placeholder: t('.placeholders.city') %>
+        <div class="space-y-1">
+          <%= f.label :city, t('.labels.city'),
+              class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+          <%= f.text_field :city,
+              class: "w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-white transition-colors",
+              placeholder: t('.placeholders.city') %>
         </div>
 
-        <div class="mb-2">
-            <%= f.label :address, t('.labels.address'),
-                class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>
-            <%= f.text_field :address,
-                class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800",
-                placeholder: t('.placeholders.address') %>
+        <div class="space-y-1">
+          <%= f.label :address, t('.labels.address'),
+              class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+          <%= f.text_field :address,
+              class: "w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-white transition-colors",
+              placeholder: t('.placeholders.address') %>
         </div>
 
-        <div class="mb-2">
-            <%= f.label :phone, t('.labels.phone'),
-                class: "font-semibold text-sm text-gray-600 pb-1 block dark:text-gray-200" %>
-            <%= f.telephone_field :phone,
-                class: "placeholder:italic placeholder:text-gray-700 placeholder:font-extralight border rounded-[3px] px-3 py-2 mt-1 mb-5 text-sm w-full dark:text-gray-800",
-                placeholder: t('.placeholders.phone') %>
+        <div class="space-y-1">
+          <%= f.label :phone, t('.labels.phone'),
+              class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+          <%= f.telephone_field :phone,
+              class: "w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-white transition-colors",
+              placeholder: t('.placeholders.phone') %>
         </div>
 
-        <%= f.submit t('.save'),
-            class: "p-2 w-full bg-sky-800 rounded-[3px] text-white font-bold active:bg-sky-950" %>
-    <% end %>
+        <div>
+          <%= f.submit t('.save'),
+              class: "w-full py-3 px-4 bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:ring-sky-500 focus:ring-opacity-50 text-white font-medium rounded-lg transition-colors cursor-pointer" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

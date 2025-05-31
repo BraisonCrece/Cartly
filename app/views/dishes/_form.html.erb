@@ -1,11 +1,11 @@
-<div class="min-h-[calc(100vh-8rem)] flex items-center justify-center px-4">
-  <div class="w-full max-w-2xl">
+<div class="min-h-[calc(100vh-8rem)] flex items-center justify-center">
+  <div class="w-full max-w-4xl">
     <div class="text-center mb-8">
       <h1 id="form-title" class="text-3xl font-bold text-gray-900 dark:text-white"><%= message %></h1>
     </div>
 
     <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-      <%= form_with(model: dish, data: { turbo: false }, class: "p-8 space-y-6", data_controller: "description dish-form file-input") do |f| %>
+      <%= form_with(model: dish, data: { turbo: false }, class: "p-4 pt-0 space-y-6", data_controller: "description dish-form file-input") do |f| %>
         <% if @dish.errors.any? %>
           <div id="error_explanation" role="alert" aria-live="polite" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
             <h2 class='mb-2 font-semibold'>Se encontraron <%= @dish.errors.count %> errores en el formulario:</h2>
@@ -19,31 +19,31 @@
 
         <div class="space-y-1">
           <%= f.label :picture, "Foto del plato", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
-      <div data-controller="image-loader" class="relative w-full aspect-1 mb-4">
-        <div data-image-loader-target="loader"
-             class="absolute inset-0 flex items-center justify-center bg-gray-100/80 dark:bg-gray-700/80 transition-opacity duration-300 rounded-lg">
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 animate-spin" width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12 19a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 3c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd" opacity="0.2"/><path d="M2 12C2 6.477 6.477 2 12 2v3a7 7 0 0 0-7 7z"/></g></svg>
+            <div data-controller="image-loader" class="relative w-full aspect-1 mb-4">
+                <div data-image-loader-target="loader"
+                    class="absolute inset-0 flex items-center justify-center bg-gray-100/80 dark:bg-gray-700/80 transition-opacity duration-300 rounded-lg">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 animate-spin" width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12 19a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 3c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd" opacity="0.2"/><path d="M2 12C2 6.477 6.477 2 12 2v3a7 7 0 0 0-7 7z"/></g></svg>
+                </div>
+                <%= image_tag @dish.persisted? && @dish.picture.attached? ? @dish.picture : "placeholder.webp",
+                alt: "Foto del plato",
+                class: "absolute inset-0 w-full h-full object-cover rounded-[3px] hover:scale-[101%] hover:cursor-pointer opacity-0 transition-opacity duration-300",
+                data: {
+                    file_input_target: "imagePreview",
+                    action: "click->file-input#changePicture load->image-loader#imageLoaded",
+                    image_loader_target: "image"
+                } %>
+            </div>
+            <div class="hidden" data-file-input-target="placeholderUrl">
+                <%= asset_path("placeholder.webp") %>
+            </div>
+            <div class="relative">
+            <div class="flex items-center justify-between border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 w-full bg-white dark:bg-gray-800">
+                <span data-file-input-target="fileName" class="text-gray-400">Selecciona un archivo...</span>
+                <button type="button" class="text-sky-600 hover:text-sky-700">Examinar</button>
+            </div>
+            <%= f.file_field :picture, class: "absolute inset-0 opacity-0 cursor-pointer w-full h-full", accept: "image/*", data: { action: "change->file-input#updateFile", file_input_target: "fileInput", description_target: "descriptionImage" } %>
+            </div>
         </div>
-        <%= image_tag @dish.persisted? && @dish.picture.attached? ? @dish.picture : "placeholder.webp",
-          alt: "Foto del plato",
-          class: "absolute inset-0 w-full h-full object-cover rounded-[3px] hover:scale-[101%] hover:cursor-pointer opacity-0 transition-opacity duration-300",
-          data: {
-            file_input_target: "imagePreview",
-            action: "click->file-input#changePicture load->image-loader#imageLoaded",
-            image_loader_target: "image"
-          } %>
-      </div>
-      <div class="hidden" data-file-input-target="placeholderUrl">
-        <%= asset_path("placeholder.webp") %>
-      </div>
-        <div class="relative">
-          <div class="flex items-center justify-between border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 w-full bg-white dark:bg-gray-800">
-            <span data-file-input-target="fileName" class="text-gray-400">Selecciona un archivo...</span>
-            <button type="button" class="text-sky-600 hover:text-sky-700">Examinar</button>
-          </div>
-          <%= f.file_field :picture, class: "absolute inset-0 opacity-0 cursor-pointer w-full h-full", accept: "image/*", data: { action: "change->file-input#updateFile", file_input_target: "fileInput", description_target: "descriptionImage" } %>
-        </div>
-      </div>
 
         <div class="space-y-1">
           <%= f.label :title_es, "Nombre", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
@@ -177,7 +177,7 @@
 
         <div class="space-y-1" role="group" aria-labelledby="allergens-label">
           <%= f.label :allergen_ids, "Alérgenos", id: "allergens-label", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
-          <div class="grid grid-cols-2 gap-4 md:grid-cols-4 lg:grid-cols-6" role="group" >
+          <div class="grid grid-cols-2 gap-4 md:grid-cols-4" role="group" >
             <%= f.collection_check_boxes :allergen_ids, [Allergen.where(restaurant_id: current_restaurant.id) + Allergen.where(restaurant_id: nil)].flatten.uniq, :id, :name do |cb| %>
               <div class="relative items-center truncate justify-center mb-2 rounded-lg p-3 border border-gray-200 dark:border-gray-600 hover:border-sky-300 dark:hover:border-sky-500 hover:cursor-pointer transition-colors"
                    id=<%= "allergen-#{cb.object.id}" %>
