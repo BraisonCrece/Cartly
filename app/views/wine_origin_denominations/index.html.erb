@@ -1,4 +1,4 @@
-<div class="min-h-[calc(100vh-8rem)] px-4 py-8">
+<div class="min-h-[calc(100vh-8rem)] px-4 py-8 w-full">
   <div class="w-full max-w-4xl mx-auto">
     <div class="text-center mb-8">
       <h1 class="text-3xl font-bold text-gray-900 dark:text-white">Denominaciones de origen</h1>
@@ -8,7 +8,7 @@
       <div class="p-6">
         <%= render "form" %>
       </div>
-      
+
       <div class="border-t border-gray-200 dark:border-gray-700">
         <%= turbo_frame_tag @denominations_list_frame_tag, class: "divide-y divide-gray-200 dark:divide-gray-700" do %>
           <%= render @denominations %>
