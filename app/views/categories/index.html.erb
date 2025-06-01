@@ -11,15 +11,15 @@
     </div>
 
     <div class="space-y-8">
-      <%= turbo_frame_tag "#{current_restaurant.id}_menu_section" do %>
+      <%= turbo_frame_tag "menu_section" do %>
         <%= render "menu_categories_section" %>
       <% end %>
 
-      <%= turbo_frame_tag "#{current_restaurant.id}_drinks_section" do %>
+      <%= turbo_frame_tag "drinks_section" do %>
         <%= render "drinks_categories_section" %>
       <% end %>
 
-      <%= turbo_frame_tag "#{current_restaurant.id}_daily_section" do %>
+      <%= turbo_frame_tag "daily_section" do %>
         <%= render "daily_categories_section" %>
       <% end %>
     </div>

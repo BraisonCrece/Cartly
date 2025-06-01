@@ -8,10 +8,7 @@ class CategoriesController < AdminController
     @menu_categories = Category.where(category_type: 'menu', restaurant_id: current_restaurant.id)
     @daily_categories = Category.where(category_type: 'daily', restaurant_id: current_restaurant.id)
     @drinks_categories = Category.where(category_type: 'drinks', restaurant_id: current_restaurant.id)
-    @menu_list_frame_tag = "#{current_restaurant.id}_menu_list"
-    @daily_list_frame_tag = "#{current_restaurant.id}_daily_list"
-    @drinks_list_frame_tag = "#{current_restaurant.id}_drinks_list"
-    @category_form_frame_tag = "#{current_restaurant.id}_category_form"
+    @category_form_frame_tag = 'category_form'
     @selected_category_type = params[:selected_type] || 'menu'
   end
 
@@ -25,22 +22,36 @@ class CategoriesController < AdminController
   end
 
   def create
-    position = Category.where(category_type: category_params[:category_type]).count + 1
+    position = Category.where(
+      category_type: category_params[:category_type],
+      restaurant_id: current_restaurant.id
+    ).count + 1
+
     @category = Category.new(category_params)
     @category.restaurant_id = current_restaurant.id
     @category.position = position
 
     if @category.save
-      request_translations(@category)
       reload_category_data
-      section_frame_id = "#{current_restaurant.id}_#{@category.category_type}_section"
+      # request_translations(@category)
+      section_frame_id = "#{@category.category_type}_section"
+      section_list_id = "categories_#{@category.category_type}_list"
       section_partial = "#{@category.category_type}_categories_section"
 
-      render turbo_stream: [
-        turbo_stream.action(:clear_form, 'category_name_es'),
-        turbo_stream.replace(section_frame_id, partial: "categories/#{section_partial}"),
-        turbo_notification('Categoría creada exitosamente', type: :success),
-      ]
+      stream_actions = [].tap do |actions|
+        actions << turbo_stream.action(:clear_form, 'category_name_es')
+        if position != 1
+          actions << turbo_stream.append(
+            section_list_id,
+            partial: 'categories/category',
+            locals: { category: @category }
+          )
+        end
+        actions << turbo_stream.replace(section_frame_id, partial: "categories/#{section_partial}") if position == 1
+        actions << turbo_notification('Categoría creada exitosamente', type: :success)
+      end
+
+      render turbo_stream: stream_actions
     else
       render turbo_stream: [
         turbo_stream.replace("#{current_restaurant.id}_category_form", partial: 'categories/form', locals: { category: @category, selected_category_type: @category.category_type }),
@@ -66,17 +77,31 @@ class CategoriesController < AdminController
     end
   end
 
+  def last_category?(category)
+    Category
+      .where(category_type: category.category_type, restaurant_id: current_restaurant.id)
+      .count
+      .zero?
+  end
+
   def destroy
     category_type = @category.category_type
     if @category.destroy
-      reload_category_data
-      section_frame_id = "#{current_restaurant.id}_#{category_type}_section"
-      section_partial = "#{category_type}_categories_section"
+      stream_actions = [].tap do |actions|
+        actions << if last_category?(@category)
+                     turbo_stream.replace(
+                       "#{category_type}_section",
+                       partial: 'categories/empty_category_section',
+                       locals: { category_type: category_type }
+                     )
+                   else
+                     turbo_stream.remove(@category)
+                   end
 
-      render turbo_stream: [
-        turbo_stream.replace(section_frame_id, partial: "categories/#{section_partial}"),
-        turbo_notification('La categoría se ha eliminado con éxito', type: :success),
-      ]
+        actions << turbo_notification('La categoría se ha eliminado con éxito', type: :success)
+      end
+
+      render turbo_stream: stream_actions
     else
       render turbo_stream: [
         turbo_notification('Ha ocurrido un error al eliminar la categoría', type: :alert),
@@ -100,9 +125,6 @@ class CategoriesController < AdminController
     @menu_categories = Category.where(category_type: 'menu', restaurant_id: current_restaurant.id)
     @daily_categories = Category.where(category_type: 'daily', restaurant_id: current_restaurant.id)
     @drinks_categories = Category.where(category_type: 'drinks', restaurant_id: current_restaurant.id)
-    @menu_list_frame_tag = "#{current_restaurant.id}_menu_list"
-    @daily_list_frame_tag = "#{current_restaurant.id}_daily_list"
-    @drinks_list_frame_tag = "#{current_restaurant.id}_drinks_list"
   end
 
   def request_translations(category)

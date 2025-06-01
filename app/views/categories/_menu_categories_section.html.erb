@@ -1,10 +1,16 @@
 <% if @menu_categories.present? %>
-  <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-    <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-      <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Platos de la Carta</h2>
-    </div>
-    <%= turbo_frame_tag @menu_list_frame_tag, class: "divide-y divide-gray-200 dark:divide-gray-700", data: { sortable_target: "menuList" } do %>
-      <%= render @menu_categories.order(:position) %>
+    <%= turbo_frame_tag "menu_section" do %>
+        <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden mb-8">
+            <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+            <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Platos de la Carta</h2>
+            </div>
+            <%= turbo_frame_tag 'categories_menu_list', class: "divide-y divide-gray-200 dark:divide-gray-700", data: { sortable_target: "menuList" } do %>
+                <%= render @menu_categories.order(:position) %>
+            <% end %>
+        </div>
     <% end %>
-  </div>
+<% else %>
+    <%= turbo_frame_tag "menu_section" do %>
+        <%= turbo_frame_tag 'categories_menu_list', data: { sortable_target: "menuList" } %>
+    <% end %>
 <% end %>

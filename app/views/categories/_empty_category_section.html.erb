@@ -1,0 +1,3 @@
+<%= turbo_frame_tag "#{category_type}_section" do %>
+    <%= turbo_frame_tag "categories_#{category_type}_list", data: { sortable_target: "#{category_type}List" } %>
+<% end %>

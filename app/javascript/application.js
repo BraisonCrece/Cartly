@@ -10,7 +10,6 @@ addEventListener("turbo:before-stream-render", (event) => {
     if (streamElement.action === "clear_form") {
       const target = streamElement.getAttribute("target");
       const element = document.getElementById(target);
-      console.log(target);
 
       if (element) {
         if (element.tagName === "FORM") {
