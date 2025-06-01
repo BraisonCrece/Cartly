@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class WinesController < ApplicationController
+class WinesController < AdminController
   before_action :authenticate_restaurant!, except: [:index, :show]
   before_action :set_wine, only: [:edit, :update, :destroy]
 

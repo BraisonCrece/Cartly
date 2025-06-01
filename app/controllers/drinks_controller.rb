@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DrinksController < ApplicationController
+class DrinksController < AdminController
   before_action :authenticate_restaurant!, except: [:show]
   before_action :set_drink, only: [:show, :edit, :update, :destroy]
 

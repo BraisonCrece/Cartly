@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class DescriptionController < ApplicationController
+class DescriptionController < AdminController
   before_action :authenticate_restaurant!
 
   def describe_dish

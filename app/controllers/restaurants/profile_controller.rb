@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module Restaurants
-  class ProfileController < ApplicationController
+  class ProfileController < AdminController
     def edit
       @restaurant = current_restaurant
     end

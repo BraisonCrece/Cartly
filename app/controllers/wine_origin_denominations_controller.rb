@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class WineOriginDenominationsController < ApplicationController
+class WineOriginDenominationsController < AdminController
   before_action :authenticate_restaurant!
   before_action :set_denomination, only: [:show, :edit, :update, :destroy]
 

@@ -3,7 +3,7 @@
 # Controller for managing the control panel
 # It includes the pagy gem for pagination
 # It handles the dishes and wines
-class ControlPanelController < ApplicationController
+class ControlPanelController < AdminController
   before_action :authenticate_restaurant!
   include Pagy::Backend
 

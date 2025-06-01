@@ -2,7 +2,7 @@
 
 # This controller is responsible for generating QR codes for the restaurant's menu
 module Private
-  class QrCodeController < ApplicationController
+  class QrCodeController < AdminController
     before_action :authenticate_restaurant!
 
     # Generates a QR code, and returns the image asset to download

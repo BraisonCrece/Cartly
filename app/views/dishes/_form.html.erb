@@ -7,14 +7,7 @@
     <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
       <%= form_with(model: dish, data: { turbo: false }, class: "p-4 pt-0 space-y-6", data_controller: "description dish-form file-input") do |f| %>
         <% if @dish.errors.any? %>
-          <div id="error_explanation" role="alert" aria-live="polite" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-            <h2 class='mb-2 font-semibold'>Se encontraron <%= @dish.errors.count %> errores en el formulario:</h2>
-            <ul class="ml-5 list-disc">
-              <% @dish.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-              <% end %>
-            </ul>
-          </div>
+            <%= render 'dish_errors' %>
         <% end %>
 
         <div class="space-y-1">

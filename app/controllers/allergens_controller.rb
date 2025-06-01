@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class AllergensController < ApplicationController
+class AllergensController < AdminController
   before_action :authenticate_restaurant!
   before_action :set_allergen, only: [:edit, :update, :destroy]
 

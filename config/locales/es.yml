@@ -1,4 +1,18 @@
 es:
+  activerecord:
+    attributes:
+      dish:
+        title_es: "Nombre"
+        description_es: "Descripción"
+        active: "Activo"
+        lock: "Bloqueado"
+        price: "Precio"
+        category: "Categoría"
+        restaurant: "Restaurante"
+    models:
+      dish:
+        one: "Plato"
+        other: "Platos"
   dishes:
     create:
       success_with_translations: "¡Plato añadido! Será automáticamente activado cuando las traducciones terminen."

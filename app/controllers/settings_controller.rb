@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # Controller for managing restaurant settings
-class SettingsController < ApplicationController
+class SettingsController < AdminController
   before_action :authenticate_restaurant!
   before_action :set_restaurant
   before_action :set_settings

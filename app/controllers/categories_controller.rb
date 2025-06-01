@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CategoriesController < ApplicationController
+class CategoriesController < AdminController
   before_action :authenticate_restaurant!
   before_action :set_category, only: [:edit, :update, :destroy]
 
