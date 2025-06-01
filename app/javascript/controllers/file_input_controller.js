@@ -7,9 +7,16 @@ export default class extends Controller {
   updateFile() {
     const input = this.fileInputTarget
     const fileName =
-      input.files.length > 0 ? input.files[0].name : "Seleccione un archivo"
+      input.files.length > 0 ? input.files[0].name : "Selecciona un archivo..."
     this.fileNameTarget.innerText = fileName
-    this.fileNameTarget.classList.toggle(fileName === "Seleccione un archivo")
+    
+    if (fileName === "Selecciona un archivo...") {
+      this.fileNameTarget.classList.add("text-gray-400")
+      this.fileNameTarget.classList.remove("text-gray-900", "dark:text-white")
+    } else {
+      this.fileNameTarget.classList.remove("text-gray-400")
+      this.fileNameTarget.classList.add("text-gray-900", "dark:text-white")
+    }
 
     if (input.files && input.files[0]) {
       const reader = new FileReader()

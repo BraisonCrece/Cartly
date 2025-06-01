@@ -28,7 +28,10 @@ Rails.application.routes.draw do
   # Model CRUDs
   resources :settings, only: :update
   resources :allergens, path: 'admin/alergenos'
-  resources :dishes, path: 'admin/platos'
+  resources :dishes, path: 'admin/platos', path_names: {
+    new: 'nuevo',
+    edit: 'editar'
+  }
   resources :drinks, path: 'admin/bebidas'
   resources :wines, path: 'admin/vinos'
 
