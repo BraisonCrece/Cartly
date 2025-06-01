@@ -7,23 +7,33 @@ export default class extends Controller {
     "spinner",
     "buttonText",
     "descriptionImage",
+    "button",
   ];
+
+  connect() {
+    this.updateButtonState();
+  }
+
+  validateInputs() {
+    this.updateButtonState();
+  }
 
   async describe(e) {
     e.preventDefault();
-    const isWine = e.currentTarget.dataset.type === "wine";
+    const type = e.currentTarget.dataset.type;
     const text = this.inputTarget.value;
     let imageBase64 = "";
 
-    if (!isWine && this.descriptionImageTarget.files[0]) {
+    if (type !== "wine" && this.descriptionImageTarget.files[0]) {
       imageBase64 = await this.convertToBase64(
         this.descriptionImageTarget.files[0],
       );
     }
 
+    const descriptionType = this.getDescriptionType(type);
     const requestOptions = this.buildRequestOptions(text, {
       image: imageBase64,
-      description_type: isWine ? "vino" : "plato",
+      description_type: descriptionType,
     });
 
     await this.fetchDescription(requestOptions);
@@ -82,5 +92,27 @@ export default class extends Controller {
     this.spinnerTarget.classList.add("hidden");
     this.spinnerTarget.classList.remove("flex");
     this.buttonTextTarget.classList.remove("hidden");
+  }
+
+  updateButtonState() {
+    const hasName = this.inputTarget.value.trim().length > 0;
+    const hasImage = this.hasDescriptionImageTarget && this.descriptionImageTarget.files.length > 0;
+    
+    const isValid = hasName || hasImage;
+    
+    this.buttonTarget.disabled = !isValid;
+    this.buttonTarget.classList.toggle("opacity-50", !isValid);
+    this.buttonTarget.classList.toggle("cursor-not-allowed", !isValid);
+  }
+
+  getDescriptionType(type) {
+    switch (type) {
+      case "wine":
+        return "vino";
+      case "drink":
+        return "bebida";
+      default:
+        return "plato";
+    }
   }
 }

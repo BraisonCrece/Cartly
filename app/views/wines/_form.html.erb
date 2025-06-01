@@ -61,7 +61,7 @@
                 accept: "image/*",
                 class: "absolute inset-0 opacity-0 cursor-pointer w-full h-full",
                 data: {
-                  action: "change->file-input#updateFile",
+                  action: "change->file-input#updateFile change->description#validateInputs",
                   file_input_target: "fileInput",
                   description_target: "descriptionImage"
                 } %>
@@ -76,7 +76,7 @@
             placeholder: t('.placeholders.name'),
             onfocus: "this.placeholder=''",
             onblur: "this.placeholder='#{t('.placeholders.name')}'",
-            data: { description_target: 'input'} %>
+            data: { description_target: 'input', action: 'input->description#validateInputs' } %>
         </div>
 
         <div class="space-y-1">
@@ -91,7 +91,7 @@
             maxlength: 350,
             data: { description_target: 'output' },
             "aria-label": t('.labels.description') %>
-          <button data-action="click->description#describe" data-type="wine" class="w-full bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:ring-sky-500 focus:ring-opacity-50 text-white font-medium py-3 px-4 rounded-lg rounded-t-none transition-colors">
+          <button data-action="click->description#describe" data-type="wine" data-description-target="button" class="w-full bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:ring-sky-500 focus:ring-opacity-50 text-white font-medium py-3 px-4 rounded-lg rounded-t-none transition-colors">
             <span data-description-target="buttonText">
               <%= t('.buttons.generate_description') %>
             </span>

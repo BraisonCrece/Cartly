@@ -41,7 +41,7 @@
               <span data-file-input-target="fileName" class="text-gray-400">Selecciona un archivo...</span>
               <button type="button" class="text-sky-600 hover:text-sky-700" data-action="click->file-input#changePicture">Examinar</button>
             </div>
-            <%= f.file_field :image, class: "absolute inset-0 opacity-0 cursor-pointer w-full h-full", accept: "image/*", data: { action: "change->file-input#updateFile", file_input_target: "fileInput", description_target: "descriptionImage" } %>
+            <%= f.file_field :image, class: "absolute inset-0 opacity-0 cursor-pointer w-full h-full", accept: "image/*", data: { action: "change->file-input#updateFile change->description#validateInputs", file_input_target: "fileInput", description_target: "descriptionImage" } %>
           </div>
         </div>
 
@@ -52,7 +52,7 @@
             placeholder: "Nombre de la bebida",
             onfocus: "this.placeholder=''",
             onblur: "this.placeholder='Nombre de la bebida'",
-            data: { description_target: 'input'} %>
+            data: { description_target: 'input', action: 'input->description#validateInputs' } %>
         </div>
 
         <div class="space-y-1">
@@ -65,7 +65,7 @@
             rows: 8,
             maxlength: 350,
             data: { description_target: 'output' } %>
-          <button data-action="click->description#describe" class="w-full bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:ring-sky-500 focus:ring-opacity-50 text-white font-medium py-3 px-4 rounded-lg rounded-t-none transition-colors">
+          <button data-action="click->description#describe" data-type="drink" data-description-target="button" class="w-full bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:ring-sky-500 focus:ring-opacity-50 text-white font-medium py-3 px-4 rounded-lg rounded-t-none transition-colors">
             <span data-description-target="buttonText">Generar descripción</span>
             <span data-description-target="spinner" class="items-center justify-center hidden space-x-2">
               <svg aria-hidden="true" role="status" class="inline w-6 h-6 mr-1 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,6 +1,6 @@
 <% if current_restaurant %>
-  <div data-controller="drag-menu" class="transition-colors duration-500">
-    <!-- Open/Close button -->
+  <div data-controller="drag-menu transition-colors duration-300">
+    <!-- Open/Close left label -->
     <button
         class="fixed z-50 p-2 bg-white dark:bg-gray-900 text-gray-600 dark:text-white rounded-l-full shadow-[-5px_0_10px_-3px_rgba(0,0,0,0.2)] print:hidden active:shadow-gray-600 hover:bg-gray-100 touch-manipulation transition-transform duration-300 ease-in-out"
         style="top: 50%; transform: translateY(-50%); right: 0;"
@@ -20,11 +20,11 @@
     </button>
 
     <!-- Admin menu -->
-    <div class="fixed bg-white top-0 right-0 shadow z-40 h-full min-w-[45%] md:min-w-[25%] p-5 translate-x-full dark:bg-gray-900 transition-transform duration-300 ease-in-out"
+    <div class="fixed bg-white top-0 right-0 shadow z-40 h-full min-w-[45%] md:min-w-[25%] p-5 translate-x-full dark:bg-gray-900 transition-transform duration-300"
          data-drag-menu-target="menu"
     >
-        <div class="flex justify-between items-start w-full mb-3 transition-colors duration-500">
-          <div class="transition-colors duration-500">
+        <div class="flex justify-between items-start w-full mb-3 ">
+          <div>
             <%= render "shared/theme_switch" %>
           </div>
           <button class="select-none dark:text-white" data-action="click->drag-menu#closeMenu">
@@ -42,7 +42,7 @@
             </svg>
           </button>
         </div>
-      <div class="h-full flex flex-col items-center transition-colors duration-500">
+      <div class="h-full flex flex-col items-center">
         <%= render "/shared/items" %>
       </div>
     </div>
