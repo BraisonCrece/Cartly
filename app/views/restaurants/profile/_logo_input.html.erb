@@ -23,7 +23,7 @@
           (field == :logo_white ? 'logo-placeholder-white.png' : 'logo-placeholder-black.png') %>
 
     <%= image_tag placeholder_image,
-        class: "absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 rounded-lg hover:scale-[101%]",
+        class: "absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 rounded-lg hover:scale-[101%] p-4",
         data: {
             profile_logo_target: "#{field.to_s.camelize(:lower)}Image",
             image_loader_target: "image",

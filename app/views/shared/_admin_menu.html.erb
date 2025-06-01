@@ -2,7 +2,7 @@
   <div data-controller="drag-menu" class="transition-colors duration-500">
     <!-- Open/Close button -->
     <button
-        class="fixed z-50 p-2 bg-white dark:bg-gray-900 text-gray-600 dark:text-white rounded-l-full shadow-[-5px_0_10px_-3px_rgba(0,0,0,0.2)] print:hidden active:shadow-gray-600 hover:bg-gray-100 touch-manipulation transition-colors duration-500"
+        class="fixed z-50 p-2 bg-white dark:bg-gray-900 text-gray-600 dark:text-white rounded-l-full shadow-[-5px_0_10px_-3px_rgba(0,0,0,0.2)] print:hidden active:shadow-gray-600 hover:bg-gray-100 touch-manipulation transition-transform duration-300 ease-in-out"
         style="top: 50%; transform: translateY(-50%); right: 0;"
         data-drag-menu-target="handle"
     >
@@ -20,7 +20,7 @@
     </button>
 
     <!-- Admin menu -->
-    <div class="fixed bg-white top-0 right-0 shadow z-40 h-full min-w-[45%] md:min-w-[25%] ease-in-out p-5 translate-x-full dark:bg-gray-900 transition-colors duration-500"
+    <div class="fixed bg-white top-0 right-0 shadow z-40 h-full min-w-[45%] md:min-w-[25%] p-5 translate-x-full dark:bg-gray-900 transition-transform duration-300 ease-in-out"
          data-drag-menu-target="menu"
     >
         <div class="flex justify-between items-start w-full mb-3 transition-colors duration-500">

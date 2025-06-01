@@ -28,4 +28,9 @@ class Restaurant < ApplicationRecord
     query = "#{name}, #{full_address}"
     "#{base_url}&query=#{CGI.escape(query)}"
   end
+
+  # Image procesing before attach, allowed formats [:jpg, :png, :webp]
+  def process_image(file:, attachment_name:)
+    ImageProcessingService.new(file:, record: self, attachment_name: attachment_name, background_fill: false).call
+  end
 end

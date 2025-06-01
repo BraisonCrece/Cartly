@@ -55,7 +55,7 @@ class Drink < ApplicationRecord
   # Image procesing before attach, allowed formats [:jpg, :png, :webp]
   def process_image(file)
     # change this to drink: true
-    ImageProcessingService.new(file:, record: self, attachment_name: :image, wine: true).call
+    ImageProcessingService.new(file:, record: self, attachment_name: :image, portrait: true).call
   end
 
   private
