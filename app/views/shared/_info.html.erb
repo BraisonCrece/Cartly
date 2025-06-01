@@ -21,18 +21,22 @@
     <h2 class="text-2xl text-balance text-center py-6 rounded shadow font-play">
       <%= @restaurant.name %>
     </h2>
-    <%= link_to @restaurant.google_maps_link,
-        target: "_blank",
-        rel: "noopener",
-        class: "flex gap-3 items-center font-light" do %>
-      <%= image_tag 'map.svg', class: "w-10", alt: t('.map_icon') %>
-      <%= @restaurant.full_address %>
+    <% if @restaurant.address.present? && @restaurant.city.present? && @restaurant.province.present? %>
+      <%= link_to @restaurant.google_maps_link,
+          target: "_blank",
+          rel: "noopener",
+          class: "flex gap-3 items-center font-light" do %>
+        <%= image_tag 'map.svg', class: "w-10", alt: t('.map_icon') %>
+        <%= @restaurant.full_address %>
+      <% end %>
     <% end %>
-    <%= link_to "tel:#{@restaurant.phone}",
-        class: "flex gap-3 items-center font-light",
-        aria_label: @restaurant.phone do %>
-      <%= image_tag 'phone.svg', class: "w-10", alt: t('.phone_icon') %>
-      <%= @restaurant.phone %>
+    <% if @restaurant.phone.present? %>
+      <%= link_to "tel:#{@restaurant.phone}",
+          class: "flex gap-3 items-center font-light",
+          aria_label: @restaurant.phone do %>
+        <%= image_tag 'phone.svg', class: "w-10", alt: t('.phone_icon') %>
+        <%= @restaurant.phone %>
+      <% end %>
     <% end %>
   </div>
 <% end %>
