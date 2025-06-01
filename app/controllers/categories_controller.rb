@@ -32,10 +32,13 @@ class CategoriesController < AdminController
 
     if @category.save
       request_translations(@category)
-      list_frame_id = "#{current_restaurant.id}_#{@category.category_type}_list"
+      reload_category_data
+      section_frame_id = "#{current_restaurant.id}_#{@category.category_type}_section"
+      section_partial = "#{@category.category_type}_categories_section"
+
       render turbo_stream: [
         turbo_stream.action(:clear_form, 'category_name_es'),
-        turbo_stream.append(list_frame_id, partial: 'categories/category', locals: { category: @category }),
+        turbo_stream.replace(section_frame_id, partial: "categories/#{section_partial}"),
         turbo_notification('Categoría creada exitosamente', type: :success),
       ]
     else
@@ -64,9 +67,14 @@ class CategoriesController < AdminController
   end
 
   def destroy
+    category_type = @category.category_type
     if @category.destroy
+      reload_category_data
+      section_frame_id = "#{current_restaurant.id}_#{category_type}_section"
+      section_partial = "#{category_type}_categories_section"
+
       render turbo_stream: [
-        turbo_stream.remove(@category),
+        turbo_stream.replace(section_frame_id, partial: "categories/#{section_partial}"),
         turbo_notification('La categoría se ha eliminado con éxito', type: :success),
       ]
     else
@@ -87,6 +95,15 @@ class CategoriesController < AdminController
   end
 
   private
+
+  def reload_category_data
+    @menu_categories = Category.where(category_type: 'menu', restaurant_id: current_restaurant.id)
+    @daily_categories = Category.where(category_type: 'daily', restaurant_id: current_restaurant.id)
+    @drinks_categories = Category.where(category_type: 'drinks', restaurant_id: current_restaurant.id)
+    @menu_list_frame_tag = "#{current_restaurant.id}_menu_list"
+    @daily_list_frame_tag = "#{current_restaurant.id}_daily_list"
+    @drinks_list_frame_tag = "#{current_restaurant.id}_drinks_list"
+  end
 
   def request_translations(category)
     return unless ENV['GEMINI_KEY'].present?

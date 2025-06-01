@@ -11,35 +11,17 @@
     </div>
 
     <div class="space-y-8">
-      <!-- Menu Categories -->
-      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-        <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Platos de la Carta</h2>
-        </div>
-        <%= turbo_frame_tag @menu_list_frame_tag, class: "divide-y divide-gray-200 dark:divide-gray-700", data: { sortable_target: "menuList" } do %>
-          <%= render @menu_categories.order(:position) %>
-        <% end %>
-      </div>
+      <%= turbo_frame_tag "#{current_restaurant.id}_menu_section" do %>
+        <%= render "menu_categories_section" %>
+      <% end %>
 
-      <!-- Drinks Categories -->
-      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-        <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Bebidas de la Carta</h2>
-        </div>
-        <%= turbo_frame_tag @drinks_list_frame_tag, class: "divide-y divide-gray-200 dark:divide-gray-700", data: { sortable_target: "drinksList" } do %>
-          <%= render @drinks_categories.order(:position) %>
-        <% end %>
-      </div>
+      <%= turbo_frame_tag "#{current_restaurant.id}_drinks_section" do %>
+        <%= render "drinks_categories_section" %>
+      <% end %>
 
-      <!-- Daily Menu Categories -->
-      <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-        <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-          <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Platos del Menú del día</h2>
-        </div>
-        <%= turbo_frame_tag @daily_list_frame_tag, class: "divide-y divide-gray-200 dark:divide-gray-700", data: { sortable_target: "dailyList" } do %>
-          <%= render @daily_categories.order(:position) %>
-        <% end %>
-      </div>
+      <%= turbo_frame_tag "#{current_restaurant.id}_daily_section" do %>
+        <%= render "daily_categories_section" %>
+      <% end %>
     </div>
   </div>
 </div>

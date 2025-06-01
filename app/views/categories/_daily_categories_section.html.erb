@@ -1,0 +1,10 @@
+<% if @daily_categories.present? %>
+  <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+    <div class="px-6 py-4 border-b border-gray-200 dark:border-gray-700">
+      <h2 class="text-xl font-semibold text-gray-900 dark:text-white">Platos del Menú del día</h2>
+    </div>
+    <%= turbo_frame_tag @daily_list_frame_tag, class: "divide-y divide-gray-200 dark:divide-gray-700", data: { sortable_target: "dailyList" } do %>
+      <%= render @daily_categories.order(:position) %>
+    <% end %>
+  </div>
+<% end %>

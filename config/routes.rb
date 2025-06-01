@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   unless defined?(::Rake::SprocketsTask)
     devise_for :restaurants,
       path: 'admin',
-      path_names: { sign_in: 'sign_in', sign_out: 'sign_out', sign_up: 'sign_up' },
+      path_names: { sign_in: 'login', sign_out: 'sign_out', sign_up: 'registro' },
       controllers: {
         sessions: 'restaurants/sessions',
         registrations: 'restaurants/registrations',

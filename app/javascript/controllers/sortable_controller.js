@@ -7,6 +7,7 @@ export default class extends Controller {
 
   connect() {
     Sortable.create(this.menuListTarget, {
+      handle: '[data-sortable-handle]',
       onEnd: function (evt) {
         const itemEl = evt.item;
         const categoryId = itemEl.dataset.id;
@@ -28,6 +29,7 @@ export default class extends Controller {
     });
 
     Sortable.create(this.dailyListTarget, {
+      handle: '[data-sortable-handle]',
       onEnd: function (evt) {
         const itemEl = evt.item;
         const categoryId = itemEl.dataset.id;
@@ -49,6 +51,7 @@ export default class extends Controller {
     });
 
     Sortable.create(this.drinksListTarget, {
+      handle: '[data-sortable-handle]',
       onEnd: function (evt) {
         const itemEl = evt.item;
         const categoryId = itemEl.dataset.id;
