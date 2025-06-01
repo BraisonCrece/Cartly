@@ -12,6 +12,7 @@ class CategoriesController < AdminController
     @daily_list_frame_tag = "#{current_restaurant.id}_daily_list"
     @drinks_list_frame_tag = "#{current_restaurant.id}_drinks_list"
     @category_form_frame_tag = "#{current_restaurant.id}_category_form"
+    @selected_category_type = params[:selected_type] || 'menu'
   end
 
   def new
@@ -33,13 +34,13 @@ class CategoriesController < AdminController
       request_translations(@category)
       list_frame_id = "#{current_restaurant.id}_#{@category.category_type}_list"
       render turbo_stream: [
-        turbo_stream.replace("#{current_restaurant.id}_category_form", partial: 'categories/form', locals: { category: @category }),
+        turbo_stream.action(:clear_form, 'category_name_es'),
         turbo_stream.append(list_frame_id, partial: 'categories/category', locals: { category: @category }),
         turbo_notification('Categoría creada exitosamente', type: :success),
       ]
     else
       render turbo_stream: [
-        turbo_stream.replace("#{current_restaurant.id}_category_form", partial: 'categories/form', locals: { category: @category }),
+        turbo_stream.replace("#{current_restaurant.id}_category_form", partial: 'categories/form', locals: { category: @category, selected_category_type: @category.category_type }),
         turbo_notification('Ha ocurrido un error al crear la categoría', type: :alert),
       ], status: :unprocessable_entity
     end

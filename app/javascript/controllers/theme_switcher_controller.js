@@ -37,15 +37,12 @@ export default class extends Controller {
   }
 
   showLightButton() {
-    if (this.hasDarkButtonTarget) this.darkButtonTarget.classList.add("hidden");
-    if (this.hasLightButtonTarget)
-      this.lightButtonTarget.classList.remove("hidden");
+    this.darkButtonTargets.forEach(button => button.classList.add("hidden"));
+    this.lightButtonTargets.forEach(button => button.classList.remove("hidden"));
   }
 
   showDarkButton() {
-    if (this.hasDarkButtonTarget)
-      this.darkButtonTarget.classList.remove("hidden");
-    if (this.hasLightButtonTarget)
-      this.lightButtonTarget.classList.add("hidden");
+    this.darkButtonTargets.forEach(button => button.classList.remove("hidden"));
+    this.lightButtonTargets.forEach(button => button.classList.add("hidden"));
   }
 }

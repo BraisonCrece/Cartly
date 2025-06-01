@@ -29,7 +29,7 @@ module Translators
 
     def translate_collection(collection)
       Parallel.each(collection, in_threads: 4) do |item|
-        NewItemTranslatorService.call(item)
+        NewItemTranslatorService.new(item).call
       end
     end
   end

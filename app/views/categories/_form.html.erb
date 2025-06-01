@@ -1,38 +1,49 @@
 <%= turbo_frame_tag @category_form_frame_tag do %>
-    <%= form_with model: Category.new, url: admin_categories_path, class: "flex flex-col gap-2 w-full border border-gray-400 p-4 rounded mb-10" do |f| %>
-        <%= f.label :name_es, "Añadir categoría", class: "text-gray-700 dark:text-gray-200" %>
-        <%= f.text_field :name_es, class: "border-gray-400 text-black rounded dark:bg-gray-200" %>
-        <%= f.hidden_field :category_type, data: { categories_target: "categoryType" } %>
+  <div class="space-y-4">
+    <% selected_type = local_assigns[:selected_category_type] || @selected_category_type || 'menu' %>
+    <% category = local_assigns[:category] || Category.new(category_type: selected_type) %>
+    <%= form_with model: category, url: admin_categories_path, class: "space-y-4" do |f| %>
+      <div class="space-y-1">
+        <%= f.label :name_es, "Añadir categoría", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+        <%= f.text_field :name_es,
+            id: "category_name_es",
+            class: "w-full px-3 py-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-sky-500 focus:border-sky-500 dark:bg-gray-800 dark:text-white transition-colors",
+            placeholder: "Introduce el nombre de la categoría" %>
+      </div>
 
-        <!-- FORM BUTTONS -->
-        <div class="flex items-center justify-between gap-4 mt-2">
-            <div data-categories-target="selector" class="relative flex h-full w-60
-                overflow-hidden border
-                border-gray-400 rounded-full p-[0.175rem]
-                font-light isolate">
-                <button type="button"
-                        data-action="click->categories#switch"
-                        data-categories-target="menuSelector"
-                        data-value="menu"
-                        class="flex-1 px-3 py-1 font-semibold rounded-full bg-brand-red text-red-50">
-                    carta
-                </button>
-                <button type="button"
-                        data-action="click->categories#switch"
-                        data-value="daily"
-                        data-categories-target="dailySelector"
-                        class="flex-1 px-3 py-1 rounded-full text-gray-600 dark:text-gray-200">
-                    menú
-                </button>
-                <button type="button"
-                        data-action="click->categories#switch"
-                        data-value="drinks"
-                        data-categories-target="drinksSelector"
-                        class="flex-1 px-3 py-1 rounded-full text-gray-600 dark:text-gray-200">
-                            bebidas
-                </button>
-            </div>
-        <%= f.submit "Enviar", class: "px-4 py-2 border-gray-400 text-gray-700 dark:text-gray-200 rounded border cursor-pointer hover:text-black hover:bg-gray-100 dark:hover:text-gray-700 transition-colors duration-150 ease-in-out" %>
+      <%= f.hidden_field :category_type, value: selected_type, data: { categories_target: "categoryType" } %>
+
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+        <div class="space-y-1 flex-0">
+          <%= label_tag nil, "Tipo de categoría", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+          <div data-categories-target="selector" class="flex gap-1 p-1 bg-gray-100 dark:bg-gray-800 rounded-lg w-full sm:w-auto">
+            <button type="button"
+                    data-action="click->categories#switch"
+                    data-categories-target="menuSelector"
+                    data-value="menu"
+                    class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium rounded-md transition-colors <%= selected_type == 'menu' ? 'bg-sky-600 text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100' %>">
+              Carta
+            </button>
+            <button type="button"
+                    data-action="click->categories#switch"
+                    data-value="daily"
+                    data-categories-target="dailySelector"
+                    class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium rounded-md transition-colors <%= selected_type == 'daily' ? 'bg-sky-600 text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100' %>">
+              Menú
+            </button>
+            <button type="button"
+                    data-action="click->categories#switch"
+                    data-value="drinks"
+                    data-categories-target="drinksSelector"
+                    class="flex-1 sm:flex-none px-4 py-2 text-sm font-medium rounded-md transition-colors <%= selected_type == 'drinks' ? 'bg-sky-600 text-white' : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-100' %>">
+              Bebidas
+            </button>
+          </div>
         </div>
+
+        <%= f.submit "Añadir categoría",
+            class: "w-full sm:w-auto py-3 px-6 bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:ring-sky-500 focus:ring-opacity-50 text-white font-medium rounded-lg transition-colors cursor-pointer" %>
+      </div>
     <% end %>
+  </div>
 <% end %>
