@@ -8,7 +8,7 @@
 
     <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
       <%= form_with(model: wine,
-          data: { turbo: false, controller: "toggle-price-per-glass description file-input" },
+          data: { turbo: false, controller: "toggle-price-per-glass description file-input form-spinner", action: "submit->form-spinner#submit" },
           class: "p-4 pt-0 space-y-6",
           role: "form") do |f| %>
 
@@ -152,9 +152,20 @@
         </div>
 
         <div>
-          <%= f.submit t('wines.common.save'),
-              class: "w-full py-3 px-4 bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:ring-sky-500 focus:ring-opacity-50 text-white font-medium rounded-lg transition-colors cursor-pointer" %>
+          <%= f.button type: "submit",
+              class: "w-full py-3 px-4 bg-sky-600 hover:bg-sky-700 focus:ring-4 focus:ring-sky-500 focus:ring-opacity-50 text-white font-medium rounded-lg transition-colors cursor-pointer flex items-center justify-center",
+              data: { form_spinner_target: "submit" } do %>
+            <span data-form-spinner-target="submitText"><%= t('wines.common.save') %></span>
+            <span data-form-spinner-target="spinner" class="hidden">
+              <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+              </svg>
+              Procesando...
+            </span>
+          <% end %>
         </div>
+</edits>
       <% end %>
 
       <div class="px-8 py-6 bg-gray-50 dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700">

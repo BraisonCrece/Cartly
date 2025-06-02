@@ -15,7 +15,7 @@ class DrinksController < AdminController
     @drink.process_image(params[:drink][:image]) if params[:drink][:image]
 
     if @drink.save
-      redirect_to control_panel_products_path(filter: 'drinks'), notice: 'Bebida creada exitosamente :)'
+      redirect_to control_panel_products_path(filter: 'drinks'), notice: 'Bebida creada exitosamente, será habilitada cuando las traducciones terminen :)'
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,7 +30,7 @@ class DrinksController < AdminController
       request_translations(@drink, :update) if name_or_description_changed?
 
       @drink.process_image(params[:drink][:image]) if params[:drink][:image]
-      redirect_to control_panel_products_path(filter: 'drinks'), notice: t('.success')
+      redirect_to control_panel_products_path(filter: 'drinks'), notice: 'Bebida actualizada exitosamente :)'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class DrinksController < AdminController
       turbo_stream.prepend(
         'notifications',
         partial: 'shared/notification',
-        locals: { notice: t('.success') }
+        locals: { notice: 'Bebida eliminada exitosamente' }
       ),
     ]
   end

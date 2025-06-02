@@ -33,7 +33,7 @@ class CategoriesController < AdminController
 
     if @category.save
       reload_category_data
-      # request_translations(@category)
+      request_translations(@category)
       section_frame_id = "#{@category.category_type}_section"
       section_list_id = "categories_#{@category.category_type}_list"
       section_partial = "#{@category.category_type}_categories_section"
