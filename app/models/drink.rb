@@ -4,6 +4,8 @@ class Drink < ApplicationRecord
   extend Mobility
 
   broadcasts_refreshes_to ->(drink) { "restaurant_#{drink.restaurant_id}_drinks" }
+  
+  after_update_commit :broadcast_lock_status_change, if: :saved_change_to_lock?
 
   translates :name, type: :string
   translates :description, type: :text
@@ -62,5 +64,12 @@ class Drink < ApplicationRecord
 
   def active_when_not_locked
     errors.add(:active, 'is not allowed when drink is locked') if lock? && active?
+  end
+  
+  def broadcast_lock_status_change
+    broadcast_replace_to "restaurant_#{restaurant_id}_control_panel_drinks",
+                        target: self,
+                        partial: "control_panel/drink",
+                        locals: { drink: self }
   end
 end

@@ -4,6 +4,8 @@ class Wine < ApplicationRecord
   extend Mobility
 
   broadcasts_refreshes_to ->(wine) { "restaurant_#{wine.restaurant_id}_wines" }
+  
+  after_update_commit :broadcast_lock_status_change, if: :saved_change_to_lock?
 
   belongs_to :wine_origin_denomination
   belongs_to :restaurant
@@ -48,5 +50,12 @@ class Wine < ApplicationRecord
 
   def active_when_not_locked
     errors.add(:active, 'is not allowed when wine is locked') if lock? && active?
+  end
+  
+  def broadcast_lock_status_change
+    broadcast_replace_to "restaurant_#{restaurant_id}_control_panel_wines",
+                        target: self,
+                        partial: "control_panel/wine",
+                        locals: { wine: self }
   end
 end

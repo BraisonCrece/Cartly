@@ -4,6 +4,7 @@ class Dish < ApplicationRecord
   extend Mobility
 
   broadcasts_refreshes_to ->(dish) { "restaurant_#{dish.restaurant_id}_dishes" }
+  after_update_commit :broadcast_lock_status_change, if: :saved_change_to_lock?
 
   translates :title, type: :string
   translates :description, type: :text
@@ -120,5 +121,12 @@ class Dish < ApplicationRecord
 
   def active_when_not_locked
     errors.add(:active, 'is not allowed when dish is locked') if lock? && active?
+  end
+
+  def broadcast_lock_status_change
+    broadcast_replace_to "restaurant_#{restaurant_id}_control_panel_dishes",
+                         target: self,
+                         partial: 'control_panel/dish',
+                         locals: { dish: self }
   end
 end
