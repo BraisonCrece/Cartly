@@ -109,40 +109,6 @@
             <%= f.label :category_id, "Categoría", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
             <%= link_to 'Añadir categoría', admin_categories_path, class: "text-sky-600 hover:text-sky-700 text-sm underline" %>
           </div>
-        <!-- NEW CATEGORY -->
-        <div class="border border-gray-200 p-2 hidden">
-            <div class="flex flex-col gap-2 w-full border border-gray-400 p-4 rounded">
-                <!-- FORM BUTTONS -->
-                <input type="text">
-                <div class="flex items-center justify-between gap-4 mt-2">
-                    <div
-                        data-categories-target="selector"
-                        class="relative flex h-full w-60 overflow-hidden border border-gray-400 rounded-full p-[0.175rem] font-light isolate"
-                    >
-                        <button
-                            type="button"
-                            data-action="click->categories#switch"
-                            data-categories-target="menuSelector"
-                            data-value="menu"
-                            class="flex-1 px-3 py-1 font-semibold rounded-full bg-brand-red text-red-50"
-                        >
-                            carta
-                        </button>
-                        <button
-                            type="button"
-                            data-action="click->categories#switch"
-                            data-value="daily"
-                            data-categories-target="dailySelector"
-                            class="flex-1 px-3 py-1 rounded-full text-gray-600 dark:text-gray-200"
-                        >
-                            menú
-                        </button>
-                    </div>
-                </div>
-                <button class="p-3 rounded bg-brand-red text-red-100 font-bold">Añadir</button>
-            </div>
-        </div>
-
           <%= render "categories_select", dish: @dish %>
         </div>
 

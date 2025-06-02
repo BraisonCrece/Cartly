@@ -115,8 +115,11 @@
         </div>
 
         <div class="space-y-1">
-          <%= f.label :wine_origin_denomination_id, t('.labels.denomination'),
-              class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+          <div class="flex justify-between items-center">
+            <%= f.label :wine_origin_denomination_id, 'Seleccione una denominación de origen',
+                class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
+              <%= link_to 'Añadir denominación', admin_denominations_path, class: "text-sky-600 hover:text-sky-700 text-sm underline" %>
+          </div>
           <%= f.collection_select :wine_origin_denomination_id,
               denominations, :id, :name,
               { prompt: t('.placeholders.select_denomination') },

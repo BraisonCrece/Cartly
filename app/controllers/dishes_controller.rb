@@ -15,11 +15,12 @@ class DishesController < AdminController
   def create
     @dish = Dish.new(dish_params)
     @dish.restaurant_id = current_restaurant.id
-    request_translations(@dish, :create) if ENV['GEMINI_KEY'].present?
     @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
 
     if @dish.save
+      request_translations(@dish, :create) if ENV['GEMINI_KEY'].present?
       redirect_to control_panel_products_path(filter: 'food'), notice: 'Plato creado exitosamente :)'
+
     else
       render :new, status: :unprocessable_entity
     end

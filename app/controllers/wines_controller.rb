@@ -36,7 +36,7 @@ class WinesController < AdminController
 
     if @wine.save
       redirect_to control_panel_products_path(filter: 'wines'),
-                  notice: t('.success_with_translations')
+                  notice: 'El vino se ha creado correctamente.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -50,7 +50,7 @@ class WinesController < AdminController
         end
       end
       @wine.process_wine(params[:wine][:image]) if params[:wine][:image]
-      redirect_to control_panel_products_path(filter: 'wines'), notice: t('.success')
+      redirect_to control_panel_products_path(filter: 'wines'), notice: 'El vino se ha actualizado correctamente.'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -60,7 +60,7 @@ class WinesController < AdminController
     @wine.destroy
     render turbo_stream: [
       turbo_stream.remove(@wine),
-      turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { notice: t('.success') }),
+      turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { notice: 'El vino se ha eliminado correctamente.' }),
     ]
   end
 
@@ -85,7 +85,7 @@ class WinesController < AdminController
     @wine = Wine.find_by(id: params[:id], restaurant_id:)
     return unless @wine.nil?
 
-    redirect_to control_panel_products_path(filter: 'wines'), alert: t('.not_found')
+    redirect_to control_panel_products_path(filter: 'wines'), alert: 'El vino no se ha encontrado.'
   end
 
   def wine_params

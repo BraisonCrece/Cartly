@@ -7,7 +7,9 @@
 
 <div data-controller="notifications"
      class="opacity-0 transform -translate-y-2 transition-all duration-500 ease-out pointer-events-auto w-full"
-     data-notifications-delay-value="5000">
+     data-notifications-delay-value="5000"
+     data-turbo-permanent
+>
   <div class="<%= base_classes %> <%= color_classes %>">
     <span class="flex-grow"><%= msg %></span>
     <button data-action="click->notifications#close" type="button" class="ml-2 text-current opacity-75 hover:opacity-100 focus:outline-none">
