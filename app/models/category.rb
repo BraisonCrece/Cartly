@@ -41,6 +41,11 @@ class Category < ApplicationRecord
       .order(position: :asc)
   }
 
+  scope :drinks_for_restaurant, lambda { |restaurant_id|
+    where(category_type: 'drinks', restaurant_id: restaurant_id)
+      .order(:position)
+  }
+
   private
 
   def set_position

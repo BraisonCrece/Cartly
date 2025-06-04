@@ -35,15 +35,19 @@ class Drink < ApplicationRecord
          .group_by(&:category_id)
   }
 
-  def self.query_drinks(restaurant_id:, query: nil)
-    scope = where(restaurant_id:)
-            .joins(:category)
-            .where(categories: { category_type: 'drinks' }, restaurant_id:)
-            .order('drinks.active DESC, drinks.name ASC')
+  scope :for_restaurant, ->(restaurant_id) { where(restaurant_id:) }
+  scope :with_drinks_category, ->(restaurant_id) { joins(:category).where(categories: { category_type: 'drinks', restaurant_id: }) }
+  scope :search_by_name, ->(query) { where('drinks.name ILIKE ?', "%#{query}%") if query.present? }
+  scope :ordered_by_status, -> { order('drinks.active DESC, drinks.name ASC') }
+  scope :by_category, ->(category_id) { where(category_id:) if category_id != 'all' && category_id.present? }
 
-    scope = scope.where('drinks.name ILIKE ?', "%#{query}%") if query.present?
-
-    scope.load_async
+  def self.query_drinks(restaurant_id:, query: nil, category: 'all')
+    for_restaurant(restaurant_id)
+      .with_drinks_category(restaurant_id)
+      .ordered_by_status
+      .search_by_name(query)
+      .by_category(category)
+      .load_async
   end
 
   def lock_it!

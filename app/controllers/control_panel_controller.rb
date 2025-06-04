@@ -8,24 +8,27 @@ class ControlPanelController < AdminController
   include Pagy::Backend
 
   def products
-    query = params[:query]
-    restaurant_id = current_restaurant.id
-    filter = params[:filter].presence || 'food'
+    @filter = params[:filter].presence || 'food'
     @category = params[:category].presence || 'all'
-    @selected = { name: filter, path: selected_path(filter) }
-    @drink_categories = Category.where(restaurant_id: restaurant_id, category_type: 'drinks').order(:position) if filter == 'drinks'
-    @wine_denominations = get_wine_denominations_by_type(restaurant_id) if filter == 'wines'
-    @pagy, @products = pagy_products(filter, query, @category, restaurant_id)
+    @query = params[:query]
+    
+    @selected = { name: @filter, path: selected_path(@filter) }
+    set_filter_options
+    @category_options = ControlPanel::CategoryOptionsService.call(@filter, 
+                                                                 drink_categories: @drink_categories, 
+                                                                 wine_denominations: @wine_denominations)
+    @pagy, @products = paginate_products
   end
 
   def toggle_active
-    if params[:dish_id]
-      toggle_dish_active
-    elsif params[:wine_id]
-      toggle_wine_active
-    elsif params[:drink_id]
-      toggle_drink_active
-    end
+    product = find_product
+    product.toggle!(:active)
+    
+    render turbo_stream: turbo_stream.replace(
+      "#{product.class.name.downcase}_active_#{product.id}",
+      partial: "#{product.class.name.downcase}_active",
+      locals: { product.class.name.downcase.to_sym => product }
+    )
   end
 
   private
@@ -41,77 +44,50 @@ class ControlPanelController < AdminController
     end
   end
 
-  def pagy_products(filter, query, category, restaurant_id)
-    case filter
-    when 'food'
-      dish_finders = {
-        'daily' => -> { Dish.daily_menu(restaurant_id:, query:) },
-        'menu' => -> { Dish.menu(restaurant_id:, query:) },
-        'all' => -> { Dish.query(restaurant_id:, query:) },
-      }
-      finder = dish_finders[category] || dish_finders['all']
-      pagy_countless(finder.call, limit: 10)
+  def set_filter_options
+    case @filter
     when 'drinks'
-      scope = Drink.query_drinks(restaurant_id:, query:)
-      scope = scope.where(category_id: category) if category != 'all' && category.present?
-      pagy_countless(scope, limit: 10)
+      @drink_categories = Category.drinks_for_restaurant(current_restaurant.id)
+    when 'wines'
+      @wine_denominations = Wine.denominations_by_type(current_restaurant.id)
+    end
+  end
+
+  def paginate_products
+    scope = case @filter
+            when 'food'
+              get_dish_scope
+            when 'drinks'
+              Drink.query_drinks(restaurant_id: current_restaurant.id, query: @query, category: @category)
+            else
+              Wine.search(restaurant_id: current_restaurant.id, query: @query, denomination: @category)
+            end
+    
+    pagy_countless(scope, limit: 10)
+  end
+
+  def get_dish_scope
+    case @category
+    when 'daily'
+      Dish.daily_menu(restaurant_id: current_restaurant.id, query: @query)
+    when 'menu'
+      Dish.menu(restaurant_id: current_restaurant.id, query: @query)
     else
-      scope = Wine.search(restaurant_id:, query: query)
-      scope = scope.where(wine_origin_denomination_id: category) if category != 'all' && category.present?
-      pagy_countless(scope, limit: 10)
+      Dish.query(restaurant_id: current_restaurant.id, query: @query)
     end
   end
 
-  def toggle_dish_active
-    dish = Dish.find_by(id: params[:dish_id], restaurant_id: current_restaurant.id)
-    dish.toggle!(:active)
-
-    render turbo_stream: turbo_stream.replace(
-      "dish_active_#{dish.id}",
-      partial: 'dish_active',
-      locals: { dish: }
-    )
-  end
-
-  def toggle_wine_active
-    wine = Wine.find_by(id: params[:wine_id], restaurant_id: current_restaurant.id)
-    wine.toggle!(:active)
-
-    render turbo_stream: turbo_stream.replace(
-      "wine_active_#{wine.id}",
-      partial: 'wine_active',
-      locals: { wine: }
-    )
-  end
-
-  def toggle_drink_active
-    drink = Drink.find_by(id: params[:drink_id], restaurant_id: current_restaurant.id)
-    drink.toggle!(:active)
-
-    render turbo_stream: turbo_stream.replace(
-      "drink_active_#{drink.id}",
-      partial: 'drink_active',
-      locals: { drink: }
-    )
-  end
-
-  def get_wine_denominations_by_type(restaurant_id)
-    denominations = WineOriginDenomination.joins(:wines)
-                                         .where(restaurant_id: restaurant_id, wines: { active: true })
-                                         .distinct
-                                         .includes(:wines)
-
-    grouped = { 'Tinto' => [], 'Blanco' => [] }
-      
-    denominations.each do |denomination|
-      if denomination.wines.where(wine_type: 'Tinto', active: true, restaurant_id: restaurant_id).exists?
-        grouped['Tinto'] << denomination
-      end
-      if denomination.wines.where(wine_type: 'Blanco', active: true, restaurant_id: restaurant_id).exists?
-        grouped['Blanco'] << denomination
-      end
+  def find_product
+    if params[:dish_id]
+      Dish.find_by!(id: params[:dish_id], restaurant_id: current_restaurant.id)
+    elsif params[:wine_id]
+      Wine.find_by!(id: params[:wine_id], restaurant_id: current_restaurant.id)
+    elsif params[:drink_id]
+      Drink.find_by!(id: params[:drink_id], restaurant_id: current_restaurant.id)
+    else
+      raise ActiveRecord::RecordNotFound
     end
-      
-    grouped
   end
+
+
 end

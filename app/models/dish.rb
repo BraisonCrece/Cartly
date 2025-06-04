@@ -63,37 +63,33 @@ class Dish < ApplicationRecord
          .group_by(&:category_id)
   }
 
+  scope :for_restaurant, ->(restaurant_id) { where(restaurant_id:) }
+  scope :with_category_type, ->(type) { joins(:category).where(categories: { category_type: type }) }
+  scope :search_by_title, ->(query) { where('dishes.title ILIKE ?', "%#{query}%") if query.present? }
+  scope :ordered_by_status, -> { order('dishes.active DESC, dishes.title ASC') }
+
   def self.query(restaurant_id:, query: nil)
-    scope = where(restaurant_id:)
-            .joins(:category)
-            .where(restaurant_id:)
-            .order('dishes.active DESC, dishes.title ASC')
-
-    scope = scope.where('dishes.title ILIKE ?', "%#{query}%") if query.present?
-
-    scope.load_async
+    for_restaurant(restaurant_id)
+      .joins(:category)
+      .ordered_by_status
+      .search_by_title(query)
+      .load_async
   end
 
   def self.daily_menu(restaurant_id:, query: nil)
-    scope = where(restaurant_id:)
-            .joins(:category)
-            .where(categories: { category_type: 'daily' }, restaurant_id:)
-            .order('dishes.active DESC, dishes.title ASC')
-
-    scope = scope.where('dishes.title ILIKE ?', "%#{query}%") if query.present?
-
-    scope.load_async
+    for_restaurant(restaurant_id)
+      .with_category_type('daily')
+      .ordered_by_status
+      .search_by_title(query)
+      .load_async
   end
 
   def self.menu(restaurant_id:, query: nil)
-    scope = where(restaurant_id:)
-            .joins(:category)
-            .where(categories: { category_type: 'menu' }, restaurant_id:)
-            .order('dishes.active DESC, dishes.title ASC')
-
-    scope = scope.where('dishes.title ILIKE ?', "%#{query}%") if query.present?
-
-    scope.load_async
+    for_restaurant(restaurant_id)
+      .with_category_type('menu')
+      .ordered_by_status
+      .search_by_title(query)
+      .load_async
   end
 
   def vegan?

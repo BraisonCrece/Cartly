@@ -16,13 +16,37 @@ class Wine < ApplicationRecord
 
   translates :description, type: :string
 
-  def self.search(restaurant_id:, query: nil)
-    scope = where(restaurant_id:)
-            .order('wines.active DESC, wines.name ASC')
+  scope :for_restaurant, ->(restaurant_id) { where(restaurant_id:) }
+  scope :search_by_name, ->(query) { where('wines.name ILIKE ?', "%#{query}%") if query.present? }
+  scope :ordered_by_status, -> { order('wines.active DESC, wines.name ASC') }
+  scope :by_denomination, ->(denomination_id) { where(wine_origin_denomination_id: denomination_id) if denomination_id != 'all' && denomination_id.present? }
 
-    scope = scope.where('wines.name ILIKE ?', "%#{query}%") if query.present?
+  def self.search(restaurant_id:, query: nil, denomination: 'all')
+    for_restaurant(restaurant_id)
+      .ordered_by_status
+      .search_by_name(query)
+      .by_denomination(denomination)
+      .load_async
+  end
 
-    scope.load_async
+  def self.denominations_by_type(restaurant_id)
+    denominations = WineOriginDenomination.joins(:wines)
+                                         .where(restaurant_id:, wines: { active: true })
+                                         .distinct
+                                         .includes(:wines)
+
+    grouped = { 'Tinto' => [], 'Blanco' => [] }
+      
+    denominations.each do |denomination|
+      if denomination.wines.where(wine_type: 'Tinto', active: true, restaurant_id:).exists?
+        grouped['Tinto'] << denomination
+      end
+      if denomination.wines.where(wine_type: 'Blanco', active: true, restaurant_id:).exists?
+        grouped['Blanco'] << denomination
+      end
+    end
+      
+    grouped
   end
 
   def self.categorized_wines(restaurant_id, denominations, available_colors)
