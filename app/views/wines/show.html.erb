@@ -7,7 +7,7 @@
        class="fixed inset-0 z-20 flex items-center justify-center align-middle modal-container animate-fade-in-instant"
        data-action="click->modal#close">
     <div class="w-[95%] max-w-2xl flex flex-col sm:flex-row sm:items-center sm:h-[280px] mx-auto bg-white rounded-lg overflow-hidden shadow-xl dark:bg-gray-800 dark:shadow dark:shadow-slate-200/20 animate-fade-in-scale">
-      <div class="flex justify-center w-full h-48 bg-white sm:h-full skeleton skeleton-dark"
+      <div class="flex justify-center w-full h-48 bg-white sm:h-full skeleton"
            data-modal-target="skeleton">
         <%= image_tag @wine.image.attached? ? @wine.image : "wine-placeholder.webp",
             alt: t('wines.common.bottle_of', name: @wine.name),
@@ -16,7 +16,7 @@
       </div>
       <div class="card__body h-full px-6 py-2 sm:max-w-[70%] flex flex-col justify-around">
         <h2 id="modal-title"
-            class="mb-2 text-2xl font-bold playfare balance skeleton skeleton-dark"
+            class="mb-2 text-2xl font-bold playfare balance skeleton"
             data-modal-target="skeleton">
           <%= @wine.name %>
         </h2>
