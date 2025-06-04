@@ -12,6 +12,7 @@ class ImageProcessingService
     file:,
     record:,
     attachment_name:,
+    saver: 75,
     portrait: false,
     background_fill: true,
     size_x: 1200,
@@ -20,6 +21,7 @@ class ImageProcessingService
     @file = file
     @record = record
     @attachment_name = attachment_name
+    @saver = saver
     @portrait = portrait
     @background_fill = background_fill
     @size_x = size_x
@@ -45,8 +47,13 @@ class ImageProcessingService
     processor
       .resize_to_fit(size_x, size_y)
       .convert('webp')
-      .saver(Q: 75, strip: true)
-      .call
+      .saver(
+        Q: @saver,
+        effort: 6,
+        method: 6,
+        smart_subsample: true,
+        strip: true
+      ).call
   end
 
   def apply_portrait_processing(processor)

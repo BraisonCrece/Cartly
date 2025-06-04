@@ -109,8 +109,8 @@ class Dish < ApplicationRecord
   end
 
   # Image procesing before attach, allowed formats [:jpg, :png, :webp]
-  def process_image(file)
-    ImageProcessingService.new(file:, record: self, attachment_name: :picture).call
+  def process_image(file, saver: 85)
+    ImageProcessingService.new(file:, record: self, attachment_name: :picture, saver: saver).call
   end
 
   private

@@ -35,8 +35,10 @@ class WinesController < AdminController
     @wine.process_wine(params[:wine][:image]) if params[:wine][:image]
 
     if @wine.save
-      redirect_to control_panel_products_path(filter: 'wines'),
-                  notice: 'El vino se ha creado correctamente.'
+      redirect_to(
+        control_panel_products_path(filter: 'wines'),
+        notice: 'El vino se ha creado correctamente! Será desbloqueado en cuanto terminen las traducciones :)'
+      )
     else
       render :new, status: :unprocessable_entity
     end
@@ -50,7 +52,10 @@ class WinesController < AdminController
         end
       end
       @wine.process_wine(params[:wine][:image]) if params[:wine][:image]
-      redirect_to control_panel_products_path(filter: 'wines'), notice: 'El vino se ha actualizado correctamente.'
+      redirect_to(
+        control_panel_products_path(filter: 'wines'),
+        notice: 'El vino se ha actualizado correctamente.'
+      )
     else
       render :edit, status: :unprocessable_entity
     end

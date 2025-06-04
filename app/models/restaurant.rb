@@ -30,7 +30,7 @@ class Restaurant < ApplicationRecord
   end
 
   # Image procesing before attach, allowed formats [:jpg, :png, :webp]
-  def process_image(file:, attachment_name:)
-    ImageProcessingService.new(file:, record: self, attachment_name: attachment_name, background_fill: false).call
+  def process_image(file:, attachment_name:, saver: 60)
+    ImageProcessingService.new(file:, record: self, saver: saver, attachment_name: attachment_name, background_fill: false).call
   end
 end

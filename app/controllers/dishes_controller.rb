@@ -19,7 +19,10 @@ class DishesController < AdminController
 
     if @dish.save
       request_translations(@dish, :create) if ENV['GEMINI_KEY'].present?
-      redirect_to control_panel_products_path(filter: 'food'), notice: 'Plato creado exitosamente :)'
+      redirect_to(
+        control_panel_products_path(filter: 'food'),
+        notice: 'Plato creado exitosamente! Se desbloquerá en cuanto terminen las traducciones :)'
+      )
 
     else
       render :new, status: :unprocessable_entity
@@ -35,7 +38,10 @@ class DishesController < AdminController
       request_translations(@dish, :update) if ENV['GEMINI_KEY'].present? && title_or_description_changed?
 
       @dish.process_image(params[:dish][:picture]) if params[:dish][:picture]
-      redirect_to control_panel_products_path(filter: 'food'), notice: t('.success')
+      redirect_to(
+        control_panel_products_path(filter: 'food'),
+        notice: 'Plato editado exitosamente! Se desbloquerá en cuanto terminen las traducciones :)'
+      )
     else
       render :edit, status: :unprocessable_entity
     end

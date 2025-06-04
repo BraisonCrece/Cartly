@@ -4,7 +4,7 @@ class Wine < ApplicationRecord
   extend Mobility
 
   broadcasts_refreshes_to ->(wine) { "restaurant_#{wine.restaurant_id}_wines" }
-  
+
   after_update_commit :broadcast_lock_status_change, if: :saved_change_to_lock?
 
   belongs_to :wine_origin_denomination
@@ -31,21 +31,17 @@ class Wine < ApplicationRecord
 
   def self.denominations_by_type(restaurant_id)
     denominations = WineOriginDenomination.joins(:wines)
-                                         .where(restaurant_id:, wines: { active: true })
-                                         .distinct
-                                         .includes(:wines)
+                                          .where(restaurant_id:, wines: { active: true })
+                                          .distinct
+                                          .includes(:wines)
 
     grouped = { 'Tinto' => [], 'Blanco' => [] }
-      
+
     denominations.each do |denomination|
-      if denomination.wines.where(wine_type: 'Tinto', active: true, restaurant_id:).exists?
-        grouped['Tinto'] << denomination
-      end
-      if denomination.wines.where(wine_type: 'Blanco', active: true, restaurant_id:).exists?
-        grouped['Blanco'] << denomination
-      end
+      grouped['Tinto'] << denomination if denomination.wines.where(wine_type: 'Tinto', active: true, restaurant_id:).exists?
+      grouped['Blanco'] << denomination if denomination.wines.where(wine_type: 'Blanco', active: true, restaurant_id:).exists?
     end
-      
+
     grouped
   end
 
@@ -66,8 +62,14 @@ class Wine < ApplicationRecord
   end
 
   # Image procesing before attach, allowed formats [:jpg, :png]
-  def process_wine(file)
-    ImageProcessingService.new(file: file, record: self, attachment_name: :image, portrait: true).call
+  def process_wine(file, saver: 85)
+    ImageProcessingService.new(
+      file: file,
+      record: self,
+      attachment_name: :image,
+      portrait: true,
+      saver: saver
+    ).call
   end
 
   private
@@ -75,11 +77,11 @@ class Wine < ApplicationRecord
   def active_when_not_locked
     errors.add(:active, 'is not allowed when wine is locked') if lock? && active?
   end
-  
+
   def broadcast_lock_status_change
     broadcast_replace_to "restaurant_#{restaurant_id}_control_panel_wines",
-                        target: self,
-                        partial: "control_panel/wine",
-                        locals: { wine: self }
+                         target: self,
+                         partial: 'control_panel/wine',
+                         locals: { wine: self }
   end
 end

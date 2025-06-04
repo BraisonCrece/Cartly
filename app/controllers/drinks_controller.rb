@@ -15,7 +15,10 @@ class DrinksController < AdminController
     @drink.process_image(params[:drink][:image]) if params[:drink][:image]
 
     if @drink.save
-      redirect_to control_panel_products_path(filter: 'drinks'), notice: 'Bebida creada exitosamente, será habilitada cuando las traducciones terminen :)'
+      redirect_to(
+        control_panel_products_path(filter: 'drinks'),
+        notice: 'Bebida creada exitosamente! Se desbloquerá en cuanto terminen las traducciones :)'
+      )
     else
       render :new, status: :unprocessable_entity
     end
