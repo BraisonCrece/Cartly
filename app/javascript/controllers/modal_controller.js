@@ -40,15 +40,10 @@ export default class extends Controller {
 
   close(event) {
     if (event.target === this.element) {
-      this.element.classList.remove("animate__fadeIn", "animate__animated")
-      this.element.classList.add(
-        "animate__fadeOut",
-        "animate__animated",
-        "animate__faster"
-      )
+      this.element.style.animation = "fadeOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards"
       setTimeout(() => {
         this.element.remove()
-      }, 500)
+      }, 200)
     }
   }
 }

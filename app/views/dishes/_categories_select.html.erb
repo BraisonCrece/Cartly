@@ -4,7 +4,7 @@
   id="dish_category_id"
   data-dish-type-target="categorySelect"
   data-dish-form-target="categorySelect"
-  class="dark:text-gray-800 form-select mt-1 block rounded-[3px] border-gray-300 shadow focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full animate__animated"
+  class="dark:text-gray-800 form-select mt-1 block rounded-[3px] border-gray-300 shadow focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 w-full focus-ring"
 >
     <option><%= t('.select_category') %></option>
     <% Category.menu_categories(current_restaurant.id).each do |cat| %>

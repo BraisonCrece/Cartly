@@ -1,11 +1,13 @@
 <% @categories.each do |category| %>
   <% dishes = @categorized_dishes[category.id] %>
   <% next if dishes.blank? %>
-  <h2 class="px-4 pb-4 text-3xl font-semibold text-center text-brand-comp-dark dark:text-brand-comp" id="category-<%= category.id %>"><%= category.name %></h2>
-  <% dishes.each do |dish| %>
-    <%= link_to build_link(dish, params[:restaurant_id]), data: { turbo_frame: "modal" } do %>
-      <%= render "dishes/menu_dish", dish: dish %>
+  <h2 class="px-4 pb-4 text-3xl font-semibold text-center text-brand-comp-dark dark:text-brand-comp animate-fade-in-up" id="category-<%= category.id %>"><%= category.name %></h2>
+  <div class="animate-stagger">
+    <% dishes.each do |dish| %>
+      <%= link_to build_link(dish, params[:restaurant_id]), data: { turbo_frame: "modal" } do %>
+        <%= render "dishes/menu_dish", dish: dish %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
   <div class='py-3'></div>
 <% end %>

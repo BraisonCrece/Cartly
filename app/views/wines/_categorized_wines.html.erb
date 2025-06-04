@@ -1,6 +1,6 @@
 <main role="main">
   <% if Wine.where(restaurant_id: params[:restaurant_id], active: true).exists? %>
-    <h1 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25 categoryHeader"
+    <h1 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25 categoryHeader animate-fade-in-up"
         id='viños'
         data-scroll-target="categoryHeader">
       <%= t('wines.common.wines_section') %>
@@ -10,18 +10,18 @@
   <% @categorized_wines.each do |color, wines_by_denomination| %>
     <% next if wines_by_denomination.empty? %>
     <section role="region" aria-labelledby="category-<%= color %>">
-      <h2 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25"
+      <h2 class="px-4 pb-4 mb-4 text-3xl font-semibold text-center border-b border-gray-100 text-brand-comp-dark dark:text-brand-comp dark:border-gray-100/25 animate-fade-in-up"
           id="category-<%= color %>">
         <%= color %>
       </h2>
       <% wines_by_denomination.each do |denomination_id, wines| %>
         <% denomination = @denominations.find { |d| d.id == denomination_id } %>
         <div class="pb-8" role="region" aria-labelledby="category-<%= denomination.id %>">
-          <h3 class="px-4 pb-4 text-2xl font-medium text-brand-comp-dark/80 dark:text-brand-comp/80"
+          <h3 class="px-4 pb-4 text-2xl font-medium text-brand-comp-dark/80 dark:text-brand-comp/80 animate-fade-in-up"
               id="category-<%= denomination.id %>">
             <%= denomination.name %>
           </h3>
-          <div role="list">
+          <div role="list" class="animate-stagger">
             <% wines.each do |wine| %>
               <div role="listitem">
                 <%= link_to build_link(wine, params[:restaurant_id]),

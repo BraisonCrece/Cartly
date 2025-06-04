@@ -1,6 +1,6 @@
 <% unless @categorized_dishes.values.all? { |d| d.empty? } %>
     <div class="mb-8">
-        <h1 class="px-4 py-3 text-3xl font-bold text-center text-brand-comp-dark dark:text-brand-comp bg-gray-50 dark:bg-gray-700 rounded border-l-4 border-brand-comp-dark dark:border-brand-comp">
+        <h1 class="px-4 py-3 text-3xl font-bold text-center text-brand-comp-dark dark:text-brand-comp bg-gray-50 dark:bg-gray-700 rounded border-l-4 border-brand-comp-dark dark:border-brand-comp animate-fade-in-up">
             Comida
         </h1>
     </div>
@@ -10,12 +10,14 @@
   <% dishes = @categorized_dishes[category.id] %>
   <% next if dishes.blank? %>
   <div>
-    <h2 class="px-4 pb-4 text-3xl font-semibold text-center text-brand-comp-dark dark:text-brand-comp categoryHeader" data-scroll-target="categoryHeader" id="category-<%= category.id %>"><%= category.name %></h2>
-    <% dishes.each do |dish| %>
-        <%= link_to build_link(dish, params[:restaurant_id]), data: { turbo_frame: "modal" } do %>
-            <%= render "dishes/dish", dish: dish %>
-        <% end %>
-    <% end %>
+    <h2 class="px-4 pb-4 text-3xl font-semibold text-center text-brand-comp-dark dark:text-brand-comp categoryHeader animate-fade-in-up" data-scroll-target="categoryHeader" id="category-<%= category.id %>"><%= category.name %></h2>
+    <div class="animate-stagger">
+      <% dishes.each do |dish| %>
+          <%= link_to build_link(dish, params[:restaurant_id]), data: { turbo_frame: "modal" } do %>
+              <%= render "dishes/dish", dish: dish %>
+          <% end %>
+      <% end %>
+    </div>
     <div class='py-3'></div>
   </div>
 <% end %>

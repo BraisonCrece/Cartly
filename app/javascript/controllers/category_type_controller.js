@@ -47,7 +47,7 @@ export default class extends Controller {
 
   showCategoriesFor(type) {
     this.categoryWrapperTarget.classList.remove("hidden")
-    this.categoryWrapperTarget.classList.add("animate-fade-in")
+    this.categoryWrapperTarget.classList.add("animate-fade-in-up")
     
     // Update the add category link based on selected type
     this.updateAddCategoryLink(type)
@@ -83,7 +83,7 @@ export default class extends Controller {
 
   hideCategories() {
     this.categoryWrapperTarget.classList.add("hidden")
-    this.categoryWrapperTarget.classList.remove("animate-fade-in")
+    this.categoryWrapperTarget.classList.remove("animate-fade-in-up")
   }
 
   hasSelectedCategory() {

@@ -3,12 +3,13 @@ import { Controller } from "@hotwired/stimulus";
 export default class extends Controller {
   static values = {
     delay: { type: Number, default: 5000 },
-    transitionDuration: { type: Number, default: 500 },
+    transitionDuration: { type: Number, default: 300 },
   };
 
   connect() {
+    // Show notification with smooth entrance
     requestAnimationFrame(() => {
-      this.element.classList.remove("opacity-0", "-translate-y-2");
+      this.element.classList.add("notification-show");
     });
 
     this.startAutoHideTimer();
@@ -38,8 +39,12 @@ export default class extends Controller {
 
   close() {
     this.clearAutoHideTimer();
-
-    this.element.classList.add("opacity-0");
+    
+    // Hide notification
+    this.element.classList.remove("notification-show");
+    this.element.classList.add("notification-hide");
+    
+    // Remove element after transition
     this.removeTimer = setTimeout(() => {
       if (this.element && this.element.parentNode) {
         this.element.remove();
