@@ -40,11 +40,7 @@ class DrinksController < AdminController
     @drink.destroy
     render turbo_stream: [
       turbo_stream.remove(@drink),
-      turbo_stream.prepend(
-        'notifications',
-        partial: 'shared/notification',
-        locals: { notice: 'Bebida eliminada exitosamente' }
-      ),
+      turbo_notification('Bebida eliminada exitosamente'),
     ]
   end
 

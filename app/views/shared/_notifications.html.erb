@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "#{current_restaurant&.id || 'default'}_notifications", class: "fixed top-0 left-0 right-0 p-2 flex flex-col items-center w-full z-50 pointer-events-none" do %>
+<%= turbo_frame_tag "notifications", class: "fixed top-0 left-0 right-0 p-2 flex flex-col items-center w-full z-50 pointer-events-none" do %>
     <% flash.each do |type, msg| %>
         <% notification_type = case type.to_sym
                                 when :alert, :error

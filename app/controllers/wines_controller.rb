@@ -60,7 +60,7 @@ class WinesController < AdminController
     @wine.destroy
     render turbo_stream: [
       turbo_stream.remove(@wine),
-      turbo_stream.prepend('notifications', partial: 'shared/notification', locals: { notice: 'El vino se ha eliminado correctamente.' }),
+      turbo_notification('El vino se ha eliminado correctamente.'),
     ]
   end
 

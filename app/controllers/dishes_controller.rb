@@ -45,11 +45,7 @@ class DishesController < AdminController
     @dish.destroy
     render turbo_stream: [
       turbo_stream.remove(@dish),
-      turbo_stream.prepend(
-        'notifications',
-        partial: 'shared/notification',
-        locals: { notice: t('.success') }
-      ),
+      turbo_notification('Plato eliminado exitosamente'),
     ]
   end
 
