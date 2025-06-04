@@ -11,19 +11,19 @@ class ControlPanelController < AdminController
     @filter = params[:filter].presence || 'food'
     @category = params[:category].presence || 'all'
     @query = params[:query]
-    
+
     @selected = { name: @filter, path: selected_path(@filter) }
     set_filter_options
-    @category_options = ControlPanel::CategoryOptionsService.call(@filter, 
-                                                                 drink_categories: @drink_categories, 
-                                                                 wine_denominations: @wine_denominations)
+    @category_options = ControlPanel::CategoryOptionsService.call(@filter,
+                                                                  drink_categories: @drink_categories,
+                                                                  wine_denominations: @wine_denominations)
     @pagy, @products = paginate_products
   end
 
   def toggle_active
     product = find_product
     product.toggle!(:active)
-    
+
     render turbo_stream: turbo_stream.replace(
       "#{product.class.name.downcase}_active_#{product.id}",
       partial: "#{product.class.name.downcase}_active",
@@ -62,7 +62,7 @@ class ControlPanelController < AdminController
             else
               Wine.search(restaurant_id: current_restaurant.id, query: @query, denomination: @category)
             end
-    
+
     pagy_countless(scope, limit: 10)
   end
 
@@ -88,6 +88,4 @@ class ControlPanelController < AdminController
       raise ActiveRecord::RecordNotFound
     end
   end
-
-
 end

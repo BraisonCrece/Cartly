@@ -32,7 +32,7 @@ module ControlPanel
     end
 
     def food_options
-      [['Todos', 'all'], ['Menu del dia', 'daily'], ['Carta', 'menu']]
+      [['Todas', 'all'], ['Menu del dia', 'daily'], ['Carta', 'menu']]
     end
 
     def wines_options
