@@ -13,6 +13,8 @@ class ControlPanelController < AdminController
     filter = params[:filter].presence || 'food'
     @category = params[:category].presence || 'all'
     @selected = { name: filter, path: selected_path(filter) }
+    @drink_categories = Category.where(restaurant_id: restaurant_id, category_type: 'drinks').order(:position) if filter == 'drinks'
+    @wine_denominations = get_wine_denominations_by_type(restaurant_id) if filter == 'wines'
     @pagy, @products = pagy_products(filter, query, @category, restaurant_id)
   end
 
@@ -50,9 +52,13 @@ class ControlPanelController < AdminController
       finder = dish_finders[category] || dish_finders['all']
       pagy_countless(finder.call, limit: 10)
     when 'drinks'
-      pagy_countless(Drink.query_drinks(restaurant_id:, query:), limit: 10)
+      scope = Drink.query_drinks(restaurant_id:, query:)
+      scope = scope.where(category_id: category) if category != 'all' && category.present?
+      pagy_countless(scope, limit: 10)
     else
-      pagy_countless(Wine.search(restaurant_id:, query: query), limit: 10)
+      scope = Wine.search(restaurant_id:, query: query)
+      scope = scope.where(wine_origin_denomination_id: category) if category != 'all' && category.present?
+      pagy_countless(scope, limit: 10)
     end
   end
 
@@ -87,5 +93,25 @@ class ControlPanelController < AdminController
       partial: 'drink_active',
       locals: { drink: }
     )
+  end
+
+  def get_wine_denominations_by_type(restaurant_id)
+    denominations = WineOriginDenomination.joins(:wines)
+                                         .where(restaurant_id: restaurant_id, wines: { active: true })
+                                         .distinct
+                                         .includes(:wines)
+
+    grouped = { 'Tinto' => [], 'Blanco' => [] }
+      
+    denominations.each do |denomination|
+      if denomination.wines.where(wine_type: 'Tinto', active: true, restaurant_id: restaurant_id).exists?
+        grouped['Tinto'] << denomination
+      end
+      if denomination.wines.where(wine_type: 'Blanco', active: true, restaurant_id: restaurant_id).exists?
+        grouped['Blanco'] << denomination
+      end
+    end
+      
+    grouped
   end
 end

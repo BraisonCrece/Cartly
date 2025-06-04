@@ -54,9 +54,15 @@
             <%= form.label :category, "Categoría", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
             <%
                 select_opts = if @selected[:name] == "drinks"
-                    [['Todas', 'all']]
+                    [['Todas', 'all']] + @drink_categories.map { |cat| [cat.name, cat.id] }
                 elsif @selected[:name] == 'food'
                     [['Todos', 'all'], ['Menu del dia', 'daily'], ['Carta', 'menu']]
+                elsif @selected[:name] == 'wines'
+                    wine_options = [['Todas', 'all']]
+                    @wine_denominations.each do |wine_type, denominations|
+                      wine_options += denominations.map { |denom| ["#{wine_type} - #{denom.name}", denom.id] }
+                    end
+                    wine_options
                 else
                     [['Todos', 'all']]
                 end
