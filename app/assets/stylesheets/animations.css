@@ -78,6 +78,10 @@
   animation: fadeIn var(--animation-duration-normal) var(--animation-easing);
 }
 
+.animate-fade-in-instant {
+  animation: fadeIn var(--animation-duration-fast) var(--animation-easing);
+}
+
 .animate-fade-in-up {
   animation: fadeInUp var(--animation-duration-normal) var(--animation-easing);
 }

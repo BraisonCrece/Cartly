@@ -40,10 +40,10 @@ export default class extends Controller {
 
   close(event) {
     if (event.target === this.element) {
-      this.element.style.animation = "fadeOut 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards"
+      this.element.style.animation = "fadeOut 0.15s cubic-bezier(0.16, 1, 0.3, 1) forwards"
       setTimeout(() => {
         this.element.remove()
-      }, 200)
+      }, 150)
     }
   }
 }
