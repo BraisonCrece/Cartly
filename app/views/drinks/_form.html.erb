@@ -24,7 +24,7 @@
              class="absolute inset-0 flex items-center justify-center bg-gray-100/80 dark:bg-gray-700/80 transition-opacity duration-300 rounded-lg">
           <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 animate-spin" width="24" height="24" viewBox="0 0 24 24"><g fill="currentColor"><path fill-rule="evenodd" d="M12 19a7 7 0 1 0 0-14a7 7 0 0 0 0 14m0 3c5.523 0 10-4.477 10-10S17.523 2 12 2S2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd" opacity="0.2"/><path d="M2 12C2 6.477 6.477 2 12 2v3a7 7 0 0 0-7 7z"/></g></svg>
         </div>
-        <%= image_tag @drink.persisted? && @drink.image.attached? ? @drink.image : "placeholder.webp",
+        <%= image_tag @drink.persisted? && @drink.image.attached? ? @drink.image : "placeholder_drink.webp",
           alt: "Foto de la bebida",
           class: "absolute inset-0 w-full h-full object-cover rounded-[3px] hover:scale-[101%] hover:cursor-pointer opacity-0 transition-opacity duration-300",
           data: {
@@ -34,7 +34,7 @@
           } %>
       </div>
       <div class="hidden" data-file-input-target="placeholderUrl">
-        <%= asset_path("placeholder.webp") %>
+        <%= asset_path("placeholder_drink.webp") %>
       </div>
           <div class="relative">
             <div class="flex items-center justify-between border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 w-full bg-white dark:bg-gray-800">
