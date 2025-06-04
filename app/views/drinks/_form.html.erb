@@ -80,7 +80,7 @@
         <div class="space-y-1">
             <div class="flex justify-between items-center">
                 <%= f.label :category_id, "Categoría", class: "block text-sm font-medium text-gray-700 dark:text-gray-300" %>
-                <%= link_to 'Añadir categoría', admin_categories_path, class: "text-sky-600 hover:text-sky-700 text-sm underline" %>
+                <%= link_to 'Añadir categoría', admin_categories_path(selected_type: 'drinks'), class: "text-sky-600 hover:text-sky-700 text-sm underline" %>
             </div>
             <%= f.collection_select :category_id,
                 Category.where(restaurant_id: current_restaurant.id, category_type: 'drinks'),
