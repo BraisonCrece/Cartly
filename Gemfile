@@ -35,6 +35,7 @@ gem 'ruby-openai'
 gem 'ruby-vips'
 gem 'sprockets-rails'
 gem 'stimulus-rails'
+gem 'stripe'
 gem 'tailwindcss-rails'
 gem 'turbo-rails'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

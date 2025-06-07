@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_05_31_164856) do
+ActiveRecord::Schema[8.0].define(version: 2025_06_07_205052) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -156,9 +156,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_05_31_164856) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.string "stripe_customer_id"
+    t.string "stripe_subscription_id"
+    t.string "subscription_status", default: "inactive"
+    t.datetime "subscription_current_period_end"
     t.index ["confirmation_token"], name: "index_restaurants_on_confirmation_token", unique: true
     t.index ["email"], name: "index_restaurants_on_email", unique: true
     t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
+    t.index ["stripe_customer_id"], name: "index_restaurants_on_stripe_customer_id"
+    t.index ["stripe_subscription_id"], name: "index_restaurants_on_stripe_subscription_id"
+    t.index ["subscription_status"], name: "index_restaurants_on_subscription_status"
   end
 
   create_table "settings", force: :cascade do |t|

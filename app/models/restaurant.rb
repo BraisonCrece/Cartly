@@ -33,4 +33,52 @@ class Restaurant < ApplicationRecord
   def process_image(file:, attachment_name:, saver: 60)
     ImageProcessingService.new(file:, record: self, saver: saver, attachment_name: attachment_name, background_fill: false).call
   end
+
+  def subscription_active?
+    subscription_status == 'active' && subscription_current_period_end&.future?
+  end
+
+  def subscription_expired?
+    subscription_current_period_end&.past?
+  end
+
+  def subscription_inactive?
+    subscription_status == 'inactive' || subscription_status.nil?
+  end
+
+  def subscription_trialing?
+    subscription_status == 'trialing'
+  end
+
+  def subscription_past_due?
+    subscription_status == 'past_due'
+  end
+
+  def subscription_canceled?
+    subscription_status == 'canceled'
+  end
+
+  def has_valid_subscription?
+    subscription_active? || subscription_trialing?
+  end
+
+  def create_stripe_customer
+    return stripe_customer_id if stripe_customer_id.present?
+
+    customer = Stripe::Customer.create(
+      email: email,
+      name: name,
+      metadata: { restaurant_id: id }
+    )
+
+    update!(stripe_customer_id: customer.id)
+    customer.id
+  end
+
+  def update_subscription_status(status, current_period_end = nil)
+    update!(
+      subscription_status: status,
+      subscription_current_period_end: current_period_end
+    )
+  end
 end
