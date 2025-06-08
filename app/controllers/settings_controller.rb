@@ -5,6 +5,7 @@ class SettingsController < AdminController
   before_action :authenticate_restaurant!
   before_action :set_restaurant
   before_action :set_settings
+  before_action :block_write_actions!, only: [:update]
 
   def edit
     @settings = @restaurant.setting

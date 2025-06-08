@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class AdminController < ApplicationController
+  include SubscriptionGuard
+  
   before_action :authenticate_restaurant!
   around_action :force_spanish_locale
 

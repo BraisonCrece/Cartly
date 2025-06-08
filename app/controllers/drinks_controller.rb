@@ -3,6 +3,7 @@
 class DrinksController < AdminController
   before_action :authenticate_restaurant!, except: [:show]
   before_action :set_drink, only: [:show, :edit, :update, :destroy]
+  before_action :block_write_actions!, only: [:create, :update, :destroy]
 
   def new
     @drink = Drink.new

@@ -3,6 +3,8 @@
 class DishesController < AdminController
   before_action :authenticate_restaurant!, except: [:show]
   before_action :set_dish, only: [:show, :edit, :update, :destroy]
+  before_action :block_write_actions!, only: [:create, :update, :destroy]
+  skip_around_action :force_spanish_locale, only: [:show]
 
   def index
     redirect_to new_dish_path

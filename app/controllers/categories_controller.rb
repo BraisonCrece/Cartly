@@ -3,6 +3,7 @@
 class CategoriesController < AdminController
   before_action :authenticate_restaurant!
   before_action :set_category, only: [:edit, :update, :destroy]
+  before_action :block_write_actions!, only: [:create, :update, :destroy, :reorder]
 
   def index
     @menu_categories = Category.where(category_type: 'menu', restaurant_id: current_restaurant.id)

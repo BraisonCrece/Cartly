@@ -3,6 +3,7 @@
 class AllergensController < AdminController
   before_action :authenticate_restaurant!
   before_action :set_allergen, only: [:edit, :update, :destroy]
+  before_action :block_write_actions!, only: [:create, :update, :destroy]
 
   def index
     @system_allergens = Allergen.where(restaurant_id: nil)

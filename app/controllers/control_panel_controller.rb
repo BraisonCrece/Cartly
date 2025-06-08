@@ -5,6 +5,7 @@
 # It handles the dishes and wines
 class ControlPanelController < AdminController
   before_action :authenticate_restaurant!
+  before_action :block_write_actions!, only: [:toggle_active]
   include Pagy::Backend
 
   def products

@@ -6,9 +6,7 @@
     </div>
 
     <div class="bg-white dark:bg-gray-900 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
-      <%= form_with(model: @settings,
-          data: { turbo: false },
-          class: "p-4 pt-0 space-y-6") do |f| %>
+      <%= form_with(model: @settings, class: "p-4 pt-0 space-y-6") do |f| %>
 
         <% if @settings.errors.any? %>
           <div id="error_explanation" role="alert" aria-live="polite" class="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">

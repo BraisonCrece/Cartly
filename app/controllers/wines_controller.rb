@@ -3,6 +3,7 @@
 class WinesController < AdminController
   before_action :authenticate_restaurant!, except: [:index, :show]
   before_action :set_wine, only: [:edit, :update, :destroy]
+  before_action :block_write_actions!, only: [:create, :update, :destroy, :toggle_active]
 
   def index
     @wines = Wine.where(restaurant_id: current_restaurant.id)

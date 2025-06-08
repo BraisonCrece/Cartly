@@ -3,6 +3,7 @@
 class WineOriginDenominationsController < AdminController
   before_action :authenticate_restaurant!
   before_action :set_denomination, only: [:show, :edit, :update, :destroy]
+  before_action :block_write_actions!, only: [:create, :update, :destroy]
 
   def index
     @denominations = WineOriginDenomination.where(restaurant_id: current_restaurant.id)

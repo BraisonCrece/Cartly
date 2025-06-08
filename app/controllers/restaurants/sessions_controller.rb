@@ -27,6 +27,7 @@ class Restaurants::SessionsController < Devise::SessionsController
   end
 
   def destroy
+    I18n.locale = I18n.default_locale
     restaurant_id = current_restaurant&.id
     super do
       @stored_restaurant_id = restaurant_id
