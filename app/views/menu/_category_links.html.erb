@@ -1,6 +1,6 @@
 <% caterogy_link_classes = "text-lg font-light italic align-middle text-center font-medium text-blue-950 subpixel-antialiased hover:text-teal-900 dark:text-emerald-100" %>
 
-<% @categories.each do |category| %>
+<% @categories&.each do |category| %>
   <% next if @categorized_dishes[category.id].blank? %>
   <%= link_to(
       category.name.gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
@@ -31,7 +31,6 @@
 <% end %>
 
 <% unless current_page?(menu_path) || @categorized_wines&.fetch("Tinto").blank? && @categorized_wines&.fetch("Blanco").blank? %>
-
   <%= link_to(
     t('dishes.category_links.wines_section').gsub(/[\p{Emoji_Presentation}\u{FE0F}]|[\u{1F600}-\u{1F64F}\u{1F37D}]/, ""),
     "#viños",

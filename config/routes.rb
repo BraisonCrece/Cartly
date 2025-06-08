@@ -47,6 +47,17 @@ Rails.application.routes.draw do
   post 'toggle_active', to: 'control_panel#toggle_active', as: :toggle_active
   post 'toggle_special_menu/:special_menu_id', to: 'special_menus#toggle_active', as: :toggle_special_menu
 
+  # Subscription management
+  resource :subscription, only: [:show, :new, :create], path: 'admin/subscription' do
+    member do
+      get :success
+      get :cancel
+      patch :cancel_subscription
+      patch :reactivate
+      get :billing_portal
+    end
+  end
+
   # Profile
 
   # Other actions routes
@@ -60,5 +71,6 @@ Rails.application.routes.draw do
 
   post '/reload_i18n', to: 'translate#reload_i18n'
   post 'sort', to: 'categories#reorder'
+  post 'stripe/webhook', to: 'webhooks/stripe#webhook'
 end
 # rubocop:enable Metrics/BlockLength
